@@ -1,0 +1,7 @@
+#include "libmpq/common.cpp"
+#include "libmpq/explode.cpp"
+#include "libmpq/extract.cpp"
+#include "libmpq/huffman.cpp"
+#include "libmpq/mpq.cpp"
+#include "mpq_lib.cpp"
+#include "libmpq/wave.cpp"
