@@ -24,7 +24,7 @@ void DCSetupUtil::SetGamePath()
 	const u32 strSize = 1024;
 	const wchar_t* dataPath = TEXT("Data\\");
 
-	HKEY key;
+	//HKEY key;
 	u32 dataSize;
 	wchar_t path[strSize];
 
@@ -33,21 +33,25 @@ void DCSetupUtil::SetGamePath()
 	dataSize = 1024;
 
 	// if it failed, look for World of Warcraft install
-	u32 result = RegOpenKeyEx((HKEY)HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Blizzard Entertainment\\World of Warcraft"), 0, KEY_QUERY_VALUE, &key);
+	//u32 result = RegOpenKeyEx((HKEY)HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Blizzard Entertainment\\World of Warcraft"), 0, KEY_QUERY_VALUE, &key);
 
 	// If we found an install then set the game path, otherwise just set to C:\ for now
-	if (result == ERROR_SUCCESS)
-	{
-		result = RegQueryValueEx(key, TEXT("InstallPath"), 0, NULL,(LPBYTE)path, &dataSize);
-		RegCloseKey(key);
+	//if (result == ERROR_SUCCESS)
+	//{
+	//	result = RegQueryValueEx(key, TEXT("InstallPath"), 0, NULL,(LPBYTE)path, &dataSize);
+	//	RegCloseKey(key);
 
-		m_gamePath += (const wchar_t*)path;
-		m_gamePath += dataPath;
-	} 
-	else 
-	{
-		assert(0&&"can't find wow install path");
-	}
+	//	m_gamePath += (const wchar_t*)path;
+	//	m_gamePath += dataPath;
+	//} 
+	//else 
+	//{
+	//	assert(0&&"can't find wow install path");
+	//}
+
+	m_gamePath += L"e:\\game\\wow\\";
+	m_gamePath += dataPath;
+
 }
 
 void DCSetupUtil::SetDataPath()

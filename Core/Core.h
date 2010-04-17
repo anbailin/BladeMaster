@@ -39,6 +39,7 @@
 //using namespace std;
 #pragma warning( disable : 4995 )
 #pragma warning( disable : 4131 )
+#pragma warning( disable : 4251 )
 //--------core-----------------------
 //common
 #include "TypeDefine.h"

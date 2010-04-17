@@ -4,6 +4,7 @@
 *	get game path
 *   get the data paths
 */
+
 class CORE_DLL DCSetupUtil
 {
 public:
