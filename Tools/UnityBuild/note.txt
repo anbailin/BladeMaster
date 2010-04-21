@@ -1,0 +1,2 @@
+C:\Users\XY\Documents\Visual Studio 2008\Addins
+C:\Documents and Settings\All Users.WINDOWS\Application Data\Microsoft\MSEnvShared\Addins

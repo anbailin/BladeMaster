@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VSContent xmlns="http://schemas.microsoft.com/developer/vscontent/2008">
+    <Content>
+        <ContentVersion>1.0</ContentVersion>
+        <Description>Unity Build</Description>
+        <DisplayName>Unity Build</DisplayName>
+        <FileContentType>Addin</FileContentType>
+        <FileName>UnityBuild.AddIn</FileName>
+        <FileName>UnityBuild.dll</FileName>
+    </Content>
+</VSContent>
