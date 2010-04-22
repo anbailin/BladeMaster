@@ -313,6 +313,13 @@
 			<File
 				RelativePath=".\Src\App.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Src\App.h"
@@ -343,10 +350,24 @@
 			<File
 				RelativePath=".\Src\main.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Src\MainWindow.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Src\MainWindow.h"
@@ -381,10 +402,6 @@
 					RelativePath=".\Src\Core\BMCore.h"
 					>
 				</File>
-				<File
-					RelativePath=".\Src\Core\TypeDefine.h"
-					>
-				</File>
 				<Filter
 					Name="Container"
 					>
@@ -392,48 +409,12 @@
 						RelativePath=".\Src\Core\AlignedContainerAllocator.h"
 						>
 					</File>
-					<File
-						RelativePath=".\Src\Core\Container.h"
-						>
-					</File>
 				</Filter>
 				<Filter
 					Name="Math"
 					>
 					<File
-						RelativePath=".\Src\Core\Euler.h"
-						>
-					</File>
-					<File
 						RelativePath=".\Src\Core\MathBasic.h"
-						>
-					</File>
-					<File
-						RelativePath=".\Src\Core\MathFunc.h"
-						>
-					</File>
-					<File
-						RelativePath=".\Src\Core\Matrix.h"
-						>
-					</File>
-					<File
-						RelativePath=".\Src\Core\Quaternion.h"
-						>
-					</File>
-					<File
-						RelativePath=".\Src\Core\Vector.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\Src\Core\Vector.h"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="Memory"
-					>
-					<File
-						RelativePath=".\Src\Core\BMMemory.h"
 						>
 					</File>
 				</Filter>
@@ -443,6 +424,14 @@
 					<File
 						RelativePath=".\Src\Core\libmpq\common.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\libmpq\common.h"
@@ -451,6 +440,14 @@
 					<File
 						RelativePath=".\Src\Core\libmpq\explode.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\libmpq\explode.h"
@@ -459,10 +456,26 @@
 					<File
 						RelativePath=".\Src\Core\libmpq\extract.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\libmpq\huffman.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\libmpq\huffman.h"
@@ -471,6 +484,14 @@
 					<File
 						RelativePath=".\Src\Core\libmpq\mpq.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\libmpq\mpq.h"
@@ -479,6 +500,14 @@
 					<File
 						RelativePath=".\Src\Core\mpq_lib.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\mpq_lib.h"
@@ -487,17 +516,17 @@
 					<File
 						RelativePath=".\Src\Core\libmpq\wave.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\libmpq\wave.h"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="String"
-					>
-					<File
-						RelativePath=".\Src\Core\BMString.h"
 						>
 					</File>
 				</Filter>
@@ -507,6 +536,14 @@
 					<File
 						RelativePath=".\Src\Core\TinyXML\tinystr.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\TinyXML\tinystr.h"
@@ -515,6 +552,14 @@
 					<File
 						RelativePath=".\Src\Core\TinyXML\tinyxml.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\TinyXML\tinyxml.h"
@@ -523,10 +568,26 @@
 					<File
 						RelativePath=".\Src\Core\TinyXML\tinyxmlerror.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\TinyXML\tinyxmlparser.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 				</Filter>
 				<Filter
@@ -535,6 +596,14 @@
 					<File
 						RelativePath=".\Src\Core\Util\BMLog.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\Util\BMLog.h"
@@ -547,6 +616,14 @@
 					<File
 						RelativePath=".\Src\Core\Util\DCCoreUtils.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\Util\DCCoreUtils.h"
@@ -563,6 +640,14 @@
 					<File
 						RelativePath=".\Src\Core\Util\DCTimer.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\Util\DCTimer.h"
@@ -571,6 +656,14 @@
 					<File
 						RelativePath=".\Src\Core\Util\DCTimerManager.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\Util\DCTimerManager.h"
@@ -579,6 +672,14 @@
 					<File
 						RelativePath=".\Src\Core\Util\DCTimeSource_win.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\Util\DCTimeSource_win.h"
@@ -591,6 +692,14 @@
 					<File
 						RelativePath=".\Src\Core\Util\DXUTTimer.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Core\Util\DXUTTimer.h"
@@ -704,6 +813,14 @@
 				<File
 					RelativePath=".\Src\Engine\DCWOWLoader.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Engine\DCWOWLoader.h"
@@ -712,13 +829,17 @@
 				<File
 					RelativePath=".\Src\Engine\Engine.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Engine\Engine.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Src\Engine\EnginePCH.cpp"
 					>
 				</File>
 				<File
@@ -731,6 +852,14 @@
 					<File
 						RelativePath=".\Src\Engine\Files\BLP.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\Files\BLP.h"
@@ -739,6 +868,14 @@
 					<File
 						RelativePath=".\Src\Engine\Files\DBCFile.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\Files\DBCFile.h"
@@ -747,6 +884,14 @@
 					<File
 						RelativePath=".\Src\Engine\Files\DCFilePath.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\Files\DCFilePath.h"
@@ -759,6 +904,14 @@
 					<File
 						RelativePath=".\Src\Engine\Files\MDX.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\Files\MDX.h"
@@ -771,6 +924,14 @@
 					<File
 						RelativePath=".\Src\Engine\LevelInstance.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\LevelInstance.h"
@@ -779,6 +940,14 @@
 					<File
 						RelativePath=".\Src\Engine\LevelManager.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\LevelManager.h"
@@ -791,6 +960,14 @@
 					<File
 						RelativePath=".\Src\Engine\SceneNode.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\SceneNode.h"
@@ -799,6 +976,14 @@
 					<File
 						RelativePath=".\Src\Engine\SceneRenderer.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Engine\SceneRenderer.h"
@@ -812,6 +997,14 @@
 				<File
 					RelativePath=".\Src\Animation\DCAnimationManager.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Animation\DCAnimationManager.h"
@@ -820,6 +1013,14 @@
 				<File
 					RelativePath=".\Src\Animation\DCAnimData.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Animation\DCAnimData.h"
@@ -832,6 +1033,14 @@
 				<File
 					RelativePath=".\Src\Animation\DCBone.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Animation\DCBone.h"
@@ -864,6 +1073,14 @@
 				<File
 					RelativePath=".\Src\Render\DCRenderHeader.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Render\DCRenderHeader.h"
@@ -876,6 +1093,14 @@
 				<File
 					RelativePath=".\Src\Render\DCSurface.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Render\DCSurface.h"
@@ -884,6 +1109,14 @@
 				<File
 					RelativePath=".\Src\Render\DCTexture.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Render\DCTexture.h"
@@ -892,6 +1125,14 @@
 				<File
 					RelativePath=".\Src\Render\DCUtils.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Src\Render\DCUtils.h"
@@ -903,6 +1144,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\dxstdafx.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\dxstdafx.h"
@@ -911,6 +1160,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUT.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUT.h"
@@ -919,6 +1176,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTenum.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTenum.h"
@@ -927,6 +1192,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTgui.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTgui.h"
@@ -935,6 +1208,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTMesh.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTMesh.h"
@@ -943,6 +1224,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTmisc.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTmisc.h"
@@ -951,6 +1240,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTRes.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTRes.h"
@@ -959,6 +1256,14 @@
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTSettingsDlg.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DXUT\DXUTSettingsDlg.h"
@@ -971,6 +1276,14 @@
 					<File
 						RelativePath=".\Src\Render\DCGeometry.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCGeometry.h"
@@ -979,6 +1292,14 @@
 					<File
 						RelativePath=".\Src\Render\DCMapTile.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCMapTile.h"
@@ -987,6 +1308,14 @@
 					<File
 						RelativePath=".\Src\Render\DCMaterial.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCMaterial.h"
@@ -995,6 +1324,14 @@
 					<File
 						RelativePath=".\Src\Render\DCModel.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCModel.h"
@@ -1003,6 +1340,14 @@
 					<File
 						RelativePath=".\Src\Render\DCModelInstance.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCModelInstance.h"
@@ -1015,6 +1360,14 @@
 					<File
 						RelativePath=".\Src\Render\DCSubModel.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCSubModel.h"
@@ -1023,6 +1376,14 @@
 					<File
 						RelativePath=".\Src\Render\DCWMO.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCWMO.h"
@@ -1031,6 +1392,14 @@
 					<File
 						RelativePath=".\Src\Render\Terrain.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\Terrain.h"
@@ -1043,6 +1412,14 @@
 					<File
 						RelativePath=".\Src\Render\DCRenderer.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCRenderer.h"
@@ -1051,6 +1428,14 @@
 					<File
 						RelativePath=".\Src\Render\DCRenderSetter.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCRenderSetter.h"
@@ -1059,6 +1444,14 @@
 					<File
 						RelativePath=".\Src\Render\DCRenderState.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCRenderState.h"
@@ -1067,6 +1460,14 @@
 					<File
 						RelativePath=".\Src\Render\DCRenderType.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCRenderType.h"
@@ -1079,6 +1480,14 @@
 					<File
 						RelativePath=".\Src\Render\PostFXRenderer.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\PostFXRenderer.h"
@@ -1091,6 +1500,14 @@
 					<File
 						RelativePath=".\Src\Render\DCShaderManager.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCShaderManager.h"
@@ -1119,6 +1536,14 @@
 					<File
 						RelativePath=".\Src\Render\DCRenderUtils.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCRenderUtils.h"
@@ -1127,6 +1552,14 @@
 					<File
 						RelativePath=".\Src\Render\DCTranslator.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\DCTranslator.h"
@@ -1139,6 +1572,14 @@
 					<File
 						RelativePath=".\Src\Render\QuadGeometry.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\QuadGeometry.h"
@@ -1147,6 +1588,14 @@
 					<File
 						RelativePath=".\Src\Render\ShaderLoader.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\ShaderLoader.h"
@@ -1155,6 +1604,14 @@
 					<File
 						RelativePath=".\Src\Render\VertexDeclarationManager.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\Src\Render\VertexDeclarationManager.h"
@@ -1162,6 +1619,90 @@
 					</File>
 				</Filter>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="Unity Files"
+			>
+			<File
+				RelativePath=".\Unities\AnimationUnity.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Unities\CoreUnity.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Unities\EngineUnity.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Unities\RenderUnity.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(ProjectDir)/&quot;"
+					/>
+				</FileConfiguration>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>
@@ -1188,6 +1729,14 @@
 		<Global
 			Name="UicDir"
 			Value=".\GeneratedFiles"
+		/>
+		<Global
+			Name="UnityFilterName"
+			Value="Unity Files"
+		/>
+		<Global
+			Name="UnityFilterPath"
+			Value="Unities"
 		/>
 	</Globals>
 </VisualStudioProject>

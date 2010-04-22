@@ -8,9 +8,9 @@
 */
 class CORE_DLL DCSetupUtil
 {
-public:
-	SINGLETON_DECLARE(DCSetupUtil);
+	BM_SINGLETON_DECLARE(DCSetupUtil);
 	
+public:
 	void SetGamePath();
 	void SetDataPath();
 

@@ -35,17 +35,16 @@ bool App::Init()
     m_pCamera = pCamera;
 
     DCSetupUtil::CreateInstance();
-    DCSetupUtil::GetInstance()->SetGamePath();
-    DCSetupUtil::GetInstance()->SetDataPath();
+    DCSetupUtil::Instance().SetGamePath();
+    DCSetupUtil::Instance().SetDataPath();
 
     //init engine
     BMEngine::CreateInstance();    
-    BMEngine::GetInstance()->Init();    
+    BMEngine::Instance().Init();    
 
     //wow file related init
-    assert(DCWOWLoader::GetInstance() == NULL);
     DCWOWLoader::CreateInstance();
-    DCWOWLoader::GetInstance()->Init();
+    DCWOWLoader::Instance().Init();
 
 
     DXUTSetCallbackDeviceCreated( OnCreateDevice );
@@ -66,8 +65,8 @@ bool App::Init()
 
 void App::Exit()
 {
-    DCRenderer::GetInstance()->ReleaseResource();
-    BMEngine::GetInstance()->ReleaseResource();
+    DCRenderer::Instance().ReleaseResource();
+    BMEngine::Instance().ReleaseResource();
 
     SafeDelete(m_pCamera);
 
@@ -84,8 +83,8 @@ void App::Tick()
 
 void App::ReleaseResource()
 {
-    DCRenderer::GetInstance()->ReleaseResource();
-    BMEngine::GetInstance()->ReleaseResource();
+    DCRenderer::Instance().ReleaseResource();
+    BMEngine::Instance().ReleaseResource();
 }
 
 bool CALLBACK App::IsDeviceAcceptable( D3DCAPS9* pCaps, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, bool bWindowed, void* pUserContext )
@@ -142,8 +141,8 @@ HRESULT CALLBACK App::OnResetDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
     //    return S_OK;
     //}
 
-    DCRenderer::GetInstance()->InitResource(pd3dDevice);
-    LevelManager::GetInstance()->LoadMap("map");
+    DCRenderer::Instance().InitResource(pd3dDevice);
+    LevelManager::Instance().LoadMap("map");
 
     float fAspectRatio = pBackBufferSurfaceDesc->Width / (FLOAT)pBackBufferSurfaceDesc->Height;
     App::Instance().m_pCamera->SetProjParams( D3DX_PI/3, fAspectRatio, 0.001f, 100.0f );	
@@ -161,7 +160,7 @@ void CALLBACK App::OnFrameMove( IDirect3DDevice9* pd3dDevice, double fTime, floa
 
     App::Instance().m_pCamera->FrameMove(fElapsedTime);
 
-    BMEngine::GetInstance()->Tick((float)fTime);	
+    BMEngine::Instance().Tick((float)fTime);	
 }
 
 void CALLBACK App::OnFrameRender( IDirect3DDevice9* pd3dDevice, double fTime, float fElapsedTime, void* pUserContext )
@@ -173,10 +172,10 @@ void CALLBACK App::OnFrameRender( IDirect3DDevice9* pd3dDevice, double fTime, fl
     mxView = *Instance().m_pCamera->GetViewMatrix();
     mxProj = *Instance().m_pCamera->GetProjMatrix();
 
-    SceneRenderer::GetInstance()->SetViewMatrix(mxView);
-    SceneRenderer::GetInstance()->SetProjMatrix(mxProj);
+    SceneRenderer::Instance().SetViewMatrix(mxView);
+    SceneRenderer::Instance().SetProjMatrix(mxProj);
 
-    SceneRenderer::GetInstance()->RenderScene(*(LevelManager::GetInstance()->GetLevelInstance()));
+    SceneRenderer::Instance().RenderScene(*(LevelManager::Instance().GetLevelInstance()));
 }
 
 LRESULT CALLBACK App::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, bool* pbNoFurtherProcessing, void* pUserContext )
@@ -189,7 +188,7 @@ LRESULT CALLBACK App::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPara
 void CALLBACK App::OnDestroyDevice( void* pUserContext )
 {    
     App::Instance().ReleaseResource();
-    DCRenderer::DestroyInstance();
+    DCRenderer::DeleteInstance();
 }
 
 void CALLBACK App::OnLostDevice( void* pUserContext )

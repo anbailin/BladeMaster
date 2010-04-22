@@ -57,7 +57,7 @@
 //	//		for(uint32 i=0;i<mHeader.mTextureNum;i++)
 //	//		{
 //	//			std::string tTexPath(tTexName.addr + tMaterialPtr[i].nameStart);
-//	//			DCTexturePtr tTexPtr (DCWOWLoader::GetInstance()->LoadTexture(tTexPath));
+//	//			DCTexturePtr tTexPtr (DCWOWLoader::Instance().LoadTexture(tTexPath));
 //	//			DCMaterialPtr tMatPtr(new DCMaterial);
 //	//			tMatPtr->SetTexturePtr(tTexPtr);
 //	//			SetMaterial(tMatPtr,i);
@@ -109,7 +109,7 @@
 //
 //	//			DCFilePath tModelPath(tCharPtr);
 //	//			
-//	//			DCModelPtr tModelPtr(DCWOWLoader::GetInstance()->LoadModel(tModelPath));
+//	//			DCModelPtr tModelPtr(DCWOWLoader::Instance().LoadModel(tModelPath));
 //	//			WMOMODDChunk chunk;
 //	//			file.read(&chunk,sizeof(WMOMODDChunk));
 //
@@ -287,10 +287,10 @@
 //{
 //	VertexBufferPtr tVtxBufferPtr;
 //	uint32 length = count*stride;
-//	FAIL_ASSERT(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED,&tVtxBufferPtr,0));
+//	BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED,&tVtxBufferPtr,0));
 //
 //	void* lockPtr;
-//	FAIL_ASSERT(tVtxBufferPtr->Lock(0,0,&lockPtr,NULL));
+//	BM_AssertHr(tVtxBufferPtr->Lock(0,0,&lockPtr,NULL));
 //	memcpy(lockPtr,addr,length);
 //	tVtxBufferPtr->Unlock();
 //
@@ -302,9 +302,9 @@
 //{
 //	DCSimpleCreatureShader::Get()->Apply();
 //
-//	FAIL_ASSERT( DEVICEPTR->SetStreamSource(mVertexCount*sizeof(DCVertPosNorTex), mVtxBuffer,0,sizeof(DCVertPosNorTex)));
+//	BM_AssertHr( DEVICEPTR->SetStreamSource(mVertexCount*sizeof(DCVertPosNorTex), mVtxBuffer,0,sizeof(DCVertPosNorTex)));
 //
-//	FAIL_ASSERT( DEVICEPTR->SetIndices(mNdxBuffer) );	
+//	BM_AssertHr( DEVICEPTR->SetIndices(mNdxBuffer) );	
 //}
 ////----wmo geometry-------------------------------------------------------------------------------
 //void WMOGeometry::SetBasicInfo(const WMOBatch& batch)
@@ -321,5 +321,5 @@
 //
 //	DCRenderer::Get()->ApplyTexture(0, tex);
 //
-//	FAIL_ASSERT( DEVICEPTR->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,0,mVertexEnd - mVertexStart,mIndexStart,mIndexCount/3));
+//	BM_AssertHr( DEVICEPTR->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,0,mVertexEnd - mVertexStart,mIndexStart,mIndexCount/3));
 //}

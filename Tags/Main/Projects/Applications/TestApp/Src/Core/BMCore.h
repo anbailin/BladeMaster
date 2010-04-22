@@ -1,60 +1,28 @@
-#ifndef CORE_H
-#define CORE_H
+#pragma once
 
-#ifndef UNICODE
-#define UNICODE 1
-#endif
+#include "Core.h"
 
-#include <string>
-#include <memory>
+using namespace BM;
 
-//--------system-------------------
-#include <windows.h>
-#include <d3d9.h>
-#include <d3dx9.h>
-#include <dxerr.h>
+//#pragma warning( disable : 4995 )
+//#pragma warning( disable : 4131 )
 
-#include <mmsystem.h>
-#include <stdio.h>
-
-//---------public lib--------------
-#include <assert.h>
-#include <memory.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
-#include <float.h>
-#include <assert.h>
-
-//--------stl-----------------------
-#include <algorithm>
-#include <string>
-#include <xstring>
-#include <vector>
-#include <map>
-#include <Utility>
-#include <complex>
-
-
-//using namespace std;
-#pragma warning( disable : 4995 )
-#pragma warning( disable : 4131 )
-//--------core-----------------------
-//common
-#include "TypeDefine.h"
-//#include "Singleton.h"
+#define CORE_DLL
+#define UTIL_DLL
+#define RENDER_DLL
+#define ANIM_DLL
+#define FILESYS_DLL
+#define ENGINE_DLL
 
 //math
 #include "xnamath.h"
 #include "MathBasic.h"
-#include "Matrix.h"
-//string
-#include "BMString.h"
+
 //container
 #include "AlignedContainerAllocator.h"
-#include "Container.h"
+
 #include "mpq_lib.h"
-#include "BMMemory.h"
+
 //--------utils---------------------
 #include "Util/BMLog.h"
 #include "Util/DCCoreUtils.h"
@@ -68,10 +36,3 @@
 #include "Util/DXUTTimer.h"
 #include "Util/DCTypeDef.h"
 #include "Util/DCRGBAColor8.h"
-
-//--------tinyxml-------------------
-#define TIXML_USE_STL
-#include "TinyXML/tinyxml.h"
-#include "TinyXML/tinystr.h"
-
-#endif

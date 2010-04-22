@@ -291,7 +291,7 @@ LRESULT CD3DSettingsDlg::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lP
 //--------------------------------------------------------------------------------------
 HRESULT CD3DSettingsDlg::OnLostDevice()
 {
-    SAFE_RELEASE( m_pStateBlock );
+    SafeRelease( m_pStateBlock );
     return S_OK;
 }
 

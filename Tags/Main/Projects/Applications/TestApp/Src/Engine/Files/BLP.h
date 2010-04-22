@@ -16,8 +16,8 @@ struct BLPHeader
 
     inline uint32 GetMipMapLevel()
     {
-        uint32 wMip = PowerOfTwo(mWidth);
-        uint32 hMip = PowerOfTwo(mHeight);
+        uint32 wMip = Log2(mWidth);
+        uint32 hMip = Log2(mHeight);
         uint32 mip = max(wMip,hMip);
 
 #ifdef _DEBUG

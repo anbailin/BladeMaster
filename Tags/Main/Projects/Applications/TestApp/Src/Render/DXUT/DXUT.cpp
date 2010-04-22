@@ -1129,10 +1129,10 @@ HRESULT DXUTSetDevice( IDirect3DDevice9* pd3dDevice )
         if( SUCCEEDED(hr) )
         {
             pSwapChain->GetPresentParameters( &pDeviceSettings->pp );
-            SAFE_RELEASE( pSwapChain );
+            SafeRelease( pSwapChain );
         }
 
-        SAFE_RELEASE( pBackBuffer );
+        SafeRelease( pBackBuffer );
     }
 
     D3DDEVICE_CREATION_PARAMETERS d3dCreationParams;
@@ -2651,12 +2651,12 @@ HRESULT DXUTChangeDevice( DXUTDeviceSettings* pNewDeviceSettings, IDirect3DDevic
             // The app rejected the device change by returning false, so just use the current device if there is one.
             if( pOldDeviceSettings == NULL )
                 DXUTDisplayErrorMessage( DXUTERR_NOCOMPATIBLEDEVICES );
-            SAFE_DELETE( pNewDeviceSettings );
+            SafeDelete( pNewDeviceSettings );
             return E_ABORT;
         }
         if( GetDXUTState().GetD3D() == NULL )
         {
-            SAFE_DELETE( pNewDeviceSettings );
+            SafeDelete( pNewDeviceSettings );
             return S_FALSE;
         }
     }
@@ -2794,7 +2794,7 @@ HRESULT DXUTChangeDevice( DXUTDeviceSettings* pNewDeviceSettings, IDirect3DDevic
                      DXUTERR_MEDIANOTFOUND == hr )
             {
                 // Something bad happened in the app callbacks
-                SAFE_DELETE( pOldDeviceSettings );
+                SafeDelete( pOldDeviceSettings );
                 DXUTDisplayErrorMessage( hr );
                 DXUTShutdown();
                 return hr;
@@ -2828,7 +2828,7 @@ HRESULT DXUTChangeDevice( DXUTDeviceSettings* pNewDeviceSettings, IDirect3DDevic
         hr = DXUTCreate3DEnvironment( pd3dDeviceFromApp );
         if( FAILED(hr) )
         {
-            SAFE_DELETE( pOldDeviceSettings );
+            SafeDelete( pOldDeviceSettings );
             DXUTCleanup3DEnvironment();
             DXUTDisplayErrorMessage( hr );
             DXUTPause( false, false );
@@ -3059,7 +3059,7 @@ HRESULT DXUTChangeDevice( DXUTDeviceSettings* pNewDeviceSettings, IDirect3DDevic
             hr = DXUTChangeDevice( &deviceSettings, NULL, false, bClipWindowToSingleAdapter );
             if( FAILED( hr ) )
             {
-                SAFE_DELETE( pOldDeviceSettings );
+                SafeDelete( pOldDeviceSettings );
                 DXUTCleanup3DEnvironment();
                 DXUTPause( false, false );
                 GetDXUTState().SetIgnoreSizeChange( false );
@@ -3078,7 +3078,7 @@ HRESULT DXUTChangeDevice( DXUTDeviceSettings* pNewDeviceSettings, IDirect3DDevic
     else
         SetThreadExecutionState( ES_CONTINUOUS );   
 
-    SAFE_DELETE( pOldDeviceSettings );
+    SafeDelete( pOldDeviceSettings );
     GetDXUTState().SetIgnoreSizeChange( false );
     DXUTPause( false, false );
     GetDXUTState().SetDeviceCreated( true );
@@ -4473,7 +4473,7 @@ void DXUTShutdown( int nExitCode )
     GetDXUTState().SetD3DEnumeration( NULL );
     
     IDirect3D9* pD3D = DXUTGetD3DObject();
-    SAFE_RELEASE( pD3D );
+    SafeRelease( pD3D );
     GetDXUTState().SetD3D( NULL );
 
     if( GetDXUTState().GetOverrideRelaunchMCE() )
@@ -4536,7 +4536,7 @@ void DXUTCleanup3DEnvironment( bool bReleaseSettings )
         if( bReleaseSettings )
         {
             DXUTDeviceSettings* pOldDeviceSettings = GetDXUTState().GetCurrentDeviceSettings();
-            SAFE_DELETE(pOldDeviceSettings);  
+            SafeDelete(pOldDeviceSettings);  
             GetDXUTState().SetCurrentDeviceSettings( NULL );
         }
 
@@ -4564,7 +4564,7 @@ void DXUTUpdateBackBufferDesc()
     if( SUCCEEDED(hr) )
     {
         pBackBuffer->GetDesc( pBBufferSurfaceDesc );
-        SAFE_RELEASE( pBackBuffer );
+        SafeRelease( pBackBuffer );
     }
 }
 
@@ -5158,9 +5158,9 @@ End:
         DeleteDC( hdcColor );
     if( hdcMask != NULL )
         DeleteDC( hdcMask );
-    SAFE_DELETE_ARRAY( pcrArrayColor );
-    SAFE_DELETE_ARRAY( pcrArrayMask );
-    SAFE_RELEASE( pCursorSurface );
+    SafeDeleteArray( pcrArrayColor );
+    SafeDeleteArray( pcrArrayMask );
+    SafeRelease( pCursorSurface );
     return hr;
 }
 

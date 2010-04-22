@@ -25,7 +25,7 @@ void DCGeometry::Draw()
 {
 #ifdef RELEASE
 	HRESULT hr = DEVICEPTR->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,mVertexStart,mVertexCount,mIndexStart,mIndexCount/3);
-	FAIL_ASSERT(hr);
+	BM_AssertHr(hr);
 #else
     DEVICEPTR->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,mVertexStart,mVertexCount,mIndexStart,mIndexCount/3);
 #endif

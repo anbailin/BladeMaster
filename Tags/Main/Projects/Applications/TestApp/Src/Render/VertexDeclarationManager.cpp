@@ -38,14 +38,14 @@ namespace
     };
 }
 
-SINGLETON_DEFINE(VertexDeclareManager);
+BM_SINGLETON_DEFINE(VertexDeclareManager);
 
 void VertexDeclareManager::CreateResource()
 {
-    FAIL_ASSERT(DEVICEPTR->CreateVertexDeclaration(dcl_PosColor, &mDeclarations[VertexTypePosColor]));
-    FAIL_ASSERT(DEVICEPTR->CreateVertexDeclaration(dcl_PosWNTC, &mDeclarations[VertexTypePosWNTC]));
-    FAIL_ASSERT(DEVICEPTR->CreateVertexDeclaration(dcl_PosNorTex, &mDeclarations[VertexTypePosNorTex]));
-    FAIL_ASSERT(DEVICEPTR->CreateVertexDeclaration(dcl_PosNorColor, &mDeclarations[VertexTypePosNorColor]));
+    BM_AssertHr(DEVICEPTR->CreateVertexDeclaration(dcl_PosColor, &mDeclarations[VertexTypePosColor]));
+    BM_AssertHr(DEVICEPTR->CreateVertexDeclaration(dcl_PosWNTC, &mDeclarations[VertexTypePosWNTC]));
+    BM_AssertHr(DEVICEPTR->CreateVertexDeclaration(dcl_PosNorTex, &mDeclarations[VertexTypePosNorTex]));
+    BM_AssertHr(DEVICEPTR->CreateVertexDeclaration(dcl_PosNorColor, &mDeclarations[VertexTypePosNorColor]));
 }
 
 void VertexDeclareManager::ReleaseResource()
@@ -58,7 +58,7 @@ void VertexDeclareManager::ReleaseResource()
 
 void VertexDeclareManager::ApplyVertexDeclaration(DCVertexType type)
 {
-    FAIL_ASSERT(DEVICEPTR->SetVertexDeclaration(mDeclarations[type]));
+    BM_AssertHr(DEVICEPTR->SetVertexDeclaration(mDeclarations[type]));
 }
 
 VertexDeclareManager::VertexDeclareManager()

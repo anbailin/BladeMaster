@@ -35,10 +35,10 @@ void BMTerrain::Init()
 {
     //vertex buffer
     uint32 length = sizeof(TerrainVertex)*4;
-    FAIL_ASSERT(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &mVB,0 ) );
+    BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &mVB,0 ) );
 
     TerrainVertex* vbLockPtr;
-    FAIL_ASSERT(mVB->Lock(0,0,(void**)&vbLockPtr,NULL));
+    BM_AssertHr(mVB->Lock(0,0,(void**)&vbLockPtr,NULL));
     vbLockPtr[0].pos = XMFLOAT3(-kTerrainSize,0,kTerrainSize);
     vbLockPtr[0].normal = XMFLOAT3(0,1,0);
     vbLockPtr[0].color = 0xff0000ff;
@@ -58,9 +58,9 @@ void BMTerrain::Init()
 
     //index buffer
     IndexBufferPtr ibPtr;
-    FAIL_ASSERT(DEVICEPTR->CreateIndexBuffer(sizeof(uint16)*6, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &ibPtr, 0));
+    BM_AssertHr(DEVICEPTR->CreateIndexBuffer(sizeof(uint16)*6, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &ibPtr, 0));
     uint16* ibLockPtr;
-    FAIL_ASSERT(ibPtr->Lock(0,0,(void**)&ibLockPtr,0));
+    BM_AssertHr(ibPtr->Lock(0,0,(void**)&ibLockPtr,0));
     ibLockPtr[0] = 0;
     ibLockPtr[1] = 1;
     ibLockPtr[2] = 2;
@@ -73,9 +73,9 @@ void BMTerrain::Init()
 
 BMTerrain::~BMTerrain()
 {
-    SAFE_RELEASE(terrain_declaration);
-    SAFE_RELEASE(terrain_g_ps);
-    SAFE_RELEASE(terrain_g_vs);
+    SafeRelease(terrain_declaration);
+    SafeRelease(terrain_g_ps);
+    SafeRelease(terrain_g_vs);
 }
 
 void BMTerrain::Draw(D3DXMATRIXA16* worldMtx,D3DXMATRIXA16* viewMtx, D3DXMATRIXA16* projMtx)
@@ -85,8 +85,8 @@ void BMTerrain::Draw(D3DXMATRIXA16* worldMtx,D3DXMATRIXA16* viewMtx, D3DXMATRIXA
     static float TimeStamp = 0.0f;
     //TimeStamp += 1.0f;
 
-    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosNorColor);
-    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->terrain_vs_id, ShaderLoader::GetInstance()->terrain_ps_id);
+    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosNorColor);
+    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().terrain_vs_id, ShaderLoader::Instance().terrain_ps_id);
  
     DEVICEPTR->SetVertexShaderConstantF(0,(float*)(worldMtx),4);
     DEVICEPTR->SetVertexShaderConstantF(4,(float*)(viewMtx),4);
@@ -94,11 +94,11 @@ void BMTerrain::Draw(D3DXMATRIXA16* worldMtx,D3DXMATRIXA16* viewMtx, D3DXMATRIXA
     DEVICEPTR->SetPixelShaderConstantF(0,(float*)(&TimeStamp),1);
 
 
-    FAIL_ASSERT( DEVICEPTR->SetStreamSource( 0,mVB,0,sizeof(TerrainVertex) ) );
-    FAIL_ASSERT( DEVICEPTR->SetIndices(mIB) );
+    BM_AssertHr( DEVICEPTR->SetStreamSource( 0,mVB,0,sizeof(TerrainVertex) ) );
+    BM_AssertHr( DEVICEPTR->SetIndices(mIB) );
 #ifdef RELEASE
     DEVICEPTR->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,0,4,0,2);
 #else
-    FAIL_ASSERT(DEVICEPTR->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,0,4,0,2));
+    BM_AssertHr(DEVICEPTR->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,0,4,0,2));
 #endif
 }

@@ -2,12 +2,12 @@
 //#include "stdafx.h"
 #include "EnginePCH.h"
 
-SINGLETON_DEFINE(BMEngine);
+BM_SINGLETON_DEFINE(BMEngine);
 
 void BMEngine::Init()
 {
     DCRenderer::CreateInstance();
-    DCRenderer::GetInstance()->Init();
+    DCRenderer::Instance().Init();
 
     LevelManager::CreateInstance();   
     SceneRenderer::CreateInstance();
@@ -15,10 +15,10 @@ void BMEngine::Init()
 
 void BMEngine::Tick(float delta)
 {
-    LevelManager::GetInstance()->GetLevelInstance()->Tick(delta);    
+    LevelManager::Instance().GetLevelInstance()->Tick(delta);    
 }
 
 void BMEngine::ReleaseResource()
 {
-    LevelManager::GetInstance()->ReleaseLevelInstance();
+    LevelManager::Instance().ReleaseLevelInstance();
 }

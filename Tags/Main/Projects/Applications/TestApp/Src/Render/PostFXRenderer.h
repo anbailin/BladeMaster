@@ -4,6 +4,8 @@ class QuadGeometry;
 
 class RENDER_DLL BMPostFXRenderer
 {
+    BM_SINGLETON_DECLARE(BMPostFXRenderer);
+
     /*
     *   types
     */
@@ -15,7 +17,6 @@ public:
 
     //funcs-interface
 public:
-    SINGLETON_DECLARE(BMPostFXRenderer);
     void Init();
     void Render();
     void InitResource();

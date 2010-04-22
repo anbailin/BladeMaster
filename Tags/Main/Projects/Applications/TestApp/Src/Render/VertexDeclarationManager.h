@@ -2,9 +2,9 @@
 
 class VertexDeclareManager
 {
-public:
-    SINGLETON_DECLARE(VertexDeclareManager);
+    BM_SINGLETON_DECLARE(VertexDeclareManager);
 
+public:
     void CreateResource();
     void ReleaseResource();
     void ApplyVertexDeclaration(DCVertexType type);

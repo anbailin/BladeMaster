@@ -16,15 +16,15 @@ void DCModel::Draw(uint32 ndx)
 
 	pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );	
 
-    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosWNTC);
-    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->skin_vs_id, ShaderLoader::GetInstance()->skin_ps_id);
+    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosWNTC);
+    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().skin_vs_id, ShaderLoader::Instance().skin_ps_id);
 	
 	float* constAddr = NULL;
 	uint32 constSize = 0;
 	mAnimMgr->GetShaderConstantInfo(constAddr,constSize);
 	DEVICEPTR->SetVertexShaderConstantF(9,constAddr,constSize);
 
-	FAIL_ASSERT( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(DCVertPosWNTC) ) );
+	BM_AssertHr( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(DCVertPosWNTC) ) );
 
 	mSubModels[ndx].Draw();	
 }
@@ -33,10 +33,10 @@ void DCModel::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 {
 	VertexBufferPtr ptr;
 	uint32 length = GetTypeSize(type) * count;
-	FAIL_ASSERT(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &ptr,0 ) );
+	BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &ptr,0 ) );
 	
 	void* lockPtr;
-	FAIL_ASSERT(ptr->Lock(0,0,&lockPtr,NULL));
+	BM_AssertHr(ptr->Lock(0,0,&lockPtr,NULL));
 	memcpy(lockPtr,addr,length);
 	ptr->Unlock();
 
@@ -46,7 +46,7 @@ void DCModel::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 
 void DCModel::SetSubModel(DCSubModel* val,uint32 count)
 {
-	SAFE_DELETE_ARRAY( mSubModels);
+	SafeDeleteArray( mSubModels);
 
 	mSubModelCount = count;
 	mSubModels = val;
@@ -73,16 +73,16 @@ DCTexturePtr DCModel::GetTexture(uint32 index)
 
 DCModel::~DCModel()
 {
-	SAFE_DELETE(mAnimMgr);
-	SAFE_DELETE_ARRAY(mSubModels);
+	SafeDelete(mAnimMgr);
+	SafeDeleteArray(mSubModels);
 }
 
 void DCModel::RenderBoneLevel()
 { 
 	GUARD_RENDERSTATE(D3DRS_ZENABLE,false);
 
-    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosColor);
-    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->bone_vs_id, ShaderLoader::GetInstance()->bone_ps_id);
+    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosColor);
+    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().bone_vs_id, ShaderLoader::Instance().bone_ps_id);
 	
 	const uint32 boneNum = mAnimMgr->GetBoneNum();
 
@@ -123,7 +123,7 @@ void DCModel::RenderBoneLevel()
 		}
 		else
 		{
-			FAIL_ASSERT( DEVICEPTR->DrawPrimitiveUP( D3DPT_LINELIST,vtx.size()/2,&(vtx[0]),sizeof(BoneVert) ) );
+			BM_AssertHr( DEVICEPTR->DrawPrimitiveUP( D3DPT_LINELIST,vtx.size()/2,&(vtx[0]),sizeof(BoneVert) ) );
 		}
 	}	
 }
@@ -177,7 +177,7 @@ void DCModelSys::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 
 	VertexBufferPtr ptr;
 	uint32 length = GetTypeSize(type) * count;
-	FAIL_ASSERT(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &ptr,0 ) );
+	BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &ptr,0 ) );
 
 	mVertexBuffer = ptr;
 	mVertexCount = count;
@@ -222,16 +222,16 @@ void DCModelSys::Draw(uint32 ndx)
 
 	pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );
 	
-    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosNorTex);
-    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->static_vs_id, ShaderLoader::GetInstance()->static_ps_id);
+    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosNorTex);
+    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().static_vs_id, ShaderLoader::Instance().static_ps_id);
 
 	uint32 length = mVertexCount*sizeof(MDXModelVertSys);
 	void* lockPtr;
-	FAIL_ASSERT(mVertexBuffer->Lock(0,0,&lockPtr,NULL));
+	BM_AssertHr(mVertexBuffer->Lock(0,0,&lockPtr,NULL));
 	memcpy(lockPtr,(void*)&(mAnimatedVertArray[0]),length);
 	mVertexBuffer->Unlock();
 
-	FAIL_ASSERT( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(MDXModelVertSys) ) );
+	BM_AssertHr( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(MDXModelVertSys) ) );
 
 	mSubModels[ndx].Draw();	
 }

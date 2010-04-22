@@ -54,6 +54,8 @@ namespace BM
     inline Float32 Ln(Float32 a)                { return logf(a); }
     inline Float64 Ln(Float64 a)                { return log(a); }
     
+    inline UInt32  Log2(UInt32 a)               { UInt32 l = 0; while(a > 0) { a >>= 1; l++; } return l; }
+    inline UInt32  Log2(UInt64 a)               { UInt32 l = 0; while(a > 0) { a >>= 1; l++; } return l; }
     inline Float32 Log2(Float32 a)              { return logf(a) / logf(2.0f); }
     inline Float64 Log2(Float64 a)              { return log(a) / log(2.0); }
     

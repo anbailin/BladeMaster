@@ -74,8 +74,8 @@ HRESULT CDXUTMesh::Create( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR strFilename )
                         D3DXMESHOPT_COMPACT | D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_VERTEXCACHE,
                         (DWORD*)pAdjacencyBuffer->GetBufferPointer(), NULL, NULL, NULL ) ) )
     {
-        SAFE_RELEASE( pAdjacencyBuffer );
-        SAFE_RELEASE( pMtrlBuffer );
+        SafeRelease( pAdjacencyBuffer );
+        SafeRelease( pMtrlBuffer );
         return hr;
     }
 
@@ -89,8 +89,8 @@ HRESULT CDXUTMesh::Create( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR strFilename )
     D3DXMATERIAL* d3dxMtrls = (D3DXMATERIAL*)pMtrlBuffer->GetBufferPointer();
     hr = CreateMaterials( strPath, pd3dDevice, d3dxMtrls, m_dwNumMaterials );
 
-    SAFE_RELEASE( pAdjacencyBuffer );
-    SAFE_RELEASE( pMtrlBuffer );
+    SafeRelease( pAdjacencyBuffer );
+    SafeRelease( pMtrlBuffer );
 
     // Extract data from m_pMesh for easy access
     D3DVERTEXELEMENT9 decl[MAX_FVF_DECL_SIZE];
@@ -130,16 +130,16 @@ HRESULT CDXUTMesh::Create( LPDIRECT3DDEVICE9 pd3dDevice,
                         D3DXMESHOPT_COMPACT | D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_VERTEXCACHE,
                         (DWORD*)pAdjacencyBuffer->GetBufferPointer(), NULL, NULL, NULL ) ) )
     {
-        SAFE_RELEASE( pAdjacencyBuffer );
-        SAFE_RELEASE( pMtrlBuffer );
+        SafeRelease( pAdjacencyBuffer );
+        SafeRelease( pMtrlBuffer );
         return hr;
     }
 
     D3DXMATERIAL* d3dxMtrls = (D3DXMATERIAL*)pMtrlBuffer->GetBufferPointer();
     hr = CreateMaterials( L"", pd3dDevice, d3dxMtrls, m_dwNumMaterials );
 
-    SAFE_RELEASE( pAdjacencyBuffer );
-    SAFE_RELEASE( pMtrlBuffer );
+    SafeRelease( pAdjacencyBuffer );
+    SafeRelease( pMtrlBuffer );
 
     // Extract data from m_pMesh for easy access
     D3DVERTEXELEMENT9 decl[MAX_FVF_DECL_SIZE];
@@ -180,12 +180,12 @@ HRESULT CDXUTMesh::Create( LPDIRECT3DDEVICE9 pd3dDevice, ID3DXMesh* pInMesh,
     ID3DXMesh* pTempMesh = NULL;
     if( FAILED( pInMesh->Optimize( dwOptions, rgdwAdjacency, NULL, NULL, NULL, &pTempMesh ) ) )
     {
-        SAFE_DELETE_ARRAY( rgdwAdjacency );
+        SafeDeleteArray( rgdwAdjacency );
         return E_FAIL;
     }
 
-    SAFE_DELETE_ARRAY( rgdwAdjacency );
-    SAFE_RELEASE( m_pMesh );
+    SafeDeleteArray( rgdwAdjacency );
+    SafeRelease( m_pMesh );
     m_pMesh = pTempMesh;
 
     HRESULT hr;
@@ -313,13 +313,13 @@ HRESULT CDXUTMesh::SetFVF( LPDIRECT3DDEVICE9 pd3dDevice, DWORD dwFVF )
         if( FAILED( m_pMesh->CloneMeshFVF( m_pMesh->GetOptions(), dwFVF,
                                            pd3dDevice, &pTempMesh ) ) )
         {
-            SAFE_RELEASE( pTempMesh );
+            SafeRelease( pTempMesh );
             return E_FAIL;
         }
 
         DWORD dwOldFVF = 0;
         dwOldFVF = m_pMesh->GetFVF();
-        SAFE_RELEASE( m_pMesh );
+        SafeRelease( m_pMesh );
         m_pMesh = pTempMesh;
 
         // Compute normals if they are being requested and
@@ -350,7 +350,7 @@ HRESULT CDXUTMesh::SetVertexDecl( LPDIRECT3DDEVICE9 pd3dDevice, const D3DVERTEXE
         if( FAILED( m_pMesh->CloneMesh( m_pMesh->GetOptions(), pDecl,
                                         pd3dDevice, &pTempMesh ) ) )
         {
-            SAFE_RELEASE( pTempMesh );
+            SafeRelease( pTempMesh );
             return E_FAIL;
         }
     }
@@ -394,7 +394,7 @@ HRESULT CDXUTMesh::SetVertexDecl( LPDIRECT3DDEVICE9 pd3dDevice, const D3DVERTEXE
         }
     }
 
-    SAFE_RELEASE( m_pMesh );
+    SafeRelease( m_pMesh );
 
     if( pTempMesh )
     {
@@ -443,11 +443,11 @@ HRESULT CDXUTMesh::SetVertexDecl( LPDIRECT3DDEVICE9 pd3dDevice, const D3DVERTEXE
                                             fPartialEdgeThreshold, fSingularPointThreshold, fNormalEdgeThreshold, 
                                             &pNewMesh, NULL );
 
-            SAFE_DELETE_ARRAY( rgdwAdjacency );
+            SafeDeleteArray( rgdwAdjacency );
             if( FAILED(hr) )
                 return hr;
 
-            SAFE_RELEASE( m_pMesh );
+            SafeRelease( m_pMesh );
             m_pMesh = pNewMesh;
         }
     }
@@ -470,9 +470,9 @@ HRESULT CDXUTMesh::RestoreDeviceObjects( LPDIRECT3DDEVICE9 pd3dDevice )
 //-----------------------------------------------------------------------------
 HRESULT CDXUTMesh::InvalidateDeviceObjects()
 {
-    SAFE_RELEASE( m_pIB );
-    SAFE_RELEASE( m_pVB );
-    SAFE_RELEASE( m_pDecl );
+    SafeRelease( m_pIB );
+    SafeRelease( m_pVB );
+    SafeRelease( m_pDecl );
 
     return S_OK;
 }
@@ -485,12 +485,12 @@ HRESULT CDXUTMesh::Destroy()
 {
     InvalidateDeviceObjects();
     for( UINT i=0; i<m_dwNumMaterials; i++ )
-        SAFE_RELEASE( m_pTextures[i] );
-    SAFE_DELETE_ARRAY( m_pTextures );
-    SAFE_DELETE_ARRAY( m_pMaterials );
-    SAFE_DELETE_ARRAY( m_strMaterials );
+        SafeRelease( m_pTextures[i] );
+    SafeDeleteArray( m_pTextures );
+    SafeDeleteArray( m_pMaterials );
+    SafeDeleteArray( m_strMaterials );
 
-    SAFE_RELEASE( m_pMesh );
+    SafeRelease( m_pMesh );
 
     m_dwNumMaterials = 0L;
 
@@ -654,8 +654,8 @@ CDXUTMeshFrame::CDXUTMeshFrame( LPCWSTR strName )
 //-----------------------------------------------------------------------------
 CDXUTMeshFrame::~CDXUTMeshFrame()
 {
-    SAFE_DELETE( m_pChild );
-    SAFE_DELETE( m_pNext );
+    SafeDelete( m_pChild );
+    SafeDelete( m_pNext );
 }
 
 
@@ -730,9 +730,9 @@ HRESULT CDXUTMeshFrame::Destroy()
     if( m_pChild ) m_pChild->Destroy();
     if( m_pNext )  m_pNext->Destroy();
 
-    SAFE_DELETE( m_pMesh );
-    SAFE_DELETE( m_pNext );
-    SAFE_DELETE( m_pChild );
+    SafeDelete( m_pMesh );
+    SafeDelete( m_pNext );
+    SafeDelete( m_pChild );
 
     return S_OK;
 }
@@ -859,7 +859,7 @@ HRESULT CDXUTMeshFile::LoadFrame( LPDIRECT3DDEVICE9 pd3dDevice,
             if( SUCCEEDED(hr) )
             {
                 hr = LoadFrame( pd3dDevice, pChildData, pCurrentFrame );
-                SAFE_RELEASE( pChildData );
+                SafeRelease( pChildData );
             }
 
             if( FAILED(hr) )
@@ -922,7 +922,7 @@ HRESULT CDXUTMeshFile::CreateFromResource( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR
     if( FAILED( hr = pDXFile->RegisterTemplates( (void*)D3DRM_XTEMPLATES,
                                                  D3DRM_XTEMPLATE_BYTES ) ) )
     {
-        SAFE_RELEASE( pDXFile );
+        SafeRelease( pDXFile );
         return E_FAIL;
     }
     
@@ -945,7 +945,7 @@ HRESULT CDXUTMeshFile::CreateFromResource( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR
                                     &pEnumObj );
     if( FAILED(hr) )
     {
-        SAFE_RELEASE( pDXFile );
+        SafeRelease( pDXFile );
         return hr;
     }
 
@@ -958,18 +958,18 @@ HRESULT CDXUTMeshFile::CreateFromResource( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR
             return hr;
 
         hr = LoadFrame( pd3dDevice, pFileData, this );
-        SAFE_RELEASE( pFileData );
+        SafeRelease( pFileData );
         if( FAILED(hr) )
         {
-            SAFE_RELEASE( pEnumObj );
-            SAFE_RELEASE( pDXFile );
+            SafeRelease( pEnumObj );
+            SafeRelease( pDXFile );
             return E_FAIL;
         }
     }
 
-    SAFE_RELEASE( pFileData );
-    SAFE_RELEASE( pEnumObj );
-    SAFE_RELEASE( pDXFile );
+    SafeRelease( pFileData );
+    SafeRelease( pEnumObj );
+    SafeRelease( pDXFile );
 
     return S_OK;
 }
@@ -994,7 +994,7 @@ HRESULT CDXUTMeshFile::Create( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR strFilename
     if( FAILED( hr = pDXFile->RegisterTemplates( (void*)D3DRM_XTEMPLATES,
                                                  D3DRM_XTEMPLATE_BYTES ) ) )
     {
-        SAFE_RELEASE( pDXFile );
+        SafeRelease( pDXFile );
         return E_FAIL;
     }
 
@@ -1013,7 +1013,7 @@ HRESULT CDXUTMeshFile::Create( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR strFilename
                                     &pEnumObj );
     if( FAILED(hr) )
     {
-        SAFE_RELEASE( pDXFile );
+        SafeRelease( pDXFile );
         return hr;
     }
 
@@ -1026,18 +1026,18 @@ HRESULT CDXUTMeshFile::Create( LPDIRECT3DDEVICE9 pd3dDevice, LPCWSTR strFilename
             return hr;
 
         hr = LoadFrame( pd3dDevice, pFileData, this );
-        SAFE_RELEASE( pFileData );
+        SafeRelease( pFileData );
         if( FAILED(hr) )
         {
-            SAFE_RELEASE( pEnumObj );
-            SAFE_RELEASE( pDXFile );
+            SafeRelease( pEnumObj );
+            SafeRelease( pDXFile );
             return E_FAIL;
         }
     }
 
-    SAFE_RELEASE( pFileData );
-    SAFE_RELEASE( pEnumObj );
-    SAFE_RELEASE( pDXFile );
+    SafeRelease( pFileData );
+    SafeRelease( pEnumObj );
+    SafeRelease( pDXFile );
 
     return S_OK;
 }

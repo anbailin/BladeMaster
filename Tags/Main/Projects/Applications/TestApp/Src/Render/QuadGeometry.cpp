@@ -29,14 +29,14 @@ namespace QuadGeoUtil
 void QuadGeometry::Init()
 {
     //declaration
-    FAIL_ASSERT(DEVICEPTR->CreateVertexDeclaration(QuadGeoUtil::quad_dcl, &mVertexDelcaration));
+    BM_AssertHr(DEVICEPTR->CreateVertexDeclaration(QuadGeoUtil::quad_dcl, &mVertexDelcaration));
 
     //vertex buffer
     uint32 size = sizeof(QuadGeoUtil::QuadVertex) * 4;
-    FAIL_ASSERT(DEVICEPTR->CreateVertexBuffer(size,0,0,D3DPOOL_MANAGED, &mVertexBuffer,0 ) );
+    BM_AssertHr(DEVICEPTR->CreateVertexBuffer(size,0,0,D3DPOOL_MANAGED, &mVertexBuffer,0 ) );
     
     QuadGeoUtil::QuadVertex* lockPtr;
-    FAIL_ASSERT(mVertexBuffer->Lock(0,0,(void**)&lockPtr,NULL));
+    BM_AssertHr(mVertexBuffer->Lock(0,0,(void**)&lockPtr,NULL));
     lockPtr[0].pos = XMFLOAT3(-1.0f, 1.0f, 1.0f);
     lockPtr[0].texcoord = XMFLOAT2(0.0f,0.0f);
     lockPtr[1].pos = XMFLOAT3(1.0f, 1.0f, 1.0f);
@@ -51,11 +51,11 @@ void QuadGeometry::Init()
 void QuadGeometry::Render()const
 {
     DEVICEPTR->SetVertexDeclaration(mVertexDelcaration);
-    FAIL_ASSERT( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(QuadGeoUtil::QuadVertex) ) );
+    BM_AssertHr( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(QuadGeoUtil::QuadVertex) ) );
 #ifdef RELEASE
     DEVICEPTR->DrawPrimitive(D3DPT_TRIANGLESTRIP,0,2);
 #else
-    FAIL_ASSERT(DEVICEPTR->DrawPrimitive(D3DPT_TRIANGLESTRIP,0,2));
+    BM_AssertHr(DEVICEPTR->DrawPrimitive(D3DPT_TRIANGLESTRIP,0,2));
 #endif
 }
 

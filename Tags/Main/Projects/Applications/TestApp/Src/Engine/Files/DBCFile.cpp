@@ -12,7 +12,7 @@ mStringTableSize(0)
 
 DBCFile::~DBCFile()
 {
-	SAFE_DELETE_ARRAY(mData);
+	SafeDeleteArray(mData);
 
 	mStrTable = NULL;
 
@@ -83,7 +83,7 @@ CreatureModelData::CreatureModelData()
 
 CreatureModelData::~CreatureModelData()
 {
-	SAFE_DELETE(mDBCFile);
+	SafeDelete(mDBCFile);
 }
 
 DBCFile::Record CreatureModelData::GetByID(uint32 id)
@@ -126,7 +126,7 @@ CreatureDisplayData::CreatureDisplayData()
 
 CreatureDisplayData::~CreatureDisplayData()
 {
-	SAFE_DELETE(mDBCFile);
+	SafeDelete(mDBCFile);
 }
 
 DBCFile::Record CreatureDisplayData::GetByCreatureID(uint32 id)

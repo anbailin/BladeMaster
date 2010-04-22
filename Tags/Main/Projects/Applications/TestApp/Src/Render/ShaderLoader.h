@@ -24,8 +24,7 @@ enum EShaderDefine
 
 class ShaderLoader
 {
-public:
-    SINGLETON_DECLARE(ShaderLoader);
+    BM_SINGLETON_DECLARE(ShaderLoader);
 
     //funcs
 public:

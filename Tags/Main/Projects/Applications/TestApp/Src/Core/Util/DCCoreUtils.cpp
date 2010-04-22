@@ -1,8 +1,7 @@
 #include "BMCore.h"
-#include "Core.h"
 
 
-SINGLETON_DEFINE(DCSetupUtil);
+BM_SINGLETON_DEFINE(DCSetupUtil);
 
 void gLog(char *str, ...)
 {
@@ -22,11 +21,11 @@ void gLog(char *str, ...)
 
 void DCSetupUtil::SetGamePath()
 {
-	const u32 strSize = 1024;
+	const uint32 strSize = 1024;
 	const wchar_t* dataPath = TEXT("Data\\");
 
 	HKEY key;
-	u32 dataSize;
+	DWORD dataSize;
 	wchar_t path[strSize];
 
 	memset(path, 0, sizeof(path));
@@ -34,7 +33,7 @@ void DCSetupUtil::SetGamePath()
 	dataSize = 1024;
 
 	// if it failed, look for World of Warcraft install
-	u32 result = RegOpenKeyEx((HKEY)HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Blizzard Entertainment\\World of Warcraft"), 0, KEY_QUERY_VALUE, &key);
+	uint32 result = RegOpenKeyEx((HKEY)HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Blizzard Entertainment\\World of Warcraft"), 0, KEY_QUERY_VALUE, &key);
 
 	// If we found an install then set the game path, otherwise just set to C:\ for now
 	if (result == ERROR_SUCCESS)
@@ -63,7 +62,7 @@ void DCSetupUtil::SetDataPathInFolder(const std::wstring& Folder)
 	WIN32_FIND_DATA findData;
 	HANDLE hFind = FindFirstFile(findPath.c_str(),&findData);
 
-	const u32 strSize = 1024;
+	const uint32 strSize = 1024;
 	char path[strSize];
 	size_t convertedValue = 0;
 
@@ -86,8 +85,8 @@ void DCSetupUtil::SetDataPathInFolder(const std::wstring& Folder)
 		else 
 		{
 			const wchar_t* fileName = findData.cFileName;
-			const u32 nameLength = wcslen(fileName);
-			const u32 extBias = nameLength-wcslen(ext);
+			const uint32 nameLength = wcslen(fileName);
+			const uint32 extBias = nameLength-wcslen(ext);
 			const wchar_t* extName = fileName+extBias;
 
 			if(wcscmp(extName,ext)==0)

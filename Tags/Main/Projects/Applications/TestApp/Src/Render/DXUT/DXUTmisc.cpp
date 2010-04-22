@@ -1082,7 +1082,7 @@ HRESULT CDXUTResourceCache::OnLostDevice()
     for( int i = m_TextureCache.GetSize() - 1; i >= 0; --i )
         if( m_TextureCache[i].Pool == D3DPOOL_DEFAULT )
         {
-            SAFE_RELEASE( m_TextureCache[i].pTexture );
+            SafeRelease( m_TextureCache[i].pTexture );
             m_TextureCache.Remove( i );  // Remove the entry
         }
 
@@ -1096,17 +1096,17 @@ HRESULT CDXUTResourceCache::OnDestroyDevice()
     // Release all resources
     for( int i = m_EffectCache.GetSize() - 1; i >= 0; --i )
     {
-        SAFE_RELEASE( m_EffectCache[i].pEffect );
+        SafeRelease( m_EffectCache[i].pEffect );
         m_EffectCache.Remove( i );
     }
     for( int i = m_FontCache.GetSize() - 1; i >= 0; --i )
     {
-        SAFE_RELEASE( m_FontCache[i].pFont );
+        SafeRelease( m_FontCache[i].pFont );
         m_FontCache.Remove( i );
     }
     for( int i = m_TextureCache.GetSize() - 1; i >= 0; --i )
     {
-        SAFE_RELEASE( m_TextureCache[i].pTexture );
+        SafeRelease( m_TextureCache[i].pTexture );
         m_TextureCache.Remove( i );
     }
 
@@ -2417,7 +2417,7 @@ HRESULT CDXUTLineManager::OnLostDevice()
 HRESULT CDXUTLineManager::OnDeletedDevice()
 {
     RemoveAllLines();
-    SAFE_RELEASE( m_pD3DXLine );
+    SafeRelease( m_pD3DXLine );
 
     return S_OK;
 }
@@ -2525,7 +2525,7 @@ HRESULT CDXUTLineManager::RemoveLine( int nLineID )
         LINE_NODE* pLineNode = m_LinesList.GetAt(i);
         if( pLineNode && pLineNode->nLineID == nLineID )
         {
-            SAFE_DELETE_ARRAY( pLineNode->pVertexList );
+            SafeDeleteArray( pLineNode->pVertexList );
             delete pLineNode;
             m_LinesList.SetAt(i, NULL);
         }
@@ -2543,7 +2543,7 @@ HRESULT CDXUTLineManager::RemoveAllLines()
         LINE_NODE* pLineNode = m_LinesList.GetAt(i);
         if( pLineNode )
         {
-            SAFE_DELETE_ARRAY( pLineNode->pVertexList );
+            SafeDeleteArray( pLineNode->pVertexList );
             delete pLineNode;
         }
     }
@@ -2759,8 +2759,8 @@ void CDXUTDirectionWidget::StaticOnLostDevice()
 //--------------------------------------------------------------------------------------
 void CDXUTDirectionWidget::StaticOnDestroyDevice()
 {
-    SAFE_RELEASE(s_pEffect);
-    SAFE_RELEASE(s_pMesh);
+    SafeRelease(s_pEffect);
+    SafeRelease(s_pMesh);
 }    
 
 
@@ -3229,7 +3229,7 @@ IDirect3DDevice9* DXUTCreateRefDevice( HWND hWnd, bool bNullRef )
     hr = pD3D->CreateDevice( D3DADAPTER_DEFAULT, bNullRef ? D3DDEVTYPE_NULLREF : D3DDEVTYPE_REF,
                              hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &pp, &pd3dDevice );
 
-    SAFE_RELEASE( pD3D );
+    SafeRelease( pD3D );
     return pd3dDevice;
 }
 

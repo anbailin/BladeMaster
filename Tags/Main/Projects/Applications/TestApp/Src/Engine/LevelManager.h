@@ -4,8 +4,9 @@ class LevelInstance;
 
 class ENGINE_DLL LevelManager
 {
+    BM_SINGLETON_DECLARE(LevelManager);
+
 public:
-    SINGLETON_DECLARE(LevelManager);
     LevelManager();
     ~LevelManager();
     

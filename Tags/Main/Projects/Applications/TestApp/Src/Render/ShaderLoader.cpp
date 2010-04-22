@@ -1,8 +1,7 @@
-#include "Core.h"
 #include "DCRenderHeader.h"
 
 //data
-SINGLETON_DEFINE(ShaderLoader);
+BM_SINGLETON_DEFINE(ShaderLoader);
 const char* ShaderLoader::ms_VSProfile3 = "vs_3_0";
 const char* ShaderLoader::ms_PSProfile3 = "ps_3_0";
 

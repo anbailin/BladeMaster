@@ -142,7 +142,7 @@ CDXUTDialog::~CDXUTDialog()
     for( i=0; i < m_DefaultElements.GetSize(); i++ )
     {
         DXUTElementHolder* pElementHolder = m_DefaultElements.GetAt( i );
-        SAFE_DELETE( pElementHolder );
+        SafeDelete( pElementHolder );
     }
 
     m_DefaultElements.RemoveAll();
@@ -217,7 +217,7 @@ void CDXUTDialog::RemoveControl( int ID )
             if( m_pControlMouseOver == pControl )
                 m_pControlMouseOver = NULL;
 
-            SAFE_DELETE( pControl );
+            SafeDelete( pControl );
             m_Controls.Remove( i );
 
             return;
@@ -238,7 +238,7 @@ void CDXUTDialog::RemoveAllControls()
     for( int i=0; i < m_Controls.GetSize(); i++ )
     {
         CDXUTControl* pControl = m_Controls.GetAt( i );
-        SAFE_DELETE( pControl );
+        SafeDelete( pControl );
     }
 
     m_Controls.RemoveAll();
@@ -261,14 +261,14 @@ CDXUTDialogResourceManager::~CDXUTDialogResourceManager()
     for( i=0; i < m_FontCache.GetSize(); i++ )
     {
         DXUTFontNode* pFontNode = m_FontCache.GetAt( i );
-        SAFE_DELETE( pFontNode );
+        SafeDelete( pFontNode );
     }
     m_FontCache.RemoveAll();   
 
     for( i=0; i < m_TextureCache.GetSize(); i++ )
     {
         DXUTTextureNode* pTextureNode = m_TextureCache.GetAt( i );
-        SAFE_DELETE( pTextureNode );
+        SafeDelete( pTextureNode );
     }
     m_TextureCache.RemoveAll();   
 
@@ -362,7 +362,7 @@ void CDXUTDialogResourceManager::OnLostDevice()
     if( m_pSprite )
         m_pSprite->OnLostDevice();
 
-    SAFE_RELEASE( m_pStateBlock  );
+    SafeRelease( m_pStateBlock  );
 }
 
     
@@ -378,16 +378,16 @@ void CDXUTDialogResourceManager::OnDestroyDevice()
     for( i=0; i < m_FontCache.GetSize(); i++ )
     {
         DXUTFontNode* pFontNode = m_FontCache.GetAt( i );
-        SAFE_RELEASE( pFontNode->pFont );
+        SafeRelease( pFontNode->pFont );
     }
     
     for( i=0; i < m_TextureCache.GetSize(); i++ )
     {
         DXUTTextureNode* pTextureNode = m_TextureCache.GetAt( i );
-        SAFE_RELEASE( pTextureNode->pTexture );
+        SafeRelease( pTextureNode->pTexture );
     }
 
-    SAFE_RELEASE( m_pSprite );
+    SafeRelease( m_pSprite );
 }
 
 
@@ -1737,7 +1737,7 @@ HRESULT CDXUTDialog::DrawPolyLine( POINT* apPoints, UINT nNumPoints, D3DCOLOR co
     pd3dDevice->SetVertexDeclaration( pDecl );
     pDecl->Release();
 
-    SAFE_DELETE_ARRAY( vertices );
+    SafeDeleteArray( vertices );
     return S_OK;
 }
  
@@ -2019,7 +2019,7 @@ HRESULT CDXUTDialogResourceManager::CreateFont( UINT iFont )
 
     DXUTFontNode* pFontNode = m_FontCache.GetAt( iFont );
 
-    SAFE_RELEASE( pFontNode->pFont );
+    SafeRelease( pFontNode->pFont );
     
     V_RETURN( D3DXCreateFont( m_pd3dDevice, pFontNode->nHeight, 0, pFontNode->nWeight, 1, FALSE, DEFAULT_CHARSET, 
                               OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, 
@@ -2498,7 +2498,7 @@ HRESULT CDXUTControl::SetElement( UINT iElement, CDXUTElement* pElement )
         hr = m_Elements.Add( pNewElement );
         if( FAILED(hr) )
         {
-            SAFE_DELETE( pNewElement );
+            SafeDelete( pNewElement );
             return hr;
         }
     }
@@ -2547,7 +2547,7 @@ CDXUTStatic::CDXUTStatic( CDXUTDialog *pDialog )
     for( int i=0; i < m_Elements.GetSize(); i++ )
     {
         CDXUTElement* pElement = m_Elements.GetAt( i );
-        SAFE_DELETE( pElement );
+        SafeDelete( pElement );
     }
 
     m_Elements.RemoveAll();
@@ -3596,7 +3596,7 @@ HRESULT CDXUTComboBox::AddItem( const WCHAR* strText, void* pData )
 void CDXUTComboBox::RemoveItem( UINT index )
 {
     DXUTComboBoxItem* pItem = m_Items.GetAt( index );
-    SAFE_DELETE( pItem );
+    SafeDelete( pItem );
     m_Items.Remove( index );
     m_ScrollBar.SetTrackRange( 0, m_Items.GetSize() );
     if( m_iSelected >= m_Items.GetSize() )
@@ -3610,7 +3610,7 @@ void CDXUTComboBox::RemoveAllItems()
     for( int i=0; i < m_Items.GetSize(); i++ )
     {
         DXUTComboBoxItem* pItem = m_Items.GetAt( i );
-        SAFE_DELETE( pItem );
+        SafeDelete( pItem );
     }
 
     m_Items.RemoveAll();
@@ -4446,7 +4446,7 @@ HRESULT CDXUTListBox::AddItem( const WCHAR *wszText, void *pData )
     HRESULT hr = m_Items.Add( pNewItem );
     if( FAILED(hr) )
     {
-        SAFE_DELETE( pNewItem );
+        SafeDelete( pNewItem );
     }
     else
     {
@@ -4473,7 +4473,7 @@ HRESULT CDXUTListBox::InsertItem( int nIndex, const WCHAR *wszText, void *pData 
     if( SUCCEEDED( hr ) )
         m_ScrollBar.SetTrackRange( 0, m_Items.GetSize() );
     else
-        SAFE_DELETE( pNewItem );
+        SafeDelete( pNewItem );
 
     return hr;
 }

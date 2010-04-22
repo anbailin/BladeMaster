@@ -6,8 +6,12 @@
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "DCRenderHeader.h"
+#pragma message("Unities/AnimationUnity.cpp(9) : [1 / 3] ./Src/Animation/DCAnimationManager.cpp")
+#include ".\Src\Animation\DCAnimationManager.cpp"
 
-#pragma message("RenderUnity/Unity_Shader.cpp(11) : [1 / 1] ./DCShaderManager.cpp")
-#include ".\DCShaderManager.cpp"
+#pragma message("Unities/AnimationUnity.cpp(12) : [2 / 3] ./Src/Animation/DCAnimData.cpp")
+#include ".\Src\Animation\DCAnimData.cpp"
+
+#pragma message("Unities/AnimationUnity.cpp(15) : [3 / 3] ./Src/Animation/DCBone.cpp")
+#include ".\Src\Animation\DCBone.cpp"
 

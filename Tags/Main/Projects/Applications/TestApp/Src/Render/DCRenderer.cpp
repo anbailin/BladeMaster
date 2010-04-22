@@ -1,6 +1,6 @@
 #include "DCRenderHeader.h"
 
-SINGLETON_DEFINE(DCRenderer);
+BM_SINGLETON_DEFINE(DCRenderer);
 
 namespace RendererConfig
 {
@@ -16,8 +16,8 @@ DCRenderer::DCRenderer()
 
 DCRenderer::~DCRenderer()
 {
-    ShaderLoader::DestroyInstance();
-	SAFE_RELEASE(mDevice);
+    ShaderLoader::DeleteInstance();
+	SafeRelease(mDevice);
 }
 
 bool DCRenderer::ApplyTexture(uint32 stage, const DCTexture* tex)
@@ -33,10 +33,10 @@ void DCRenderer::Init()
 	DCRenderSetter::Init();
     
     BMPostFXRenderer::CreateInstance();    
-    BMPostFXRenderer::GetInstance()->Init();
+    BMPostFXRenderer::Instance().Init();
 
     ShaderLoader::CreateInstance();
-    ShaderLoader::GetInstance()->Init();
+    ShaderLoader::Instance().Init();
 
     VertexDeclareManager::CreateInstance();
 }
@@ -44,7 +44,7 @@ void DCRenderer::Init()
 uint32 aa,bb;
 void DCRenderer::BeginRender()
 {
-    BMPostFXRenderer::GetInstance()->StoreBackBuffer();
+    BMPostFXRenderer::Instance().StoreBackBuffer();
 
     //set lighting rt
 	IDirect3DSurface9* surface;
@@ -57,7 +57,7 @@ void DCRenderer::BeginRender()
     DEVICEPTR->GetDepthStencilSurface(&surface);
     D3DSURFACE_DESC pDesc;
     surface->GetDesc(&pDesc);
-    //BMString str("size");
+    //std::string str("size");
     //str += (char)pDesc.Width;
     //str += (char)pDesc.Height;
     //LogToDebug(str.c_str());
@@ -69,7 +69,7 @@ void DCRenderer::BeginRender()
 //render lighting buffer into back to backbuffer
 void DCRenderer::EndRender()
 {
-    BMPostFXRenderer::GetInstance()->RenderToBackBuffer(mLightingRT);
+    BMPostFXRenderer::Instance().RenderToBackBuffer(mLightingRT);
 }
 
 //can be called on onresetdevice
@@ -90,9 +90,9 @@ void DCRenderer::InitResource(IDirect3DDevice9* deivce)
 
     assert(SUCCEEDED(result));
 
-    ShaderLoader::GetInstance()->CreateShaderCache();
-    BMPostFXRenderer::GetInstance()->InitResource();
-    VertexDeclareManager::GetInstance()->CreateResource();
+    ShaderLoader::Instance().CreateShaderCache();
+    BMPostFXRenderer::Instance().InitResource();
+    VertexDeclareManager::Instance().CreateResource();
 }
 
 //release graphics driver related resource including shader/texture
@@ -100,8 +100,8 @@ void DCRenderer::ReleaseResource()
 {
     mLightingRT = NULL;
 
-    BMPostFXRenderer::GetInstance()->ReleaseResource();
-    ShaderLoader::GetInstance()->DestroyShaderCache();
-    VertexDeclareManager::GetInstance()->ReleaseResource();
+    BMPostFXRenderer::Instance().ReleaseResource();
+    ShaderLoader::Instance().DestroyShaderCache();
+    VertexDeclareManager::Instance().ReleaseResource();
 }
 

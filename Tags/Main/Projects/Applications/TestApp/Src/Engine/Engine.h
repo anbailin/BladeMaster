@@ -2,8 +2,9 @@
 
 class ENGINE_DLL BMEngine
 {
+    BM_SINGLETON_DECLARE(BMEngine);
+
 public:
-    SINGLETON_DECLARE(BMEngine);
     void Init();
     void Tick(float delta);
     void ReleaseResource();

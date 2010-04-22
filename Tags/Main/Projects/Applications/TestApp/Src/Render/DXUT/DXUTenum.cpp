@@ -262,7 +262,7 @@ HRESULT CD3DEnumeration::EnumerateDevices( CD3DEnumAdapterInfo* pAdapterInfo, CG
                 continue;
             }
         }
-        SAFE_RELEASE( pDevice );
+        SafeRelease( pDevice );
 
         // Get info for each devicecombo on this device
         if( FAILED( hr = EnumerateDeviceCombos( pAdapterInfo, pDeviceInfo, pAdapterFormatList ) ) )

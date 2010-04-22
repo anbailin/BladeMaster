@@ -2,7 +2,12 @@
 #include "EnginePCH.h"
 #include "DCWOWLoader.h"
 
-SINGLETON_DEFINE(LevelManager);
+//--------tinyxml-------------------
+#define TIXML_USE_STL
+#include "TinyXML/tinyxml.h"
+#include "TinyXML/tinystr.h"
+
+BM_SINGLETON_DEFINE(LevelManager);
 
 #pragma optimize("",off)
 
@@ -14,7 +19,7 @@ LevelManager::LevelManager()
 
 LevelManager::~LevelManager()
 {
-    SAFE_DELETE(mLevelInstance);
+    SafeDelete(mLevelInstance);
 }
 
 namespace
@@ -24,11 +29,11 @@ namespace
 LevelInstance* LevelManager::CreateLevelInstance(const char* name)
 {
     //
-    LevelInstance* levelInstance = BMNew LevelInstance;
+    LevelInstance* levelInstance = new LevelInstance;
 
     //parse xml to readin models->init nodes->add into level instance
     QDir dir("AppData:Map");
-    BMString fullPath(dir.absolutePath().toStdString() + "\\");
+    std::string fullPath(dir.absolutePath().toStdString() + "\\");
     fullPath+=name;
     fullPath+=".xml";
     
@@ -75,7 +80,7 @@ LevelInstance* LevelManager::CreateLevelInstance(const char* name)
         }     
 
         DCFilePath file(nodeInfo.path,nodeInfo.name);
-        DCModelPtr modelPtr = DCWOWLoader::GetInstance()->LoadModel(file); 
+        DCModelPtr modelPtr = DCWOWLoader::Instance().LoadModel(file); 
         SceneNodePtr nodePtr = new SceneNode;
         nodePtr->SetModel(modelPtr);
         XMFLOAT3 translation(nodeInfo.x, 0.0f, nodeInfo.y);
@@ -98,5 +103,5 @@ void LevelManager::LoadMap(const char* name)
 
 void LevelManager::ReleaseLevelInstance()
 {
-    SAFE_DELETE(mLevelInstance);
+    SafeDelete(mLevelInstance);
 }

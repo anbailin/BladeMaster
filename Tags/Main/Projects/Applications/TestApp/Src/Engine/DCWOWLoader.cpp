@@ -24,7 +24,7 @@ namespace
 //--------------FunctionImpl-----------------------------------------------
 //-------------------------------------------------------------------------
 
-SINGLETON_DEFINE(DCWOWLoader);
+BM_SINGLETON_DEFINE(DCWOWLoader);
 
 
 void DCWOWLoader::Init()
@@ -201,7 +201,7 @@ DCModel* DCWOWLoader::LoadModel(DCFilePath& _path)
 	anim->SetBoneInfo(header,mpq, animFiles);
 	result->SetAnimManager(anim);
 
-	SAFE_DELETE_ARRAY(animFiles);
+	SafeDeleteArray(animFiles);
 	return result;
 }
 

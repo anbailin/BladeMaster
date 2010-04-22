@@ -122,7 +122,7 @@ MPQFile::openFile(const char* filename)
 		}
 
 		buffer = new char[size];
-		libmpq_file_getdata(&mpq_a, fileno, (u8*)buffer);
+		libmpq_file_getdata(&mpq_a, fileno, (uint8*)buffer);
 		return;
 	}
 

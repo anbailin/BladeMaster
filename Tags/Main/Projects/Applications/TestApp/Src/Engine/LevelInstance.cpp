@@ -7,7 +7,7 @@ LevelInstance::LevelInstance()
 
 LevelInstance::~LevelInstance()
 {
-    SAFE_RELEASE(mTerrain);
+    SafeRelease(mTerrain);
     mSceneNodes.clear();
 }
 

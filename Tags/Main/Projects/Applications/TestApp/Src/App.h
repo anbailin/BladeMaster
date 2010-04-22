@@ -4,8 +4,6 @@
 #include "MainWindow.h"
 #include "DCRenderHeader.h"
 
-class CBaseCamera;
-
 class App : public BM::GameApplication
 {
     Q_OBJECT

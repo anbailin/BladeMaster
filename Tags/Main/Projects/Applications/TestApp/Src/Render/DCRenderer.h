@@ -1,7 +1,7 @@
 #pragma once
 
 #ifndef DEVICEPTR
-#define DEVICEPTR DCRenderer::GetInstance()->GetDevice()
+#define DEVICEPTR DCRenderer::Instance().GetDevice()
 #endif
 
 class DCTexture;
@@ -20,9 +20,10 @@ struct IDirect3DVertexShader9;
 */
 class RENDER_DLL DCRenderer
 {
+    BM_SINGLETON_DECLARE(DCRenderer);
+
     //funcs--interface
 public:
-    SINGLETON_DECLARE(DCRenderer);
     void    Init();
 	bool    ApplyTexture(uint32 stage, const DCTexture* tex);
 

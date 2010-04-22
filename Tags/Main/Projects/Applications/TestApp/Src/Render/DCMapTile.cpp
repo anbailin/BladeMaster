@@ -145,7 +145,7 @@
 //{
 //	for(uint32 i=0;i<4;i++)
 //	{
-//		SAFE_DELETE(mChildren[i]);
+//		SafeDelete(mChildren[i]);
 //	}
 //}
 //
@@ -183,7 +183,7 @@
 //	if(size>2)
 //	{
 //		for(uint32 i=0;i<4;i++i)
-//			SAFE_DELETE(mChildren[i]);
+//			SafeDelete(mChildren[i]);
 //	}
 //}
 ////--------map chunk--------------------------------------------------------------------------------------
@@ -327,7 +327,7 @@
 //	}
 //
 //	const uint32 length = sizeof(DCVertPosNorTex) * kMapBufferSize;
-//	FAIL_ASSERT( DEVICEPTR->CreateVertexBuffer(length, 0, 0, D3DPOOL_MANAGED, &mVtxBuffer, 0));
+//	BM_AssertHr( DEVICEPTR->CreateVertexBuffer(length, 0, 0, D3DPOOL_MANAGED, &mVtxBuffer, 0));
 //}
 //
 //void MapChunk::InitStrip()
@@ -341,7 +341,7 @@
 //
 //	DCRenderer::ApplyTexture(0,mTexes[0]);
 //
-//	FAIL_ASSERT( DEVICEPTR->SetStreamSource( 0,mVtxBuffer, 0, sizeof(DCVertPosNorTex) ) );
+//	BM_AssertHr( DEVICEPTR->SetStreamSource( 0,mVtxBuffer, 0, sizeof(DCVertPosNorTex) ) );
 //
-//	FAIL_ASSERT( DEVICEPTR->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, kMapBufferSize-2));
+//	BM_AssertHr( DEVICEPTR->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, kMapBufferSize-2));
 //}
