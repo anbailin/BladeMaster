@@ -12,9 +12,10 @@ public:
     App(int argc, char* argv[]);
 
 private:
-    virtual bool Init();
-    virtual void Tick();
+    virtual bool InitApp();
+    virtual bool InitEngine();
     virtual void Exit();
+    virtual void Tick();
 
     void ReleaseResource();
 

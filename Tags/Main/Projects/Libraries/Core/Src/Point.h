@@ -5,7 +5,7 @@
 namespace BM
 {
     template<typename T>
-    class Point
+    class CORE_API Point
     {
     public:
         T X;

@@ -6,7 +6,7 @@ namespace BM
 {
     class Radian;
 
-	class Degree
+	class CORE_API Degree
 	{
 	public:
         inline Degree()                                         { m_Value = 0.0f; }

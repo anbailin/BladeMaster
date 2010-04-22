@@ -4,7 +4,7 @@
 
 namespace BM
 {
-    class Matrix44
+    class CORE_API Matrix44
     {
     public:
         Vector4 V[4];

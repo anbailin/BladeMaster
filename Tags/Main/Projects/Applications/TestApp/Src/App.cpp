@@ -8,18 +8,24 @@ using namespace BM;
 bool App::Pause = false;
 
 App::App(int argc, char* argv[])
-    : GameApplication(argc, argv)
+    : GameApplication("TestApp", m_MainWindow.centralWidget(), argc, argv)
 {
-    setApplicationName("TestApp");
-
-    m_pRenderWidget = m_MainWindow.centralWidget();
 }
 
-bool App::Init()
+bool App::InitApp()
 {
-    m_MainWindow.show();
+    if (!GameApplication::InitApp())
+    {
+        return false;
+    }
 
-    if (!GameApplication::Init())
+    m_MainWindow.show();
+    return true;
+}
+
+bool App::InitEngine()
+{
+    if (!GameApplication::InitEngine())
     {
         return false;
     }

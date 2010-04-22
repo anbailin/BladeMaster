@@ -3,9 +3,12 @@
 
 namespace BM
 {
-    Application::Application(int argc, char* argv[])
+    Application::Application(QString name, int argc, char* argv[])
         : QApplication(argc, argv)
     {
+        // this name will be used to get application data
+        setApplicationName(name);
+
         connect(this, SIGNAL(aboutToQuit()), this, SLOT(Exit()));
     }
 

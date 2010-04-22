@@ -4,7 +4,7 @@
 
 namespace BM
 {
-    class Timer
+    class CORE_API Timer
     {
     public:
         inline Timer();

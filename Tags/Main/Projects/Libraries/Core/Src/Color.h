@@ -4,7 +4,7 @@
 
 namespace BM
 {
-    class Color
+    class CORE_API Color
     {
     public:
         Float32 R;

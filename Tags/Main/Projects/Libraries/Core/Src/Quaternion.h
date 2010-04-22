@@ -4,7 +4,7 @@
 
 namespace BM
 {
-    class Quaternion
+    class CORE_API Quaternion
     {
     public:
         Float32 X;

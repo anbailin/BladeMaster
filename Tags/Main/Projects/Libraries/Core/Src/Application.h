@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CorePublic.h"
+#include "ClassFactory.h"
 
 namespace BM
 {
@@ -12,7 +13,7 @@ namespace BM
         typedef QHash<QString, QSettings::SettingsMap> SettingsCollection;
 
     public:
-        Application(int argc, char* argv[]);
+        Application(QString name, int argc, char* argv[]);
 
     public:
         virtual int Run();

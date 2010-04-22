@@ -4,7 +4,7 @@
 
 namespace BM
 {
-    class Vector2
+    class CORE_API Vector2
     {
     public:
         Float32 X;

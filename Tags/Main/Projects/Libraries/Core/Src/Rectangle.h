@@ -5,7 +5,7 @@
 namespace BM
 {
     template<typename T>
-    class Rectangle
+    class CORE_API Rectangle
     {
     public:
         T Left;

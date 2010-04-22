@@ -5,7 +5,7 @@
 namespace BM
 {
     template<typename T>
-    class Size
+    class CORE_API Size
     {
     public:
         T Width;
