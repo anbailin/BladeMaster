@@ -20,7 +20,7 @@ namespace BM
         const QDir& DataDir() { return m_DataDir; }
         
         QSettings::SettingsMap& Settings(const QString& name) { return m_Settings[name]; }
-        const QVariant& GetSetting(const QString& name, const QString& key, const QVariant& defaultValue = QVariant()) const;
+        QVariant GetSetting(const QString& name, const QString& key, const QVariant& defaultValue = QVariant()) const;
 
     protected:
         virtual bool Init();

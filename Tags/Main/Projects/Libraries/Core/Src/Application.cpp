@@ -77,7 +77,7 @@ namespace BM
         }
     }
 
-    const QVariant& Application::GetSetting(const QString& name, const QString& key, const QVariant& defaultValue) const
+    QVariant Application::GetSetting(const QString& name, const QString& key, const QVariant& defaultValue) const
     {
         if (m_Settings.contains(name))
         {

@@ -21,3 +21,6 @@
 *.filters
 *.sdf
 *.opensdf
+*.ncb
+*.dep
+*.htm
