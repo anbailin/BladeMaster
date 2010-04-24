@@ -8,8 +8,9 @@ using namespace BM;
 bool App::Pause = false;
 
 App::App(int argc, char* argv[])
-    : GameApplication("TestApp", m_MainWindow.centralWidget(), argc, argv)
+    : GameApplication("TestApp", NULL, argc, argv)
 {
+	Init(m_MainWindow.centralWidget());
 }
 
 bool App::InitApp()

@@ -19,8 +19,8 @@ namespace BM
         virtual void Exit();
         virtual void Tick();
 
-    private:
-        virtual bool Init();
+    public:
+        virtual bool Init(QWidget* pRenderWidget);
 
     protected:
         QTimer                      m_TickTimer;

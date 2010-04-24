@@ -8,14 +8,17 @@ namespace BM
         , m_TickTimer(this)
     {
         // this widget will be used as render target
-        m_pRenderWidget = pRenderWidget;
-        BM_Assert(m_pRenderWidget != NULL);
+        //m_pRenderWidget = pRenderWidget;
+        //BM_Assert(m_pRenderWidget != NULL);
 
         connect(&m_TickTimer, SIGNAL(timeout()), this, SLOT(Tick()));
     }
 
-    bool GameApplication::Init()
+    bool GameApplication::Init(QWidget* pRenderWidget)
     {
+		m_pRenderWidget = pRenderWidget;
+		BM_Assert(m_pRenderWidget != NULL);
+
         if (!Application::Init())
         {
             return false;

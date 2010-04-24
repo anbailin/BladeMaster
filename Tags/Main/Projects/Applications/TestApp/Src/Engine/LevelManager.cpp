@@ -3,13 +3,10 @@
 #include "DCWOWLoader.h"
 
 //--------tinyxml-------------------
-#define TIXML_USE_STL
 #include "TinyXML/tinyxml.h"
 #include "TinyXML/tinystr.h"
 
 BM_SINGLETON_DEFINE(LevelManager);
-
-#pragma optimize("",off)
 
 LevelManager::LevelManager()
 :   mLevelInstance(NULL)
@@ -38,7 +35,8 @@ LevelInstance* LevelManager::CreateLevelInstance(const char* name)
     fullPath+=".xml";
     
     TiXmlDocument *levelDoc = new TiXmlDocument();
-    levelDoc->LoadFile(fullPath.c_str());
+    bool result = levelDoc->LoadFile(fullPath.c_str());
+	assert(result);
 
     TiXmlElement *RootElement = levelDoc->RootElement();        
 
