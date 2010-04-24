@@ -24,3 +24,9 @@
 *.ncb
 *.dep
 *.htm
+
+# Folders
+/Tags/Main/Binaries/
+
+# Qt MOC Files
+moc_*.cpp
