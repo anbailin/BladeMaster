@@ -88,6 +88,14 @@ namespace BM
             {
                 return m_Settings[name][key];
             }
+            else
+            {
+                qWarning() << "Failed to get setting" << key << "in" << name + ".ini." << "Key not exists.";
+            }
+        }
+        else
+        {
+            qWarning() << "Failed to get setting" << key << "in" << name + ".ini." << "File not exists.";
         }
         return defaultValue;
     }
