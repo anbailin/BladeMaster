@@ -23,16 +23,10 @@
 // DirectX
 #include <dxerr.h>
 #include <dxdiag.h>
-#if BM_USE_D3D9
-#   include <d3d9.h>
-#   include <d3dx9.h>
-#elif BM_USE_D3D10
-#   include <d3d10.h>
-#   include <d3dx10.h>
-#elif BM_USE_D3D11
-#   include <d3d11.h>
-#   include <d3dx11.h>
-#endif
+#include <d3d9.h>
+#include <d3dx9.h>
+#include <d3d11.h>
+#include <d3dx11.h>
 
 // Qt
 #include <QtCore/QtCore>

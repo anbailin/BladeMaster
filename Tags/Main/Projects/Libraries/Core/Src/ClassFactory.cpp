@@ -3,12 +3,12 @@
 
 namespace BM
 {
-    QHash<const char*, ClassFactory::ClassCreateFunc> ClassFactory::s_Creators;
+    QHash<String, ClassFactory::ClassCreateFunc> ClassFactory::s_Creators;
 
-    bool ClassFactory::Register(const char* name, ClassCreateFunc func)
+    bool ClassFactory::Register(const String& name, ClassCreateFunc func)
     {
-        BM_Assert(func != NULL);
         BM_Assert(name != NULL);
+        BM_Assert(func != NULL);
 
         if (s_Creators.contains(name))
         {
@@ -25,25 +25,13 @@ namespace BM
         }
     }
 
-    void* ClassFactory::CreateInstance(const char* name)
+    void* ClassFactory::CreateInstance(const String& name, void* buffer)
     {
-        if (name == NULL || !s_Creators.contains(name))
-        {
-            return NULL;
-        }
+        BM_Assert(name != NULL);
 
         ClassCreateFunc func = s_Creators.value(name);
-        return (*func)(0);
-    }
+        BM_Assert(func != NULL);
 
-    void* ClassFactory::CreateInstance(const char* name, void* buffer)
-    {
-        if (name == NULL || buffer == NULL || !s_Creators.contains(name))
-        {
-            return NULL;
-        }
-
-        ClassCreateFunc func = s_Creators.value(name);
         return (*func)(buffer);
     }
 }

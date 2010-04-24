@@ -12,12 +12,11 @@ namespace BM
         typedef void* (*ClassCreateFunc) (void*);
 
     public:
-        static bool  Register(const char* name, ClassCreateFunc func);
-        static void* CreateInstance(const char* name);
-        static void* CreateInstance(const char* name, void* buffer);
+        static bool  Register(const String& name, ClassCreateFunc func);
+        static void* CreateInstance(const String& name, void* buffer = NULL);
 
     private:
-        static QHash<const char*, ClassCreateFunc> s_Creators;
+        static QHash<String, ClassCreateFunc> s_Creators;
     };
 }
 
