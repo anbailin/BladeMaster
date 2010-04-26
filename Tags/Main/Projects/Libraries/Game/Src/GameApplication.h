@@ -30,5 +30,6 @@ namespace BM
         QPointer<QWidget>       m_pRenderWidget;
         QPointer<Renderer>      m_pRenderer;
         QPointer<GameEngine>    m_pEngine;
+        Timer                   m_Timer;
     };
 }

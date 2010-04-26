@@ -13,15 +13,15 @@ namespace BM
 
     void Renderer::Init(QWidget* pRenderWidget)
     {
-        BM_Assert(pRenderWidget != NULL);
+        m_pRenderWidget = pRenderWidget;
+        BM_Assert(m_pRenderWidget != NULL);
     }
 
     void Renderer::Exit()
     {
-        SafeDelete(m_pRenderWindow);
     }
 
-    void Renderer::Tick()
+    void Renderer::Tick(Float32 fDeltaTime)
     {
     }
 }

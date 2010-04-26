@@ -40,7 +40,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;.\;..\Core\Src;$(QTDIR)\include\QtGui"
+				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;.\;..\Core\Src"
 				PreprocessorDefinitions="WIN32;NDEBUG;GRAPHICS_LIB;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_NO_DEBUG;QT_CORE_LIB;QT_GUI_LIB"
 				RuntimeLibrary="2"
 				TreatWChar_tAsBuiltInType="false"
@@ -112,7 +112,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;.\;..\Core\Src;$(QTDIR)\include\QtGui"
+				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;.\;..\Core\Src"
 				PreprocessorDefinitions="WIN32;GRAPHICS_LIB;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="false"
@@ -211,7 +211,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\Renderer.h&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DNDEBUG -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_NO_DEBUG -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; &quot;.\Src\Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\Renderer.h&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -222,67 +222,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\Renderer.h&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\Src\RenderTarget.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\RenderTarget.h"
-				>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\RenderTarget.h&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\RenderTarget.h&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\Src\RenderWindow.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\RenderWindow.h"
-				>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\RenderWindow.h&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\RenderWindow.h&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; &quot;.\Src\Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\Renderer.h&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -291,10 +231,6 @@
 			<Filter
 				Name="D3D9"
 				>
-				<File
-					RelativePath=".\Src\D3D9.h"
-					>
-				</File>
 				<File
 					RelativePath=".\Src\D3D9Renderer.cpp"
 					>
@@ -308,7 +244,7 @@
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Moc&apos;ing $(InputFileName)..."
-							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\D3D9Renderer.h&quot;&#x0D;&#x0A;"
+							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DNDEBUG -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_NO_DEBUG -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; &quot;.\Src\D3D9Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\D3D9Renderer.h&quot;&#x0D;&#x0A;"
 							AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 							Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 						/>
@@ -319,49 +255,11 @@
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Moc&apos;ing $(InputFileName)..."
-							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\D3D9Renderer.h&quot;&#x0D;&#x0A;"
+							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; &quot;.\Src\D3D9Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\D3D9Renderer.h&quot;&#x0D;&#x0A;"
 							AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 							Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\Src\D3D9RenderWindow.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Src\D3D9RenderWindow.h"
-					>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							Description="Moc&apos;ing $(InputFileName)..."
-							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\D3D9RenderWindow.h&quot;&#x0D;&#x0A;"
-							AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-							Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							Description="Moc&apos;ing $(InputFileName)..."
-							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\D3D9RenderWindow.h&quot;&#x0D;&#x0A;"
-							AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-							Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="D3D10"
-				>
-				<File
-					RelativePath=".\Src\D3D10Renderer.h"
-					>
 				</File>
 			</Filter>
 			<Filter
@@ -369,6 +267,42 @@
 				>
 				<File
 					RelativePath=".\Src\D3D11Renderer.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="DXUT"
+				>
+				<File
+					RelativePath=".\Src\DXUT.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\DXUT.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\DXUTDevice11.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\DXUTDevice11.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\DXUTDevice9.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\DXUTDevice9.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\DXUTmisc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\DXUTmisc.h"
 					>
 				</File>
 			</Filter>
@@ -397,43 +331,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\GeneratedFiles\Release\moc_D3D9RenderWindow.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath=".\GeneratedFiles\Release\moc_Renderer.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Release\moc_RenderTarget.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Release\moc_RenderWindow.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -463,43 +361,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\GeneratedFiles\Debug\moc_D3D9RenderWindow.cpp"
-					>
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath=".\GeneratedFiles\Debug\moc_Renderer.cpp"
-					>
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Debug\moc_RenderTarget.cpp"
-					>
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Debug\moc_RenderWindow.cpp"
 					>
 					<FileConfiguration
 						Name="Release|Win32"

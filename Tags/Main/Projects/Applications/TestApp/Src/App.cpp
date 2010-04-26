@@ -12,6 +12,11 @@ App::App(int argc, char* argv[])
 {
 }
 
+App::~App()
+{
+    SafeDelete(m_pMainWindow);
+}
+
 bool App::InitApp()
 {
     if (!GameApplication::InitApp())
@@ -19,8 +24,10 @@ bool App::InitApp()
         return false;
     }
 
-    m_MainWindow.show();
-    SetRenderWidget(m_MainWindow.centralWidget());
+    m_pMainWindow = new MainWindow();
+    m_pMainWindow->show();
+
+    SetRenderWidget(m_pMainWindow->centralWidget());
 
     return true;
 }

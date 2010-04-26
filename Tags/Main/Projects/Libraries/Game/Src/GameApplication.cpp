@@ -33,6 +33,8 @@ namespace BM
             return false;
         }
 
+        m_Timer.Start();
+
         m_TickTimer.start();
         return true;
     }
@@ -82,14 +84,21 @@ namespace BM
 
     void GameApplication::Tick()
     {
+        static UInt64 LastTicks = m_Timer.Ticks();
+
+        UInt64 iTicks = m_Timer.Ticks();
+        UInt64 iDeltaTicks = Timer::DeltaTicks(LastTicks, iTicks);
+        Float64 fDeltaSeconds = Timer::TicksToSeconds(iDeltaTicks);
+        LastTicks = iTicks;
+
         if (m_pEngine != NULL)
         {
-            m_pEngine->Tick();
+            m_pEngine->Tick(fDeltaSeconds);
         }
 
         if (m_pRenderer != NULL)
         {
-            m_pRenderer->Tick();
+            m_pRenderer->Tick(fDeltaSeconds);
         }
     }
 }

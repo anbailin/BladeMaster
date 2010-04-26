@@ -10,6 +10,7 @@ class App : public BM::GameApplication
 
 public:
     App(int argc, char* argv[]);
+    ~App();
 
 private:
     virtual bool InitApp();
@@ -20,8 +21,8 @@ private:
     void ReleaseResource();
 
 private:
-    MainWindow      m_MainWindow;
-    CBaseCamera*    m_pCamera;
+    QPointer<MainWindow>    m_pMainWindow;
+    CBaseCamera*            m_pCamera;
 
 public:
     static App& Instance() { return *(qobject_cast<App*>(instance())); }

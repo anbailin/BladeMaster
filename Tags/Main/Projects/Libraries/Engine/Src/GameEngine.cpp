@@ -20,7 +20,7 @@ namespace BM
     {
     }
 
-    void GameEngine::Tick()
+    void GameEngine::Tick(Float32 fDeltaTime)
     {
     }
 }

@@ -15,7 +15,7 @@ namespace BM
     public:
         virtual void Init();
         virtual void Exit();
-        virtual void Tick();
+        virtual void Tick(Float32 fDeltaTime);
     };
 
     BM_CLASS_FACTORY_REGISTER(GameEngine);

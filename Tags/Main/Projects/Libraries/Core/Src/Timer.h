@@ -83,7 +83,7 @@ namespace BM
 
     inline UInt64 Timer::TicksSinceStart() const
     {
-        return (m_bStarted ? DeltaTicks(CpuTicks(), m_iStartTick) : 0);
+        return (m_bStarted ? DeltaTicks(m_iStartTick, CpuTicks()) : 0);
     }
 
     inline UInt64 Timer::CpuTicks()

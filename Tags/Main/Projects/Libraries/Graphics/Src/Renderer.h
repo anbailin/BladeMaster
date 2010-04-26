@@ -1,7 +1,6 @@
 #pragma once
 
 #include "GraphicsPublic.h"
-#include "RenderWindow.h"
 
 namespace BM
 {
@@ -11,16 +10,16 @@ namespace BM
 
     public:
         Renderer();
-        virtual ~Renderer();
+        ~Renderer();
 
     public:
         virtual void Init(QWidget* pRenderWidget);
         virtual void Exit();
-        virtual void Tick();
+        virtual void Tick(Float32 fDeltaTime);
 
-        RenderWindow& Window() const { return *m_pRenderWindow; }
+        QWidget* GetRenderWidget() const { return m_pRenderWidget; }
 
     protected:
-        QPointer<RenderWindow>  m_pRenderWindow;
+        QPointer<QWidget> m_pRenderWidget;
     };
 }
