@@ -22,9 +22,9 @@ namespace BM
     {
         Renderer::Init(pRenderWidget);
 
-        m_pRenderWindow = new D3D9RenderWindow(pRenderWidget);
+        //m_pRenderWindow = new D3D9RenderWindow(pRenderWidget);
 
-        CreateD3DDevice();
+        //CreateD3DDevice();
     }
 
     void D3D9Renderer::Exit()

@@ -13,6 +13,7 @@ namespace BM
 
     void Renderer::Init(QWidget* pRenderWidget)
     {
+        BM_Assert(pRenderWidget != NULL);
     }
 
     void Renderer::Exit()

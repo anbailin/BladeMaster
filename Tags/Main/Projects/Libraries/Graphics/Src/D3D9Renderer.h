@@ -27,4 +27,6 @@ namespace BM
         IDirect3DDevice9*       m_pD3DDevice;
         D3DPRESENT_PARAMETERS   m_PresentParameters;
     };
+
+    BM_CLASS_FACTORY_REGISTER(D3D9Renderer);
 }

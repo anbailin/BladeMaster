@@ -9,22 +9,26 @@ namespace BM
         Q_OBJECT
 
     public:
-        GameApplication(QString name, QWidget* pRenderWidget, int argc, char* argv[]);
+        GameApplication(QString name, int argc, char* argv[]);
+        ~GameApplication();
 
     protected:
         virtual bool InitApp();
         virtual bool InitEngine();
 
+        void SetRenderWidget(QWidget* pRenderWidget) { m_pRenderWidget = pRenderWidget; }
+
     protected slots:
         virtual void Exit();
         virtual void Tick();
 
-    public:
-        virtual bool Init(QWidget* pRenderWidget);
+    private:
+        virtual bool Init();
 
     protected:
-        QTimer                      m_TickTimer;
-        QPointer<GameEngine>        m_pGameEngine;
-        QPointer<QWidget>           m_pRenderWidget;
+        QTimer                  m_TickTimer;
+        QPointer<QWidget>       m_pRenderWidget;
+        QPointer<Renderer>      m_pRenderer;
+        QPointer<GameEngine>    m_pEngine;
     };
 }

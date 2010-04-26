@@ -10,14 +10,13 @@ namespace BM
 
     public:
         GameEngine();
-        virtual ~GameEngine();
+        ~GameEngine();
 
     public:
-        virtual void Init(QWidget* pRenderWidget);
+        virtual void Init();
         virtual void Exit();
         virtual void Tick();
-
-    private:
-        QPointer<Renderer> m_pRenderer;
     };
+
+    BM_CLASS_FACTORY_REGISTER(GameEngine);
 }

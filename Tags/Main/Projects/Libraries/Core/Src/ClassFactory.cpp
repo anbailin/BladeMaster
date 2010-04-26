@@ -12,10 +12,10 @@ namespace BM
 
         if (s_Creators.contains(name))
         {
-            if (s_Creators.value(name) != func)
-            {
-                BM_Assert(0);
-            }
+            //if (s_Creators.value(name) != func)
+            //{
+            //    BM_Assert(0);
+            //}
             return false;
         }
         else

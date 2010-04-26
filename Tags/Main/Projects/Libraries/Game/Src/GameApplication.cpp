@@ -3,22 +3,21 @@
 
 namespace BM
 {
-    GameApplication::GameApplication(QString name, QWidget* pRenderWidget, int argc, char* argv[])
+    GameApplication::GameApplication(QString name, int argc, char* argv[])
         : Application(name, argc, argv)
         , m_TickTimer(this)
     {
-        // this widget will be used as render target
-        //m_pRenderWidget = pRenderWidget;
-        //BM_Assert(m_pRenderWidget != NULL);
-
         connect(&m_TickTimer, SIGNAL(timeout()), this, SLOT(Tick()));
     }
 
-    bool GameApplication::Init(QWidget* pRenderWidget)
+    GameApplication::~GameApplication()
     {
-		m_pRenderWidget = pRenderWidget;
-		BM_Assert(m_pRenderWidget != NULL);
+        SafeDelete(m_pEngine);
+        SafeDelete(m_pRenderer);
+    }
 
+    bool GameApplication::Init()
+    {
         if (!Application::Init())
         {
             return false;
@@ -45,20 +44,52 @@ namespace BM
 
     bool GameApplication::InitEngine()
     {
-        //m_pGameEngine = new GameEngine();
-        //m_pGameEngine->Init(m_pRenderWidget);
+        // Initialize renderer
+
+        String sRendererClassName = Application::Instance().GetSetting("Engine", "Engine/RendererClass", "D3D9Renderer").toString();
+
+        m_pRenderer = (Renderer*)ClassFactory::CreateInstance(sRendererClassName.toAscii());
+        BM_Assert(m_pRenderer != NULL);
+
+        m_pRenderer->Init(m_pRenderWidget);
+
+        // Initialize game engine
+
+        String sGameEngineClassName = Application::Instance().GetSetting("Engine", "Engine/EngineClass", "GameEngine").toString();
+
+        m_pEngine = (GameEngine*)ClassFactory::CreateInstance(sGameEngineClassName.toAscii());
+        BM_Assert(m_pEngine != NULL);
+
+        m_pEngine->Init();
+
         return true;
     }
 
     void GameApplication::Exit()
     {
-        SafeDelete(m_pGameEngine);
+        if (m_pEngine != NULL)
+        {
+            m_pEngine->Exit();
+        }
+
+        if (m_pRenderer != NULL)
+        {
+            m_pRenderer->Exit();
+        }
 
         Application::Exit();
     }
 
     void GameApplication::Tick()
     {
-        //m_pGameEngine->Tick();
+        if (m_pEngine != NULL)
+        {
+            m_pEngine->Tick();
+        }
+
+        if (m_pRenderer != NULL)
+        {
+            m_pRenderer->Tick();
+        }
     }
 }

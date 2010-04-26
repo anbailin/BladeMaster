@@ -12,19 +12,15 @@ namespace BM
 
     }
 
-    void GameEngine::Init(QWidget* pRenderWidget)
+    void GameEngine::Init()
     {
-        m_pRenderer = new D3D9Renderer();
-        m_pRenderer->Init(pRenderWidget);
     }
 
     void GameEngine::Exit()
     {
-        SafeDelete(m_pRenderer);
     }
 
     void GameEngine::Tick()
     {
-        m_pRenderer->Tick();
     }
 }

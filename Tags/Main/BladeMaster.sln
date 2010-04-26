@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E8EA5D99-B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Settings", "Settings", "{C17E79C1-96A1-47D2-87CB-050AC978049E}"
 	ProjectSection(SolutionItems) = preProject
+		Data\Default\Settings\Engine.ini = Data\Default\Settings\Engine.ini
 		Data\Default\Settings\Graphics.ini = Data\Default\Settings\Graphics.ini
 		Data\Default\Settings\WOW.ini = Data\Default\Settings\WOW.ini
 	EndProjectSection

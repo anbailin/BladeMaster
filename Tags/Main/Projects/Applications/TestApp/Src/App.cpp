@@ -8,9 +8,8 @@ using namespace BM;
 bool App::Pause = false;
 
 App::App(int argc, char* argv[])
-    : GameApplication("TestApp", NULL, argc, argv)
+    : GameApplication("TestApp", argc, argv)
 {
-	Init(m_MainWindow.centralWidget());
 }
 
 bool App::InitApp()
@@ -21,6 +20,8 @@ bool App::InitApp()
     }
 
     m_MainWindow.show();
+    SetRenderWidget(m_MainWindow.centralWidget());
+
     return true;
 }
 
