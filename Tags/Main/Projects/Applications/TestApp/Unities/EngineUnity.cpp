@@ -9,8 +9,8 @@
 #pragma message("Unities/EngineUnity.cpp(9) : [1 / 10] ./Src/Engine/DCWOWLoader.cpp")
 #include ".\Src\Engine\DCWOWLoader.cpp"
 
-#pragma message("Unities/EngineUnity.cpp(12) : [2 / 10] ./Src/Engine/Engine.cpp")
-#include ".\Src\Engine\Engine.cpp"
+#pragma message("Unities/EngineUnity.cpp(12) : [2 / 10] ./Src/Engine/BMEngine.cpp")
+#include ".\Src\Engine\BMEngine.cpp"
 
 #pragma message("Unities/EngineUnity.cpp(15) : [3 / 10] ./Src/Engine/Files/BLP.cpp")
 #include ".\Src\Engine\Files\BLP.cpp"

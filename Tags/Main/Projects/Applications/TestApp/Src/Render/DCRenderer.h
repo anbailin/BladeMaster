@@ -1,5 +1,10 @@
 #pragma once
 
+#include "D3D9Renderer.h"
+#include "BMCore.h"
+
+using namespace BM;
+
 #ifndef DEVICEPTR
 #define DEVICEPTR DCRenderer::Instance().GetDevice()
 #endif
@@ -18,34 +23,49 @@ struct IDirect3DVertexShader9;
 
 *   ps0 : Init for app resource, InitResource for render driver resource
 */
-class RENDER_DLL DCRenderer
+class DCRenderer : public D3D9Renderer
 {
+    Q_OBJECT
+
     BM_SINGLETON_DECLARE(DCRenderer);
+
+public:
+    DCRenderer();
+    ~DCRenderer();
 
     //funcs--interface
 public:
-    void    Init();
-	bool    ApplyTexture(uint32 stage, const DCTexture* tex);
+    virtual void Init(QWidget* pRenderWidget);
+    virtual void Exit();
+    virtual void Update(Float32 fDeltaTime);
+    virtual void Draw(Float32 fDeltaTime);
+
+protected:
+    virtual void OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc);
+    virtual void OnLostDevice();
+    virtual void OnDestroyDevice();
+
+public:
+    bool    ApplyTexture(uint32 stage, const DCTexture* tex);
 
 	void    BeginRender();
 	void    EndRender();
 
     void    InitResource(IDirect3DDevice9* deivce);  
     void    ReleaseResource();
+
 protected:
-    DCRenderer();
-    ~DCRenderer();
 	void InitCopy();
 
     //attribues access
 public:
-    IDirect3DDevice9* GetDevice(){return mDevice;}
+    //IDirect3DDevice9* GetDevice(){return mDevice;}
     void              GetBackBufferSize(uint32& sizeX, uint32& sizeY)const { sizeX = mBackBufferSizeX; sizeY = mBackBufferSizeY; }    
 	TexturePtr	      GetLightingRT() { return mLightingRT; }    
 
     //attribues
 protected:
-    IDirect3DDevice9* mDevice;    
+    //IDirect3DDevice9* mDevice;    
 
     //resource
     QuadGeometry*       mQuadGeometry;
@@ -54,3 +74,5 @@ protected:
     uint32              mBackBufferSizeY;
 	TexturePtr      	mLightingRT;    
 };
+
+BM_CLASS_FACTORY_REGISTER(DCRenderer);

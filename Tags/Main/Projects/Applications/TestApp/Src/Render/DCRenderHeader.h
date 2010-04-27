@@ -14,7 +14,7 @@
 
 #include "BMCore.h"//core
 
-#include "dxut/dxstdafx.h"
+//#include "dxut/dxstdafx.h"
 
 #include "DCRenderType.h"
 #include "DCRenderState.h"

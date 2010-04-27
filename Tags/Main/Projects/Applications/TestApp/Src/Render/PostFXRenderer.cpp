@@ -102,7 +102,7 @@ void BMPostFXRenderer::InitBloom()
 */
 void BMPostFXRenderer::Render()
 {
-    pix_event g( DXUT_PERFEVENTCOLOR, L"PostFX" );
+    //pix_event g( DXUT_PERFEVENTCOLOR, L"PostFX" );
     //filter pass
     DEVICEPTR->SetRenderState(D3DRS_ZENABLE, D3DZB_FALSE);
     DEVICEPTR->SetRenderTarget(0, mBloomSurface[0]);

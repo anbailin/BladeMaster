@@ -27,4 +27,4 @@
 #include "Files/MDX.h"
 #include "DCWOWLoader.h"
 
-#include "Engine.h"
+#include "BMEngine.h"

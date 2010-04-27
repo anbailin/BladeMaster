@@ -1,4 +1,5 @@
 #include "DCRenderHeader.h"
+#include "App.h"
 
 BM_SINGLETON_DEFINE(DCRenderer);
 
@@ -11,34 +12,83 @@ namespace RendererConfig
 DCRenderer::DCRenderer()
 :   mBackBufferSizeX(RendererConfig::BackBufferSizeX)
 ,   mBackBufferSizeY(RendererConfig::BackBufferSizeY)
-{	
+{
+    s_pInstance = this;
 }
 
 DCRenderer::~DCRenderer()
 {
     ShaderLoader::DeleteInstance();
-	SafeRelease(mDevice);
+	//SafeRelease(DEVICEPTR);
 }
 
 bool DCRenderer::ApplyTexture(uint32 stage, const DCTexture* tex)
 {
-    mDevice->SetSamplerState(stage, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
-    mDevice->SetSamplerState(stage, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
-    mDevice->SetSamplerState(stage, D3DSAMP_MIPFILTER, D3DTEXF_LINEAR);
-	return SUCCEEDED(mDevice->SetTexture(stage,(IDirect3DBaseTexture9*)(tex->GetSurfacePtr()->GetTexture().GetPointer())) );
+    DEVICEPTR->SetSamplerState(stage, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
+    DEVICEPTR->SetSamplerState(stage, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
+    DEVICEPTR->SetSamplerState(stage, D3DSAMP_MIPFILTER, D3DTEXF_LINEAR);
+	return SUCCEEDED(DEVICEPTR->SetTexture(stage,(IDirect3DBaseTexture9*)(tex->GetSurfacePtr()->GetTexture().GetPointer())) );
 }
 
-void DCRenderer::Init()
+void DCRenderer::Init(QWidget* pRenderWidget)
 {
-	DCRenderSetter::Init();
-    
-    BMPostFXRenderer::CreateInstance();    
+    DCRenderSetter::Init();
+
+    BMPostFXRenderer::CreateInstance();
     BMPostFXRenderer::Instance().Init();
 
     ShaderLoader::CreateInstance();
     ShaderLoader::Instance().Init();
 
     VertexDeclareManager::CreateInstance();
+
+    D3D9Renderer::Init(pRenderWidget);
+}
+
+void DCRenderer::Exit()
+{
+}
+
+void DCRenderer::Update(Float32 fDeltaTime)
+{
+
+}
+
+void DCRenderer::Draw(Float32 fDeltaTime)
+{
+    // For our world matrix, we will just rotate the object about the y-axis.
+    D3DXMATRIXA16 mxView, mxProj;
+
+    D3DXVECTOR3 vEye(0.0f, 5.0f,-5.0f);
+    D3DXVECTOR3 vAt(0.0f,0.0f,1.0f);
+    D3DXVECTOR3 vUp(0.0f,1.0f,0.0f);
+
+    float fAspectRatio = m_pRenderWidget->width() / (FLOAT)m_pRenderWidget->height();
+
+    D3DXMatrixLookAtLH(&mxView, &vEye, &vAt, &vUp);
+    D3DXMatrixPerspectiveFovLH(&mxProj, D3DX_PI/3, fAspectRatio, 0.001f, 100.0f);
+
+    SceneRenderer::Instance().SetViewMatrix(mxView);
+    SceneRenderer::Instance().SetProjMatrix(mxProj);
+
+    SceneRenderer::Instance().RenderScene(*(LevelManager::Instance().GetLevelInstance()));
+}
+
+void DCRenderer::OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc)
+{
+    InitResource(pd3dDevice);
+
+    //LevelManager::Instance().LoadMap("map");
+}
+
+void DCRenderer::OnLostDevice()
+{
+    ReleaseResource();
+}
+
+void DCRenderer::OnDestroyDevice()
+{
+    ReleaseResource();
 }
 
 uint32 aa,bb;
@@ -75,7 +125,7 @@ void DCRenderer::EndRender()
 //can be called on onresetdevice
 void DCRenderer::InitResource(IDirect3DDevice9* deivce)
 {
-    mDevice = deivce;   
+    //DEVICEPTR = deivce;   
     //render target
     HRESULT result = DEVICEPTR->CreateTexture(
         mBackBufferSizeX,

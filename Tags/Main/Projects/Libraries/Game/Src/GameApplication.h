@@ -12,18 +12,22 @@ namespace BM
         GameApplication(QString name, int argc, char* argv[]);
         ~GameApplication();
 
+    public:
+        Timer& GetTimer() { return m_Timer; }
+
     protected:
         virtual bool InitApp();
         virtual bool InitEngine();
+        virtual void Tick(Float32 fDeltaTime);
 
         void SetRenderWidget(QWidget* pRenderWidget) { m_pRenderWidget = pRenderWidget; }
 
     protected slots:
         virtual void Exit();
-        virtual void Tick();
 
-    private:
+    private slots:
         virtual bool Init();
+        virtual void OnTick();
 
     protected:
         QTimer                  m_TickTimer;

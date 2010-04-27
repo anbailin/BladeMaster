@@ -14,7 +14,7 @@ void DCModel::Draw(uint32 ndx)
 {
 	assert( ndx<mSubModelCount );
 
-	pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );	
+	//pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );	
 
     VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosWNTC);
     ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().skin_vs_id, ShaderLoader::Instance().skin_ps_id);
@@ -220,7 +220,7 @@ void DCModelSys::Draw(uint32 ndx)
 {
 	assert(ndx<mSubModelCount);
 
-	pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );
+	//pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );
 	
     VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosNorTex);
     ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().static_vs_id, ShaderLoader::Instance().static_ps_id);

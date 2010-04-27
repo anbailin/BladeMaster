@@ -7,7 +7,7 @@ namespace BM
         : Application(name, argc, argv)
         , m_TickTimer(this)
     {
-        connect(&m_TickTimer, SIGNAL(timeout()), this, SLOT(Tick()));
+        connect(&m_TickTimer, SIGNAL(timeout()), this, SLOT(OnTick()));
     }
 
     GameApplication::~GameApplication()
@@ -82,7 +82,20 @@ namespace BM
         Application::Exit();
     }
 
-    void GameApplication::Tick()
+    void GameApplication::Tick(Float32 fDeltaTime)
+    {
+        if (m_pEngine != NULL)
+        {
+            m_pEngine->Tick(fDeltaTime);
+        }
+
+        if (m_pRenderer != NULL)
+        {
+            m_pRenderer->Tick(fDeltaTime);
+        }
+    }
+
+    void GameApplication::OnTick()
     {
         static UInt64 LastTicks = m_Timer.Ticks();
 
@@ -91,14 +104,6 @@ namespace BM
         Float64 fDeltaSeconds = Timer::TicksToSeconds(iDeltaTicks);
         LastTicks = iTicks;
 
-        if (m_pEngine != NULL)
-        {
-            m_pEngine->Tick(fDeltaSeconds);
-        }
-
-        if (m_pRenderer != NULL)
-        {
-            m_pRenderer->Tick(fDeltaSeconds);
-        }
+        Tick(fDeltaSeconds);
     }
 }

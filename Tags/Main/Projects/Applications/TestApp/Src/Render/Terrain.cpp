@@ -80,7 +80,7 @@ BMTerrain::~BMTerrain()
 
 void BMTerrain::Draw(D3DXMATRIXA16* worldMtx,D3DXMATRIXA16* viewMtx, D3DXMATRIXA16* projMtx)
 {
-    pix_event g( DXUT_PERFEVENTCOLOR, L"terrain" );
+    //pix_event g( DXUT_PERFEVENTCOLOR, L"terrain" );
 
     static float TimeStamp = 0.0f;
     //TimeStamp += 1.0f;

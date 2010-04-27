@@ -22,17 +22,21 @@ namespace BM
         virtual void Exit();
         virtual void Tick(Float32 fDeltaTime);
         virtual void Update(Float32 fDeltaTime);
-        virtual void Draw();
+        virtual void Draw(Float32 fDeltaTime);
 
         IDirect3DDevice9* GetDevice() { return DXUTGetD3D9Device(); }
 
-    private:
+    protected:
         void InitDXUT();
-        bool IsDeviceAcceptable(D3DCAPS9* pCaps, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, bool bWindowed);
-        void OnCreateDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc);
-        void OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc);
-        void OnLostDevice();
-        void OnDestroyDevice();
+
+        virtual bool IsDeviceAcceptable(D3DCAPS9* pCaps, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, bool bWindowed);
+        virtual void OnCreateDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc);
+        virtual void OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc);
+        virtual void OnLostDevice();
+        virtual void OnDestroyDevice();
+
+    private:
+        Float32 m_fDeltaTime;
 
     public:
         static bool    CALLBACK DXUT_IsDeviceAcceptable(D3DCAPS9* pCaps, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, bool bWindowed, void* pUserContext);
