@@ -27,6 +27,6 @@
 
 # Folders
 /Tags/Main/Binaries/
-
+\Tags\Main\Projects\Applications\TestApp\GeneratedFiles\
 # Qt MOC Files
 moc_*.cpp

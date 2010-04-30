@@ -27,7 +27,9 @@ bool App::InitApp()
     m_pMainWindow = new MainWindow();
     m_pMainWindow->show();
 
-    SetRenderWidget(m_pMainWindow->centralWidget());
+    QWidget* widget = m_pMainWindow->GetRenderWidget();	
+	assert(widget);
+	SetRenderWidget(widget);
 
     return true;
 }
