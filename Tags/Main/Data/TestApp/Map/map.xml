@@ -1,8 +1,0 @@
-<Map name = "test">
-	<Model path = "Creature\BogBeast\" name = "BogBeast.mdx" posx = "-3.0" posy = "0.0"></Model>
-	<Model path = "Creature\Bear\" name = "PolarBearCub.mdx" posx = "0.0" posy = "0.0"></Model>
-	<Model path = "Creature\Centaur\" name = "Centaur.mdx" posx = "3.0" posy = "0.0"></Model>
-	<Model path = "Creature\Kobold\" name = "Kobold.mdx" posx = "-6.0" posy = "0.0"></Model>
-	<Model path = "Creature\MineSpider\" name = "MineSpider.mdx" posx = "-6.0" posy = "3.0"></Model>
-	<Model path = "Creature\Ogre\" name = "Ogre.mdx" posx = "-3.0" posy = "3.0"></Model>	
-</Map>
