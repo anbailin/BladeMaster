@@ -1,5 +1,4 @@
-#include "CorePrivate.h"
-#include "Timer.h"
+#include "Core.h"
 
 namespace BM
 {

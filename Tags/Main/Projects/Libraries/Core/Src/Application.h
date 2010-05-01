@@ -1,11 +1,11 @@
 #pragma once
 
-#include "CorePublic.h"
+#include "Core.h"
 #include "ClassFactory.h"
 
 namespace BM
 {
-    class CORE_API Application : public QApplication
+    class CORE_DLL Application : public QApplication
     {
         Q_OBJECT
 

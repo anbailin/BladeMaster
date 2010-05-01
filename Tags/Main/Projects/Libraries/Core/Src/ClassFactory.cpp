@@ -1,4 +1,4 @@
-#include "CorePrivate.h"
+#include "Core.h"
 #include "ClassFactory.h"
 
 namespace BM

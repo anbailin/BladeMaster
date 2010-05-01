@@ -1,14 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'GameEngine.h'
 **
-** Created: Wed Apr 28 21:52:55 2010
+** Created: Sat May 1 20:33:17 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "EnginePrivate.h"
-#include "..\..\Src\GameEngine.h"
+#include "../../Src/GameEngine.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'GameEngine.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62

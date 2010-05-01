@@ -112,11 +112,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\GeneratedFiles;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\qtmain;$(QTDIR)\include\QtCore;.\;$(QTDIR)\include\QtGui"
-				PreprocessorDefinitions="WIN32;CORE_LIB;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB"
+				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;.\;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(SolutionDir)Projects\Libraries\Core\Src\&quot;"
+				PreprocessorDefinitions="WIN32;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB;CORE_EXPORT_DLL"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="false"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				PrecompiledHeaderThrough="CorePrivate.h"
 				DebugInformationFormat="3"
 			/>
@@ -190,7 +190,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DCORE_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fCorePrivate.h&quot; &quot;-f..\..\Src\Application.h&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -DCORE_EXPORT_DLL -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;.\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Core\Src\.&quot; &quot;.\Src\Application.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -241,23 +241,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Src\Singleton.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\Timer.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\Timer.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Src\Types.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\Utilities.h"
 				>
 			</File>
 		</Filter>
@@ -317,6 +301,10 @@
 			</File>
 			<File
 				RelativePath=".\Src\Color.inl"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\MathBasic.h"
 				>
 			</File>
 			<File
@@ -385,6 +373,274 @@
 			>
 			<File
 				RelativePath=".\Src\AlignedContainerAllocator.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="TinyXML"
+			>
+			<File
+				RelativePath=".\Src\TinyXML\tinystr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\TinyXML\tinystr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\TinyXML\tinyxml.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\TinyXML\tinyxml.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\TinyXML\tinyxmlerror.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\TinyXML\tinyxmlparser.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="MPQ"
+			>
+			<File
+				RelativePath=".\Src\libmpq\common.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\common.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\explode.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\explode.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\extract.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\huffman.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\huffman.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\mpq.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\mpq.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\mpq_lib.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\mpq_lib.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\wave.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\libmpq\wave.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Zlib"
+			>
+			<File
+				RelativePath=".\Src\zlib\adler32.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\compress.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\crc32.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\crc32.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\deflate.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\deflate.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\gzio.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\inffast.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\inffast.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\inffixed.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\inflate.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\inflate.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\inftrees.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\inftrees.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\trees.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\trees.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\uncompr.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\zconf.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\zlib.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\zutil.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\zlib\zutil.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Util"
+			>
+			<File
+				RelativePath=".\Src\Util\BMLog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\BMLog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCComPtr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCCoreUtils.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCCoreUtils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCMemStack.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCRGBAColor8.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCTimer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCTimer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCTimerManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCTimerManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCTimeSource_win.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCTimeSource_win.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DCTypeDef.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DXUTTimer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\DXUTTimer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\IDCTimer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\IDCTimeSource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Util\RefObject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Singleton.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Timer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Timer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Utilities.h"
 				>
 			</File>
 		</Filter>

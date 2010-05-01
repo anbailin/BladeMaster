@@ -1,10 +1,10 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
-    class CORE_API ClassFactory
+    class CORE_DLL ClassFactory
     {
         BM_CLASS_NO_COPY(ClassFactory);
 

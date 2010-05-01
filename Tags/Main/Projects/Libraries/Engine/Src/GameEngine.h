@@ -4,18 +4,18 @@
 
 namespace BM
 {
-    class ENGINE_API GameEngine : public QObject
+    class ENGINE_DLL GameEngine : public QObject
     {
         Q_OBJECT
 
     public:
-        GameEngine();
-        ~GameEngine();
+		GameEngine(){}
+		~GameEngine(){}
 
     public:
-        virtual void Init();
-        virtual void Exit();
-        virtual void Tick(Float32 fDeltaTime);
+		virtual void Init(){}
+		virtual void Exit(){}
+		virtual void Tick(Float32 fDeltaTime){}
     };
 
     BM_CLASS_FACTORY_REGISTER(GameEngine);

@@ -112,11 +112,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;.\;..\Core\Src"
-				PreprocessorDefinitions="WIN32;GRAPHICS_LIB;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB"
+				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;.\;..\Core\Src;&quot;$(SolutionDir)Projects\Libraries\Engine\Src\&quot;;&quot;$(SolutionDir)Projects\Libraries\Animation\&quot;"
+				PreprocessorDefinitions="WIN32;GRAPHICS_LIB;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB;RENDER_EXPORT_DLL"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="false"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				PrecompiledHeaderThrough="GraphicsPrivate.h"
 				DebugInformationFormat="3"
 			/>
@@ -222,7 +222,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; &quot;.\Src\Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\Renderer.h&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -DRENDER_EXPORT_DLL -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Engine\Src\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Animation\.&quot; &quot;.\Src\Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -255,7 +255,7 @@
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Moc&apos;ing $(InputFileName)..."
-							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; &quot;.\Src\D3D9Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\D3D9Renderer.h&quot;&#x0D;&#x0A;"
+							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -DRENDER_EXPORT_DLL -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Engine\Src\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Animation\.&quot; &quot;.\Src\D3D9Renderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
 							AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 							Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 						/>
@@ -331,6 +331,18 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath=".\GeneratedFiles\Release\moc_DCRenderer.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath=".\GeneratedFiles\Release\moc_Renderer.cpp"
 					>
 					<FileConfiguration
@@ -361,6 +373,18 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath=".\GeneratedFiles\Debug\moc_DCRenderer.cpp"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath=".\GeneratedFiles\Debug\moc_Renderer.cpp"
 					>
 					<FileConfiguration
@@ -373,6 +397,256 @@
 					</FileConfiguration>
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="Model"
+			>
+			<File
+				RelativePath=".\Src\DCGeometry.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCGeometry.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCMapTile.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCMapTile.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCMaterial.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCMaterial.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCModel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCModel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCModelInstance.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCModelInstance.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCScene.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCSubModel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCSubModel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCSurface.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCSurface.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCTexture.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCTexture.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCWMO.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCWMO.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Terrain.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Terrain.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="RenderCore"
+			>
+			<File
+				RelativePath=".\Src\DCRenderer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderer.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(InputFileName)..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DGRAPHICS_LIB -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fGraphicsPrivate.h&quot; &quot;-f..\..\Src\DCRenderer.h&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
+						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(InputFileName)..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DGRAPHICS_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -DRENDER_EXPORT_DLL -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Engine\Src\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Animation\.&quot; &quot;.\Src\DCRenderer.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
+						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderSetter.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderSetter.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderState.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderState.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderType.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderType.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCShaderManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCShaderManager.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Shader"
+			>
+			<File
+				RelativePath="..\..\..\Data\Shader\Bone.hlsl"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Data\Shader\Copy.hlsl"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Data\Shader\ModelSkinning.hlsl"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Data\Shader\ModelStatic.hlsl"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Data\Shader\PostFX.hlsl"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Data\Shader\Terrain.hlsl"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="SpecialEffect"
+			>
+		</Filter>
+		<Filter
+			Name="Utility"
+			>
+			<File
+				RelativePath=".\Src\DCAABoundingBox.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderUtils.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCRenderUtils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCTranslator.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCTranslator.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Guard.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\QuadGeometry.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\QuadGeometry.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\ShaderLoader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\ShaderLoader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\VertexDeclarationManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\VertexDeclarationManager.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Renderer"
+			>
+			<File
+				RelativePath=".\Src\PostFXRenderer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\PostFXRenderer.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

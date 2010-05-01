@@ -112,11 +112,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;.\;..\Core\Src;..\Graphics\Src;$(QTDIR)\include\QtGui"
-				PreprocessorDefinitions="WIN32;ENGINE_LIB;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB"
+				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;.\;..\Core\Src;..\Graphics\Src;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(SolutionDir)Projects\Libraries\Animation\&quot;"
+				PreprocessorDefinitions="WIN32;ENGINE_EXPORTS;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="false"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				PrecompiledHeaderThrough="EnginePrivate.h"
 				DebugInformationFormat="3"
 			/>
@@ -175,6 +175,18 @@
 				SourceControlFiles="false"
 				>
 				<File
+					RelativePath=".\GeneratedFiles\Release\moc_BMEngine.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath=".\GeneratedFiles\Release\moc_GameEngine.cpp"
 					>
 					<FileConfiguration
@@ -193,6 +205,18 @@
 				SourceControlFiles="false"
 				>
 				<File
+					RelativePath=".\GeneratedFiles\Debug\moc_BMEngine.cpp"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath=".\GeneratedFiles\Debug\moc_GameEngine.cpp"
 					>
 					<FileConfiguration
@@ -209,6 +233,44 @@
 		<Filter
 			Name="Src"
 			>
+			<File
+				RelativePath=".\Src\BMEngine.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\BMEngine.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(InputFileName)..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DENGINE_LIB -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\..\Graphics\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fEnginePrivate.h&quot; &quot;-f..\..\Src\BMEngine.h&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
+						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(InputFileName)..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DENGINE_EXPORTS -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\..\Graphics\Src\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Animation\.&quot; &quot;.\Src\BMEngine.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
+						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Src\DCWOWLoader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\DCWOWLoader.h"
+				>
+			</File>
 			<File
 				RelativePath=".\Src\Engine.h"
 				>
@@ -234,6 +296,10 @@
 						Outputs=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Src\EnginePCH.h"
+				>
 			</File>
 			<File
 				RelativePath=".\Src\EnginePrivate.cpp"
@@ -287,11 +353,91 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -D_UNICODE -D_WINDLL -DENGINE_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\..\Graphics\Src\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot; &quot;-fEnginePrivate.h&quot; &quot;-f..\..\Src\GameEngine.h&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DENGINE_EXPORTS -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;.\.&quot; -I&quot;.\..\Core\Src\.&quot; -I&quot;.\..\Graphics\Src\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Animation\.&quot; &quot;.\Src\GameEngine.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
 				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Files"
+			>
+			<File
+				RelativePath=".\Src\Files\BLP.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\BLP.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\DBCFile.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\DBCFile.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\DCFilePath.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\DCFilePath.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\Maps.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\MDX.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Files\MDX.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Level"
+			>
+			<File
+				RelativePath=".\Src\LevelInstance.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\LevelInstance.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\LevelManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\LevelManager.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="SceneGraph"
+			>
+			<File
+				RelativePath=".\Src\SceneNode.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\SceneNode.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\SceneRenderer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\SceneRenderer.h"
+				>
 			</File>
 		</Filter>
 	</Files>

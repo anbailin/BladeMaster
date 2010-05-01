@@ -1,14 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Application.h'
 **
-** Created: Sat May 1 12:19:13 2010
+** Created: Sat May 1 17:07:14 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "CorePrivate.h"
-#include "..\..\Src\Application.h"
+#include "../../Src/Application.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Application.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62

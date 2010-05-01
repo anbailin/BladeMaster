@@ -1,10 +1,10 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
-    class CORE_API Color
+    class CORE_DLL Color
     {
     public:
         Float32 R;

@@ -1,14 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Renderer.h'
 **
-** Created: Wed Apr 28 21:52:46 2010
+** Created: Sat May 1 17:19:37 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "GraphicsPrivate.h"
-#include "..\..\Src\Renderer.h"
+#include "../../Src/Renderer.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Renderer.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62

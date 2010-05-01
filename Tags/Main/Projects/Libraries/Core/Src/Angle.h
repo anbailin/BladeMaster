@@ -1,12 +1,12 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
     class Radian;
 
-	class CORE_API Degree
+	class CORE_DLL Degree
 	{
 	public:
         inline Degree()                                         { m_Value = 0.0f; }

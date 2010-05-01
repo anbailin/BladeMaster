@@ -9,7 +9,7 @@ namespace BM
 {
     class D3D9RenderDeviceManager;
 
-    class GRAPHICS_API D3D9Renderer : public Renderer
+    class RENDER_DLL D3D9Renderer : public Renderer
     {
         Q_OBJECT
 

@@ -1,7 +1,7 @@
 // Included in CorePublic.h
 
-namespace BM
-{
+//namespace BM
+//{
     //////////////////////////////////////////////////////////////////////////
     // Types
     typedef	qint8       Int8;
@@ -69,4 +69,4 @@ namespace BM
     const Byte          Byte_Min                = UInt8_Min;
     const Byte          Byte_Max                = UInt8_Max;
     //////////////////////////////////////////////////////////////////////////
-}
+//}

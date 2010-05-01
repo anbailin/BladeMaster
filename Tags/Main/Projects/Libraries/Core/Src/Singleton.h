@@ -1,11 +1,9 @@
 #pragma once
 
-#include "CorePublic.h"
-
 namespace BM
 {
     template<typename T>
-    class CORE_API Singleton
+    class CORE_DLL Singleton
     {
     protected:
         Singleton()

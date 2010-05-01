@@ -1,10 +1,10 @@
-#include "CorePrivate.h"
-#include "Vector2.h"
-#include "Vector3.h"
-#include "Vector4.h"
-#include "Matrix44.h"
-#include "Quaternion.h"
-#include "Color.h"
+#include "Core.h"
+//#include "Vector2.h"
+//#include "Vector3.h"
+//#include "Vector4.h"
+//#include "Matrix44.h"
+//#include "Quaternion.h"
+//#include "Color.h"
 
 namespace BM
 {

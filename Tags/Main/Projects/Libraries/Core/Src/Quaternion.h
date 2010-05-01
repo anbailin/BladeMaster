@@ -1,10 +1,10 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
-    class CORE_API Quaternion
+    class CORE_DLL Quaternion
     {
     public:
         Float32 X;

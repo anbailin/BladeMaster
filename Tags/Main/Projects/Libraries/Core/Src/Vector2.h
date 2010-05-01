@@ -1,10 +1,10 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
-    class CORE_API Vector2
+    class CORE_DLL Vector2
     {
     public:
         Float32 X;

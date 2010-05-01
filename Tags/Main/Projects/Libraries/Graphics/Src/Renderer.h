@@ -4,7 +4,7 @@
 
 namespace BM
 {
-    class GRAPHICS_API Renderer : public QObject
+    class RENDER_DLL Renderer : public QObject
     {
         Q_OBJECT
 

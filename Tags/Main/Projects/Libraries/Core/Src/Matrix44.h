@@ -1,10 +1,10 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
-    class CORE_API Matrix44
+    class CORE_DLL Matrix44
     {
     public:
         Vector4 V[4];

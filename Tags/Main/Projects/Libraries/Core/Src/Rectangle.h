@@ -1,11 +1,11 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
     template<typename T>
-    class CORE_API Rectangle
+    class CORE_DLL Rectangle
     {
     public:
         T Left;

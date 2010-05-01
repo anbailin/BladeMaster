@@ -1,5 +1,4 @@
-#include "GraphicsPrivate.h"
-#include "Renderer.h"
+#include "Graphics.h"
 
 namespace BM
 {

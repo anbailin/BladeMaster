@@ -1,10 +1,10 @@
 #pragma once
 
-#include "CorePublic.h"
+//#include "Core.h"
 
 namespace BM
 {
-    class CORE_API Timer
+    class CORE_DLL Timer
     {
     public:
         inline Timer();
