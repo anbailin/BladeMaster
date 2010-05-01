@@ -27,6 +27,7 @@
 
 # Folders
 /Tags/Main/Binaries/
-/Tags/Main/Projects/Applications/TestApp/GeneratedFiles/
+/Tags/Main/Projects/Applications/TestApp/GeneratedFiles/*.*
+/Tags/Main/Projects/Applications/TestApp/GeneratedFiles/ui_MainWindow.h
 # Qt MOC Files
 moc_*.cpp
