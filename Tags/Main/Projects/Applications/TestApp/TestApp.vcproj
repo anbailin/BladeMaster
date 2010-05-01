@@ -435,14 +435,6 @@
 					>
 				</File>
 				<Filter
-					Name="Container"
-					>
-					<File
-						RelativePath=".\Src\Core\AlignedContainerAllocator.h"
-						>
-					</File>
-				</Filter>
-				<Filter
 					Name="Math"
 					>
 					<File

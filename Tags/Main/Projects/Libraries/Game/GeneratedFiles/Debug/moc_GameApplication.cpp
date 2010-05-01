@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'GameApplication.h'
 **
-** Created: Thu Apr 22 21:12:14 2010
+** Created: Wed Apr 28 21:53:03 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -24,7 +24,7 @@ static const uint qt_meta_data_BM__GameApplication[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,13 +33,15 @@ static const uint qt_meta_data_BM__GameApplication[] = {
 
  // slots: signature, parameters, type, tag, flags
       21,   20,   20,   20, 0x09,
-      28,   20,   20,   20, 0x09,
+      33,   20,   28,   20, 0x08,
+      40,   20,   20,   20, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_BM__GameApplication[] = {
-    "BM::GameApplication\0\0Exit()\0Tick()\0"
+    "BM::GameApplication\0\0Exit()\0bool\0"
+    "Init()\0OnTick()\0"
 };
 
 const QMetaObject BM::GameApplication::staticMetaObject = {
@@ -72,10 +74,12 @@ int BM::GameApplication::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: Exit(); break;
-        case 1: Tick(); break;
+        case 1: { bool _r = Init();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 2: OnTick(); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
