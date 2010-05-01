@@ -23,10 +23,12 @@
 *.ncb
 *.dep
 *.htm
+*.bat
 
 # Folders
 /Tags/Main/Binaries/
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/*.*
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/ui_MainWindow.h
+/Bin/*.*
 # Qt MOC Files
 moc_*.cpp
