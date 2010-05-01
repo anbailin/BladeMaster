@@ -15,6 +15,7 @@ struct IDirect3DTexture9;
 struct IDirect3DSurface9;
 struct IDirect3DPixelShader9;
 struct IDirect3DVertexShader9;
+class DCModel;
 
 /**
 *   global render resource holder
@@ -39,6 +40,7 @@ public:
     virtual void Exit();
     virtual void Update(Float32 fDeltaTime);
     virtual void Draw(Float32 fDeltaTime);
+	void	AddSceneNode(DCModel* modelPtr, const XMFLOAT3& translation);
 
 protected:
     virtual void OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc);

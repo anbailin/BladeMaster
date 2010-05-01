@@ -7,7 +7,6 @@
 #include "DCRenderType.h"
 #include "DCRenderState.h"
 #include "DCRenderSetter.h"
-#include "DCRenderer.h"
 #include "DCSurface.h"
 #include "DCTexture.h"
 #include "DCGeometry.h"
@@ -18,13 +17,15 @@
 #include "DCShaderManager.h"
 #include "DCTranslator.h"
 #include "DCModelInstance.h"
-#include "Guard.h"
+
 #include "DCDef.h"
 #include "DCRenderUtils.h"
 #include "QuadGeometry.h"
 #include "DCMapTile.h"
 #include "DCWMO.h"
 
+#include "DCRenderer.h"
+#include "Guard.h"
 //post fx
 #include "PostFXRenderer.h"
 

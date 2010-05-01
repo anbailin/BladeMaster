@@ -10,6 +10,17 @@ namespace RendererConfig
     const uint32 BackBufferSizeY = 600;
 }
 
+namespace
+{
+	struct BatchNode
+	{
+		DCModelPtr model;
+		XMFLOAT3   translation;
+	};
+
+	std::vector<BatchNode> BatchNodes;	
+}
+
 DCRenderer::DCRenderer()
 :   mBackBufferSizeX(RendererConfig::BackBufferSizeX)
 ,   mBackBufferSizeY(RendererConfig::BackBufferSizeY)
@@ -56,24 +67,62 @@ void DCRenderer::Update(Float32 fDeltaTime)
 }
 
 void DCRenderer::Draw(Float32 fDeltaTime)
-{
-	//blan refactor
-    //// For our world matrix, we will just rotate the object about the y-axis.
-    //D3DXMATRIXA16 mxView, mxProj;
+{	
+    // For our world matrix, we will just rotate the object about the y-axis.
+    D3DXMATRIXA16 mxView, mxProj;
 
-    //D3DXVECTOR3 vEye(0.0f, 5.0f,-5.0f);
-    //D3DXVECTOR3 vAt(0.0f,0.0f,1.0f);
-    //D3DXVECTOR3 vUp(0.0f,1.0f,0.0f);
+    D3DXVECTOR3 vEye(0.0f, 5.0f,-5.0f);
+    D3DXVECTOR3 vAt(0.0f,0.0f,1.0f);
+    D3DXVECTOR3 vUp(0.0f,1.0f,0.0f);
 
-    //float fAspectRatio = m_pRenderWidget->width() / (FLOAT)m_pRenderWidget->height();
+    float fAspectRatio = m_pRenderWidget->width() / (FLOAT)m_pRenderWidget->height();
 
-    //D3DXMatrixLookAtLH(&mxView, &vEye, &vAt, &vUp);
-    //D3DXMatrixPerspectiveFovLH(&mxProj, D3DX_PI/3, fAspectRatio, 0.001f, 100.0f);
+    D3DXMatrixLookAtLH(&mxView, &vEye, &vAt, &vUp);
+    D3DXMatrixPerspectiveFovLH(&mxProj, D3DX_PI/3, fAspectRatio, 0.001f, 100.0f);
 
-    //SceneRenderer::Instance().SetViewMatrix(mxView);
-    //SceneRenderer::Instance().SetProjMatrix(mxProj);
+ 	//models
+	// For our world matrix, we will just rotate the object about the y-axis.
+	D3DXMATRIXA16 mxWorld, mxViewProj;
 
-    //SceneRenderer::Instance().RenderScene(*(LevelManager::Instance().GetLevelInstance()));
+	D3DXMatrixIdentity(&mxViewProj);
+
+	BM_AssertHr(DEVICEPTR->BeginScene());	
+	{        
+		BeginRender();
+		DEVICEPTR->Clear( 0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,D3DCOLOR_COLORVALUE(85.0f/255.0f,101.0f/255.0f,215.0f/255.0f,1.0f), 1.0f, 0 );
+		BM_AssertHr(DEVICEPTR->EndScene());    
+		//models
+		//const std::vector<SceneNodePtr>& nodes = instance.GetNodes();
+		const std::vector<BatchNode>& nodes = BatchNodes;
+		const uint32 nodeNum = nodes.size();
+		for(uint32 nodeIdx = 0; nodeIdx<nodeNum; nodeIdx++)
+		{
+			BM_AssertHr(DEVICEPTR->BeginScene());
+			const BatchNode& nodePtrRef = nodes[nodeIdx];
+			const XMFLOAT3& translation = nodePtrRef.translation;
+			D3DXMatrixTranslation(&mxWorld, translation.x, translation.y, translation.z);
+			mxViewProj = mxView * mxProj;
+
+			DEVICEPTR->SetVertexShaderConstantF(0,(float*)&(mxWorld),4);
+			DEVICEPTR->SetVertexShaderConstantF(4,(float*)&(mxViewProj),4);
+			DEVICEPTR->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+			DEVICEPTR->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
+
+			nodePtrRef.model->Draw(0);
+			BM_AssertHr(DEVICEPTR->EndScene()); 
+		}
+
+		BM_AssertHr(DEVICEPTR->BeginScene());
+		//terrain
+		//instance.GetTerrain()->Draw(&mxWorld, &mViewMatrix, &mProjMatrix);
+
+		BMPostFXRenderer::Instance().Render();
+
+		EndRender();
+		BM_AssertHr(DEVICEPTR->EndScene()); 
+	}
+
+	BatchNodes.clear();
 }
 
 void DCRenderer::OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc)
@@ -157,3 +206,11 @@ void DCRenderer::ReleaseResource()
     VertexDeclareManager::Instance().ReleaseResource();
 }
 
+
+void DCRenderer::AddSceneNode(DCModel* modelPtr, const XMFLOAT3& translation)
+{
+	BatchNode node;
+	node.model = modelPtr;
+	node.translation = translation;
+	BatchNodes.push_back(node);
+}
