@@ -16,6 +16,7 @@ struct IDirect3DSurface9;
 struct IDirect3DPixelShader9;
 struct IDirect3DVertexShader9;
 class DCModel;
+class BMTerrain;
 
 /**
 *   global render resource holder
@@ -41,7 +42,7 @@ public:
     virtual void Update(Float32 fDeltaTime);
     virtual void Draw(Float32 fDeltaTime);
 	void	AddSceneNode(DCModel* modelPtr, const XMFLOAT3& translation);
-
+	void    AddSceneTerrain(BMTerrain* terrain);
 protected:
     virtual void OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc);
     virtual void OnLostDevice();
@@ -61,14 +62,11 @@ protected:
 
     //attribues access
 public:
-    //IDirect3DDevice9* GetDevice(){return mDevice;}
     void              GetBackBufferSize(uint32& sizeX, uint32& sizeY)const { sizeX = mBackBufferSizeX; sizeY = mBackBufferSizeY; }    
 	TexturePtr	      GetLightingRT() { return mLightingRT; }    
 
     //attribues
 protected:
-    //IDirect3DDevice9* mDevice;    
-
     //resource
     QuadGeometry*       mQuadGeometry;
     //config

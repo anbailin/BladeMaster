@@ -19,6 +19,8 @@ namespace
 	};
 
 	std::vector<BatchNode> BatchNodes;	
+
+	BMTerrainPtr		   TerrainPtr;
 }
 
 DCRenderer::DCRenderer()
@@ -113,8 +115,12 @@ void DCRenderer::Draw(Float32 fDeltaTime)
 		}
 
 		BM_AssertHr(DEVICEPTR->BeginScene());
-		//terrain
-		//instance.GetTerrain()->Draw(&mxWorld, &mViewMatrix, &mProjMatrix);
+
+		//terrain		
+		if(TerrainPtr)
+		{
+			TerrainPtr->Draw(&mxWorld, &mxView, &mxProj);
+		}
 
 		BMPostFXRenderer::Instance().Render();
 
@@ -213,4 +219,9 @@ void DCRenderer::AddSceneNode(DCModel* modelPtr, const XMFLOAT3& translation)
 	node.model = modelPtr;
 	node.translation = translation;
 	BatchNodes.push_back(node);
+}
+
+void DCRenderer::AddSceneTerrain(BMTerrain* terrain)
+{
+	TerrainPtr = terrain;
 }

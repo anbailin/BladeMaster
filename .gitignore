@@ -1,6 +1,5 @@
 *.a
 *.user
-*.lib
 *.dll
 *.exe
 *.pdb

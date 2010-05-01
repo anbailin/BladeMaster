@@ -38,6 +38,8 @@ void BMEngine::Tick(float fDeltaTime)
 		const SceneNodePtr& node = nodes[i];
 		DCRenderer::Instance().AddSceneNode(node->GetModel(), node->GetTranslation());
 	}	
+
+	DCRenderer::Instance().AddSceneTerrain(instance->GetTerrain());
 }
 
 void BMEngine::ReleaseResource()

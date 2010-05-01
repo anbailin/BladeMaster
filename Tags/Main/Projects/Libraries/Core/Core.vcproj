@@ -112,7 +112,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;.\;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(SolutionDir)Projects\Libraries\Core\Src\&quot;"
+				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;.\;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(SolutionDir)Projects\Libraries\Core\Src\&quot;;&quot;$(SolutionDir)Extern\Inc\&quot;"
 				PreprocessorDefinitions="WIN32;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB;CORE_EXPORT_DLL"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="false"
@@ -131,9 +131,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib"
+				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib zlibDebug.lib"
 				OutputFile="$(OutDir)\$(ProjectName)_$(ConfigurationName)$(PlatformName).dll"
-				AdditionalLibraryDirectories="$(QTDIR)\lib"
+				AdditionalLibraryDirectories="&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)Extern/Lib/&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 			/>
@@ -190,7 +190,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -DCORE_EXPORT_DLL -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;.\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Core\Src\.&quot; &quot;.\Src\Application.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -DCORE_EXPORT_DLL -D_WINDLL -D_UNICODE -DUNICODE  -I&quot;.\GeneratedFiles\.&quot; -I&quot;$(QTDIR)\include\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;$(QTDIR)\include\qtmain\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;.\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(SolutionDir)Projects\Libraries\Core\Src\.&quot; -I&quot;$(SolutionDir)Extern\Inc\.&quot; &quot;.\Src\Application.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -457,94 +457,6 @@
 			</File>
 			<File
 				RelativePath=".\Src\libmpq\wave.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Zlib"
-			>
-			<File
-				RelativePath=".\Src\zlib\adler32.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\compress.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\crc32.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\crc32.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\deflate.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\deflate.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\gzio.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\inffast.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\inffast.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\inffixed.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\inflate.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\inflate.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\inftrees.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\inftrees.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\trees.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\trees.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\uncompr.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\zconf.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\zlib.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\zutil.c"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\zlib\zutil.h"
 				>
 			</File>
 		</Filter>
