@@ -75,11 +75,13 @@ LevelInstance* LevelManager::CreateLevelInstance(const char* name)
         }     
 
         DCFilePath file(nodeInfo.path,nodeInfo.name);
-        DCModelPtr modelPtr = DCWOWLoader::Instance().LoadModel(file); 
+		DCAnimationManager* animMgr = NULL;
+        DCModelPtr modelPtr = DCWOWLoader::Instance().LoadModel(file, animMgr); 
         SceneNodePtr nodePtr = new SceneNode;
         nodePtr->SetModel(modelPtr);
         XMFLOAT3 translation(nodeInfo.x, 0.0f, nodeInfo.y);
         nodePtr->SetTranslation(translation);
+		nodePtr->SetAnimMgr(animMgr);
 
         levelInstance->AddNode(nodePtr);
     }

@@ -31,7 +31,7 @@ void DCWOWLoader::Init()
 }
 
 //todo_safe:when fail, release the resource
-DCModel* DCWOWLoader::LoadModel(DCFilePath& _path)
+DCModel* DCWOWLoader::LoadModel(DCFilePath& _path, DCAnimationManager*& animMgr)
 {
 	int32 ReplacementId[32];
 	int32 ReplacementRecord[32];
@@ -196,7 +196,8 @@ DCModel* DCWOWLoader::LoadModel(DCFilePath& _path)
 	
 	anim->SetAnimSeqInfo(seqWLK, seqNum);
 	anim->SetBoneInfo(header,mpq, animFiles);
-	result->SetAnimManager(anim);
+	//result->SetAnimManager(anim);
+	animMgr = anim;
 
 	SafeDeleteArray(animFiles);
 	return result;

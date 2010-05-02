@@ -1,5 +1,4 @@
-#include "Core.h"
-#include "DCAnimHeader.h"
+#include "EnginePrivate.h"
 
 //---------------------------------------------------------------------------------------
 DCAnimationManager::DCAnimationManager()

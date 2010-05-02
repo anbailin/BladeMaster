@@ -5,8 +5,8 @@ class DCModel;
 class DCBone;
 struct MDXAnimSequence;
 
-typedef std::vector<XMMATRIX,AlignmentAllocator<XMMATRIX,16>> MatrixPool;
-class ANIM_DLL DCAnimationManager
+
+class ENGINE_DLL DCAnimationManager
 {
 public:
 	DCAnimationManager();
@@ -26,8 +26,10 @@ public:
 	void	SetBoneInfo(const MDXModelHeader& header, MPQFile& file, MPQFile* animFiles);
 
 	const	MDXAnimSequence& GetAnimSeqInfo(uint32 index)const	{ return mAnimSeqInfo[index]; }
+
 	const	DCBone&	GetBone(uint32 index)const				{ return mBones[index];	}
 	uint32  GetBoneNum()const						{ return mBones.size(); }
+	
 	const std::vector<uint32>&  GetBoneIDVector()const						{ return mRootBoneIDs; }
 	const	MatrixPool& GetMatrixPool()const			{ return mBoneMatrixPool;	}
 

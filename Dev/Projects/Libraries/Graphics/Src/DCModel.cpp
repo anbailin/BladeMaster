@@ -1,11 +1,10 @@
 #include "Graphics.h"
-#include "DCAnimHeader.h"
+
 
 //---------DCModel------------------------------------------------------------------------------
 
 DCModel::DCModel()
-:	mAnimMgr(NULL)
-,	mSubModels(NULL)
+:	mSubModels(NULL)
 ,	mSubModelCount(0)
 {}
 
@@ -19,11 +18,11 @@ void DCModel::Draw(uint32 ndx)
     VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosWNTC);
     ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().skin_vs_id, ShaderLoader::Instance().skin_ps_id);
 	
-	float* constAddr = NULL;
-	uint32 constSize = 0;
-	
-	mAnimMgr->GetShaderConstantInfo(constAddr,constSize);
-	DEVICEPTR->SetVertexShaderConstantF(9,constAddr,constSize);
+	//float* constAddr = NULL;
+	//uint32 constSize = 0;
+	//
+	//mAnimMgr->GetShaderConstantInfo(constAddr,constSize);
+	DEVICEPTR->SetVertexShaderConstantF(9,mSkinData,mSkinConstNum);
 
 	BM_AssertHr( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(DCVertPosWNTC) ) );
 
@@ -74,69 +73,64 @@ DCTexturePtr DCModel::GetTexture(uint32 index)
 
 DCModel::~DCModel()
 {
-	SafeDelete(mAnimMgr);
 	SafeDeleteArray(mSubModels);
 }
 
 void DCModel::RenderBoneLevel()
 { 
-	GUARD_RENDERSTATE(D3DRS_ZENABLE,false);
+	//GUARD_RENDERSTATE(D3DRS_ZENABLE,false);
 
-    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosColor);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().bone_vs_id, ShaderLoader::Instance().bone_ps_id);
-	
-	const uint32 boneNum = mAnimMgr->GetBoneNum();
+ //   VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosColor);
+ //   ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().bone_vs_id, ShaderLoader::Instance().bone_ps_id);
+	//
+	//const uint32 boneNum = mAnimMgr->GetBoneNum();
 
-	//log code begin-------------------------------------------------------------
-	//for(uint32 i=0;i<boneNum; i++)
+	////log code begin-------------------------------------------------------------
+	////for(uint32 i=0;i<boneNum; i++)
+	////{
+	////	const DCBone& bone = mAnimMgr->GetBone(i);
+	////	const XMFLOAT3& transPivot = bone.GetTransPivot();
+	////	const XMFLOAT3& pivot = bone.GetPivot();
+	////	wchar_t c_str[256];
+
+	////	_snwprintf_s(c_str, 256, L"transPivot at %d is %f, %f, %f\n ", i, transPivot.x, transPivot.y, transPivot.z);
+	////	OutputDebugStr(c_str);
+
+	////	_snwprintf_s(c_str, 256, L"Pivot at %d is %f, %f, %f\n ", i, pivot.x, pivot.y, pivot.z);
+	////	OutputDebugStr(c_str);
+	////}
+	////log code end-------------------------------------------------------------
+
+	//const std::vector<uint32>& boneIdVec = mAnimMgr->GetBoneIDVector(); 
+	//for(uint32 i=0;i<boneIdVec.size();i++)
 	//{
-	//	const DCBone& bone = mAnimMgr->GetBone(i);
-	//	const XMFLOAT3& transPivot = bone.GetTransPivot();
-	//	const XMFLOAT3& pivot = bone.GetPivot();
-	//	wchar_t c_str[256];
+	//	const uint32 rootID = boneIdVec[i];
+	//	const DCBone& root = mAnimMgr->GetBone(rootID);
+	//	const uint32 boneLevel = mAnimMgr->GetBoneLevel(); 
 
-	//	_snwprintf_s(c_str, 256, L"transPivot at %d is %f, %f, %f\n ", i, transPivot.x, transPivot.y, transPivot.z);
-	//	OutputDebugStr(c_str);
+	//	assert(root.GetParentPtr() == NULL);
+	//	std::vector<BoneVert> vtx;
+	//	vtx.reserve(boneNum*2);
+	//	
+	//	static bool boneColor = false;
 
-	//	_snwprintf_s(c_str, 256, L"Pivot at %d is %f, %f, %f\n ", i, pivot.x, pivot.y, pivot.z);
-	//	OutputDebugStr(c_str);
-	//}
-	//log code end-------------------------------------------------------------
+	//	root.RenderBoneLevel(vtx,boneLevel,boneColor);
 
-	const std::vector<uint32>& boneIdVec = mAnimMgr->GetBoneIDVector(); 
-	for(uint32 i=0;i<boneIdVec.size();i++)
-	{
-		const uint32 rootID = boneIdVec[i];
-		const DCBone& root = mAnimMgr->GetBone(rootID);
-		const uint32 boneLevel = mAnimMgr->GetBoneLevel(); 
-
-		assert(root.GetParentPtr() == NULL);
-		std::vector<BoneVert> vtx;
-		vtx.reserve(boneNum*2);
-		
-		static bool boneColor = false;
-
-		root.RenderBoneLevel(vtx,boneLevel,boneColor);
-
-		if(vtx.size() == 0)
-		{
-			continue;
-		}
-		else
-		{
-			BM_AssertHr( DEVICEPTR->DrawPrimitiveUP( D3DPT_LINELIST,vtx.size()/2,&(vtx[0]),sizeof(BoneVert) ) );
-		}
-	}	
+	//	if(vtx.size() == 0)
+	//	{
+	//		continue;
+	//	}
+	//	else
+	//	{
+	//		BM_AssertHr( DEVICEPTR->DrawPrimitiveUP( D3DPT_LINELIST,vtx.size()/2,&(vtx[0]),sizeof(BoneVert) ) );
+	//	}
+	//}	
 }
 
-void DCModel::SetAnimManager(DCAnimationManager* mgr)
-{ 
-	mAnimMgr = mgr; mgr->SetModel(this);
-}
-
-void DCModel::Animate(uint32 anim)
+void DCModel::SetSkinningData(const MatrixPool& skinData)
 {
-	mAnimMgr->Animate(anim);	
+	mSkinData = (float*)&(skinData[0]);
+	mSkinConstNum = 4*skinData.size();
 }
 
 //---------DCModelSys------------------------------------------------------------------------------
@@ -184,12 +178,9 @@ void DCModelSys::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 	mVertexCount = count;
 }
 
-
-void DCModelSys::Animate(uint32 anim)
+void DCModelSys::SetSkinningData(const MatrixPool& skinData)
 {
-	mAnimMgr->Animate(anim);
-
-	const MatrixPool& bones = mAnimMgr->GetMatrixPool();
+	const MatrixPool& bones = skinData;
 	for(uint32 i=0;i<mVertexCount;i++)
 	{
 		const XMFLOAT3& pos = mOriginalVertArray[i].pos;
@@ -210,9 +201,9 @@ void DCModelSys::Animate(uint32 anim)
 			animpos += tpos*weight[k];
 			animnorm += tnorm*weight[k];
 		}
-		
+
 		XMStoreFloat3(&mAnimatedVertArray[i].pos, animpos);
-        XMStoreFloat3(&mAnimatedVertArray[i].normal, animnorm);
+		XMStoreFloat3(&mAnimatedVertArray[i].normal, animnorm);
 		assert(mAnimatedVertArray[i].tex.x>=0 && mAnimatedVertArray[i].tex.y>=0 );
 	}
 }

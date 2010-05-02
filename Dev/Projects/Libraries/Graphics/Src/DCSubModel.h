@@ -1,18 +1,6 @@
 #pragma once
-//
-//#include <vector>
-//#include "MDX.h"
-//
-//#include "DCMaterial.h"
-//#include "DCGeometry.h"
-//
-//#include "DCAnimationManager.h"
-//#include "DCRenderType.h"
-
-#pragma once
 
 class DCMaterial;
-class DCAnimationManager;
 class DCModel;
 
 class RENDER_DLL DCSubModel:public RefObject

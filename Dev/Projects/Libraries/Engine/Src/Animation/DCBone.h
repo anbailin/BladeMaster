@@ -3,7 +3,7 @@
 
 class DCAnimationManager;
 
-class ANIM_DLL __declspec(align(16)) DCBone
+class ENGINE_DLL __declspec(align(16)) DCBone
 {
 public:
 	DCBone();

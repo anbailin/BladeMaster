@@ -432,6 +432,34 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="Animation"
+			>
+			<File
+				RelativePath=".\Src\Animation\DCAnimationManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Animation\DCAnimationManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Animation\DCAnimData.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Animation\DCAnimData.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Animation\DCBone.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Animation\DCBone.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 		<Global

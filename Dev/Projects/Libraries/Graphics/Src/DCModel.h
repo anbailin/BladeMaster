@@ -4,8 +4,6 @@
 #pragma once
 
 class DCMaterial;
-class DCAnimationManager;
-
 
 /**
 	DCModel----represent a model
@@ -20,8 +18,7 @@ public:
 	DCModel();
 	virtual ~DCModel();
 
-	virtual void			Draw(uint32 ndx);
-	virtual void			Animate(uint32 anim);
+	virtual void			Draw(uint32 ndx);	
 	void					RenderBoneLevel();
 
 	/*
@@ -38,12 +35,14 @@ public:
 	void					SetTextureTableSize(uint32 size)	{ mTextureTable.resize(size);}
 	void					SetTexture(DCTexturePtr ptr,uint32 index);
 	DCTexturePtr			GetTexture(uint32 index);
-
-	void					SetAnimManager(DCAnimationManager* mgr);
 	
-protected:
+	//attr access
+public:
+	void					SetWorldMatrix(const D3DXMATRIXA16& matrix) { mWorld = matrix; }
+	void					SetSkinningData(const float* skin, uint32 size)			{ mSkinData = skin; mSkinConstNum = size; }
+	virtual void			SetSkinningData(const MatrixPool& skinData);
 
-	DCAnimationManager*				mAnimMgr;
+protected:
 
 	DCSubModel*						mSubModels;
 	uint32							mSubModelCount;
@@ -52,6 +51,10 @@ protected:
 	uint32							mVertexCount;
 
 	std::vector<DCTexturePtr>		mTextureTable;
+
+	D3DXMATRIXA16					mWorld;
+	const float*					mSkinData;//data of the skinning animation
+	uint32							mSkinConstNum;//how many float4 of the skinning data
 };
 
 /**
@@ -65,8 +68,9 @@ public:
 	virtual ~DCModelSys();
 
 	virtual void			Draw(uint32 ndx);
-	virtual void			InitVertexBuffer(void* addr, DCVertexType type, uint32 count);
-	virtual void			Animate(uint32 anim);
+	virtual void			InitVertexBuffer(void* addr, DCVertexType type, uint32 count);	
+	virtual void			SetSkinningData(const MatrixPool& skinData);
+
 protected:
 	MDXVertArray					mOriginalVertArray;
 	MDXVertArraySys					mAnimatedVertArray;

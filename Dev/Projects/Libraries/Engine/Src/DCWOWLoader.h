@@ -12,7 +12,7 @@ class ENGINE_DLL DCWOWLoader
     BM_SINGLETON_DECLARE(DCWOWLoader);
 
 public:
-	DCModel*							LoadModel(DCFilePath& path);
+	DCModel*							LoadModel(DCFilePath& _path, DCAnimationManager*& animMgr);
 	DCModel*							LoadModel(uint32 creatureID);
 	DCTexture*							LoadTexture(const std::string& _filename);
 

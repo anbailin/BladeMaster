@@ -53,3 +53,5 @@ typedef ComPtr<IDirect3DTexture9>       TexturePtr;
 //--------------------------------------------------------------------------------------------
 typedef std::vector<MDXModelVertSys>	MDXVertArraySys;
 typedef std::vector<DCVertPosWNTC2>		MDXVertArray;
+
+typedef std::vector<XMMATRIX,AlignmentAllocator<XMMATRIX,16>> MatrixPool;

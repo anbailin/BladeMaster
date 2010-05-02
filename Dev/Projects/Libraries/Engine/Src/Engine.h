@@ -2,7 +2,6 @@
 
 #include "Core.h"
 #include "Graphics.h"
-#include "DCAnimHeader.h"
 
 //SceneGraph Filter
 #include "SceneNode.h"
@@ -23,3 +22,7 @@
 #include "GameEngine.h"
 #include "BMEngine.h"
 
+//animation
+#include "Animation/DCAnimData.h"
+#include "Animation/DCBone.h"
+#include "Animation/DCAnimationManager.h"

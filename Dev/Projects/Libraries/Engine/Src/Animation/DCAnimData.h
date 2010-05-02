@@ -64,7 +64,7 @@ public:
 #define	MAX_ANIMATED	500
 
 template<class Type, class D=Type, class Conv=Identity<Type>>
-class ANIM_DLL AnimData
+class ENGINE_DLL AnimData
 {
 public:
 	bool GetIdentity(){return mIdentity;	}
