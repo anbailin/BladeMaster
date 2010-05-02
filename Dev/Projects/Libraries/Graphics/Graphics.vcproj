@@ -118,6 +118,8 @@
 				TreatWChar_tAsBuiltInType="false"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="GraphicsPrivate.h"
+				WarningLevel="4"
+				WarnAsError="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool

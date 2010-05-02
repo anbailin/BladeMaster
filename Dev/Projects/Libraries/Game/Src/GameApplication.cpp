@@ -5,7 +5,7 @@ namespace BM
 {
     GameApplication::GameApplication(QString name, int argc, char* argv[])
         : Application(name, argc, argv)
-        , m_TickTimer(this)
+        , m_TickTimer()
     {
         connect(&m_TickTimer, SIGNAL(timeout()), this, SLOT(OnTick()));
     }
@@ -104,6 +104,6 @@ namespace BM
         Float64 fDeltaSeconds = Timer::TicksToSeconds(iDeltaTicks);
         LastTicks = iTicks;
 
-        Tick(fDeltaSeconds);
+        Tick((Float32)fDeltaSeconds);
     }
 }

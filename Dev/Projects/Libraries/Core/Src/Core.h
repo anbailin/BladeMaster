@@ -1,4 +1,9 @@
 #pragma once
+//warning disable
+#pragma warning( disable : 4995 )
+#pragma warning( disable : 4131 )
+#pragma warning( disable : 4251 )
+
 
 #include "Build.h"
 
@@ -47,15 +52,17 @@
 
 //////////////////////////////////////////////////////////////////////////
 // Qt
+#pragma warning( push )
+#pragma warning( disable : 4127 )
+#pragma warning( disable : 4512 )
 #include <QtCore/QtCore>
 #include <QtGui/QtGui>
+#pragma warning( pop )
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
 // Core part
 
-//#pragma warning( disable : 4995 )
-//#pragma warning( disable : 4131 )
 //using namespace BM;
 #include "Singleton.h"
 #include "Types.h"

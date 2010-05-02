@@ -12,7 +12,7 @@ class DCMaterial;
 	-- every specific render work will based on DCSubModel data structure
 */
 
-class RENDER_DLL DCModel:public RefObject
+class RENDER_DLL  __declspec(align(16)) DCModel:public RefObject
 {
 public:
 	DCModel();
@@ -43,16 +43,15 @@ public:
 	virtual void			SetSkinningData(const MatrixPool& skinData);
 
 protected:
-
 	DCSubModel*						mSubModels;
 	uint32							mSubModelCount;
+
+	D3DXMATRIXA16					mWorld;
 
 	VertexBufferPtr					mVertexBuffer;
 	uint32							mVertexCount;
 
-	std::vector<DCTexturePtr>		mTextureTable;
-
-	D3DXMATRIXA16					mWorld;
+	std::vector<DCTexturePtr>		mTextureTable;	
 	const float*					mSkinData;//data of the skinning animation
 	uint32							mSkinConstNum;//how many float4 of the skinning data
 };

@@ -1,3 +1,5 @@
+#include "AppPrivate.h"
+#include "MainWindow.h"
 #include "App.h"
 
 int main(int argc, char* argv[])

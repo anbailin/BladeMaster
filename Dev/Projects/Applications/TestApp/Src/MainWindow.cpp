@@ -1,4 +1,4 @@
-#include <QtGui>
+#include "AppPrivate.h"
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)

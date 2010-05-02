@@ -2,7 +2,6 @@
 
 #include "Game.h"
 #include "MainWindow.h"
-#include "Graphics.h"
 
 class App : public BM::GameApplication
 {
