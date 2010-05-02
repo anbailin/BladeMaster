@@ -1,4 +1,4 @@
-#include "EnginePCH.h"
+#include "EnginePrivate.h"
 
 SceneNode::SceneNode()
 {

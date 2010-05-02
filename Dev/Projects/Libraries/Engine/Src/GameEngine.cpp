@@ -1,5 +1,4 @@
 #include "EnginePrivate.h"
-#include "GameEngine.h"
 
 namespace BM
 {

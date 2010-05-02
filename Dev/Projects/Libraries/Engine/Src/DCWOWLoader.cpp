@@ -1,8 +1,5 @@
-#include "EnginePCH.h"
-#include "Graphics.h"
-//#include "DCFileSystemHeader.h"
-#include "DCAnimHeader.h"
-#include "DCWOWLoader.h"
+#include "EnginePrivate.h"
+
 //-------------------------------------------------------------------------
 //--------------Type and Const---------------------------------------------
 //-------------------------------------------------------------------------

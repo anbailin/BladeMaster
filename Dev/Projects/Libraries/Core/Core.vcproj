@@ -209,18 +209,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Core.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\Src\Core.h"
 				>
 			</File>

@@ -1,4 +1,4 @@
-#include "EnginePCH.h"
+#include "EnginePrivate.h"
 
 BM_SINGLETON_DEFINE(SceneRenderer);
 

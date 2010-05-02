@@ -1,7 +1,5 @@
 #pragma once
 
-#include "EnginePublic.h"
-
 namespace BM
 {
     class ENGINE_DLL GameEngine : public QObject

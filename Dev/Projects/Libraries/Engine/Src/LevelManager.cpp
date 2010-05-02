@@ -1,10 +1,4 @@
-#include "Core.h"
-#include "EnginePCH.h"
-#include "DCWOWLoader.h"
-
-//--------tinyxml-------------------
-#include "TinyXML/tinyxml.h"
-#include "TinyXML/tinystr.h"
+#include "EnginePrivate.h"
 
 BM_SINGLETON_DEFINE(LevelManager);
 

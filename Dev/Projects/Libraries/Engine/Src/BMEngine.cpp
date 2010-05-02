@@ -1,5 +1,4 @@
-#include "EnginePCH.h"
-//#include "App.h"
+#include "EnginePrivate.h"
 
 BM_SINGLETON_DEFINE(BMEngine);
 

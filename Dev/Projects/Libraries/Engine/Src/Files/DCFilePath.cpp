@@ -1,7 +1,5 @@
-//#include "DCCommonHeader.h"
-//#include "DCFilePath.h"
+#include "EnginePrivate.h"
 
-#include "../EnginePCH.h"
 void DCFilePath::SetFullPath(const char *_path)
 {
 	mWholeName = _path;
