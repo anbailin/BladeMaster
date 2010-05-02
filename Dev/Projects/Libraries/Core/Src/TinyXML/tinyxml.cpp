@@ -22,9 +22,8 @@ must not be misrepresented as being the original software.
 distribution.
 */
 
+#include "CorePrivate.h"
 #include <ctype.h>
-
-#include "../Core.h"
 
 #ifdef TIXML_USE_STL
 #include <sstream>

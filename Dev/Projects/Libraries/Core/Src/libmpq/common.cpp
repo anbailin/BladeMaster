@@ -19,7 +19,7 @@
 *
 *  $Id: common.cpp,v 1.1 2005/04/09 22:09:18 ufoz Exp $
 */
-#include "Core.h"
+#include "CorePrivate.h"
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>

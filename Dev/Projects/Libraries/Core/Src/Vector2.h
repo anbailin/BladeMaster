@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "Core.h"
-
 namespace BM
 {
     class CORE_DLL Vector2

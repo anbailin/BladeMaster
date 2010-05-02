@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "Core.h"
-
 /**
 *	get game path
 *   get the data paths

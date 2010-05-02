@@ -1,4 +1,4 @@
-#include "Core.h"
+#include "CorePrivate.h"
 #include "DXUTTimer.h"
 
 double	DXUTTimer::mTime;

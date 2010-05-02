@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "CorePrivate.h"
 #include "ClassFactory.h"
 
 namespace BM

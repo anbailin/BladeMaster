@@ -1,4 +1,4 @@
-#include "Core.h"
+#include "CorePrivate.h"
 
 void LogToDebug(const wchar_t* str)
 {

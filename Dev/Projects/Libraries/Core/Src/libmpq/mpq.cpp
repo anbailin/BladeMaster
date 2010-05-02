@@ -19,7 +19,7 @@
 *
 *  $Id: mpq.cpp,v 1.1 2005/04/09 22:09:18 ufoz Exp $
 */
-#include "Core.h"
+#include "CorePrivate.h"
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <fcntl.h>

@@ -1,3 +1,4 @@
+#include "CorePrivate.h"
 #include "DCTimeSource_win.h"
 #include <windows.h>
 
