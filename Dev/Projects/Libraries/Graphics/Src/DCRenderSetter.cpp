@@ -1,5 +1,4 @@
-
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 
 DCRenderSetter* DCRenderSetter::mInstance = NULL;
 

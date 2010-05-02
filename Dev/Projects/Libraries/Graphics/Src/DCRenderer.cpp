@@ -1,6 +1,4 @@
-#include "Graphics.h"
-//#include "EnginePCH.h"
-//#include "App.h"
+#include "GraphicsPrivate.h"
 
 BM_SINGLETON_DEFINE(DCRenderer);
 

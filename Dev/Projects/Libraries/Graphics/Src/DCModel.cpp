@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 
 
 //---------DCModel------------------------------------------------------------------------------
@@ -11,17 +11,11 @@ DCModel::DCModel()
 
 void DCModel::Draw(uint32 ndx)
 {
-	assert( ndx<mSubModelCount );
-
-	//pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );	
+	assert( ndx<mSubModelCount );		
 
     VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosWNTC);
     ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().skin_vs_id, ShaderLoader::Instance().skin_ps_id);
-	
-	//float* constAddr = NULL;
-	//uint32 constSize = 0;
-	//
-	//mAnimMgr->GetShaderConstantInfo(constAddr,constSize);
+		
 	DEVICEPTR->SetVertexShaderConstantF(9,mSkinData,mSkinConstNum);
 
 	BM_AssertHr( DEVICEPTR->SetStreamSource( 0,mVertexBuffer,0,sizeof(DCVertPosWNTC) ) );

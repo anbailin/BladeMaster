@@ -22,8 +22,7 @@ void BMEngine::Tick(float fDeltaTime)
 {
 	//blan
     //DXUTTimer::SetTime(App::Instance().GetTimer().Seconds());
-	DXUTTimer::SetTime(DXUTTimer::GetTime()+fDeltaTime);
-	//DXUTTimer::SetTime(0.0);
+	DXUTTimer::SetTime(DXUTTimer::GetTime()+fDeltaTime);	
     DXUTTimer::SetElapsedTime(fDeltaTime);
 
     LevelManager::Instance().GetLevelInstance()->Tick(fDeltaTime);    

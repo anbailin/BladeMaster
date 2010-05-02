@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 
 uint32 GetTypeSize(DCVertexType arg)
 {

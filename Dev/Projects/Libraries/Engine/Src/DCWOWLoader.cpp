@@ -87,8 +87,7 @@ DCModel* DCWOWLoader::LoadModel(DCFilePath& _path, DCAnimationManager*& animMgr)
 			strcpy_s(texname, texs[i].mNameLength, (const char*)(mpq.getBuffer() + texs[i].mNameOffset));
 			texname[texs[i].mNameLength] = 0;
 
-		}
-		//blan todo : consider other cases
+		}		
 		else
 		{
 			DBCFile::Record modelRec = mCreatureModel->GetByFileName(_filename);

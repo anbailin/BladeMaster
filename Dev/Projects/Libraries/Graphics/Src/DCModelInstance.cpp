@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 
 //void DCModelInstance::Init(const DCModelPtr &_model, const WMOMODDChunk &chunk)
 //{

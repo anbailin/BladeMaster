@@ -1,6 +1,5 @@
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 #include "Files/BLP.h"
-//#include "EnginePCH.h"
 
 //to do : to improve the loading process;
 DCSurface* DCSurface::Create(const std::string& filename)

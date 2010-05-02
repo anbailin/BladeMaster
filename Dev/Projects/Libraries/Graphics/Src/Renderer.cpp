@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 
 namespace BM
 {

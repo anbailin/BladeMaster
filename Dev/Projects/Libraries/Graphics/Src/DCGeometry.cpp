@@ -1,10 +1,5 @@
-#include "Graphics.h"
-#include "Files/BLP.h"
-#include "Files/DBCFile.h"
-#include "Files/Maps.h"
+#include "GraphicsPrivate.h"
 #include "Files/MDX.h"
-
-#pragma optimize("",off)
 
 DCGeometry::DCGeometry():
 mID(0),mVertexCount(0),mVertexStart(0),mIndexCount(0)

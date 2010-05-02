@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 
 BM_SINGLETON_DEFINE(BMPostFXRenderer);
 

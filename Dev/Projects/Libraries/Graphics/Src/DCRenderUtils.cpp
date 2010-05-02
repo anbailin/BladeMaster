@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "GraphicsPrivate.h"
 
 //void ColorAssign(D3DCOLORVALUE& outColor,const D3DXVECTOR4& inColor)
 //{
