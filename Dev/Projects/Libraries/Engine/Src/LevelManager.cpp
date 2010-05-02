@@ -21,16 +21,19 @@ LevelManager::~LevelManager()
 
 namespace
 {
-    const char* LevelMapPath = "..\\Data\\Map\\";
+    const char* LevelMapPath = "..\\Engine\\Map\\";
 }
 LevelInstance* LevelManager::CreateLevelInstance(const char* name)
 {
     //
     LevelInstance* levelInstance = new LevelInstance;
 
+	//blan todo
     //parse xml to readin models->init nodes->add into level instance
-    QDir dir("AppData:Map");
-    std::string fullPath(dir.absolutePath().toStdString() + "\\");
+    //QDir dir("AppData:Map");
+    //std::string fullPath(dir.absolutePath().toStdString() + "\\");
+
+	std::string fullPath = LevelMapPath;
     fullPath+=name;
     fullPath+=".xml";
     

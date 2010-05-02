@@ -161,26 +161,6 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Data"
-			>
-			<Filter
-				Name="Settings"
-				>
-				<File
-					RelativePath="..\..\..\Data\TestApp\Settings\Engine.ini"
-					>
-				</File>
-				<File
-					RelativePath="..\..\..\Data\TestApp\Settings\Graphics.ini"
-					>
-				</File>
-				<File
-					RelativePath="..\..\..\Data\TestApp\Settings\WOW.ini"
-					>
-				</File>
-			</Filter>
-		</Filter>
-		<Filter
 			Name="Form Files"
 			Filter="ui"
 			UniqueIdentifier="{99349809-55BA-4b9d-BF79-8FDBB0286EB3}"

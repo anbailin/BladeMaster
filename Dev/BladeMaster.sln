@@ -1,11 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{EB23D101-7D65-42F5-BCA5-2381F0281777}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{CEEE4F54-037D-4239-AE1A-45E8252D47A7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3FEDC57-97A9-4C6B-A120-B6239A1A2238}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{EB23D101-7D65-42F5-BCA5-2381F0281777}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{45695F55-D81D-4E5E-82DD-6A2F8BE5CC28}"
 EndProject
@@ -31,15 +27,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Projects\Libraries\
 		{125032FC-5A63-4AAF-903E-C98B3643FBE0} = {125032FC-5A63-4AAF-903E-C98B3643FBE0}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E8EA5D99-B05A-4DB8-A93A-223644CA73E8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Settings", "Settings", "{C17E79C1-96A1-47D2-87CB-050AC978049E}"
-	ProjectSection(SolutionItems) = preProject
-		Data\Default\Settings\Engine.ini = Data\Default\Settings\Engine.ini
-		Data\Default\Settings\Graphics.ini = Data\Default\Settings\Graphics.ini
-		Data\Default\Settings\WOW.ini = Data\Default\Settings\WOW.ini
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestApp", "Projects\Applications\TestApp\TestApp.vcproj", "{87B3B1C2-B692-49BA-AB74-96057131199B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{93F61420-AC71-4D86-B567-F3BBC0B71371} = {93F61420-AC71-4D86-B567-F3BBC0B71371}
@@ -48,8 +35,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestApp", "Projects\Applica
 		{0CD826EF-722B-40D6-9F7B-E2D8B1F9723E} = {0CD826EF-722B-40D6-9F7B-E2D8B1F9723E}
 		{125032FC-5A63-4AAF-903E-C98B3643FBE0} = {125032FC-5A63-4AAF-903E-C98B3643FBE0}
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{49B338D4-5911-4916-9570-7DA23B1EE7C6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Animation", "Projects\Libraries\Animation\Animation.vcproj", "{6BF1B184-FCC6-4D5B-8A12-AED7C06EAE60}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -97,6 +82,5 @@ Global
 		{125032FC-5A63-4AAF-903E-C98B3643FBE0} = {45695F55-D81D-4E5E-82DD-6A2F8BE5CC28}
 		{E4C19C3D-855E-4B96-97E7-254D1FE9ED4C} = {45695F55-D81D-4E5E-82DD-6A2F8BE5CC28}
 		{6BF1B184-FCC6-4D5B-8A12-AED7C06EAE60} = {45695F55-D81D-4E5E-82DD-6A2F8BE5CC28}
-		{C17E79C1-96A1-47D2-87CB-050AC978049E} = {E8EA5D99-B05A-4DB8-A93A-223644CA73E8}
 	EndGlobalSection
 EndGlobal

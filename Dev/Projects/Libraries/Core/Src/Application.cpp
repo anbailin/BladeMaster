@@ -37,16 +37,15 @@ namespace BM
     {
         QString app_dir = applicationDirPath();
 
-        QString def_data = "/Data/Default";
-        QString app_data = "/Data/" + applicationName();
+        QString def_data = "/Engine";
+        QString app_data = "/Game/";
 
-        QStringList def_data_dirs;
-        def_data_dirs << app_dir + def_data;
+        QStringList def_data_dirs;        
         def_data_dirs << app_dir + "/.." + def_data;
 
         QStringList app_data_dirs;
-        app_data_dirs << app_dir + app_data;
-        app_data_dirs << app_dir + "/../Dev" + app_data;
+        app_data_dirs << app_dir + "/../Engine";
+        app_data_dirs << app_dir + "/../Engine";
 
         QDir::setSearchPaths("DefData", def_data_dirs);
         QDir::setSearchPaths("AppData", app_data_dirs);
