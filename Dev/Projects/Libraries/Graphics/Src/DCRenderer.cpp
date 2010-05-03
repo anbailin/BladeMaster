@@ -91,8 +91,8 @@ void DCRenderer::Draw(Float32 fDeltaTime)
 		BeginRender();
 		DEVICEPTR->Clear( 0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,D3DCOLOR_COLORVALUE(85.0f/255.0f,101.0f/255.0f,215.0f/255.0f,1.0f), 1.0f, 0 );
 		BM_AssertHr(DEVICEPTR->EndScene());    
-		//models
-		//const std::vector<SceneNodePtr>& nodes = instance.GetNodes();
+
+		//models		
 		const std::vector<BatchNode>& nodes = BatchNodes;
 		const uint32 nodeNum = nodes.size();
 		for(uint32 nodeIdx = 0; nodeIdx<nodeNum; nodeIdx++)
@@ -104,7 +104,7 @@ void DCRenderer::Draw(Float32 fDeltaTime)
 			mxViewProj = mxView * mxProj;
 
 			DEVICEPTR->SetVertexShaderConstantF(0,(float*)&(mxWorld),4);
-			DEVICEPTR->SetVertexShaderConstantF(4,(float*)&(mxViewProj),4);
+			DEVICEPTR->SetVertexShaderConstantF(4,(float*)mViewProjMatrix,4);
 			DEVICEPTR->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 			DEVICEPTR->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
 
@@ -117,7 +117,7 @@ void DCRenderer::Draw(Float32 fDeltaTime)
 		//terrain		
 		if(TerrainPtr)
 		{
-			TerrainPtr->Draw(&mxWorld, &mxView, &mxProj);
+			TerrainPtr->Draw(&mxWorld, (D3DXMATRIXA16*)mViewMatrix, (D3DXMATRIXA16*)mProjMatrix);
 		}
 
 		BMPostFXRenderer::Instance().Render();
@@ -131,9 +131,7 @@ void DCRenderer::Draw(Float32 fDeltaTime)
 
 void DCRenderer::OnResetDevice(IDirect3DDevice9* pd3dDevice, const D3DSURFACE_DESC* pBackBufferSurfaceDesc)
 {
-    InitResource(pd3dDevice);
-
-    //LevelManager::Instance().LoadMap("map");
+    InitResource(pd3dDevice);    
 }
 
 void DCRenderer::OnLostDevice()
@@ -222,4 +220,12 @@ void DCRenderer::AddSceneNode(DCModel* modelPtr, const XMFLOAT3& translation)
 void DCRenderer::AddSceneTerrain(BMTerrain* terrain)
 {
 	TerrainPtr = terrain;
+}
+
+void DCRenderer::SetViewProjMatrix(XMMATRIX* view, XMMATRIX* proj, XMMATRIX* viewProj)
+{
+	BM_Assert(view && proj && viewProj);
+	mViewMatrix = view;
+	mProjMatrix = proj;
+	mViewProjMatrix = viewProj;
 }

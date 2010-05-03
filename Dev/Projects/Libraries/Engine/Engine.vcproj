@@ -353,6 +353,14 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\Src\Scene.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Scene.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Files"
@@ -417,6 +425,14 @@
 		<Filter
 			Name="SceneGraph"
 			>
+			<File
+				RelativePath=".\Src\Camera.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\Camera.h"
+				>
+			</File>
 			<File
 				RelativePath=".\Src\SceneNode.cpp"
 				>

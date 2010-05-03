@@ -16,11 +16,9 @@ public:
 public:
     void AddNode(SceneNodePtr& model);
     void SetTerrain(BMTerrainPtr& terrain);
+	BMScenePtr& GetScene()					{	return mScene; }
+	const BMScenePtr& GetScene()const		{	return mScene; }
 
-    const std::vector<SceneNodePtr>& GetNodes()const   { return mSceneNodes; }
-    const BMTerrainPtr& GetTerrain()const               { return mTerrain; }
-
-protected:
-    std::vector<SceneNodePtr>   mSceneNodes;
-    BMTerrainPtr                mTerrain;
+protected:    
+	BMScenePtr					mScene;
 };

@@ -29,7 +29,8 @@ void BMEngine::Tick(float fDeltaTime)
 
 	//add scene nodes into renderer
 	const LevelInstance* instance = LevelManager::Instance().GetLevelInstance();
-	const std::vector<SceneNodePtr>& nodes =  instance->GetNodes();
+	BMScenePtr scene = instance->GetScene();
+	const std::vector<SceneNodePtr>& nodes =  scene->GetNodes();
 	const uint32 size = nodes.size();
 	for(uint32 i=0; i<size; i++)
 	{
@@ -37,7 +38,10 @@ void BMEngine::Tick(float fDeltaTime)
 		DCRenderer::Instance().AddSceneNode(node->GetModel(), node->GetTranslation());
 	}	
 
-	DCRenderer::Instance().AddSceneTerrain(instance->GetTerrain());
+	DCRenderer::Instance().AddSceneTerrain(scene->GetTerrain());
+
+	BMCameraPtr camPtr = scene->GetCamera();
+	DCRenderer::Instance().SetViewProjMatrix(camPtr->GetViewMatrix(), camPtr->GetProjMatrix(), camPtr->GetViewProjMatrix());
 }
 
 void BMEngine::ReleaseResource()

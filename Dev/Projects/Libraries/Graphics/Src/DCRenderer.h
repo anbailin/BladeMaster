@@ -65,6 +65,7 @@ public:
     void              GetBackBufferSize(uint32& sizeX, uint32& sizeY)const { sizeX = mBackBufferSizeX; sizeY = mBackBufferSizeY; }    
 	TexturePtr	      GetLightingRT() { return mLightingRT; }    
 
+	void			  SetViewProjMatrix(XMMATRIX* view, XMMATRIX* proj, XMMATRIX* viewProj);
     //attribues
 protected:
     //resource
@@ -73,6 +74,9 @@ protected:
     uint32              mBackBufferSizeX;
     uint32              mBackBufferSizeY;
 	TexturePtr      	mLightingRT;    
+	XMMATRIX*			mViewMatrix;
+	XMMATRIX*			mProjMatrix;
+	XMMATRIX*			mViewProjMatrix;
 };
 
 BM_CLASS_FACTORY_REGISTER(DCRenderer);

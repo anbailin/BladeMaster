@@ -6,6 +6,8 @@
 //SceneGraph Filter
 #include "SceneNode.h"
 #include "SceneRenderer.h"
+#include "Camera.h"
+#include "Scene.h"
 
 //Level Filter
 #include "LevelInstance.h"
