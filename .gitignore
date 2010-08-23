@@ -24,9 +24,11 @@
 *.dep
 *.htm
 *.bat
+*.ib_tag
+*.ib_pdb_index
 
 # Folders
-/Tags/Main/Binaries/
+/Tags/Main/Bin/
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/*.*
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/ui_MainWindow.h
 /Bin/*.*

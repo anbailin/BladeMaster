@@ -29,7 +29,7 @@ LevelInstance* LevelManager::CreateLevelInstance(const char* name)
 
 	std::string fullPath = LevelMapPath;
     fullPath+=name;
-    fullPath+=".xml";
+    fullPath+=".xml";    
     
     TiXmlDocument *levelDoc = new TiXmlDocument();
     bool result = levelDoc->LoadFile(fullPath.c_str());
