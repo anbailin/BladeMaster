@@ -17,9 +17,10 @@ namespace
 
     void GetFullShaderPath(const wchar_t* str)
     {       
-        QDir dir("AppData:Shader");
-        ShaderFullPath.assign(dir.absolutePath().toStdWString() + L"\\");
+        //QDir dir("AppData:Shader");
+        //ShaderFullPath.assign(dir.absolutePath().toStdWString() + L"\\");
         //ShaderFullPath.assign(kShaderPath);
+        ShaderFullPath = L"..\\Engine\\Shader\\";
         ShaderFullPath += str;
     }
 

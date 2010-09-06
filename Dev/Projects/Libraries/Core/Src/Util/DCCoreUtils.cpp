@@ -46,7 +46,8 @@ void DCSetupUtil::SetGamePath()
 	} 
 	else 
 	{
-        m_gamePath = BM::Application::Instance().GetSetting("WOW", "Client/Path").toString().toStdWString();
+        //m_gamePath = BM::Application::Instance().GetSetting("WOW", "Client/Path").toString().toStdWString();
+        m_gamePath = TEXT("e:\\game\\wow\\");        
 	}
 }
 

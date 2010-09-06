@@ -119,7 +119,7 @@
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="EnginePrivate.h"
 				WarningLevel="4"
-				WarnAsError="true"
+				WarnAsError="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -494,7 +494,7 @@
 		/>
 		<Global
 			Name="QtVersion Win32"
-			Value="4.6.2"
+			Value="4.7.0-rc1"
 		/>
 		<Global
 			Name="RccDir"

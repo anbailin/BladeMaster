@@ -3,6 +3,7 @@
 
 #include <QtGui/QMainWindow>
 #include "ui_mainwindow.h"
+#include "../BMWidget.h"
 
 class MainWindow : public QMainWindow
 {
@@ -19,7 +20,7 @@ public:
 	//attr
 protected:
     Ui::MainWindowClass ui;
-	QWidget*			m_renderWidget;
+	BMWidget*			m_renderWidget;
 	QDockWidget*		m_renderParentWidget;
 };
 

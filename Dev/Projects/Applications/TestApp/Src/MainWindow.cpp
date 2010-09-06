@@ -16,21 +16,44 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 	QTextEdit* textEdit = new QTextEdit;
 	mdiArea->addSubWindow(textEdit);	
 
-	//rendering window
-	m_renderParentWidget = new QDockWidget(tr("Rendering"), this);
-	m_renderParentWidget->setMinimumSize(1280,720);
-	m_renderParentWidget->setMaximumSize(1280,720);
-	m_renderParentWidget->setAllowedAreas(Qt::AllDockWidgetAreas);
+	////rendering window
+	////m_renderParentWidget = new QDockWidget(tr("Rendering"), this);
+	////m_renderParentWidget->setMinimumSize(1280,720);
+	////m_renderParentWidget->setMaximumSize(1280,720);
+	////m_renderParentWidget->setAllowedAreas(Qt::AllDockWidgetAreas);
 
-	m_renderWidget = new QWidget(m_renderParentWidget);
+	m_renderWidget = new BMWidget(mdiArea);
 	m_renderWidget->setMinimumSize(1280,720);
 	m_renderWidget->setMaximumSize(1280,720);
-	m_renderParentWidget->setWidget(m_renderWidget);
+	setCentralWidget(m_renderWidget);
+    //addWidget();
 	
-	addDockWidget(Qt::TopDockWidgetArea, m_renderParentWidget);
+	//addDockWidget(Qt::TopDockWidgetArea, m_renderParentWidget);
+
+    //------test for grabber&ogre code
+    //QWidget* centralWidget = new QWidget;
+    //setCentralWidget(centralWidget);
+
+    //m_renderWidget = new BMWidget;
+    //m_renderWidget->setMinimumSize(1280,720);
+    //m_renderWidget->setMaximumSize(1280,720);
+
+    //QScrollArea * glWidgetArea = new QScrollArea;
+    //glWidgetArea->setWidget(m_renderWidget);
+    //glWidgetArea->setWidgetResizable(true);
+    //glWidgetArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //glWidgetArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //glWidgetArea->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    //glWidgetArea->setMinimumSize(50, 50);
+
+    //QGridLayout *centralLayout = new QGridLayout;
+    //centralLayout->addWidget(glWidgetArea, 0, 0);    
+    //centralWidget->setLayout(centralLayout);
 }
 
 MainWindow::~MainWindow()
 {
 
 }
+
+
