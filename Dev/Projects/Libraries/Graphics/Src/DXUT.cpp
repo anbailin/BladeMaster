@@ -1164,34 +1164,35 @@ HRESULT WINAPI DXUTCreateWindow( const WCHAR* strWindowTitle, HINSTANCE hInstanc
 HRESULT WINAPI DXUTSetWindow( HWND hWndFocus, HWND hWndDeviceFullScreen, HWND hWndDeviceWindowed, bool bHandleMessages )
 {
     HRESULT hr;
-
-    // Not allowed to call this from inside the device callbacks
+//
+//    // Not allowed to call this from inside the device callbacks
     if( GetDXUTState().GetInsideDeviceCallback() )
         return DXUT_ERR_MSGBOX( L"DXUTCreateWindow", E_FAIL );
-
+//
     GetDXUTState().SetWindowCreateCalled( true );
-
-    // To avoid confusion, we do not allow any HWND to be NULL here.  The
-    // caller must pass in valid HWND for all three parameters.  The same
-    // HWND may be used for more than one parameter.
+//
+//    // To avoid confusion, we do not allow any HWND to be NULL here.  The
+//    // caller must pass in valid HWND for all three parameters.  The same
+//    // HWND may be used for more than one parameter.
     if( hWndFocus == NULL || hWndDeviceFullScreen == NULL || hWndDeviceWindowed == NULL )
         return DXUT_ERR_MSGBOX( L"DXUTSetWindow", E_INVALIDARG );
-
-    // If subclassing the window, set the pointer to the local window procedure
+//
+//    // If subclassing the window, set the pointer to the local window procedure
     if( bHandleMessages )
     {
         // Switch window procedures
 #ifdef _WIN64
         LONG_PTR nResult = SetWindowLongPtr( hWndFocus, GWLP_WNDPROC, (LONG_PTR)DXUTStaticWndProc );
 #else
-        LONG_PTR nResult = SetWindowLongPtr( hWndFocus, GWLP_WNDPROC, ( LONG )( LONG_PTR )DXUTStaticWndProc );
+        //LONG_PTR nResult = SetWindowLongPtr( hWndFocus, GWLP_WNDPROC, ( LONG )( LONG_PTR )DXUTStaticWndProc );
+        LONG_PTR nResult = 1;
 #endif
 
         DWORD dwError = GetLastError();
         if( nResult == 0 )
             return DXUT_ERR_MSGBOX( L"SetWindowLongPtr", HRESULT_FROM_WIN32(dwError) );
     }
-
+//
     if( !GetDXUTState().GetDXUTInited() )
     {
         // If DXUTInit() was already called and failed, then fail.
@@ -1205,11 +1206,11 @@ HRESULT WINAPI DXUTSetWindow( HWND hWndFocus, HWND hWndDeviceFullScreen, HWND hW
         if( FAILED( hr ) )
             return hr;
     }
-
+//
     WCHAR* strCachedWindowTitle = GetDXUTState().GetWindowTitle();
     GetWindowText( hWndFocus, strCachedWindowTitle, 255 );
     strCachedWindowTitle[255] = 0;
-
+//
     HINSTANCE hInstance = ( HINSTANCE )( LONG_PTR )GetWindowLongPtr( hWndFocus, GWLP_HINSTANCE );
     GetDXUTState().SetHInstance( hInstance );
     GetDXUTState().SetWindowCreatedWithDefaultPositions( false );

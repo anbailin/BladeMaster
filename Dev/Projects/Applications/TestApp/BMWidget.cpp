@@ -33,7 +33,7 @@ void BMWidget::setBackgroundColor(QColor c)
 
 void BMWidget::keyPressEvent(QKeyEvent *e)
 {
-    assert(0);
+    //assert(0);
     //static QMap<int, Ogre::Vector3> keyCoordModificationMapping;
     //static bool mappingInitialised = false;
 
@@ -66,7 +66,7 @@ void BMWidget::keyPressEvent(QKeyEvent *e)
 
 void BMWidget::mouseDoubleClickEvent(QMouseEvent *e)
 {
-    assert(0);
+    //assert(0);
     //if(e->buttons().testFlag(Qt::LeftButton))
     //{
     //    Ogre::Real x = e->pos().x() / (float)width();
@@ -104,7 +104,7 @@ void BMWidget::mouseDoubleClickEvent(QMouseEvent *e)
 
 void BMWidget::mouseMoveEvent(QMouseEvent *e)
 {
-    assert(0);
+    //assert(0);
     //if(e->buttons().testFlag(Qt::LeftButton) && oldPos != invalidMousePoint)
     //{
     //    const QPoint &pos = e->pos();
@@ -132,7 +132,7 @@ void BMWidget::mouseMoveEvent(QMouseEvent *e)
 
 void BMWidget::mousePressEvent(QMouseEvent *e)
 {
-    assert(0);
+    //assert(0);
     //if(e->buttons().testFlag(Qt::LeftButton))
     //{
     //    oldPos = e->pos();
@@ -146,7 +146,7 @@ void BMWidget::mousePressEvent(QMouseEvent *e)
 
 void BMWidget::mouseReleaseEvent(QMouseEvent *e)
 {
-    assert(0);
+    //assert(0);
     //if(!e->buttons().testFlag(Qt::LeftButton))
     //{
     //    oldPos = QPoint(invalidMousePoint);
@@ -160,7 +160,7 @@ void BMWidget::mouseReleaseEvent(QMouseEvent *e)
 
 void BMWidget::moveEvent(QMoveEvent *e)
 {
-    assert(0);
+    //assert(0);
     //QWidget::moveEvent(e);
 
     //if(e->isAccepted() && ogreRenderWindow)
