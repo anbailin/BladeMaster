@@ -478,6 +478,18 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="Input"
+			>
+			<File
+				RelativePath=".\InputProcessor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\InputProcessor.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 		<Global

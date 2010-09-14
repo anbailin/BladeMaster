@@ -4,7 +4,7 @@ class QuadGeometry;
 
 class RENDER_DLL BMPostFXRenderer
 {
-    BM_SINGLETON_DECLARE(BMPostFXRenderer);
+    SINGLETON_DECLARE(BMPostFXRenderer);
 
     /*
     *   types

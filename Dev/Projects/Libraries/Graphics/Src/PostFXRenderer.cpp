@@ -1,6 +1,6 @@
 #include "GraphicsPrivate.h"
 
-BM_SINGLETON_DEFINE(BMPostFXRenderer);
+SINGLETON_DEFINE(BMPostFXRenderer);
 
 BMPostFXRenderer::BMPostFXRenderer()
 {
@@ -47,7 +47,7 @@ void BMPostFXRenderer::InitBloom()
 {
 	//render targets
 	uint32 sizeX, sizeY;
-	DCRenderer::Instance().GetBackBufferSize(sizeX,sizeY);
+	DCRenderer::GetInstance()->GetBackBufferSize(sizeX,sizeY);
 	HRESULT result = DEVICEPTR->CreateTexture(
 		sizeX,
 		sizeY, 
@@ -106,9 +106,9 @@ void BMPostFXRenderer::Render()
     //filter pass
     DEVICEPTR->SetRenderState(D3DRS_ZENABLE, D3DZB_FALSE);
     DEVICEPTR->SetRenderTarget(0, mBloomSurface[0]);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().postfx_bloom_filter_vs_id, ShaderLoader::Instance().postfx_bloom_filter_ps_id);
+    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->postfx_bloom_filter_vs_id, ShaderLoader::GetInstance()->postfx_bloom_filter_ps_id);
 
-    TexturePtr lightingRT = DCRenderer::Instance().GetLightingRT();
+    TexturePtr lightingRT = DCRenderer::GetInstance()->GetLightingRT();
     SurfacePtr lightingSurface;
     lightingRT->GetSurfaceLevel(0,&lightingSurface);
     DEVICEPTR->SetTexture(0, lightingRT);
@@ -117,13 +117,13 @@ void BMPostFXRenderer::Render()
 
     //blur v
     DEVICEPTR->SetRenderTarget(0, mBloomSurface[1]);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().postfx_bloom_filter_vs_id, ShaderLoader::Instance().postfx_bloom_blurv_ps_id);
+    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->postfx_bloom_filter_vs_id, ShaderLoader::GetInstance()->postfx_bloom_blurv_ps_id);
     DEVICEPTR->SetTexture(0, mBloomRenderTarget[0]);
     mQuadGeometry->Render();
 
     //blur h
     DEVICEPTR->SetRenderTarget(0, mBloomSurface[2]);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().postfx_bloom_filter_vs_id, ShaderLoader::Instance().postfx_bloom_blurh_ps_id);
+    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->postfx_bloom_filter_vs_id, ShaderLoader::GetInstance()->postfx_bloom_blurh_ps_id);
     DEVICEPTR->SetTexture(0, mBloomRenderTarget[1]);
     mQuadGeometry->Render();
 
@@ -131,7 +131,7 @@ void BMPostFXRenderer::Render()
     DEVICEPTR->SetRenderTarget(0, mBackBuffer);
     DEVICEPTR->SetTexture(0, lightingRT);
     DEVICEPTR->SetTexture(1, mBloomRenderTarget[2]);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().postfx_bloom_filter_vs_id, ShaderLoader::Instance().postfx_bloom_merge_ps_id);
+    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->postfx_bloom_filter_vs_id, ShaderLoader::GetInstance()->postfx_bloom_merge_ps_id);
     mQuadGeometry->Render();
 }
 
@@ -143,7 +143,7 @@ void BMPostFXRenderer::StoreBackBuffer()
 
 void BMPostFXRenderer::RenderToBackBuffer(TexturePtr tex)
 {    
-/*    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().postfx_copy_vs_id, ShaderLoader::Instance().postfx_copy_ps_id);
+/*    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->postfx_copy_vs_id, ShaderLoader::GetInstance()->postfx_copy_ps_id);
     DEVICEPTR->SetTexture(0, tex);    
     DEVICEPTR->SetRenderTarget(0,mBackBuffer);
 

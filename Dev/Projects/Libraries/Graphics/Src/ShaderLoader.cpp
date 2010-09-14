@@ -1,7 +1,7 @@
 #include "GraphicsPrivate.h"
 
 //data
-BM_SINGLETON_DEFINE(ShaderLoader);
+SINGLETON_DEFINE(ShaderLoader);
 const char* ShaderLoader::ms_VSProfile3 = "vs_3_0";
 const char* ShaderLoader::ms_PSProfile3 = "ps_3_0";
 

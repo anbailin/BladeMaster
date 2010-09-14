@@ -7,7 +7,7 @@ class LevelInstance;
 
 class ENGINE_DLL SceneRenderer
 {
-    BM_SINGLETON_DECLARE(SceneRenderer);
+    SINGLETON_DECLARE(SceneRenderer);
 
 public:
     SceneRenderer();

@@ -21,7 +21,7 @@ namespace
 //--------------FunctionImpl-----------------------------------------------
 //-------------------------------------------------------------------------
 
-BM_SINGLETON_DEFINE(DCWOWLoader);
+SINGLETON_DEFINE(DCWOWLoader);
 
 
 void DCWOWLoader::Init()

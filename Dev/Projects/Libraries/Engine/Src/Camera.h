@@ -1,4 +1,4 @@
-
+#pragma once
 /*
 *	basic camera smiple impl
 */

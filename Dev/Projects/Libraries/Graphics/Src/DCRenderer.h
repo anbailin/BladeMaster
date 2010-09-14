@@ -6,7 +6,7 @@
 using namespace BM;
 
 #ifndef DEVICEPTR
-#define DEVICEPTR DCRenderer::Instance().GetDevice()
+#define DEVICEPTR DCRenderer::GetInstance()->GetDevice()
 #endif
 
 class DCTexture;
@@ -29,7 +29,7 @@ class RENDER_DLL DCRenderer : public D3D9Renderer
 {
     Q_OBJECT
 
-    BM_SINGLETON_DECLARE(DCRenderer);
+    SINGLETON_DECLARE(DCRenderer);
 
 public:
     DCRenderer();

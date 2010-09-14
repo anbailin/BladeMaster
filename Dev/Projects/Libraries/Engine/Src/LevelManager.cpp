@@ -1,6 +1,6 @@
 #include "EnginePrivate.h"
 
-BM_SINGLETON_DEFINE(LevelManager);
+SINGLETON_DEFINE(LevelManager);
 
 LevelManager::LevelManager()
 :   mLevelInstance(NULL)
@@ -76,7 +76,7 @@ LevelInstance* LevelManager::CreateLevelInstance(const char* name)
 
         DCFilePath file(nodeInfo.path,nodeInfo.name);
 		DCAnimationManager* animMgr = NULL;
-        DCModelPtr modelPtr = DCWOWLoader::Instance().LoadModel(file, animMgr); 
+        DCModelPtr modelPtr = DCWOWLoader::GetInstance()->LoadModel(file, animMgr); 
         SceneNodePtr nodePtr = new SceneNode;
         nodePtr->SetModel(modelPtr);
         XMFLOAT3 translation(nodeInfo.x, 0.0f, nodeInfo.y);

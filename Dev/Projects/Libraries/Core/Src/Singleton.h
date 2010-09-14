@@ -52,7 +52,7 @@ namespace BM
 
 //////////////////////////////////////////////////////////////////////////
 // Macros to define singleton.
-#define BM_SINGLETON_DECLARE(T)                                         \
+#define SINGLETON_DECLARE(T)                                            \
     public:                                                             \
         static void CreateInstance()                                    \
         {                                                               \
@@ -67,17 +67,13 @@ namespace BM
                 s_pInstance = NULL;                                     \
             }                                                           \
         }                                                               \
-        static T& Instance()                                            \
+        static T* GetInstance()                                         \
         {                                                               \
             BM_Assert(s_pInstance != NULL);                             \
-            return *s_pInstance;                                        \
-        }                                                               \
-        static T* InstancePtr()                                         \
-        {                                                               \
             return s_pInstance;                                         \
         }                                                               \
     private:                                                            \
         static T* s_pInstance
 
-#define BM_SINGLETON_DEFINE(T) T* T::s_pInstance
+#define SINGLETON_DEFINE(T) T* T::s_pInstance
 //////////////////////////////////////////////////////////////////////////

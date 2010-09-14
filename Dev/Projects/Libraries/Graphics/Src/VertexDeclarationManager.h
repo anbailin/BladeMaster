@@ -2,7 +2,7 @@
 
 class VertexDeclareManager
 {
-    BM_SINGLETON_DECLARE(VertexDeclareManager);
+    SINGLETON_DECLARE(VertexDeclareManager);
 
 public:
     void CreateResource();

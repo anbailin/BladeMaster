@@ -85,8 +85,8 @@ void BMTerrain::Draw(D3DXMATRIXA16* worldMtx,D3DXMATRIXA16* viewMtx, D3DXMATRIXA
     static float TimeStamp = 0.0f;
     //TimeStamp += 1.0f;
 
-    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosNorColor);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().terrain_vs_id, ShaderLoader::Instance().terrain_ps_id);
+    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosNorColor);
+    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->terrain_vs_id, ShaderLoader::GetInstance()->terrain_ps_id);
  
     DEVICEPTR->SetVertexShaderConstantF(0,(float*)(worldMtx),4);
     DEVICEPTR->SetVertexShaderConstantF(4,(float*)(viewMtx),4);

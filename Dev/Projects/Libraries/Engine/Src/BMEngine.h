@@ -4,7 +4,7 @@ class ENGINE_DLL BMEngine : public BM::GameEngine
 {
     Q_OBJECT
 
-    BM_SINGLETON_DECLARE(BMEngine);
+    SINGLETON_DECLARE(BMEngine);
 
 public:
     virtual void Init();

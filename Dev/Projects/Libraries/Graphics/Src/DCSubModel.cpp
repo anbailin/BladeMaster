@@ -17,7 +17,7 @@ void DCSubModel::Draw()
 	for(uint32 i=0;i<size;i++)
 	{
 		DCMaterialPtr& mat = mMaterials[i];
-		DCRenderer::Instance().ApplyTexture(0,mat->GetTexturePtr());
+		DCRenderer::GetInstance()->ApplyTexture(0,mat->GetTexturePtr());
 
 		DCRenderSetter::Get()->ApplyAlphaBlend(mat->GetAlphaBlendState());
 		DCRenderSetter::Get()->ApplyAlphaTest(mat->GetAlphaTestState());

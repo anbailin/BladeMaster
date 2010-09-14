@@ -36,66 +36,25 @@ bool App::InitApp()
 bool App::InitEngine()
 {
     DCSetupUtil::CreateInstance();
-    DCSetupUtil::Instance().SetGamePath();
-    DCSetupUtil::Instance().SetDataPath();
+    DCSetupUtil::GetInstance()->SetGamePath();
+    DCSetupUtil::GetInstance()->SetDataPath();
 
     //wow file related init
     DCWOWLoader::CreateInstance();
-    DCWOWLoader::Instance().Init();
+    DCWOWLoader::GetInstance()->Init();
 
     if (!GameApplication::InitEngine())
     {
         return false;
     }
 
-    //D3DXVECTOR3 vEye(  0.0f, 5.0f,-5.0f );
-    //D3DXVECTOR3 vAt(0.0f,0.0f,1.0f );
-    //D3DXVECTOR3 vUp(0.0f,1.0f,0.0f );
-
-    //float fAspectRatio = m_pRenderWidget->width() / (FLOAT)m_pRenderWidget->height();
-
-    //CFirstPersonCamera* pCamera=new CFirstPersonCamera;
-    //pCamera->SetViewParams(&vEye,&vAt);
-    //pCamera->SetScalers(0.002f,5.0f);
-    //pCamera->SetRotateButtons(true,false,false,false);
-    //pCamera->SetResetCursorAfterMove(false);
-    //pCamera->SetProjParams( D3DX_PI/3, fAspectRatio, 0.001f, 100.0f );	
-
-    //m_pCamera = pCamera;
-
-    //DCSetupUtil::CreateInstance();
-    //DCSetupUtil::Instance().SetGamePath();
-    //DCSetupUtil::Instance().SetDataPath();
-
-    ////init engine
-    //BMEngine::CreateInstance();    
-    //BMEngine::Instance().Init();    
-
-    //wow file related init
-    //DCWOWLoader::CreateInstance();
-    //DCWOWLoader::Instance().Init();
-
-
-    //DXUTSetCallbackDeviceCreated( OnCreateDevice );
-    //DXUTSetCallbackDeviceReset( OnResetDevice );
-    //DXUTSetCallbackDeviceLost( OnLostDevice );
-    //DXUTSetCallbackDeviceDestroyed( OnDestroyDevice );
-    //DXUTSetCallbackMsgProc( MsgProc );
-    //DXUTSetCallbackKeyboard( KeyboardProc );
-    //DXUTSetCallbackFrameRender( OnFrameRender );
-    //DXUTSetCallbackFrameMove( OnFrameMove );	
-
-    //DXUTInit( true, true, true ); // Parse the command line, handle the default hotkeys, and show msgboxes
-    //DXUTSetWindow(m_pRenderWidget->winId(), m_pRenderWidget->winId(), m_pRenderWidget->winId(), true);
-    //DXUTCreateDevice( D3DADAPTER_DEFAULT, true, 800, 600, NULL,NULL);
-
     return true;
 }
 
 void App::Exit()
 {
-    //DCRenderer::Instance().ReleaseResource();
-    //BMEngine::Instance().ReleaseResource();
+    //DCRenderer::GetInstance()->ReleaseResource();
+    //BMEngine::GetInstance()->ReleaseResource();
 
     //SafeDelete(m_pCamera);
 
@@ -112,8 +71,8 @@ void App::Tick(Float32 fDeltaTime)
 
 void App::ReleaseResource()
 {
-    //DCRenderer::Instance().ReleaseResource();
-    //BMEngine::Instance().ReleaseResource();
+    //DCRenderer::GetInstance()->ReleaseResource();
+    //BMEngine::GetInstance()->ReleaseResource();
 }
 
 //bool CALLBACK App::IsDeviceAcceptable( D3DCAPS9* pCaps, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, bool bWindowed, void* pUserContext )
@@ -170,11 +129,11 @@ void App::ReleaseResource()
 //    //    return S_OK;
 //    //}
 //
-//    DCRenderer::Instance().InitResource(pd3dDevice);
-//    LevelManager::Instance().LoadMap("map");
+//    DCRenderer::GetInstance()->InitResource(pd3dDevice);
+//    LevelManager::GetInstance()->LoadMap("map");
 //
 //    float fAspectRatio = pBackBufferSurfaceDesc->Width / (FLOAT)pBackBufferSurfaceDesc->Height;
-//    App::Instance().m_pCamera->SetProjParams( D3DX_PI/3, fAspectRatio, 0.001f, 100.0f );	
+//    App::GetInstance()->m_pCamera->SetProjParams( D3DX_PI/3, fAspectRatio, 0.001f, 100.0f );	
 //
 //    return S_OK;
 //}
@@ -187,9 +146,9 @@ void App::ReleaseResource()
 //        DXUTTimer::SetElapsedTime(fElapsedTime);
 //    }
 //
-//    App::Instance().m_pCamera->FrameMove(fElapsedTime);
+//    App::GetInstance()->m_pCamera->FrameMove(fElapsedTime);
 //
-//    BMEngine::Instance().Tick((float)fTime);	
+//    BMEngine::GetInstance()->Tick((float)fTime);	
 //}
 //
 //void CALLBACK App::OnFrameRender( IDirect3DDevice9* pd3dDevice, double fTime, float fElapsedTime, void* pUserContext )
@@ -201,22 +160,22 @@ void App::ReleaseResource()
 //    mxView = *Instance().m_pCamera->GetViewMatrix();
 //    mxProj = *Instance().m_pCamera->GetProjMatrix();
 //
-//    SceneRenderer::Instance().SetViewMatrix(mxView);
-//    SceneRenderer::Instance().SetProjMatrix(mxProj);
+//    SceneRenderer::GetInstance()->SetViewMatrix(mxView);
+//    SceneRenderer::GetInstance()->SetProjMatrix(mxProj);
 //
-//    SceneRenderer::Instance().RenderScene(*(LevelManager::Instance().GetLevelInstance()));
+//    SceneRenderer::GetInstance()->RenderScene(*(LevelManager::GetInstance()->GetLevelInstance()));
 //}
 //
 //LRESULT CALLBACK App::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, bool* pbNoFurtherProcessing, void* pUserContext )
 //{
-//    App::Instance().m_pCamera->HandleMessages(hWnd,uMsg,wParam,lParam);
+//    App::GetInstance()->m_pCamera->HandleMessages(hWnd,uMsg,wParam,lParam);
 //    return 0;
 //}
 //
 //
 //void CALLBACK App::OnDestroyDevice( void* pUserContext )
 //{    
-//    App::Instance().ReleaseResource();
+//    App::GetInstance()->ReleaseResource();
 //    DCRenderer::DeleteInstance();
 //}
 //
@@ -229,5 +188,5 @@ void App::ReleaseResource()
 //        return;
 //    }
 //
-//    App::Instance().ReleaseResource();
+//    App::GetInstance()->ReleaseResource();
 //}

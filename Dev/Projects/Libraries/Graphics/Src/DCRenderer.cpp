@@ -1,6 +1,6 @@
 #include "GraphicsPrivate.h"
 
-BM_SINGLETON_DEFINE(DCRenderer);
+SINGLETON_DEFINE(DCRenderer);
 
 namespace RendererConfig
 {
@@ -47,10 +47,10 @@ void DCRenderer::Init(QWidget* pRenderWidget)
     DCRenderSetter::Init();
 
     BMPostFXRenderer::CreateInstance();
-    BMPostFXRenderer::Instance().Init();
+    BMPostFXRenderer::GetInstance()->Init();
 
     ShaderLoader::CreateInstance();
-    ShaderLoader::Instance().Init();
+    ShaderLoader::GetInstance()->Init();
 
     VertexDeclareManager::CreateInstance();
 
@@ -120,7 +120,7 @@ void DCRenderer::Draw(Float32 fDeltaTime)
 			TerrainPtr->Draw(&mxWorld, (D3DXMATRIXA16*)mViewMatrix, (D3DXMATRIXA16*)mProjMatrix);
 		}
 
-		BMPostFXRenderer::Instance().Render();
+		BMPostFXRenderer::GetInstance()->Render();
 
 		EndRender();
 		BM_AssertHr(DEVICEPTR->EndScene()); 
@@ -147,7 +147,7 @@ void DCRenderer::OnDestroyDevice()
 uint32 aa,bb;
 void DCRenderer::BeginRender()
 {
-    BMPostFXRenderer::Instance().StoreBackBuffer();
+    BMPostFXRenderer::GetInstance()->StoreBackBuffer();
 
     //set lighting rt
 	IDirect3DSurface9* surface;
@@ -172,7 +172,7 @@ void DCRenderer::BeginRender()
 //render lighting buffer into back to backbuffer
 void DCRenderer::EndRender()
 {
-    BMPostFXRenderer::Instance().RenderToBackBuffer(mLightingRT);
+    BMPostFXRenderer::GetInstance()->RenderToBackBuffer(mLightingRT);
 }
 
 //can be called on onresetdevice
@@ -193,9 +193,9 @@ void DCRenderer::InitResource(IDirect3DDevice9* deivce)
 
     assert(SUCCEEDED(result));
 
-    ShaderLoader::Instance().CreateShaderCache();
-    BMPostFXRenderer::Instance().InitResource();
-    VertexDeclareManager::Instance().CreateResource();
+    ShaderLoader::GetInstance()->CreateShaderCache();
+    BMPostFXRenderer::GetInstance()->InitResource();
+    VertexDeclareManager::GetInstance()->CreateResource();
 }
 
 //release graphics driver related resource including shader/texture
@@ -203,9 +203,9 @@ void DCRenderer::ReleaseResource()
 {
     mLightingRT = NULL;
 
-    BMPostFXRenderer::Instance().ReleaseResource();
-    ShaderLoader::Instance().DestroyShaderCache();
-    VertexDeclareManager::Instance().ReleaseResource();
+    BMPostFXRenderer::GetInstance()->ReleaseResource();
+    ShaderLoader::GetInstance()->DestroyShaderCache();
+    VertexDeclareManager::GetInstance()->ReleaseResource();
 }
 
 

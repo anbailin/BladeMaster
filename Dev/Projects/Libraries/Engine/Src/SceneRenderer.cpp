@@ -1,6 +1,6 @@
 #include "EnginePrivate.h"
 
-BM_SINGLETON_DEFINE(SceneRenderer);
+SINGLETON_DEFINE(SceneRenderer);
 
 SceneRenderer::SceneRenderer()
 {
@@ -22,7 +22,7 @@ void SceneRenderer::RenderScene(const LevelInstance& instance)
 
   //  BM_AssertHr(DEVICEPTR->BeginScene());	
   //  {        
-  //      DCRenderer::Instance().BeginRender();
+  //      DCRenderer::GetInstance()->BeginRender();
   //      DEVICEPTR->Clear( 0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,D3DCOLOR_COLORVALUE(85.0f/255.0f,101.0f/255.0f,215.0f/255.0f,1.0f), 1.0f, 0 );
 		//BM_AssertHr(DEVICEPTR->EndScene());    
 
@@ -50,9 +50,9 @@ void SceneRenderer::RenderScene(const LevelInstance& instance)
   //      //terrain
   //      instance.GetTerrain()->Draw(&mxWorld, &mViewMatrix, &mProjMatrix);
 
-  //      BMPostFXRenderer::Instance().Render();
+  //      BMPostFXRenderer::GetInstance()->Render();
 
-  //      DCRenderer::Instance().EndRender();
+  //      DCRenderer::GetInstance()->EndRender();
   //      BM_AssertHr(DEVICEPTR->EndScene()); 
   //  }
     

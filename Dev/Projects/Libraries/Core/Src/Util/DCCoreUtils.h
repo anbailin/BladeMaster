@@ -6,7 +6,7 @@
 */
 class CORE_DLL DCSetupUtil
 {
-	BM_SINGLETON_DECLARE(DCSetupUtil);
+	SINGLETON_DECLARE(DCSetupUtil);
 	
 public:
 	void SetGamePath();

@@ -38,7 +38,7 @@ namespace
     };
 }
 
-BM_SINGLETON_DEFINE(VertexDeclareManager);
+SINGLETON_DEFINE(VertexDeclareManager);
 
 void VertexDeclareManager::CreateResource()
 {

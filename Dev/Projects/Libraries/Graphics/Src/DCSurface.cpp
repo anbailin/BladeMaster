@@ -11,7 +11,7 @@ DCSurface* DCSurface::Create(const std::string& filename)
 	ComPtr<IDirect3DTexture9> tex;
 
 	BM_AssertHr(
-		D3DXCreateTexture(DCRenderer::Instance().GetDevice(),
+		D3DXCreateTexture(DCRenderer::GetInstance()->GetDevice(),
 		file.GetWidth(),
 		file.GetHeight(),
 		file.GetMipMapLevel(),

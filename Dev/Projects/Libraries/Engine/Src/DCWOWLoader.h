@@ -9,7 +9,7 @@ class DCFilePath;
 
 class ENGINE_DLL DCWOWLoader
 {
-    BM_SINGLETON_DECLARE(DCWOWLoader);
+    SINGLETON_DECLARE(DCWOWLoader);
 
 public:
 	DCModel*							LoadModel(DCFilePath& _path, DCAnimationManager*& animMgr);

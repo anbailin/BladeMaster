@@ -13,8 +13,8 @@ void DCModel::Draw(uint32 ndx)
 {
 	assert( ndx<mSubModelCount );		
 
-    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosWNTC);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().skin_vs_id, ShaderLoader::Instance().skin_ps_id);
+    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosWNTC);
+    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->skin_vs_id, ShaderLoader::GetInstance()->skin_ps_id);
 		
 	DEVICEPTR->SetVertexShaderConstantF(9,mSkinData,mSkinConstNum);
 
@@ -74,8 +74,8 @@ void DCModel::RenderBoneLevel()
 { 
 	//GUARD_RENDERSTATE(D3DRS_ZENABLE,false);
 
- //   VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosColor);
- //   ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().bone_vs_id, ShaderLoader::Instance().bone_ps_id);
+ //   VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosColor);
+ //   ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->bone_vs_id, ShaderLoader::GetInstance()->bone_ps_id);
 	//
 	//const uint32 boneNum = mAnimMgr->GetBoneNum();
 
@@ -208,8 +208,8 @@ void DCModelSys::Draw(uint32 ndx)
 
 	//pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );
 	
-    VertexDeclareManager::Instance().ApplyVertexDeclaration(VertexTypePosNorTex);
-    ShaderLoader::Instance().ApplyShader(ShaderLoader::Instance().static_vs_id, ShaderLoader::Instance().static_ps_id);
+    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosNorTex);
+    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->static_vs_id, ShaderLoader::GetInstance()->static_ps_id);
 
 	uint32 length = mVertexCount*sizeof(MDXModelVertSys);
 	void* lockPtr;

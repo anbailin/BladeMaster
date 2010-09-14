@@ -1,7 +1,7 @@
 #include "CorePrivate.h"
 
 
-BM_SINGLETON_DEFINE(DCSetupUtil);
+SINGLETON_DEFINE(DCSetupUtil);
 
 void gLog(char *str, ...)
 {
@@ -46,7 +46,7 @@ void DCSetupUtil::SetGamePath()
 	} 
 	else 
 	{
-        //m_gamePath = BM::Application::Instance().GetSetting("WOW", "Client/Path").toString().toStdWString();
+        //m_gamePath = BM::Application::GetInstance()->GetSetting("WOW", "Client/Path").toString().toStdWString();
         m_gamePath = TEXT("e:\\game\\wow\\");        
 	}
 }

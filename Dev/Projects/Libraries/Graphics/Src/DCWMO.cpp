@@ -57,7 +57,7 @@
 //	//		for(uint32 i=0;i<mHeader.mTextureNum;i++)
 //	//		{
 //	//			std::string tTexPath(tTexName.addr + tMaterialPtr[i].nameStart);
-//	//			DCTexturePtr tTexPtr (DCWOWLoader::Instance().LoadTexture(tTexPath));
+//	//			DCTexturePtr tTexPtr (DCWOWLoader::GetInstance()->LoadTexture(tTexPath));
 //	//			DCMaterialPtr tMatPtr(new DCMaterial);
 //	//			tMatPtr->SetTexturePtr(tTexPtr);
 //	//			SetMaterial(tMatPtr,i);
@@ -109,7 +109,7 @@
 //
 //	//			DCFilePath tModelPath(tCharPtr);
 //	//			
-//	//			DCModelPtr tModelPtr(DCWOWLoader::Instance().LoadModel(tModelPath));
+//	//			DCModelPtr tModelPtr(DCWOWLoader::GetInstance()->LoadModel(tModelPath));
 //	//			WMOMODDChunk chunk;
 //	//			file.read(&chunk,sizeof(WMOMODDChunk));
 //
