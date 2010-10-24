@@ -558,27 +558,27 @@
 			Name="Shader"
 			>
 			<File
-				RelativePath="..\..\..\Data\Shader\Bone.hlsl"
+				RelativePath="..\..\..\..\Engine\Shader\Bone.hlsl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\Data\Shader\Copy.hlsl"
+				RelativePath="..\..\..\..\Engine\Shader\Copy.hlsl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\Data\Shader\ModelSkinning.hlsl"
+				RelativePath="..\..\..\..\Engine\Shader\ModelSkinning.hlsl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\Data\Shader\ModelStatic.hlsl"
+				RelativePath="..\..\..\..\Engine\Shader\ModelStatic.hlsl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\Data\Shader\PostFX.hlsl"
+				RelativePath="..\..\..\..\Engine\Shader\PostFX.hlsl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\Data\Shader\Terrain.hlsl"
+				RelativePath="..\..\..\..\Engine\Shader\Terrain.hlsl"
 				>
 			</File>
 		</Filter>
