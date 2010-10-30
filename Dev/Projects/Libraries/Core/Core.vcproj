@@ -553,6 +553,18 @@
 				RelativePath=".\Src\Utilities.h"
 				>
 			</File>
+			<Filter
+				Name="Str"
+				>
+				<File
+					RelativePath=".\Src\Util\StrUtil.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\Util\StrUtil.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>

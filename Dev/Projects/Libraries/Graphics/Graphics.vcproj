@@ -133,7 +133,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib"
+				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib Shlwapi.lib"
 				OutputFile="$(OutDir)\$(ProjectName)_$(ConfigurationName)$(PlatformName).dll"
 				AdditionalLibraryDirectories="$(QTDIR)\lib"
 				GenerateDebugInformation="true"
@@ -575,6 +575,22 @@
 			</File>
 			<File
 				RelativePath="..\..\..\..\Engine\Shader\PostFX.hlsl"
+				>
+			</File>
+			<File
+				RelativePath=".\ShaderId.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ShaderId.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\ShaderMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\ShaderMgr.h"
 				>
 			</File>
 			<File

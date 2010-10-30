@@ -90,6 +90,7 @@
 #include "Util/DXUTTimer.h"
 #include "Util/DCTypeDef.h"
 #include "Util/DCRGBAColor8.h"
+#include "Util/StrUtil.h"
 
 #include "Vector2.h"
 #include "Vector3.h"

@@ -39,3 +39,13 @@ PS_OUT MainPS(PS_IN input)
 	result.color = input.diffuse;
 	return result;
 }
+
+technique BoneTech
+{
+    pass P0
+    {          
+        ZENABLE = true;
+        VertexShader = compile vs_3_0 MainVS();
+        PixelShader  = compile ps_3_0 MainPS();
+    }
+}

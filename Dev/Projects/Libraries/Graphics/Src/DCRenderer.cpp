@@ -1,4 +1,5 @@
 #include "GraphicsPrivate.h"
+#include "ShaderMgr.h"
 
 SINGLETON_DEFINE(DCRenderer);
 
@@ -51,6 +52,9 @@ void DCRenderer::Init(QWidget* pRenderWidget)
 
     ShaderLoader::CreateInstance();
     ShaderLoader::GetInstance()->Init();
+
+    ShaderMgr::CreateInstance();
+    ShaderMgr::GetInstance()->LoadShaders();
 
     VertexDeclareManager::CreateInstance();
 

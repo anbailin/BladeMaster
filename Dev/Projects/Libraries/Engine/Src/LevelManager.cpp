@@ -90,6 +90,8 @@ LevelInstance* LevelManager::CreateLevelInstance(const char* name)
     BMTerrainPtr terrainPtr = new BMTerrain;
     levelInstance->SetTerrain(terrainPtr);
 
+    SAFE_DELETE(levelDoc);
+
     return levelInstance;
 }
 

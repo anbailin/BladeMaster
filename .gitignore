@@ -29,8 +29,10 @@
 
 # Folders
 /Tags/Main/Bin/
+/Tags/Main/Dev/Projects/Applications/TestApp/GeneratedFiles/*.*
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/*.*
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/ui_MainWindow.h
 /Bin/*.*
+/Dev/Projects/Applications/TestApp/GeneratedFiles/*.*
 # Qt MOC Files
 moc_*.cpp
