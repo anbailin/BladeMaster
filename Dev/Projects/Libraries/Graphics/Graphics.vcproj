@@ -578,11 +578,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Shader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Shader.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ShaderId.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\ShaderId.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\ShaderLoader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Src\ShaderLoader.h"
 				>
 			</File>
 			<File
@@ -635,14 +651,6 @@
 			</File>
 			<File
 				RelativePath=".\Src\QuadGeometry.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\ShaderLoader.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\ShaderLoader.h"
 				>
 			</File>
 			<File

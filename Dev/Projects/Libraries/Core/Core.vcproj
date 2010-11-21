@@ -565,6 +565,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Debug"
+				>
+				<File
+					RelativePath=".\DataBreakPoint.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\DataBreakPoint.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>

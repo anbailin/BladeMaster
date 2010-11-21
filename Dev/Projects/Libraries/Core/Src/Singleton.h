@@ -8,26 +8,26 @@ namespace BM
     protected:
         Singleton()
         {
-            BM_Assert(s_pInstance == NULL);
-            s_pInstance = static_cast<T*>(this);
+            BM_Assert(msInstance == NULL);
+            msInstance = static_cast<T*>(this);
         }
 
         virtual ~Singleton()
         {
-            BM_Assert(s_pInstance == static_cast<T*>(this));
-            s_pInstance = NULL;
+            BM_Assert(msInstance == static_cast<T*>(this));
+            msInstance = NULL;
         }
 
     public:
         static T& Instance()
         {
-            BM_Assert(s_pInstance != NULL);
-            return *s_pInstance;
+            BM_Assert(msInstance != NULL);
+            return *msInstance;
         }
 
         static T* InstancePtr()
         {
-            return s_pInstance;
+            return msInstance;
         }
 
         static void CreateInstance()
@@ -37,17 +37,17 @@ namespace BM
 
         static void DeleteInstance()
         {
-            SafeDelete(s_pInstance);
+            SafeDelete(msInstance);
         }
 
     protected:
-        static T* s_pInstance;
+        static T* msInstance;
     };
 }
 
 // Work with Singleton template class.
 // Put this in cpp file.
-#define BM_SINGLETON_IMPLEMENT(T)   template<> T* Singleton<T>::s_pInstance = NULL
+#define BM_SINGLETON_IMPLEMENT(T)   template<> T* Singleton<T>::msInstance = NULL
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -56,24 +56,24 @@ namespace BM
     public:                                                             \
         static void CreateInstance()                                    \
         {                                                               \
-            BM_Assert(s_pInstance == NULL);                             \
-            s_pInstance = new T();                                      \
+            BM_Assert(msInstance == NULL);                             \
+            msInstance = new T();                                      \
         }                                                               \
         static void DeleteInstance()                                    \
         {                                                               \
-            if (s_pInstance != NULL)                                    \
+            if (msInstance != NULL)                                    \
             {                                                           \
-                delete s_pInstance;                                     \
-                s_pInstance = NULL;                                     \
+                delete msInstance;                                     \
+                msInstance = NULL;                                     \
             }                                                           \
         }                                                               \
         static T* GetInstance()                                         \
         {                                                               \
-            BM_Assert(s_pInstance != NULL);                             \
-            return s_pInstance;                                         \
+            BM_Assert(msInstance != NULL);                             \
+            return msInstance;                                         \
         }                                                               \
     private:                                                            \
-        static T* s_pInstance
+        static T* msInstance
 
-#define SINGLETON_DEFINE(T) T* T::s_pInstance
+#define SINGLETON_DEFINE(T) T* T::msInstance
 //////////////////////////////////////////////////////////////////////////

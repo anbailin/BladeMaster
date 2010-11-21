@@ -19,9 +19,21 @@
 #include <algorithm>
 #include <vector>
 #include <map>
+#include <hash_map>
 #include <Utility>
 #include <complex>
 #include <string>
+#include <windows.h>
+#include <winbase.h>
+#include <assert.h>
+#include <stack>
+
+#include <tchar.h>
+#include <string>
+#include <vector>
+#include <map>
+#include <list>
+#include <algorithm>
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////

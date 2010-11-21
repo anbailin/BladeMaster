@@ -14,13 +14,15 @@ ShaderMgr::~ShaderMgr()
 
 }
 
+
 /*
  *	when meeting fx, search for xml for macro definition
  *  
  */
 void ShaderMgr::LoadShaders()
 {
-    const wchar_t* shaderPath = L"..\\Engine\\Shader\\*.*";
+    const wchar_t* shaderPath = L"..\\Engine\\Shader\\";
+    const wchar_t* allFilePath = L"..\\Engine\\Shader\\*.*";
     const wchar_t* xmlEx = L".xml";
     const wchar_t* fxEx = L".fx";
 
@@ -30,7 +32,7 @@ void ShaderMgr::LoadShaders()
     std::vector<std::wstring> fileNames;
 
     WIN32_FIND_DATA stData; 
-    HANDLE hFind = FindFirstFile(shaderPath, &stData); 
+    HANDLE hFind = FindFirstFile(allFilePath, &stData); 
     if (hFind  == INVALID_HANDLE_VALUE)  
         return;
     
@@ -42,13 +44,12 @@ void ShaderMgr::LoadShaders()
         }
 
         fileNames.push_back(stData.cFileName);
-
     } while (FindNextFile(hFind, &stData));
 
     /*
      *	parse name list, construct description list
      */
-    for(s32 i=0; i<fileNames.size(); i++)    
+    for(u32 i=0; i<fileNames.size(); i++)    
     {
         const std::wstring& fileName = fileNames[i];
         size_t pos = fileName.find(fxEx);
@@ -94,4 +95,56 @@ void ShaderMgr::LoadShaders()
 
         WStrToStr(fileName,shaderDesc.name);
     }
+
+    /*
+     *	compile shaders
+     */
+    for (u32 shaderIdx=0; shaderIdx<mShaderDescs.size(); shaderIdx++)
+    {
+        const ShaderDesc& desc = mShaderDescs[shaderIdx];
+        const u32 macroSize = desc.definitions.size();
+        const u32 shaderSize = 1<<macroSize;
+
+        std::wstring fxName;
+        StrToWStr(desc.name, fxName);        
+
+        std::vector<D3DXMACRO> macroes;
+        macroes.resize(macroSize+1);
+        macroes[macroSize].Definition = NULL;
+        macroes[macroSize].Name = NULL;
+
+        for(u32 macroIdx=0; macroIdx<macroSize; macroIdx++)
+        {
+            macroes[macroIdx].Name = desc.definitions[macroIdx].c_str();
+        }
+
+        for(u32 macroIdx = 0; macroIdx<shaderSize; macroIdx++)
+        {
+            std::vector<std::string> macroNames;
+            for (u32 i=0; i<macroSize; i++)
+            {
+                if((macroIdx&(1<<i))==1)
+                {
+                    macroes[macroIdx].Definition = "1";
+                }
+                else
+                {
+                    macroes[macroIdx].Definition = "0";
+                }
+            }        
+
+            PixelShaderPtr ps;
+            VertexShaderPtr vs;
+            ShaderLoader::GetInstance()->LoadPixelShader(fxName.c_str(), &macroes[0], NULL, "MainPS", 0, ps);
+            ShaderLoader::GetInstance()->LoadVertexShader(fxName.c_str(), &macroes[0], NULL, "MainVS", 0, vs);
+
+            ShaderId shaderId = shaderIdx;
+            shaderId = shaderIdx<<32;
+            shaderIdx |= macroIdx;
+            ShaderHandle* shaderHandle = new ShaderHandle;
+            mShaderMap[shaderId] = shaderHandle;
+            shaderHandle->mPixelShader = ps;
+            shaderHandle->mVertexShader = vs;
+        }
+    }    
 }

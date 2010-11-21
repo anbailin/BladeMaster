@@ -26,7 +26,7 @@ DCRenderer::DCRenderer()
 :   mBackBufferSizeX(RendererConfig::BackBufferSizeX)
 ,   mBackBufferSizeY(RendererConfig::BackBufferSizeY)
 {
-    s_pInstance = this;
+    msInstance = this;
 }
 
 DCRenderer::~DCRenderer()
@@ -53,12 +53,12 @@ void DCRenderer::Init(QWidget* pRenderWidget)
     ShaderLoader::CreateInstance();
     ShaderLoader::GetInstance()->Init();
 
-    ShaderMgr::CreateInstance();
-    ShaderMgr::GetInstance()->LoadShaders();
-
     VertexDeclareManager::CreateInstance();
 
     D3D9Renderer::Init(pRenderWidget);
+
+    ShaderMgr::CreateInstance();
+    ShaderMgr::GetInstance()->LoadShaders();
 }
 
 void DCRenderer::Exit()

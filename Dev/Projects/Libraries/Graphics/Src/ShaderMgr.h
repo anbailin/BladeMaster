@@ -1,5 +1,8 @@
 #pragma once
 
+#include "ShaderId.h"
+#include "Shader.h"
+
 class ShaderMgr
 {
     SINGLETON_DECLARE(ShaderMgr);
@@ -16,4 +19,5 @@ public:
         std::vector<std::string>    definitions;
     };
     std::vector<ShaderDesc>         mShaderDescs;
+    stdext::hash_map<ShaderId, ShaderHandle*> mShaderMap;
 };
