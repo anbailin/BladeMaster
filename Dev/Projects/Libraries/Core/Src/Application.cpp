@@ -24,6 +24,11 @@ namespace BM
 
     bool Application::Init()
     {
+        /*
+         *	core part init
+         */
+        BMLog::CreateInstance();
+
         InitDataDir();
         LoadSettings();
         return true;

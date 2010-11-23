@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="BMCommonConfig"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories=".\GeneratedFiles;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(SolutionDir)Externals\libmpq-0.4.2\src&quot;;&quot;$(SolutionDir)Projects\Libraries\Core\Src&quot;;&quot;$(SolutionDir)Projects\Libraries\Engine\Src&quot;;&quot;$(SolutionDir)Projects\Libraries\Game\Src&quot;;&quot;$(SolutionDir)Projects\Libraries\Graphics\Src&quot;;&quot;$(SolutionDir)Projects\Libraries\Animation\&quot;;&quot;$(SolutionDir)Projects\Libraries\Core\&quot;"
+	/>
+</VisualStudioPropertySheet>

@@ -1,0 +1,15 @@
+<ShaderDef name = "ShaderDef"> 
+  <ShaderMacro>COPY</ShaderMacro>
+  <ShaderMacro>BLOOM_FILTER</ShaderMacro>
+  <ShaderMacro>BLOOM_BLURV</ShaderMacro>
+  <ShaderMacro>BLOOM_BLURH</ShaderMacro>
+  <ShaderMacro>BLOOM_MERGE</ShaderMacro> 
+  <ShaderNation>
+    <ShaderProvince>
+      <ShaderCity>COPY</ShaderCity>
+      <ShaderCity>BLOOM_MERGE</ShaderCity>
+      <ShaderCity>BLOOM_BLURV</ShaderCity>
+      <ShaderCity>BLOOM_BLURH</ShaderCity>      
+    </ShaderProvince>
+  </ShaderNation>
+</ShaderDef>

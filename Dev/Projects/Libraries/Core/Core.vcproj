@@ -557,6 +557,14 @@
 				Name="Str"
 				>
 				<File
+					RelativePath=".\Src\Util\StrTokenizer.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Src\Util\StrTokenizer.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Src\Util\StrUtil.cpp"
 					>
 				</File>
@@ -574,6 +582,18 @@
 				</File>
 				<File
 					RelativePath=".\DataBreakPoint.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Container"
+				>
+				<File
+					RelativePath=".\TArray.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\TArray.h"
 					>
 				</File>
 			</Filter>

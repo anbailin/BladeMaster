@@ -82,6 +82,7 @@
 #include "Maths.h"
 
 //container
+#include "TArray.h"
 #include "AlignedContainerAllocator.h"
 
 //math
@@ -103,6 +104,8 @@
 #include "Util/DCTypeDef.h"
 #include "Util/DCRGBAColor8.h"
 #include "Util/StrUtil.h"
+#include "Util/StrTokenizer.h"
+
 
 #include "Vector2.h"
 #include "Vector3.h"

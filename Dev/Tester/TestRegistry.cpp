@@ -103,7 +103,7 @@ void TestRegistry::run (TestResult& result, TCHAR *GroupNameArray[], int Number)
 		}
 
 		if(finallist != NULL)
-			LogToDebug(TEXT("  Test group:%s"), finallist->GetGroupName());
+			LogToDebugW(TEXT("  Test group:%s"), finallist->GetGroupName());
 		//run all tests
 		for(Test* t = finallist; t; t=t->getRunNext())
 		{			

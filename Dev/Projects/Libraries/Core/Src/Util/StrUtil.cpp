@@ -16,3 +16,8 @@ void WStrToStr(const std::wstring& src, std::string& dst)
     BM_Assert(useDefaultChar==0);
 
 }
+
+void StrSplit(const char* src, const char* split, std::vector<std::string>& output)
+{
+    
+}
