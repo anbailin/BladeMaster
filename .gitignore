@@ -1,3 +1,4 @@
+
 *.a
 *.user
 *.dll
@@ -26,13 +27,47 @@
 *.bat
 *.ib_tag
 *.ib_pdb_index
-
+*.html
+*.dot
+*.md5
+*.png
 # Folders
 /Tags/Main/Bin/
+/Tags/Main/docs/
 /Tags/Main/Dev/Projects/Applications/TestApp/GeneratedFiles/*.*
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/*.*
 /Tags/Main/Projects/Applications/TestApp/GeneratedFiles/ui_MainWindow.h
 /Bin/*.*
+docs/
 /Dev/Projects/Applications/TestApp/GeneratedFiles/*.*
 # Qt MOC Files
 moc_*.cpp
+
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
