@@ -596,14 +596,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Src\ShaderLoader.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\ShaderLoader.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Src\ShaderMgr.cpp"
 				>
 			</File>

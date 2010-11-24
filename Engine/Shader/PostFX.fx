@@ -17,7 +17,7 @@ struct VertexOutput
 /**
 *	bloom impl
 */
-#if BLOOM_FILTER
+#if BLOOM_FILTER||BLOOM_MERGE||BLOOM_BLURV||BLOOM_BLURH
 VertexOutput MainVS(QuadVertex input)
 {
 	VertexOutput result;

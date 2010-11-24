@@ -9,7 +9,8 @@
       <ShaderCity>COPY</ShaderCity>
       <ShaderCity>BLOOM_MERGE</ShaderCity>
       <ShaderCity>BLOOM_BLURV</ShaderCity>
-      <ShaderCity>BLOOM_BLURH</ShaderCity>      
+      <ShaderCity>BLOOM_BLURH</ShaderCity>
+      <ShaderCity>BLOOM_FILTER</ShaderCity>
     </ShaderProvince>
   </ShaderNation>
 </ShaderDef>

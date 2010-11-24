@@ -15,6 +15,7 @@ public:
 protected:
 	VertexBufferPtr	mVB;
     IndexBufferPtr  mIB;
+    ShaderId        mShaderId;
 };
 
 typedef ComPtr<BMTerrain> BMTerrainPtr;

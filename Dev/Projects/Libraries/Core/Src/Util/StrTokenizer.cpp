@@ -35,13 +35,12 @@ void StrTokenizer::SetDelimiter(const BMStr& delimiter)
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-// return the Next token
-// If cannot find a token anymore, return "".
-///////////////////////////////////////////////////////////////////////////////
-BMStr StrTokenizer::Next()
+bool StrTokenizer::Next(BMStr& str)
 {
-    if(mBuffer.size() <= 0) return "";           // skip if buffer is empty
+    if(mBuffer.size() <= 0 || mCurrPos==mBuffer.end()) 
+    {
+        return false;           // skip if buffer is empty
+    }
 
     mToken.clear();                              // reset token string
 
@@ -53,7 +52,8 @@ BMStr StrTokenizer::Next()
         mToken += *mCurrPos;
         ++mCurrPos;
     }
-    return mToken;
+    str = mToken;
+    return true;
 }
 
 
@@ -82,10 +82,9 @@ bool StrTokenizer::IsDelimiter(char c)
 void StrTokenizer::GetSubStr(TArray<BMStr>& subStr)
 {
     mCurrPos = mBuffer.begin();
-    BMStr token = Next();
-    while(token!="")
+    BMStr token;
+    while(Next(token))
     {
-        subStr.push_back(token);
-        token = Next();
+        subStr.push_back(token);        
     }
 }

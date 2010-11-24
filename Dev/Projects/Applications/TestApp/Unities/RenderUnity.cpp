@@ -69,9 +69,6 @@
 #pragma message("Unities/RenderUnity.cpp(69) : [21 / 23] ./Src/Render/QuadGeometry.cpp")
 #include ".\Src\Render\QuadGeometry.cpp"
 
-#pragma message("Unities/RenderUnity.cpp(72) : [22 / 23] ./Src/Render/ShaderLoader.cpp")
-#include ".\Src\Render\ShaderLoader.cpp"
-
 #pragma message("Unities/RenderUnity.cpp(75) : [23 / 23] ./Src/Render/VertexDeclarationManager.cpp")
 #include ".\Src\Render\VertexDeclarationManager.cpp"
 

@@ -14,8 +14,8 @@ public:
     void Set(const BMStr& str, const BMStr& delimiter=DEFAULT_DELIMITER);
     void SetString(const BMStr& str);             // Set source string only
     void SetDelimiter(const BMStr& delimiter);    // Set delimiter string only
-
-    BMStr Next();                                 // return the Next token, return "" if it ends
+    
+    bool Next(BMStr& str);
     void GetSubStr(TArray<BMStr>& subStr);
 
 private:

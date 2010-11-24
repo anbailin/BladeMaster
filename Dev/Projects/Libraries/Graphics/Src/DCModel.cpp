@@ -1,5 +1,5 @@
 #include "GraphicsPrivate.h"
-
+#include "ShaderMgr.h"
 
 //---------DCModel------------------------------------------------------------------------------
 
@@ -13,8 +13,8 @@ void DCModel::Draw(uint32 ndx)
 {
 	assert( ndx<mSubModelCount );		
 
-    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosWNTC);
-    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->skin_vs_id, ShaderLoader::GetInstance()->skin_ps_id);
+    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosWNTC);    
+    ShaderMgr::GetInstance()->ApplyShader(mShaderId);
 		
 	DEVICEPTR->SetVertexShaderConstantF(9,mSkinData,mSkinConstNum);
 
@@ -36,6 +36,9 @@ void DCModel::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 
 	mVertexBuffer = ptr;//this will cause the calling of original vertex buffer's Release();
 	mVertexCount = count;
+
+    mShaderId = ShaderMgr::GetInstance()->GetShaderTypeId("ModelSkinning");
+    ShaderMgr::GetInstance()->ApplyShader(mShaderId);
 }
 
 void DCModel::SetSubModel(DCSubModel* val,uint32 count)
@@ -75,7 +78,6 @@ void DCModel::RenderBoneLevel()
 	//GUARD_RENDERSTATE(D3DRS_ZENABLE,false);
 
  //   VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosColor);
- //   ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->bone_vs_id, ShaderLoader::GetInstance()->bone_ps_id);
 	//
 	//const uint32 boneNum = mAnimMgr->GetBoneNum();
 
@@ -170,6 +172,8 @@ void DCModelSys::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 
 	mVertexBuffer = ptr;
 	mVertexCount = count;
+
+    mShaderId = ShaderMgr::GetInstance()->GetShaderTypeId("ModelStatic");
 }
 
 void DCModelSys::SetSkinningData(const MatrixPool& skinData)
@@ -208,9 +212,8 @@ void DCModelSys::Draw(uint32 ndx)
 
 	//pix_event g( DXUT_PERFEVENTCOLOR, L"render model" );
 	
-    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosNorTex);
-    ShaderLoader::GetInstance()->ApplyShader(ShaderLoader::GetInstance()->static_vs_id, ShaderLoader::GetInstance()->static_ps_id);
-
+    VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosNorTex);    
+    ShaderMgr::GetInstance()->ApplyShader(mShaderId);
 	uint32 length = mVertexCount*sizeof(MDXModelVertSys);
 	void* lockPtr;
 	BM_AssertHr(mVertexBuffer->Lock(0,0,&lockPtr,NULL));

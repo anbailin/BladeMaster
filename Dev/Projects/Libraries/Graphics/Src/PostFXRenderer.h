@@ -48,4 +48,10 @@ protected:
 
     //utility to render full screen quad
     QuadGeometry*       mQuadGeometry;
+
+    ShaderId            mBloomFilter;
+    ShaderId            mBloomBlurV;
+    ShaderId            mBloomBlurH;
+    ShaderId            mBloomMerge;
+    ShaderId            mCopy;
 };

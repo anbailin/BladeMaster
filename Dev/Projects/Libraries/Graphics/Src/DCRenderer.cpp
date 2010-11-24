@@ -31,7 +31,6 @@ DCRenderer::DCRenderer()
 
 DCRenderer::~DCRenderer()
 {
-    ShaderLoader::DeleteInstance();
 	//SafeRelease(DEVICEPTR);
 }
 
@@ -50,15 +49,10 @@ void DCRenderer::Init(QWidget* pRenderWidget)
     BMPostFXRenderer::CreateInstance();
     BMPostFXRenderer::GetInstance()->Init();
 
-    ShaderLoader::CreateInstance();
-    ShaderLoader::GetInstance()->Init();
-
+    ShaderMgr::CreateInstance();  
     VertexDeclareManager::CreateInstance();
 
-    D3D9Renderer::Init(pRenderWidget);
-
-    ShaderMgr::CreateInstance();
-    ShaderMgr::GetInstance()->LoadShaders();
+    D3D9Renderer::Init(pRenderWidget);         
 }
 
 void DCRenderer::Exit()
@@ -196,8 +190,9 @@ void DCRenderer::InitResource(IDirect3DDevice9* deivce)
         );
 
     assert(SUCCEEDED(result));
+    
+    ShaderMgr::GetInstance()->LoadShaders();
 
-    ShaderLoader::GetInstance()->CreateShaderCache();
     BMPostFXRenderer::GetInstance()->InitResource();
     VertexDeclareManager::GetInstance()->CreateResource();
 }
@@ -208,7 +203,6 @@ void DCRenderer::ReleaseResource()
     mLightingRT = NULL;
 
     BMPostFXRenderer::GetInstance()->ReleaseResource();
-    ShaderLoader::GetInstance()->DestroyShaderCache();
     VertexDeclareManager::GetInstance()->ReleaseResource();
 }
 

@@ -54,6 +54,8 @@ protected:
 	std::vector<DCTexturePtr>		mTextureTable;	
 	const float*					mSkinData;//data of the skinning animation
 	uint32							mSkinConstNum;//how many float4 of the skinning data
+
+    ShaderId                        mShaderId;
 };
 
 /**
@@ -72,7 +74,7 @@ public:
 
 protected:
 	MDXVertArray					mOriginalVertArray;
-	MDXVertArraySys					mAnimatedVertArray;
+	MDXVertArraySys					mAnimatedVertArray;    
 };
 
 typedef ComPtr<DCModel> DCModelPtr;
