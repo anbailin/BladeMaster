@@ -1,5 +1,12 @@
 #include "CorePrivate.h"
 
+#include "Maths.h"
+#include "Color.h"
+#include "Vector2.h"
+#include "Vector3.h"
+#include "Vector4.h"
+#include "Matrix44.h"
+#include "Quaternion.h"
 
 namespace BM
 {

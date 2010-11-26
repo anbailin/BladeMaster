@@ -20,7 +20,7 @@ namespace BM
     {
     }
 
-    void Renderer::Tick(Float32 fDeltaTime)
+    void Renderer::Tick(f32 fDeltaTime)
     {
     }
 }

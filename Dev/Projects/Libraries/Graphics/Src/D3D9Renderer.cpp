@@ -23,7 +23,7 @@ namespace BM
     {
     }
 
-    void D3D9Renderer::Tick(Float32 fDeltaTime)
+    void D3D9Renderer::Tick(f32 fDeltaTime)
     {
         m_fDeltaTime = fDeltaTime;
 
@@ -32,12 +32,12 @@ namespace BM
         DXUTRender3DEnvironment();
     }
 
-    void D3D9Renderer::Update(Float32 fDeltaTime)
+    void D3D9Renderer::Update(f32 fDeltaTime)
     {
 
     }
 
-    void D3D9Renderer::Draw(Float32 fDeltaTime)
+    void D3D9Renderer::Draw(f32 fDeltaTime)
     {
         //GetDevice()->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DXCOLOR( 0.0f, 0.25f, 0.25f, 0.55f ), 1.0f, 0);
     }

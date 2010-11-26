@@ -1,13 +1,13 @@
 #include "CorePrivate.h"
+#include "BMString.h"
 #include "ClassFactory.h"
 
 namespace BM
 {
-    QHash<String, ClassFactory::ClassCreateFunc> ClassFactory::s_Creators;
+    QHash<QString, ClassFactory::ClassCreateFunc> ClassFactory::s_Creators;
 
-    bool ClassFactory::Register(const String& name, ClassCreateFunc func)
-    {
-        BM_Assert(name != NULL);
+    bool ClassFactory::Register(const QString& name, ClassCreateFunc func)
+    {        
         BM_Assert(func != NULL);
 
         if (s_Creators.contains(name))
@@ -25,10 +25,8 @@ namespace BM
         }
     }
 
-    void* ClassFactory::CreateInstance(const String& name, void* buffer)
-    {
-        BM_Assert(name != NULL);
-
+    void* ClassFactory::CreateInstance(const QString& name, void* buffer)
+    {        
         ClassCreateFunc func = s_Creators.value(name);
         BM_Assert(func != NULL);
 

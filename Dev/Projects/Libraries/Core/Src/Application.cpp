@@ -1,5 +1,6 @@
 #include "CorePrivate.h"
 #include "Application.h"
+#include "Util/BMLog.h"
 
 namespace BM
 {

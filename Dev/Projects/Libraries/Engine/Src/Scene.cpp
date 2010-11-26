@@ -17,16 +17,16 @@ BMScene::BMScene()
 
 BMScene::~BMScene()
 {
-	SafeDelete(mTerrain);
+	SAFE_DELETE(mTerrain);
 }
 
 void BMScene::Tick(float delta)
 {
 	mCamera->Tick(delta);
 
-	const uint32 num = mSceneNodes.size();
+	const u32 num = mSceneNodes.size();
 	
-	for(uint32 i=0; i<num; i++)
+	for(u32 i=0; i<num; i++)
 	{
 		mSceneNodes[i]->Tick(delta);
 	}

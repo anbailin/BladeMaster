@@ -26,6 +26,6 @@ enum TexFilterState
 };
 
 //--------------------------------------------------------------------------------------------
-uint32 GetTypeSize(DCVertexType arg);
+u32 GetTypeSize(DCVertexType arg);
 
 #endif

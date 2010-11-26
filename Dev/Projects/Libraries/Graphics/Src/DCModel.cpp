@@ -9,7 +9,7 @@ DCModel::DCModel()
 {}
 
 
-void DCModel::Draw(uint32 ndx)
+void DCModel::Draw(u32 ndx)
 {
 	assert( ndx<mSubModelCount );		
 
@@ -23,10 +23,10 @@ void DCModel::Draw(uint32 ndx)
 	mSubModels[ndx].Draw();	
 }
 
-void DCModel::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
+void DCModel::InitVertexBuffer(void* addr, DCVertexType type, u32 count)
 {
 	VertexBufferPtr ptr;
-	uint32 length = GetTypeSize(type) * count;
+	u32 length = GetTypeSize(type) * count;
 	BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &ptr,0 ) );
 	
 	void* lockPtr;
@@ -41,27 +41,27 @@ void DCModel::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
     ShaderMgr::GetInstance()->ApplyShader(mShaderId);
 }
 
-void DCModel::SetSubModel(DCSubModel* val,uint32 count)
+void DCModel::SetSubModel(DCSubModel* val,u32 count)
 {
-	SafeDeleteArray( mSubModels);
+	SAFE_DELETE_ARRAY( mSubModels);
 
 	mSubModelCount = count;
 	mSubModels = val;
 
-	for(uint32 i=0;i<count;i++)
+	for(u32 i=0;i<count;i++)
 	{
 		mSubModels[i].SetParent(this);
 	}
 }
 
-void DCModel::SetTexture(DCTexturePtr ptr,uint32 index)
+void DCModel::SetTexture(DCTexturePtr ptr,u32 index)
 {	
 	assert(index < mTextureTable.size());
 
 	mTextureTable[index] = ptr;   
 }
 
-DCTexturePtr DCModel::GetTexture(uint32 index)
+DCTexturePtr DCModel::GetTexture(u32 index)
 {
 	assert(index < mTextureTable.size());
 
@@ -70,7 +70,7 @@ DCTexturePtr DCModel::GetTexture(uint32 index)
 
 DCModel::~DCModel()
 {
-	SafeDeleteArray(mSubModels);
+	SAFE_DELETE_ARRAY(mSubModels);
 }
 
 void DCModel::RenderBoneLevel()
@@ -79,10 +79,10 @@ void DCModel::RenderBoneLevel()
 
  //   VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosColor);
 	//
-	//const uint32 boneNum = mAnimMgr->GetBoneNum();
+	//const u32 boneNum = mAnimMgr->GetBoneNum();
 
 	////log code begin-------------------------------------------------------------
-	////for(uint32 i=0;i<boneNum; i++)
+	////for(u32 i=0;i<boneNum; i++)
 	////{
 	////	const DCBone& bone = mAnimMgr->GetBone(i);
 	////	const XMFLOAT3& transPivot = bone.GetTransPivot();
@@ -97,12 +97,12 @@ void DCModel::RenderBoneLevel()
 	////}
 	////log code end-------------------------------------------------------------
 
-	//const std::vector<uint32>& boneIdVec = mAnimMgr->GetBoneIDVector(); 
-	//for(uint32 i=0;i<boneIdVec.size();i++)
+	//const std::vector<u32>& boneIdVec = mAnimMgr->GetBoneIDVector(); 
+	//for(u32 i=0;i<boneIdVec.size();i++)
 	//{
-	//	const uint32 rootID = boneIdVec[i];
+	//	const u32 rootID = boneIdVec[i];
 	//	const DCBone& root = mAnimMgr->GetBone(rootID);
-	//	const uint32 boneLevel = mAnimMgr->GetBoneLevel(); 
+	//	const u32 boneLevel = mAnimMgr->GetBoneLevel(); 
 
 	//	assert(root.GetParentPtr() == NULL);
 	//	std::vector<BoneVert> vtx;
@@ -137,13 +137,13 @@ DCModelSys::DCModelSys()
 DCModelSys::~DCModelSys()
 {}
 
-void DCModelSys::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
+void DCModelSys::InitVertexBuffer(void* addr, DCVertexType type, u32 count)
 {
 	mOriginalVertArray.resize(count);
 
 	const DCVertPosWNTC* verts = (DCVertPosWNTC*)addr;
 
-	for(uint32 i=0;i<count;i++)
+	for(u32 i=0;i<count;i++)
 	{
 		mOriginalVertArray[i].bone[0] = verts[i].bone[0];
 		mOriginalVertArray[i].bone[1] = verts[i].bone[1];
@@ -161,13 +161,13 @@ void DCModelSys::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 	}
 
 	mAnimatedVertArray.resize(count);
-	for(uint32 i=0;i<count;i++)
+	for(u32 i=0;i<count;i++)
 	{
 		mAnimatedVertArray[i].tex = mOriginalVertArray[i].texcoord;
 	}
 
 	VertexBufferPtr ptr;
-	uint32 length = GetTypeSize(type) * count;
+	u32 length = GetTypeSize(type) * count;
 	BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &ptr,0 ) );
 
 	mVertexBuffer = ptr;
@@ -179,17 +179,17 @@ void DCModelSys::InitVertexBuffer(void* addr, DCVertexType type, uint32 count)
 void DCModelSys::SetSkinningData(const MatrixPool& skinData)
 {
 	const MatrixPool& bones = skinData;
-	for(uint32 i=0;i<mVertexCount;i++)
+	for(u32 i=0;i<mVertexCount;i++)
 	{
 		const XMFLOAT3& pos = mOriginalVertArray[i].pos;
 		const XMFLOAT3& norm = mOriginalVertArray[i].normal;
-		const uint8* ndx = mOriginalVertArray[i].bone;
+		const u8* ndx = mOriginalVertArray[i].bone;
 		const float* weight = mOriginalVertArray[i].weight;
 
 		XMVECTOR animpos = {0,0,0,0};
 		XMVECTOR animnorm= {0,0,0,0};
 
-		for(uint32 k=0;k<4;k++)
+		for(u32 k=0;k<4;k++)
 		{
 			XMVECTOR tpos = {pos.x, pos.y,pos.z,1.0f};
 			XMVECTOR tnorm = XMLoadFloat3(&norm);
@@ -206,7 +206,7 @@ void DCModelSys::SetSkinningData(const MatrixPool& skinData)
 	}
 }
 
-void DCModelSys::Draw(uint32 ndx)
+void DCModelSys::Draw(u32 ndx)
 {
 	assert(ndx<mSubModelCount);
 
@@ -214,7 +214,7 @@ void DCModelSys::Draw(uint32 ndx)
 	
     VertexDeclareManager::GetInstance()->ApplyVertexDeclaration(VertexTypePosNorTex);    
     ShaderMgr::GetInstance()->ApplyShader(mShaderId);
-	uint32 length = mVertexCount*sizeof(MDXModelVertSys);
+	u32 length = mVertexCount*sizeof(MDXModelVertSys);
 	void* lockPtr;
 	BM_AssertHr(mVertexBuffer->Lock(0,0,&lockPtr,NULL));
 	memcpy(lockPtr,(void*)&(mAnimatedVertArray[0]),length);

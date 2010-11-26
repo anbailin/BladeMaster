@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Utilities.h"
 namespace BM
 {
 #pragma region Constructors
@@ -12,7 +12,7 @@ namespace BM
         A = 0.0f;
     }
 
-    inline Color::Color(Float32 r, Float32 g, Float32 b, Float32 a)
+    inline Color::Color(f32 r, f32 g, f32 b, f32 a)
     {
         R = r;
         G = g;
@@ -20,7 +20,7 @@ namespace BM
         A = a;
     }
 
-    inline Color::Color(const Vector3& c, Float32 a)
+    inline Color::Color(const Vector3& c, f32 a)
     {
         R = c.X;
         G = c.Y;
@@ -76,23 +76,23 @@ namespace BM
         return (const D3DXCOLOR*)&R;
     }
 
-    inline Color::operator Float32* ()
+    inline Color::operator f32* ()
     {
-        return (Float32*)&R;
+        return (f32*)&R;
     }
 
-    inline Color::operator const Float32* () const
+    inline Color::operator const f32* () const
     {
-        return (const Float32*)&R;
+        return (const f32*)&R;
     }
 
-    inline Float32 Color::operator [] (int i) const
+    inline f32 Color::operator [] (int i) const
     {
         BM_Assert(i >= 0 && i < 4);
         return *(&R + i);
     }
 
-    inline Float32& Color::operator [] (int i)
+    inline f32& Color::operator [] (int i)
     {
         BM_Assert(i >= 0 && i < 4);
         return *(&R + i);
@@ -153,7 +153,7 @@ namespace BM
         return *this;
     }
 
-    inline Color& Color::operator *= (Float32 f)
+    inline Color& Color::operator *= (f32 f)
     {
         R *= f;
         G *= f;
@@ -162,7 +162,7 @@ namespace BM
         return *this;
     }
 
-    inline Color& Color::operator /= (Float32 f)
+    inline Color& Color::operator /= (f32 f)
     {
         R /= f;
         G /= f;
@@ -201,17 +201,17 @@ namespace BM
         return Color(R / c.R, G / c.G, B / c.B, A / c.A);
     }
 
-    inline Color Color::operator * (Float32 f) const
+    inline Color Color::operator * (f32 f) const
     {
         return Color(R * f, G * f, B * f, A * f);
     }
 
-    inline Color Color::operator / (Float32 f) const
+    inline Color Color::operator / (f32 f) const
     {
         return Color(R / f, G / f, B / f, A / f);
     }
 
-    inline /*friend*/ Color operator * (Float32 f, const Color& c)
+    inline /*friend*/ Color operator * (f32 f, const Color& c)
     {
         return Color(f * c.R, f * c.G, f * c.B, f * c.A);
     }
@@ -220,7 +220,7 @@ namespace BM
 
 #pragma region Utilitis
 
-    inline void Color::Get(Float32& r, Float32& g, Float32& b, Float32& a) const
+    inline void Color::Get(f32& r, f32& g, f32& b, f32& a) const
     {
         r = R;
         g = G;
@@ -228,7 +228,7 @@ namespace BM
         a = A;
     }
 
-    inline void Color::Set(Float32 r, Float32 g, Float32 b, Float32 a)
+    inline void Color::Set(f32 r, f32 g, f32 b, f32 a)
     {
         R = r;
         G = g;
@@ -250,39 +250,39 @@ namespace BM
         return Color(*this).Saturate();
     }
 
-    inline UInt32 Color::ToARGB() const
+    inline u32 Color::ToARGB() const
     {
-        UInt32 r = (R >= 1.0f ? 0xff : R <= 0.0f ? 0x00 : (UInt32) (R * 255.0f + 0.5f));
-        UInt32 g = (G >= 1.0f ? 0xff : G <= 0.0f ? 0x00 : (UInt32) (G * 255.0f + 0.5f));
-        UInt32 b = (B >= 1.0f ? 0xff : B <= 0.0f ? 0x00 : (UInt32) (B * 255.0f + 0.5f));
-        UInt32 a = (A >= 1.0f ? 0xff : A <= 0.0f ? 0x00 : (UInt32) (A * 255.0f + 0.5f));
+        u32 r = (R >= 1.0f ? 0xff : R <= 0.0f ? 0x00 : (u32) (R * 255.0f + 0.5f));
+        u32 g = (G >= 1.0f ? 0xff : G <= 0.0f ? 0x00 : (u32) (G * 255.0f + 0.5f));
+        u32 b = (B >= 1.0f ? 0xff : B <= 0.0f ? 0x00 : (u32) (B * 255.0f + 0.5f));
+        u32 a = (A >= 1.0f ? 0xff : A <= 0.0f ? 0x00 : (u32) (A * 255.0f + 0.5f));
         return ((a << 24) | (r << 16) | (g << 8) | b);
     }
 
-    inline UInt32 Color::ToRGBA() const
+    inline u32 Color::ToRGBA() const
     {
-        UInt32 r = (R >= 1.0f ? 0xff : R <= 0.0f ? 0x00 : (UInt32) (R * 255.0f + 0.5f));
-        UInt32 g = (G >= 1.0f ? 0xff : G <= 0.0f ? 0x00 : (UInt32) (G * 255.0f + 0.5f));
-        UInt32 b = (B >= 1.0f ? 0xff : B <= 0.0f ? 0x00 : (UInt32) (B * 255.0f + 0.5f));
-        UInt32 a = (A >= 1.0f ? 0xff : A <= 0.0f ? 0x00 : (UInt32) (A * 255.0f + 0.5f));
+        u32 r = (R >= 1.0f ? 0xff : R <= 0.0f ? 0x00 : (u32) (R * 255.0f + 0.5f));
+        u32 g = (G >= 1.0f ? 0xff : G <= 0.0f ? 0x00 : (u32) (G * 255.0f + 0.5f));
+        u32 b = (B >= 1.0f ? 0xff : B <= 0.0f ? 0x00 : (u32) (B * 255.0f + 0.5f));
+        u32 a = (A >= 1.0f ? 0xff : A <= 0.0f ? 0x00 : (u32) (A * 255.0f + 0.5f));
         return ((r << 24) | (g << 16) | (b << 8) | a);
     }
 
-    inline Color Color::FromARGB(UInt32 argb)
+    inline Color Color::FromARGB(u32 argb)
     {
-        Float32 a = (UInt8)(argb >> 24) * (1.0f / 255.0f);
-        Float32 r = (UInt8)(argb >> 16) * (1.0f / 255.0f);
-        Float32 g = (UInt8)(argb >>  8) * (1.0f / 255.0f);
-        Float32 b = (UInt8)(argb >>  0) * (1.0f / 255.0f);
+        f32 a = (u8)(argb >> 24) * (1.0f / 255.0f);
+        f32 r = (u8)(argb >> 16) * (1.0f / 255.0f);
+        f32 g = (u8)(argb >>  8) * (1.0f / 255.0f);
+        f32 b = (u8)(argb >>  0) * (1.0f / 255.0f);
         return Color(r, g, b, a);
     }
 
-    inline Color Color::FromRGBA(UInt32 rgba)
+    inline Color Color::FromRGBA(u32 rgba)
     {
-        Float32 r = (UInt8)(rgba >> 24) * (1.0f / 255.0f);
-        Float32 g = (UInt8)(rgba >> 16) * (1.0f / 255.0f);
-        Float32 b = (UInt8)(rgba >>  8) * (1.0f / 255.0f);
-        Float32 a = (UInt8)(rgba >>  0) * (1.0f / 255.0f);
+        f32 r = (u8)(rgba >> 24) * (1.0f / 255.0f);
+        f32 g = (u8)(rgba >> 16) * (1.0f / 255.0f);
+        f32 b = (u8)(rgba >>  8) * (1.0f / 255.0f);
+        f32 a = (u8)(rgba >>  0) * (1.0f / 255.0f);
         return Color(r, g, b, a);
     }
 

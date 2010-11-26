@@ -12,18 +12,18 @@
 //class MapNode
 //{
 //public:
-//	MapNode(uint32 _x, uint32 _y, uint32 _s):x(_x),y(_y),size(_s){}
+//	MapNode(u32 _x, u32 _y, u32 _s):x(_x),y(_y),size(_s){}
 //	virtual ~MapNode();
 //
 //	virtual void Draw();
 //	void	SetUp(MapTile* mt);
 //
-//	void	SetInfo(uint32 _x, uint32 _y,uint32 _size){ x = _x; y = _y; size = _size; }
+//	void	SetInfo(u32 _x, u32 _y,u32 _size){ x = _x; y = _y; size = _size; }
 //protected:
 //	MapNode* mChildren[4];
 //	MapTile* mMapTile;
 //
-//	uint32		x, y, size;
+//	u32		x, y, size;
 //	DCVector3	vmin, vmax, vcenter;
 //};
 //
@@ -37,13 +37,13 @@
 //	void Draw();
 //	void InitStrip();
 //protected:
-//	uint32						mTexNum;
+//	u32						mTexNum;
 //	DCVector3					mBaseV;
 //	float						mRadius;
-//	uint32						mAreaID;
-//	int32						mAnimateFlag[4];
-//	uint16*						mStrip;
-//	uint32						mStripLen;
+//	u32						mAreaID;
+//	s32						mAnimateFlag[4];
+//	u16*						mStrip;
+//	u32						mStripLen;
 //
 //	bool						mHasHole;
 //	bool						mHasWater;
@@ -77,9 +77,9 @@
 //	/// Get chunk for sub offset x,z
 //	MapChunk *GetChunk(unsigned int x, unsigned int y){ return &(mMapChunk[x][y]);	}
 //
-//	const std::string& GetTexStr(uint32 ndx)const{ return mTextures[ndx]; }
-//	const std::string& GetWMOStr(uint32 ndx)const{ return mWmos[ndx]; }
-//	const std::string& GetModelStr(uint32 ndx)const{ return mModels[ndx]; }
+//	const std::string& GetTexStr(u32 ndx)const{ return mTextures[ndx]; }
+//	const std::string& GetWMOStr(u32 ndx)const{ return mWmos[ndx]; }
+//	const std::string& GetModelStr(u32 ndx)const{ return mModels[ndx]; }
 //
 //private:
 //	std::vector<std::string>		mTextures;

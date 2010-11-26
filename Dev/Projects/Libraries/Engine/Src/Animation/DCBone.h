@@ -8,9 +8,9 @@ class ENGINE_DLL __declspec(align(16)) DCBone
 public:
 	DCBone();
 	~DCBone();
-	void	Init(const MDXBoneDef& _block, MPQFile& _file, const int32* _GlobalSequence, MPQFile* animFile);
+	void	Init(const MDXBoneDef& _block, MPQFile& _file, const s32* _GlobalSequence, MPQFile* animFile);
 
-	void	CalcMatrix(uint32 anim, uint32 time, uint32 _GlobalTime,XMMATRIX& out);
+	void	CalcMatrix(u32 anim, u32 time, u32 _GlobalTime,XMMATRIX& out);
 	void	SetCalculate(bool c);
 
 	//--bone family tree structure---------------------------------
@@ -19,15 +19,15 @@ public:
 	void	RemoveChild(DCBone* ptr);
 
 	void	SetParent(DCBone* ptr);
-	int32	GetParentID()const							{	return mParentID; }
+	s32	GetParentID()const							{	return mParentID; }
 	const	DCBone*	GetParentPtr()const					{	return mParent;	}
 
-	void	SetBoneID(int32 id)							{	mBoneID = id;	}
+	void	SetBoneID(s32 id)							{	mBoneID = id;	}
 	const   std::vector<DCBone*>& GetChildren()const	{	return mChildren; }
 
-	void	RenderBoneLevel(std::vector<BoneVert>& vtx, uint32 maxLevel, bool colorful)const
+	void	RenderBoneLevel(std::vector<BoneVert>& vtx, u32 maxLevel, bool colorful)const
 	{
-		const static uint32 sColorWite = 0xffffffff;
+		const static u32 sColorWite = 0xffffffff;
 
 		if(mChildren.size() == 0)
 			return;
@@ -37,8 +37,8 @@ public:
 
 		bone.color = sColorWite;
 
-		uint32 colorKid = sColorWite;
-		for(uint32 i=0;i<mChildren.size();i++)
+		u32 colorKid = sColorWite;
+		for(u32 i=0;i<mChildren.size();i++)
 		{
 			BoneVert boneKid;
 			boneKid.color = colorKid;		
@@ -47,12 +47,12 @@ public:
 			vtx.push_back(boneKid);
 		}
 
-		for(uint32 i=0;i<mChildren.size();i++)
+		for(u32 i=0;i<mChildren.size();i++)
 		{
 			mChildren[i]->RenderBoneLevel(vtx,maxLevel,colorful);
 		}
 	}
-	void	GenerateBoneLevelInfo(uint32 level,uint32& maxLevel);
+	void	GenerateBoneLevelInfo(u32 level,u32& maxLevel);
 
 	//--get and set---------------------------------
 	void	SetAnimManager(DCAnimationManager* _p)		{   mAnimManager = _p;}
@@ -72,8 +72,8 @@ private:
 	//owner
 	DCAnimationManager*		mAnimManager;
 	//basic data
-	int32					mParentID;
-	int32					mAnimID;
+	s32					mParentID;
+	s32					mAnimID;
 	AnimData<XMFLOAT3>		mTrans;
 	AnimData<XMFLOAT3>		mScale;
 	AnimData<XMQuaternion, PACK_QUATERNION, Quat16ToQuat32>	mRotate;
@@ -83,8 +83,8 @@ private:
 	//family tree
 	std::vector<DCBone*>	mChildren;
 	DCBone*					mParent;
-	uint32					mBoneID;
-	uint32					mBoneLevel;//lv0 is initial and unavailable, from 1 is available;
+	u32					mBoneID;
+	u32					mBoneLevel;//lv0 is initial and unavailable, from 1 is available;
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "CorePrivate.h"
+#include "DCTimer.h"
 
 DCTimer::DCTimer(DCTimerManager& manager):
 mManager(manager),

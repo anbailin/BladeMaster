@@ -1,3 +1,5 @@
+#include "Utilities.h"
+
 namespace BM
 {
 #pragma region Constructors
@@ -8,7 +10,7 @@ namespace BM
         Y = 0.0f;
     }
 
-    inline Vector2::Vector2(Float32 x, Float32 y)
+    inline Vector2::Vector2(f32 x, f32 y)
     {
         X = x;
         Y = y;
@@ -26,7 +28,7 @@ namespace BM
         Y = v.y;
     }
 
-    inline Vector2::Vector2(Float32 s)
+    inline Vector2::Vector2(f32 s)
     {
         X = s;
         Y = s;
@@ -56,23 +58,23 @@ namespace BM
         return (const D3DXVECTOR2*)&X;
     }
 
-    inline Vector2::operator Float32* ()
+    inline Vector2::operator f32* ()
     {
-        return (Float32*)&X;
+        return (f32*)&X;
     }
 
-    inline Vector2::operator const Float32* () const
+    inline Vector2::operator const f32* () const
     {
-        return (const Float32*)&X;
+        return (const f32*)&X;
     }
 
-    inline Float32& Vector2::operator [] (int i)
+    inline f32& Vector2::operator [] (int i)
     {
         BM_Assert(i >= 0 && i < 2);
         return *(&X + i);
     }
 
-    inline Float32 Vector2::operator [] (int i) const
+    inline f32 Vector2::operator [] (int i) const
     {
         BM_Assert(i >= 0 && i < 2);
         return *(&X + i);
@@ -115,7 +117,7 @@ namespace BM
         return *this;
     }
 
-    inline Vector2& Vector2::operator = (Float32 s)
+    inline Vector2& Vector2::operator = (f32 s)
     {
         X = s;
         Y = s;
@@ -150,28 +152,28 @@ namespace BM
         return *this;
     }
 
-    inline Vector2& Vector2::operator += (Float32 f)
+    inline Vector2& Vector2::operator += (f32 f)
     {
         X += f;
         Y += f;
         return *this;
     }
 
-    inline Vector2& Vector2::operator -= (Float32 f)
+    inline Vector2& Vector2::operator -= (f32 f)
     {
         X -= f;
         Y -= f;
         return *this;
     }
 
-    inline Vector2& Vector2::operator *= (Float32 f)
+    inline Vector2& Vector2::operator *= (f32 f)
     {
         X *= f;
         Y *= f;
         return *this;
     }
 
-    inline Vector2& Vector2::operator /= (Float32 f)
+    inline Vector2& Vector2::operator /= (f32 f)
     {
         X /= f;
         Y /= f;
@@ -208,52 +210,52 @@ namespace BM
         return Vector2(X / v.X, Y / v.Y);
     }
 
-    inline Vector2 Vector2::operator + (Float32 f) const
+    inline Vector2 Vector2::operator + (f32 f) const
     {
         return Vector2(X + f, Y + f);
     }
 
-    inline Vector2 Vector2::operator - (Float32 f) const
+    inline Vector2 Vector2::operator - (f32 f) const
     {
         return Vector2(X - f, Y - f);
     }
 
-    inline Vector2 Vector2::operator * (Float32 f) const
+    inline Vector2 Vector2::operator * (f32 f) const
     {
         return Vector2(X * f, Y * f);
     }
 
-    inline Vector2 Vector2::operator / (Float32 f) const
+    inline Vector2 Vector2::operator / (f32 f) const
     {
         return Vector2(X / f, Y / f);
     }
 
-    inline /*friend*/ Vector2 operator + (Float32 f, const Vector2& v)
+    inline /*friend*/ Vector2 operator + (f32 f, const Vector2& v)
     {
         return Vector2(f + v.X, f + v.Y);
     }
 
-    inline /*friend*/ Vector2 operator - (Float32 f, const Vector2& v)
+    inline /*friend*/ Vector2 operator - (f32 f, const Vector2& v)
     {
         return Vector2(f - v.X, f - v.Y);
     }
 
-    inline /*friend*/ Vector2 operator * (Float32 f, const Vector2& v)
+    inline /*friend*/ Vector2 operator * (f32 f, const Vector2& v)
     {
         return Vector2(f * v.X, f * v.Y);
     }
 
-    inline /*friend*/ Vector2 operator / (Float32 f, const Vector2& v)
+    inline /*friend*/ Vector2 operator / (f32 f, const Vector2& v)
     {
         return Vector2(f / v.X, f / v.Y);
     }
 
-    inline Float32 Vector2::operator | (const Vector2& v) const
+    inline f32 Vector2::operator | (const Vector2& v) const
     {
         return Dot(v);
     }
 
-    inline Float32 Vector2::operator ^ (const Vector2& v) const
+    inline f32 Vector2::operator ^ (const Vector2& v) const
     {
         return Cross(v);
     }
@@ -262,41 +264,41 @@ namespace BM
 
 #pragma region Utilities
 
-    inline void Vector2::Get(Float32& x, Float32& y) const
+    inline void Vector2::Get(f32& x, f32& y) const
     {
         x = X;
         y = Y;
     }
 
-    inline void Vector2::Set(Float32 x, Float32 y)
+    inline void Vector2::Set(f32 x, f32 y)
     {
         X = x;
         Y = y;
     }
 
-    inline Float32 Vector2::Dot(const Vector2& v) const
+    inline f32 Vector2::Dot(const Vector2& v) const
     {
         return X * v.X +  Y * v.Y;
     }
 
-    inline Float32 Vector2::Cross(const Vector2& v) const
+    inline f32 Vector2::Cross(const Vector2& v) const
     {
         return X * v.Y - Y * v.X;
     }
 
-    inline Float32 Vector2::GetLength() const
+    inline f32 Vector2::GetLength() const
     {
         return Sqrt(GetSquareLength());
     }
 
-    inline Float32 Vector2::GetSquareLength() const
+    inline f32 Vector2::GetSquareLength() const
     {
         return X * X + Y * Y;
     }
 
     inline Vector2& Vector2::Normalize()
     {
-        Float32 l = GetLength();
+        f32 l = GetLength();
         if (!BM::IsNearlyZero(l))
         {
             X /= l;
@@ -370,7 +372,7 @@ namespace BM
         return Vector2(*this).Mid(v);
     }
 
-    inline bool Vector2::IsNearlyEqual(const Vector2& v, Float32 epsilon) const
+    inline bool Vector2::IsNearlyEqual(const Vector2& v, f32 epsilon) const
     {
         return (BM::IsNearlyEqual(X, v.X, epsilon) && BM::IsNearlyEqual(Y, v.Y, epsilon));
     }
@@ -395,12 +397,12 @@ namespace BM
         return (GetSquareLength() < Sqr(Math32::Epsilon));
     }
 
-    inline Float32 Vector2::GetDistance(const Vector2& v) const
+    inline f32 Vector2::GetDistance(const Vector2& v) const
     {
         return Sqrt(GetSquareDistance(v));
     }
 
-    inline Float32 Vector2::GetSquareDistance(const Vector2& v) const
+    inline f32 Vector2::GetSquareDistance(const Vector2& v) const
     {
         return (*this - v).GetSquareLength();
     }

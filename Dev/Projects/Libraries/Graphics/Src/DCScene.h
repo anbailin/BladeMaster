@@ -1,7 +1,7 @@
 #pragma once
 
-const uint32 kMapCacheSize = 4;
-const uint32 kMapWorkSize = 3;
+const u32 kMapCacheSize = 4;
+const u32 kMapWorkSize = 3;
 
 class DCScene
 {

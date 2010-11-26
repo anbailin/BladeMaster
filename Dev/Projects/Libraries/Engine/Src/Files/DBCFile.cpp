@@ -12,7 +12,7 @@ mStringTableSize(0)
 
 DBCFile::~DBCFile()
 {
-	SafeDeleteArray(mData);
+	SAFE_DELETE_ARRAY(mData);
 
 	mStrTable = NULL;
 
@@ -34,7 +34,7 @@ DBCFile::Iterator DBCFile::end()
 	return DBCFile::Iterator(this,mStrTable);
 }
 
-DBCFile::Record DBCFile::GetRecord(uint32 id)
+DBCFile::Record DBCFile::GetRecord(u32 id)
 {
 	assert(id<mRecordCount);
 	return DBCFile::Record(this,mData + id*mRecordSize);
@@ -51,7 +51,7 @@ DBCFile* DBCFile::Create(const std::string& path)
 	mpq.read(header,0,sizeof(header));
 	assert( header[0] == 'W' && header[1] == 'D' && header[2] == 'B' && header[3] == 'C');
 
-	uint32 info[4];	
+	u32 info[4];	
 	mpq.read(info,sizeof(info));
 
 	DBCFile* result = new DBCFile;
@@ -60,8 +60,8 @@ DBCFile* DBCFile::Create(const std::string& path)
 	result->SetRecordSize(info[2]);
 	result->SetStringTableSize(info[3]);
 	
-	uint32 dataSize = result->GetRecordSize() * result->GetRecordCount();
-	uint32 totalSize = dataSize + result->GetStringTableSize();
+	u32 dataSize = result->GetRecordSize() * result->GetRecordCount();
+	u32 totalSize = dataSize + result->GetStringTableSize();
 	char* data = new char[totalSize];
 	char* strblock = data + dataSize;
 	mpq.read(data,totalSize);
@@ -83,10 +83,10 @@ CreatureModelData::CreatureModelData()
 
 CreatureModelData::~CreatureModelData()
 {
-	SafeDelete(mDBCFile);
+	SAFE_DELETE(mDBCFile);
 }
 
-DBCFile::Record CreatureModelData::GetByID(uint32 id)
+DBCFile::Record CreatureModelData::GetByID(u32 id)
 {
 	for(DBCFile::Iterator it = mDBCFile->begin();it!=mDBCFile->end();++it)
 	{
@@ -126,10 +126,10 @@ CreatureDisplayData::CreatureDisplayData()
 
 CreatureDisplayData::~CreatureDisplayData()
 {
-	SafeDelete(mDBCFile);
+	SAFE_DELETE(mDBCFile);
 }
 
-DBCFile::Record CreatureDisplayData::GetByCreatureID(uint32 id)
+DBCFile::Record CreatureDisplayData::GetByCreatureID(u32 id)
 {
 	for(DBCFile::Iterator it = mDBCFile->begin();it!=mDBCFile->end();++it)
 	{
@@ -140,7 +140,7 @@ DBCFile::Record CreatureDisplayData::GetByCreatureID(uint32 id)
 	return *(mDBCFile->begin());
 }
 
-DBCFile::Record CreatureDisplayData::GetByModelID(uint32 id)
+DBCFile::Record CreatureDisplayData::GetByModelID(u32 id)
 {
 	for(DBCFile::Iterator it = mDBCFile->begin();it!=mDBCFile->end();++it)
 	{

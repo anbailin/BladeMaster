@@ -1,3 +1,5 @@
+#include "Utilities.h"
+
 namespace BM
 {
 #pragma region Constructors
@@ -10,7 +12,7 @@ namespace BM
         W = 0.0f;
     }
 
-    inline Vector4::Vector4(Float32 x, Float32 y, Float32 z, Float32 w)
+    inline Vector4::Vector4(f32 x, f32 y, f32 z, f32 w)
     {
         X = x;
         Y = y;
@@ -18,7 +20,7 @@ namespace BM
         W = w;
     }
 
-    inline Vector4::Vector4(const Vector3& v, Float32 w)
+    inline Vector4::Vector4(const Vector3& v, f32 w)
     {
         X = v.X;
         Y = v.Y;
@@ -42,7 +44,7 @@ namespace BM
         W = v.w;
     }
 
-    inline Vector4::Vector4(Float32 s)
+    inline Vector4::Vector4(f32 s)
     {
         X = s;
         Y = s;
@@ -74,23 +76,23 @@ namespace BM
         return (const D3DXVECTOR4*)&X;
     }
 
-    inline Vector4::operator Float32* ()
+    inline Vector4::operator f32* ()
     {
-        return (Float32*)&X;
+        return (f32*)&X;
     }
 
-    inline Vector4::operator const Float32* () const
+    inline Vector4::operator const f32* () const
     {
-        return (const Float32*)&X;
+        return (const f32*)&X;
     }
 
-    inline Float32& Vector4::operator [] (int i)
+    inline f32& Vector4::operator [] (int i)
     {
         BM_Assert(i >= 0 && i < 4);
         return *(&X + i);
     }
 
-    inline Float32 Vector4::operator [] (int i) const
+    inline f32 Vector4::operator [] (int i) const
     {
         BM_Assert(i >= 0 && i < 4);
         return *(&X + i);
@@ -135,7 +137,7 @@ namespace BM
         return *this;
     }
 
-    inline Vector4& Vector4::operator = (Float32 s)
+    inline Vector4& Vector4::operator = (f32 s)
     {
         X = s;
         Y = s;
@@ -180,7 +182,7 @@ namespace BM
         return *this;
     }
 
-    inline Vector4& Vector4::operator += (Float32 f)
+    inline Vector4& Vector4::operator += (f32 f)
     {
         X += f;
         Y += f;
@@ -189,7 +191,7 @@ namespace BM
         return *this;
     }
 
-    inline Vector4& Vector4::operator -= (Float32 f)
+    inline Vector4& Vector4::operator -= (f32 f)
     {
         X -= f;
         Y -= f;
@@ -198,7 +200,7 @@ namespace BM
         return *this;
     }
 
-    inline Vector4& Vector4::operator *= (Float32 f)
+    inline Vector4& Vector4::operator *= (f32 f)
     {
         X *= f;
         Y *= f;
@@ -207,7 +209,7 @@ namespace BM
         return *this;
     }
 
-    inline Vector4& Vector4::operator /= (Float32 f)
+    inline Vector4& Vector4::operator /= (f32 f)
     {
         X /= f;
         Y /= f;
@@ -246,47 +248,47 @@ namespace BM
         return Vector4(X / v.X, Y / v.Y, Z / v.Z, W / v.W);
     }
 
-    inline Vector4 Vector4::operator + (Float32 f) const
+    inline Vector4 Vector4::operator + (f32 f) const
     {
         return Vector4(X + f, Y + f, Z + f, W + f);
     }
 
-    inline Vector4 Vector4::operator - (Float32 f) const
+    inline Vector4 Vector4::operator - (f32 f) const
     {
         return Vector4(X - f, Y - f, Z - f, W - f);
     }
 
-    inline Vector4 Vector4::operator * (Float32 f) const
+    inline Vector4 Vector4::operator * (f32 f) const
     {
         return Vector4(X * f, Y * f, Z * f, W * f);
     }
 
-    inline Vector4 Vector4::operator / (Float32 f) const
+    inline Vector4 Vector4::operator / (f32 f) const
     {
         return Vector4(X / f, Y / f, Z / f, W / f);
     }
 
-    inline /*friend*/ Vector4 operator + (Float32 f, const Vector4& v)
+    inline /*friend*/ Vector4 operator + (f32 f, const Vector4& v)
     {
         return Vector4(f + v.X, f + v.Y, f + v.Z, f + v.W);
     }
 
-    inline /*friend*/ Vector4 operator - (Float32 f, const Vector4& v)
+    inline /*friend*/ Vector4 operator - (f32 f, const Vector4& v)
     {
         return Vector4(f - v.X, f - v.Y, f - v.Z, f - v.W);
     }
 
-    inline /*friend*/ Vector4 operator * (Float32 f, const Vector4& v)
+    inline /*friend*/ Vector4 operator * (f32 f, const Vector4& v)
     {
         return Vector4(f * v.X, f * v.Y, f * v.Z, f * v.W);
     }
 
-    inline /*friend*/ Vector4 operator / (Float32 f, const Vector4& v)
+    inline /*friend*/ Vector4 operator / (f32 f, const Vector4& v)
     {
         return Vector4(f / v.X, f / v.Y, f / v.Z, f / v.W);
     }
 
-    inline Float32 Vector4::operator | (const Vector4& v) const
+    inline f32 Vector4::operator | (const Vector4& v) const
     {
         return Dot(v);
     }
@@ -300,7 +302,7 @@ namespace BM
 
 #pragma region Utilities
 
-    inline void Vector4::Get(Float32& x, Float32& y, Float32& z, Float32& w) const
+    inline void Vector4::Get(f32& x, f32& y, f32& z, f32& w) const
     {
         x = X;
         y = Y;
@@ -308,7 +310,7 @@ namespace BM
         w = W;
     }
 
-    inline void Vector4::Set(Float32 x, Float32 y, Float32 z, Float32 w)
+    inline void Vector4::Set(f32 x, f32 y, f32 z, f32 w)
     {
         X = x;
         Y = y;
@@ -323,7 +325,7 @@ namespace BM
         Z = v.Z;
     }
 
-    inline void Vector4::Set(const Vector3& v, Float32 w)
+    inline void Vector4::Set(const Vector3& v, f32 w)
     {
         X = v.X;
         Y = v.Y;
@@ -331,7 +333,7 @@ namespace BM
         W = w;
     }
 
-    inline Float32 Vector4::Dot(const Vector4& v) const
+    inline f32 Vector4::Dot(const Vector4& v) const
     {
         return X * v.X +  Y * v.Y + Z * v.Z + W * v.W;
     }
@@ -341,49 +343,49 @@ namespace BM
         return Vector4(Y * v.Z - Z * v.Y, Z * v.X - X * v.Z, X * v.Y - Y * v.X, 0.0f);
     }
 
-    inline Float32 Vector4::Dot2D(const Vector4& v) const
+    inline f32 Vector4::Dot2D(const Vector4& v) const
     {
         return X * v.X +  Y * v.Y;
     }
 
-    inline Float32 Vector4::Dot3D(const Vector4& v) const
+    inline f32 Vector4::Dot3D(const Vector4& v) const
     {
         return X * v.X +  Y * v.Y + Z * v.Z;
     }
 
-    inline Float32 Vector4::GetLength() const
+    inline f32 Vector4::GetLength() const
     {
         return Sqrt(GetSquareLength());
     }
 
-    inline Float32 Vector4::GetSquareLength() const
+    inline f32 Vector4::GetSquareLength() const
     {
         return X * X + Y * Y + Z * Z + W * W;
     }
 
-    inline Float32 Vector4::GetLength2D() const
+    inline f32 Vector4::GetLength2D() const
     {
         return Sqrt(GetSquareLength2D());
     }
 
-    inline Float32 Vector4::GetSquareLength2D() const
+    inline f32 Vector4::GetSquareLength2D() const
     {
         return X * X + Y * Y;
     }
 
-    inline Float32 Vector4::GetLength3D() const
+    inline f32 Vector4::GetLength3D() const
     {
         return Sqrt(GetSquareLength3D());
     }
 
-    inline Float32 Vector4::GetSquareLength3D() const
+    inline f32 Vector4::GetSquareLength3D() const
     {
         return X * X + Y * Y + Z * Z;
     }
 
     inline Vector4& Vector4::Normalize()
     {
-        Float32 l = GetLength();
+        f32 l = GetLength();
         if (!BM::IsNearlyZero(l))
         {
             X /= l;
@@ -401,7 +403,7 @@ namespace BM
 
     inline Vector4& Vector4::Normalize2D()
     {
-        Float32 l = GetLength2D();
+        f32 l = GetLength2D();
         if (!BM::IsNearlyZero(l))
         {
             X /= l;
@@ -419,7 +421,7 @@ namespace BM
 
     inline Vector4& Vector4::Normalize3D()
     {
-        Float32 l = GetLength3D();
+        f32 l = GetLength3D();
         if (!BM::IsNearlyZero(l))
         {
             X /= l;
@@ -491,7 +493,7 @@ namespace BM
         return Vector4(*this).Max(v);
     }
 
-    inline bool Vector4::IsNearlyEqual(const Vector4& v, Float32 epsilon) const
+    inline bool Vector4::IsNearlyEqual(const Vector4& v, f32 epsilon) const
     {
         return (BM::IsNearlyEqual(X, v.X, epsilon) && BM::IsNearlyEqual(Y, v.Y, epsilon) && BM::IsNearlyEqual(Z, v.Z, epsilon));
     }

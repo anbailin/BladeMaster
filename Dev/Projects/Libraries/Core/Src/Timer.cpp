@@ -1,4 +1,7 @@
 #include "CorePrivate.h"
+#include "Utilities.h"
+#include "Timer.h"
+
 
 namespace BM
 {
@@ -16,6 +19,6 @@ namespace BM
 
     TimerPrivate g_TimerPrivate;
 
-    const UInt64  Timer::TicksPerSecond = g_TimerPrivate.Frequency.QuadPart;
-    const Float64 Timer::SecondsPerTick = 1.0 / Timer::TicksPerSecond;
+    const u64  Timer::TicksPerSecond = g_TimerPrivate.Frequency.QuadPart;
+    const f64 Timer::SecondsPerTick = 1.0 / Timer::TicksPerSecond;
 }

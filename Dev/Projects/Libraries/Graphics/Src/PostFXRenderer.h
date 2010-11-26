@@ -30,15 +30,15 @@ protected:
 
     //attributes access
 public:
-    TexturePtr          GetBloomRenderTarget(uint32 idx)    { assert(idx<msBloomBufferCount); return mBloomRenderTarget[idx]; }
-    TexturePtr          GetBloomRT(uint32 idx)              { assert(idx<msBloomBufferCount); return mBloomRenderTarget[idx]; }
+    TexturePtr          GetBloomRenderTarget(u32 idx)    { assert(idx<msBloomBufferCount); return mBloomRenderTarget[idx]; }
+    TexturePtr          GetBloomRT(u32 idx)              { assert(idx<msBloomBufferCount); return mBloomRenderTarget[idx]; }
     const QuadGeometry* GetQuadGeometry()const              { return mQuadGeometry; }
     void                StoreBackBuffer();
     void                RenderToBackBuffer(TexturePtr tex);
 
     //attributes
 protected:
-    const static uint32 msBloomBufferCount = 3;
+    const static u32 msBloomBufferCount = 3;
 
     //render targets
     TexturePtr          mBloomRenderTarget[msBloomBufferCount];

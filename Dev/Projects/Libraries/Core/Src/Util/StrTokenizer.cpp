@@ -1,4 +1,7 @@
 #include "CorePrivate.h"
+#include "TArray.h"
+#include "BMString.h"
+#include "StrTokenizer.h"
 
 StrTokenizer::StrTokenizer() : mBuffer(""), mToken(""), mDelimiter(DEFAULT_DELIMITER)
 {

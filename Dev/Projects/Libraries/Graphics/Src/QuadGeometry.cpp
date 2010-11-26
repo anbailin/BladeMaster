@@ -32,7 +32,7 @@ void QuadGeometry::Init()
     BM_AssertHr(DEVICEPTR->CreateVertexDeclaration(QuadGeoUtil::quad_dcl, &mVertexDelcaration));
 
     //vertex buffer
-    uint32 size = sizeof(QuadGeoUtil::QuadVertex) * 4;
+    u32 size = sizeof(QuadGeoUtil::QuadVertex) * 4;
     BM_AssertHr(DEVICEPTR->CreateVertexBuffer(size,0,0,D3DPOOL_MANAGED, &mVertexBuffer,0 ) );
     
     QuadGeoUtil::QuadVertex* lockPtr;

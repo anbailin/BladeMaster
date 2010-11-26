@@ -12,7 +12,7 @@ BMPostFXRenderer::BMPostFXRenderer()
 BMPostFXRenderer::~BMPostFXRenderer()
 {
     ReleaseResource();
-    SafeDelete(mQuadGeometry);
+    SAFE_DELETE(mQuadGeometry);
 }
 
 namespace
@@ -38,7 +38,7 @@ void BMPostFXRenderer::InitResource()
 //only release render driver resource, no app resource
 void BMPostFXRenderer::ReleaseResource()
 {
-    for(uint32 i=0; i<msBloomBufferCount; i++)
+    for(u32 i=0; i<msBloomBufferCount; i++)
     {
         mBloomRenderTarget[i] = NULL;
         mBloomSurface[i] = NULL;
@@ -58,7 +58,7 @@ void BMPostFXRenderer::InitBloom()
     mCopy = postFxShaderType | ShaderMgr::GetInstance()->GetShaderMacroMask(postFxShaderType, "COPY");
 
 	//render targets
-	uint32 sizeX, sizeY;
+	u32 sizeX, sizeY;
 	DCRenderer::GetInstance()->GetBackBufferSize(sizeX,sizeY);
 	HRESULT result = DEVICEPTR->CreateTexture(
 		sizeX,
@@ -76,8 +76,8 @@ void BMPostFXRenderer::InitBloom()
     result = mBloomRenderTarget[0]->GetSurfaceLevel(0, &mBloomSurface[0]);
     assert(SUCCEEDED(result));
 
-	const uint32 halfSizeX = sizeX/2;
-	const uint32 halfSizeY = sizeY/2;
+	const u32 halfSizeX = sizeX/2;
+	const u32 halfSizeY = sizeY/2;
 	result = DEVICEPTR->CreateTexture(
 		halfSizeX,
 		halfSizeY, 

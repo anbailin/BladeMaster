@@ -7,8 +7,8 @@
 //	struct NamePair
 //	{
 //		char* name[5];
-//		uint32 size;
-//		uint32 nextpos;
+//		u32 size;
+//		u32 nextpos;
 //		void ReadIn(MPQFile& file)
 //		{
 //			file.read(name,4);
@@ -22,13 +22,13 @@
 //	struct DataPair
 //	{
 //		char*	addr;
-//		uint32	num;
+//		u32	num;
 //	};
 //
 //	struct DataDescPair
 //	{
-//		uint32 offset;
-//		uint32 size;
+//		u32 offset;
+//		u32 size;
 //	};
 //
 //	struct MCINData
@@ -92,11 +92,11 @@
 //			}
 //		}else if (!strcmp(name_ptr,"MDDF")) 
 //		{
-//			uint32 nModel = name.size/sizeof(ADTMDDFChunk);
+//			u32 nModel = name.size/sizeof(ADTMDDFChunk);
 //			mModelInstance.resize(nModel);
 //
 //			ADTMDDFChunk chunk;
-//			for(uint32 i=0;i<nModel;i++)
+//			for(u32 i=0;i<nModel;i++)
 //			{
 //				file.read(&chunk,sizeof(ADTMDDFChunk));
 //				const std::string & str = mModels[chunk.mIndex];
@@ -109,10 +109,10 @@
 //			}
 //		}else if (!strcmp(name_ptr,"MODF")) 
 //		{
-//			uint32 nWMO = name.size/sizeof(ADTMODFChunk);
+//			u32 nWMO = name.size/sizeof(ADTMODFChunk);
 //			mWmoInstance.resize(nWMO);
 //			
-//			for(uint32 i=0;i<nWMO;i++)
+//			for(u32 i=0;i<nWMO;i++)
 //			{
 //				ADTMODFChunk chunk;
 //				const std::string str = mWmos[chunk.mIndex];
@@ -129,9 +129,9 @@
 //		file.seek(name.nextpos);
 //	}
 //
-//	for(uint32 i=0;i<16;i++)
+//	for(u32 i=0;i<16;i++)
 //	{
-//		for(uint32 j=0;j<16;j++)
+//		for(u32 j=0;j<16;j++)
 //		{
 //			file.seek(tMCINData.data[i*16 + j].offset);
 //			mMapChunk[i][j].Init(this,file);
@@ -143,7 +143,7 @@
 ////---------map node-------------------------------------------------------------------------------------
 //MapNode::~MapNode()
 //{
-//	for(uint32 i=0;i<4;i++)
+//	for(u32 i=0;i<4;i++)
 //	{
 //		SafeDelete(mChildren[i]);
 //	}
@@ -162,7 +162,7 @@
 //		mChildren[3] = &(mt->GetChunk(y+1,x+1));
 //	}else
 //	{
-//		uint32 half = size/2;
+//		u32 half = size/2;
 //		mChildren[0] = new MapNode(x,y,half);			mChildren[0].SetUp(mt);
 //		mChildren[1] = new MapNode(x+half,y,half);		mChildren[1].SetUp(mt);
 //		mChildren[2] = new MapNode(x, y+half, half);	mChildren[2].SetUp(mt);
@@ -172,7 +172,7 @@
 //
 //void MapNode::Draw()
 //{
-//	for(uint32 i=0;i<4;i++)
+//	for(u32 i=0;i<4;i++)
 //	{
 //		mChildren[i]->Draw();
 //	}
@@ -182,14 +182,14 @@
 //{
 //	if(size>2)
 //	{
-//		for(uint32 i=0;i<4;i++i)
+//		for(u32 i=0;i<4;i++i)
 //			SafeDelete(mChildren[i]);
 //	}
 //}
 ////--------map chunk--------------------------------------------------------------------------------------
 //namespace
 //{
-//	const uint32 kMapBufferSize = 9*9 + 8*8;
+//	const u32 kMapBufferSize = 9*9 + 8*8;
 //	const float  kDetailSize = 8.0f;
 //	
 //}
@@ -212,9 +212,9 @@
 //	file.seekRelative(4);
 //	char fcc[5];
 //
-//	uint32 size;
+//	u32 size;
 //	file.read(&size,4);
-//	uint32 end = file.getPos() + size;
+//	u32 end = file.getPos() + size;
 //
 //	MapChunkHeader header;
 //	f.read(&header,sizeof(MapChunkHeader));
@@ -230,12 +230,12 @@
 //		flipcc(fcc);
 //		fcc[4] = 0;
 //
-//		uint32 nextPos = file.getPos() + size;
+//		u32 nextPos = file.getPos() + size;
 //
 //		if (!strcmp(fcc,"MCNR")) //normal---
 //		{
 //			nextPos = f.getPos() + 0x1C0;
-//			uint8 data[3];
+//			u8 data[3];
 //			DCVertPosNorTex* _vtx = vtx;
 //			for (int j=0; j<17; j++) 
 //			{
@@ -326,7 +326,7 @@
 //		}
 //	}
 //
-//	const uint32 length = sizeof(DCVertPosNorTex) * kMapBufferSize;
+//	const u32 length = sizeof(DCVertPosNorTex) * kMapBufferSize;
 //	BM_AssertHr( DEVICEPTR->CreateVertexBuffer(length, 0, 0, D3DPOOL_MANAGED, &mVtxBuffer, 0));
 //}
 //

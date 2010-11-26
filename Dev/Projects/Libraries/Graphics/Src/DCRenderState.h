@@ -25,7 +25,7 @@ class DCAlphaTestState
 {
 public:
 
-	DCAlphaTestState(AlphaTestState _state = kAlphaTestOff,  AlphaTestFunc _func = kAlphaTestGreaterEqual, uint8 _ref = 0):
+	DCAlphaTestState(AlphaTestState _state = kAlphaTestOff,  AlphaTestFunc _func = kAlphaTestGreaterEqual, u8 _ref = 0):
 	  mTestState(_state), mFunc(_func), mRef(_ref)
 	  {}
 
@@ -35,8 +35,8 @@ public:
 	  AlphaTestFunc		GetAlphaTestFunc()const		{ return mFunc; }
 	  void				SetAlphaTestFunc(AlphaTestFunc _func) { mFunc = _func; }
 
-	  uint8				GetReference()const			{ return mRef;  }
-	  void				SetReference(uint8 _ref)    { mRef = _ref;  }
+	  u8				GetReference()const			{ return mRef;  }
+	  void				SetReference(u8 _ref)    { mRef = _ref;  }
 
 	  bool operator == (const DCAlphaTestState& _state)
 	  {
@@ -50,7 +50,7 @@ public:
 private:
 	AlphaTestState mTestState;
 	AlphaTestFunc  mFunc;
-	uint8		   mRef;
+	u8		   mRef;
 };
 
 // ------------------alpha blend------------------------------------------------------------------------------------

@@ -3,8 +3,8 @@
 void DCFilePath::SetFullPath(const char *_path)
 {
 	mWholeName = _path;
-	uint32 seperator = mWholeName.find_last_of('\\');
-	uint32 length = seperator + 1;
+	u32 seperator = mWholeName.find_last_of('\\');
+	u32 length = seperator + 1;
 	mPath.assign(mWholeName.c_str(), 0, length);
 	mFileName.assign(mWholeName.c_str(), length, mWholeName.size());
 	mRegroup = false;
@@ -13,8 +13,8 @@ void DCFilePath::SetFullPath(const char *_path)
 void DCFilePath::SetFullPath(const std::string& _path)
 {
 	mWholeName = _path;
-	uint32 seperator = mWholeName.find_last_of('\\');
-	uint32 length = seperator + 1;
+	u32 seperator = mWholeName.find_last_of('\\');
+	u32 length = seperator + 1;
 	mPath.assign(mWholeName.c_str(), 0, length);
 	mFileName.assign(mWholeName.c_str(), length, mWholeName.size());
 	mRegroup = false;

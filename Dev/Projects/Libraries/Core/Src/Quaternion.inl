@@ -10,7 +10,7 @@ namespace BM
         W = 0.0f;
     }
 
-    inline Quaternion::Quaternion(Float32 x, Float32 y, Float32 z, Float32 w)
+    inline Quaternion::Quaternion(f32 x, f32 y, f32 z, f32 w)
     {
         X = x;
         Y = y;
@@ -58,23 +58,23 @@ namespace BM
         return (const D3DXQUATERNION*)&X;
     }
 
-    inline Quaternion::operator Float32* ()
+    inline Quaternion::operator f32* ()
     {
-        return (Float32*)&X;
+        return (f32*)&X;
     }
 
-    inline Quaternion::operator const Float32* () const
+    inline Quaternion::operator const f32* () const
     {
-        return (const Float32*)&X;
+        return (const f32*)&X;
     }
 
-    inline Float32& Quaternion::operator [] (int i)
+    inline f32& Quaternion::operator [] (int i)
     {
         BM_Assert(i >= 0 && i < 4);
         return *(&X + i);
     }
 
-    inline Float32 Quaternion::operator [] (int i) const
+    inline f32 Quaternion::operator [] (int i) const
     {
         BM_Assert(i >= 0 && i < 4);
         return *(&X + i);
@@ -147,7 +147,7 @@ namespace BM
         return *this;
     }
 
-    inline Quaternion& Quaternion::operator += (Float32 f)
+    inline Quaternion& Quaternion::operator += (f32 f)
     {
         X += f;
         Y += f;
@@ -156,7 +156,7 @@ namespace BM
         return *this;
     }
 
-    inline Quaternion& Quaternion::operator -= (Float32 f)
+    inline Quaternion& Quaternion::operator -= (f32 f)
     {
         X -= f;
         Y -= f;
@@ -165,7 +165,7 @@ namespace BM
         return *this;
     }
 
-    inline Quaternion& Quaternion::operator *= (Float32 f)
+    inline Quaternion& Quaternion::operator *= (f32 f)
     {
         X *= f;
         Y *= f;
@@ -174,7 +174,7 @@ namespace BM
         return *this;
     }
 
-    inline Quaternion& Quaternion::operator /= (Float32 f)
+    inline Quaternion& Quaternion::operator /= (f32 f)
     {
         X /= f;
         Y /= f;
@@ -210,47 +210,47 @@ namespace BM
         return t;
     }
 
-    inline Quaternion Quaternion::operator + (Float32 f) const
+    inline Quaternion Quaternion::operator + (f32 f) const
     {
         return Quaternion(X + f, Y + f, Z + f, W + f);
     }
 
-    inline Quaternion Quaternion::operator - (Float32 f) const
+    inline Quaternion Quaternion::operator - (f32 f) const
     {
         return Quaternion(X - f, Y - f, Z - f, W - f);
     }
 
-    inline Quaternion Quaternion::operator * (Float32 f) const
+    inline Quaternion Quaternion::operator * (f32 f) const
     {
         return Quaternion(X * f, Y * f, Z * f, W * f);
     }
 
-    inline Quaternion Quaternion::operator / (Float32 f) const
+    inline Quaternion Quaternion::operator / (f32 f) const
     {
         return Quaternion(X / f, Y / f, Z / f, W / f);
     }
 
-    inline /*friend*/ Quaternion operator + (Float32 f, const Quaternion& q)
+    inline /*friend*/ Quaternion operator + (f32 f, const Quaternion& q)
     {
         return Quaternion(f + q.X, f + q.Y, f + q.Z, f + q.W);
     }
 
-    inline /*friend*/ Quaternion operator - (Float32 f, const Quaternion& q)
+    inline /*friend*/ Quaternion operator - (f32 f, const Quaternion& q)
     {
         return Quaternion(f - q.X, f - q.Y, f - q.Z, f - q.W);
     }
 
-    inline /*friend*/ Quaternion operator * (Float32 f, const Quaternion& q)
+    inline /*friend*/ Quaternion operator * (f32 f, const Quaternion& q)
     {
         return Quaternion(f * q.X, f * q.Y, f * q.Z, f * q.W);
     }
 
-    inline /*friend*/ Quaternion operator / (Float32 f, const Quaternion& q)
+    inline /*friend*/ Quaternion operator / (f32 f, const Quaternion& q)
     {
         return Quaternion(f / q.X, f / q.Y, f / q.Z, f / q.W);
     }
 
-    inline Float32 Quaternion::operator | (const Quaternion& q) const
+    inline f32 Quaternion::operator | (const Quaternion& q) const
     {
         return Dot(q);
     }
@@ -259,7 +259,7 @@ namespace BM
 
 #pragma region Utilities
 
-    inline void Quaternion::Get(Float32& x, Float32& y, Float32& z, Float32& w) const
+    inline void Quaternion::Get(f32& x, f32& y, f32& z, f32& w) const
     {
         x = X;
         y = Y;
@@ -267,7 +267,7 @@ namespace BM
         w = W;
     }
 
-    inline void Quaternion::Set(Float32 x, Float32 y, Float32 z, Float32 w)
+    inline void Quaternion::Set(f32 x, f32 y, f32 z, f32 w)
     {
         X = x;
         Y = y;
@@ -275,24 +275,24 @@ namespace BM
         W = w;
     }
 
-    inline Float32 Quaternion::Dot(const Quaternion& q) const
+    inline f32 Quaternion::Dot(const Quaternion& q) const
     {
         return X * q.X +  Y * q.Y + Z * q.Z + W * q.W;
     }
 
-    inline Float32 Quaternion::GetLength() const
+    inline f32 Quaternion::GetLength() const
     {
         return Sqrt(GetSquareLength());
     }
 
-    inline Float32 Quaternion::GetSquareLength() const
+    inline f32 Quaternion::GetSquareLength() const
     {
         return X * X + Y * Y + Z * Z + W * W;
     }
 
     inline Quaternion& Quaternion::Normalize()
     {
-        Float32 l = GetLength();
+        f32 l = GetLength();
         if (!BM::IsNearlyZero(l))
         {
             X /= l;
@@ -364,7 +364,7 @@ namespace BM
         return Quaternion(*this).Max(q);
     }
 
-    inline bool Quaternion::IsNearlyEqual(const Quaternion& q, Float32 epsilon) const
+    inline bool Quaternion::IsNearlyEqual(const Quaternion& q, f32 epsilon) const
     {
         return (BM::IsNearlyEqual(X, q.X, epsilon) && BM::IsNearlyEqual(Y, q.Y, epsilon) && BM::IsNearlyEqual(Z, q.Z, epsilon));
     }
@@ -414,9 +414,9 @@ namespace BM
         return Quaternion(-X, -Y, -Z, W);
     }
 
-    inline void Quaternion::FromAngleAxis(const Vector3& vAxis, Float32 fAngle) 
+    inline void Quaternion::FromAngleAxis(const Vector3& vAxis, f32 fAngle) 
     {
-        Float32 l = vAxis.GetLength();
+        f32 l = vAxis.GetLength();
         if (BM::IsNearlyZero(l))
         {
             X = 0.0f;
@@ -426,8 +426,8 @@ namespace BM
         }
         else 
         {
-            Float32 fSin = Sin(fAngle * 0.5f);
-            Float32 fCos = Cos(fAngle * 0.5f);
+            f32 fSin = Sin(fAngle * 0.5f);
+            f32 fCos = Cos(fAngle * 0.5f);
             l = fSin / l;
             X = vAxis.X * l;
             Y = vAxis.Y * l;
@@ -436,7 +436,7 @@ namespace BM
         }
     }
 
-    inline void Quaternion::ToAngleAxis(Vector3& vAxis, Float32& fAngle) const
+    inline void Quaternion::ToAngleAxis(Vector3& vAxis, f32& fAngle) const
     {
         fAngle = ACos(W) * 2.0f;
         if (IsNearlyEqual(Identity)) 

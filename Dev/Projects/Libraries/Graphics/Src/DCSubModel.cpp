@@ -13,8 +13,8 @@ void DCSubModel::Draw()
 {
 	BM_AssertHr( DEVICEPTR->SetIndices(mIndexbuffer) );
 	
-	uint32 size = mMaterials.size();
-	for(uint32 i=0;i<size;i++)
+	u32 size = mMaterials.size();
+	for(u32 i=0;i<size;i++)
 	{
 		DCMaterialPtr& mat = mMaterials[i];
 		DCRenderer::GetInstance()->ApplyTexture(0,mat->GetTexturePtr());
@@ -27,15 +27,15 @@ void DCSubModel::Draw()
 }
 
 
-void DCSubModel::InitIndexBuffer(const uint16* addr, uint32 count)
+void DCSubModel::InitIndexBuffer(const u16* addr, u32 count)
 {
 	IndexBufferPtr ptr;
 
-	BM_AssertHr(DEVICEPTR->CreateIndexBuffer(sizeof(uint16)*count, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &ptr, 0));
+	BM_AssertHr(DEVICEPTR->CreateIndexBuffer(sizeof(u16)*count, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &ptr, 0));
 
 	void* lockPtr;
 	BM_AssertHr(ptr->Lock(0,0,(void**)&lockPtr,0));
-	memcpy(lockPtr,addr,count*sizeof(uint16));	
+	memcpy(lockPtr,addr,count*sizeof(u16));	
 	ptr->Unlock();
 
 	mIndexbuffer = ptr;//this will cause the release of the original index buffer;

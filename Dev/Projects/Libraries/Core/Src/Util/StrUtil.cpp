@@ -1,4 +1,6 @@
 #include "CorePrivate.h"
+#include "StrUtil.h"
+#include "Utilities.h"
 
 void StrToWStr(const std::string& src, std::wstring& dst)
 {

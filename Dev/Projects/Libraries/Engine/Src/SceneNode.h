@@ -11,7 +11,7 @@ class SceneNode : public RefObject
 {
 public:
     SceneNode();
-    ~SceneNode();
+    virtual ~SceneNode();
 
     //funcs
 public:

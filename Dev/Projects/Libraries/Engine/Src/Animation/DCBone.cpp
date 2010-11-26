@@ -27,7 +27,7 @@ DCBone::~DCBone()
 
 //------------------------------------------------------------------------------------------------
 
-void DCBone::Init(const MDXBoneDef& _block, MPQFile& _file, const int32* _GlobalSequence, MPQFile* animFile)
+void DCBone::Init(const MDXBoneDef& _block, MPQFile& _file, const s32* _GlobalSequence, MPQFile* animFile)
 {
 	mParentID = _block.mParent;
 	mAnimID	= _block.mAnimID;
@@ -46,7 +46,7 @@ void DCBone::Init(const MDXBoneDef& _block, MPQFile& _file, const int32* _Global
 //2nd, do rotate or translate
 //3rd, then transformed by mPivot
 //4th, do the tree structured work
-void DCBone::CalcMatrix(uint32 anim, uint32 time, uint32 _GlobalTime, XMMATRIX& out)
+void DCBone::CalcMatrix(u32 anim, u32 time, u32 _GlobalTime, XMMATRIX& out)
 {
 	if(mCalculate == true)
 	{
@@ -150,8 +150,8 @@ void DCBone::RemoveChild(DCBone *ptr)
 {
 	std::vector<DCBone*>::iterator pos;
 
-	uint32 length = mChildren.size();
-	for(uint32 i=0;i<length;i++)
+	u32 length = mChildren.size();
+	for(u32 i=0;i<length;i++)
 	{
 		pos = find(mChildren.begin(),mChildren.end(),ptr);
 		if(pos == mChildren.end())
@@ -174,20 +174,20 @@ void DCBone::SetCalculate(bool c)
 //------------------------------------------------------------------------------------------------
 namespace
 {
-	uint32 GetColor(uint32 maxLevel,uint32 level)
+	u32 GetColor(u32 maxLevel,u32 level)
 	{
-		const uint32 delta = 24/maxLevel;
-		const uint32 value0 = (1<<(delta * level + 1)) - 1;
-		const uint32 value1 = (1<<(delta * (level-1) + 1)) - 1;
-		const uint32 value = value0 - value1;
+		const u32 delta = 24/maxLevel;
+		const u32 value0 = (1<<(delta * level + 1)) - 1;
+		const u32 value1 = (1<<(delta * (level-1) + 1)) - 1;
+		const u32 value = value0 - value1;
 		return value|0xff000000;
 	}
 }
 
 
-//void DCBone::RenderBoneLevel(std::vector<BoneVert>& vtx,uint32 maxLevel,bool colorful)const
+//void DCBone::RenderBoneLevel(std::vector<BoneVert>& vtx,u32 maxLevel,bool colorful)const
 //{
-//	const static uint32 sColorWite = 0xffffffff;
+//	const static u32 sColorWite = 0xffffffff;
 //
 //	if(mChildren.size() == 0)
 //		return;
@@ -197,8 +197,8 @@ namespace
 //	
 //	bone.color = colorful?GetColor(maxLevel,mBoneLevel):sColorWite;
 //
-//	uint32 colorKid = colorful?GetColor(maxLevel,mBoneLevel+1):sColorWite;
-//	for(uint32 i=0;i<mChildren.size();i++)
+//	u32 colorKid = colorful?GetColor(maxLevel,mBoneLevel+1):sColorWite;
+//	for(u32 i=0;i<mChildren.size();i++)
 //	{
 //		BoneVert boneKid;
 //		boneKid.color = colorKid;		
@@ -207,7 +207,7 @@ namespace
 //		vtx.push_back(boneKid);
 //	}
 //
-//	for(uint32 i=0;i<mChildren.size();i++)
+//	for(u32 i=0;i<mChildren.size();i++)
 //	{
 //		mChildren[i]->RenderBoneLevel(vtx,maxLevel,colorful);
 //	}
@@ -215,13 +215,13 @@ namespace
 
 
 //------------------------------------------------------------------------------------------------
-void DCBone::GenerateBoneLevelInfo(uint32 level,uint32& maxLevel)
+void DCBone::GenerateBoneLevelInfo(u32 level,u32& maxLevel)
 {
 	mBoneLevel = level;
 
 	maxLevel = (level>maxLevel)?level:maxLevel;
 
-	for(uint32 i=0;i<mChildren.size();i++)
+	for(u32 i=0;i<mChildren.size();i++)
 	{
 		mChildren[i]->GenerateBoneLevelInfo(level+1, maxLevel);
 	}

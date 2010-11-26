@@ -27,7 +27,7 @@ namespace
 
 struct PACK_QUATERNION 
 {  
-	int16 x,y,z,w;  
+	s16 x,y,z,w;  
 }; 
 
 class Quat16ToQuat32 {
@@ -68,7 +68,7 @@ class ENGINE_DLL AnimData
 {
 public:
 	bool GetIdentity(){return mIdentity;	}
-	bool Use(uint32 anim)
+	bool Use(u32 anim)
 	{
 		if(mSeqIndex>-1)
 		{
@@ -80,9 +80,9 @@ public:
 
 	AnimData(){mIdentity = false;}
 
-	AnimData(const MDXAnimationBlock& _block, const MPQFile& _file, const int32* _GlobalSequence);
+	AnimData(const MDXAnimationBlock& _block, const MPQFile& _file, const s32* _GlobalSequence);
 
-	void Init(const MDXAnimationBlock& _block, MPQFile& _file, const int32* _GlobalSequence, MPQFile* animfiles)
+	void Init(const MDXAnimationBlock& _block, MPQFile& _file, const s32* _GlobalSequence, MPQFile* animfiles)
 	{
 		mGlobalSequence = _GlobalSequence;
 		mType = (InterpolationType)_block.mInterpolation;
@@ -92,18 +92,18 @@ public:
 
 		//times
 		assert(_block.mTimes.number == _block.mKeys.number);
-		uint32 tNum = _block.mTimes.number;
+		u32 tNum = _block.mTimes.number;
 		mSizes = _block.mTimes.number;
 
-		for(uint32 i=0; i<tNum; i++)
+		for(u32 i=0; i<tNum; i++)
 		{
 			AnimationBlockHeader* animHeader = (AnimationBlockHeader*)(_file.getBuffer()+_block.mTimes.offset+i*sizeof(AnimationBlockHeader));
 
-			uint32 *ptimes;
+			u32 *ptimes;
 			if (animfiles[i].getSize() > animHeader->Entries.offset)
-				ptimes = (uint32*)(animfiles[i].getBuffer() + animHeader->Entries.offset);
+				ptimes = (u32*)(animfiles[i].getBuffer() + animHeader->Entries.offset);
 			else if (_file.getSize() > animHeader->Entries.offset)
-				ptimes = (uint32*)(_file.getBuffer() + animHeader->Entries.offset);
+				ptimes = (u32*)(_file.getBuffer() + animHeader->Entries.offset);
 			else
 				continue;
 			for (size_t entryIdx=0; entryIdx < animHeader->Entries.number; entryIdx++)
@@ -112,15 +112,15 @@ public:
 			}
 		}
 
-// 		uint32* ptime = (uint32*)(_file.getBuffer()+_block.mTimes.offset);
+// 		u32* ptime = (u32*)(_file.getBuffer()+_block.mTimes.offset);
 // 		mvTime.resize(tNum);
-// 		for(uint32 i=0; i<tNum; i++)
+// 		for(u32 i=0; i<tNum; i++)
 // 		{
 // 			mvTime[i] = ptime[i];
 // 		}
 
 		//key frame data
-		for(uint32 keyIdx=0; keyIdx<_block.mKeys.number; keyIdx++)
+		for(u32 keyIdx=0; keyIdx<_block.mKeys.number; keyIdx++)
 		{
 			AnimationBlockHeader* keyHeader = (AnimationBlockHeader*)(_file.getBuffer()+_block.mKeys.offset+keyIdx*sizeof(AnimationBlockHeader));
 			
@@ -144,7 +144,7 @@ public:
 			{
 			case InterpolationNone:
 			case InterpolationLinear:
-				for(uint32 entryIdx=0; entryIdx<keyHeader->Entries.number; entryIdx++)
+				for(u32 entryIdx=0; entryIdx<keyHeader->Entries.number; entryIdx++)
 				{
 					mvData[keyIdx].push_back(Conv::conv(pkey[entryIdx]));
 				}
@@ -152,7 +152,7 @@ public:
 			case InterpolationHermite:
 			case InterpolationBezier:
 				{
-					for(uint32 entryIdx=0; entryIdx<keyHeader->Entries.number; entryIdx++)
+					for(u32 entryIdx=0; entryIdx<keyHeader->Entries.number; entryIdx++)
 					{
 						mvData[keyIdx].push_back(Conv::conv(pkey[entryIdx*3]));
 						mIn[keyIdx].push_back(Conv::conv(pkey[entryIdx*3+1]));
@@ -165,19 +165,19 @@ public:
 
 		//assert((Type*)(_file.getBuffer()+_block.mKeys.number)!=NULL);
 		//Type* pkey = (Type*)(_file.getBuffer() + _block.mKeys.offset);
-		//uint32 keyNum = _block.mKeys.number;
+		//u32 keyNum = _block.mKeys.number;
 		//switch(mType)
 		//{
 		//case InterpolationNone:
 		//case InterpolationLinear:
 		//	mvData.resize(keyNum);
-		//	for(uint32 i=0;i<keyNum;i++)
+		//	for(u32 i=0;i<keyNum;i++)
 		//	{
 		//		mvData[i] = pkey[i];
 		//	}
 		//	break;
 		//case InterpolationHermite:
-		//	for(uint32 i=0;i<_block.mKeys.number;i++)
+		//	for(u32 i=0;i<_block.mKeys.number;i++)
 		//	{
 		//		mvData.push_back(pkey[i*3]);
 		//		mIn.push_back(pkey[i*3+1]);
@@ -189,7 +189,7 @@ public:
 
 
 
-	Type GetValue(uint32 _anim, uint32 _time,uint32 _GlobalTime)
+	Type GetValue(u32 _anim, u32 _time,u32 _GlobalTime)
 	{
 		if (mSeqIndex>-1) 
 		{
@@ -253,13 +253,13 @@ public:
 	}
 public:
 	InterpolationType			mType;
-	int32						mSeqIndex;
-	const int32*				mGlobalSequence;
+	s32						mSeqIndex;
+	const s32*				mGlobalSequence;
 	bool						mIdentity;
-	uint32						mSizes;
+	u32						mSizes;
 
 	std::vector<AnimRange>		mvRange;
-	std::vector<uint32>			mvTime[MAX_ANIMATED];
+	std::vector<u32>			mvTime[MAX_ANIMATED];
 	std::vector<Type>			mvData[MAX_ANIMATED];
 	std::vector<Type>			mIn[MAX_ANIMATED];
 	std::vector<Type>			mOut[MAX_ANIMATED];

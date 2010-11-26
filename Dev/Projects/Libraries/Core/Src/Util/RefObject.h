@@ -1,6 +1,6 @@
 #pragma once
 
-class CORE_DLL RefObject
+class RefObject
 {
 public:
 	RefObject():mReference(0){}

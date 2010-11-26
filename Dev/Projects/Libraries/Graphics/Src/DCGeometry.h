@@ -18,28 +18,28 @@ public:
 	void			SetParent(DCSubModel* val)	{ mParent = val;  }
 	const DCSubModel*	GetParent()const		{ return mParent; }
 
-	void			SetVertexStart(uint32 val)	{ mVertexStart = val; }
-	uint32			GetVertexStart()const		{ return mVertexStart;}
+	void			SetVertexStart(u32 val)	{ mVertexStart = val; }
+	u32			GetVertexStart()const		{ return mVertexStart;}
 
-	void			SetVertexCount(uint32 val)	{ mVertexCount = val; }
-	uint32			GetVertexCount()const		{ return mVertexCount;}
+	void			SetVertexCount(u32 val)	{ mVertexCount = val; }
+	u32			GetVertexCount()const		{ return mVertexCount;}
 
-	void			SetIndexStart(uint32 val)	{ mIndexStart = val; }
-	uint32			GetIndexStart()const		{ return mIndexStart;}
+	void			SetIndexStart(u32 val)	{ mIndexStart = val; }
+	u32			GetIndexStart()const		{ return mIndexStart;}
 
-	void			SetIndexCount(uint32 val)	{ mIndexCount = val; }
-	uint32			GetIndexCount()const		{ return mIndexCount;}
+	void			SetIndexCount(u32 val)	{ mIndexCount = val; }
+	u32			GetIndexCount()const		{ return mIndexCount;}
 
-	void			SetID(uint32 val)			{ mID = val;  }
-	uint32			GetID()const				{ return mID; }
+	void			SetID(u32 val)			{ mID = val;  }
+	u32			GetID()const				{ return mID; }
 private:
 	DCSubModel*		mParent;
 
-	uint32			mID;
-	uint32			mVertexStart;
-	uint32			mVertexCount;
-	uint32			mIndexStart;
-	uint32			mIndexCount;
+	u32			mID;
+	u32			mVertexStart;
+	u32			mVertexCount;
+	u32			mIndexStart;
+	u32			mIndexCount;
 };
 
 typedef ComPtr<DCGeometry> DCGeometryPtr;

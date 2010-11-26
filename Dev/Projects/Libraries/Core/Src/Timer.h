@@ -11,34 +11,34 @@ namespace BM
         inline void     Start();
         inline void     Stop();
 
-        inline void     Reset(UInt64 iTicks = 0);
-        inline void     Restart(UInt64 iTicks = 0);
+        inline void     Reset(u64 iTicks = 0);
+        inline void     Restart(u64 iTicks = 0);
 
         inline bool     IsStarted() const   { return m_bStarted;}
         inline bool     IsStopped() const   { return !m_bStarted; }
 
-        inline UInt64   Ticks() const;
-        inline Float64  Seconds() const     { return TicksToSeconds(Ticks()); }
+        inline u64   Ticks() const;
+        inline f64  Seconds() const     { return TicksToSeconds(Ticks()); }
 
-        inline UInt64   TicksSinceStart() const;
+        inline u64   TicksSinceStart() const;
 
     private:
         bool    m_bStarted;
-        UInt64  m_iStartTick;
-        UInt64  m_iTotalTick;
+        u64  m_iStartTick;
+        u64  m_iTotalTick;
 
     public:
-        inline static UInt64  CpuTicks();
-        inline static Float64 CpuSeconds()  { return TicksToSeconds(CpuTicks()); }
+        inline static u64  CpuTicks();
+        inline static f64 CpuSeconds()  { return TicksToSeconds(CpuTicks()); }
 
-        inline static UInt64  DeltaTicks(UInt64 iStart, UInt64 iEnd);
+        inline static u64  DeltaTicks(u64 iStart, u64 iEnd);
 
-        inline static Float64 TicksToSeconds(UInt64 iTicks);
-        inline static UInt64  SecondsToTicks(Float64 fSeconds);
+        inline static f64 TicksToSeconds(u64 iTicks);
+        inline static u64  SecondsToTicks(f64 fSeconds);
 
     public:
-        static const UInt64  TicksPerSecond;
-        static const Float64 SecondsPerTick;
+        static const u64  TicksPerSecond;
+        static const f64 SecondsPerTick;
     };
 
     inline Timer::Timer()
@@ -62,47 +62,47 @@ namespace BM
         m_bStarted = false;
     }
 
-    inline void Timer::Reset(UInt64 iTicks)
+    inline void Timer::Reset(u64 iTicks)
     {
         m_bStarted = false;
         m_iTotalTick = iTicks;
     }
 
-    inline void Timer::Restart(UInt64 iTicks)
+    inline void Timer::Restart(u64 iTicks)
     {
         Reset(iTicks);
         Start();
     }
 
-    inline UInt64 Timer::Ticks() const
+    inline u64 Timer::Ticks() const
     {
         return m_iTotalTick + TicksSinceStart();
     }
 
-    inline UInt64 Timer::TicksSinceStart() const
+    inline u64 Timer::TicksSinceStart() const
     {
         return (m_bStarted ? DeltaTicks(m_iStartTick, CpuTicks()) : 0);
     }
 
-    inline UInt64 Timer::CpuTicks()
+    inline u64 Timer::CpuTicks()
     {
         LARGE_INTEGER counter;
         QueryPerformanceCounter(&counter);
         return counter.QuadPart;
     }
 
-    inline UInt64 Timer::DeltaTicks(UInt64 iStart, UInt64 iEnd)
+    inline u64 Timer::DeltaTicks(u64 iStart, u64 iEnd)
     {
         return ((iEnd >= iStart) ? (iEnd - iStart): ((UInt64_Max - iStart) + iEnd + 1));
     }
 
-    inline Float64 Timer::TicksToSeconds(UInt64 iTicks)
+    inline f64 Timer::TicksToSeconds(u64 iTicks)
     {
-        return (Float64)(iTicks * SecondsPerTick);
+        return (f64)(iTicks * SecondsPerTick);
     }
 
-    inline UInt64 Timer::SecondsToTicks(Float64 fSeconds)
+    inline u64 Timer::SecondsToTicks(f64 fSeconds)
     {
-        return (UInt64)(fSeconds * TicksPerSecond);
+        return (u64)(fSeconds * TicksPerSecond);
     }
 }

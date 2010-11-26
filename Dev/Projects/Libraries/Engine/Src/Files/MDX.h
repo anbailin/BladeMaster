@@ -16,8 +16,8 @@ public:
 	TYPE offset;
 };
 
-typedef HeaderPair<uint32> HeaderPair32;
-typedef HeaderPair<uint16> HeaderPair16;
+typedef HeaderPair<u32> HeaderPair32;
+typedef HeaderPair<u16> HeaderPair16;
 //float floats[14];
 struct PhysicsSettings 
 {
@@ -31,10 +31,10 @@ struct PhysicsSettings
 struct MDXModelHeader 
 {
 	char id[4];
-	uint8 version[4];
-	uint32 nameLength;
-	uint32 nameOfs;
-	uint32 GlobalModelFlags; // 1: tilt x, 2: tilt y, 4:, 8: add another field in header, 16: ; (no other flags as of 3.1.1);
+	u8 version[4];
+	u32 nameLength;
+	u32 nameOfs;
+	u32 GlobalModelFlags; // 1: tilt x, 2: tilt y, 4:, 8: add another field in header, 16: ; (no other flags as of 3.1.1);
 
 	HeaderPair32	mAnimDuration;	//nGlobalSequences 
 	HeaderPair32	mAnim;			//nAnimations
@@ -43,7 +43,7 @@ struct MDXModelHeader
 	HeaderPair32	mKeyBoneLookup;//BonesAndLookups
 
 	HeaderPair32	mVertex;
-	uint32 nViews; // GeometryAndRendering	
+	u32 nViews; // GeometryAndRendering	
 
 	HeaderPair32	mColor;
 	HeaderPair32	mTexture;
@@ -67,8 +67,8 @@ struct MDXModelHeader
 
 	HeaderPair32	mAttachments;
 	HeaderPair32	mAttachLookup;
-	uint32 nEvents; // 
-	uint32 ofsEvents; // Used for playing sounds when dying and a lot else.
+	u32 nEvents; // 
+	u32 ofsEvents; // Used for playing sounds when dying and a lot else.
 	HeaderPair32	mLight;
 	HeaderPair32	mCamera;
 	HeaderPair32    mCameraLookup; // Miscellaneous
@@ -80,52 +80,52 @@ struct MDXModelHeader
 //---------------animation--------------------------------------------
 struct MDXAnimSequence
 {
-	uint32		mAnimID;
-	uint32		mTimeStart;
-	uint32		mTimeEnd;
+	u32		mAnimID;
+	u32		mTimeStart;
+	u32		mTimeEnd;
 
 	float		mMoveSpeed;
 
-	uint32		mLoopType;
-	uint32		mFlag;
+	u32		mLoopType;
+	u32		mFlag;
 
-	uint32		unknownA;
-	uint32		unknownB;
+	u32		unknownA;
+	u32		unknownB;
 
-	uint32		mPlaySpeed;
+	u32		mPlaySpeed;
 	XMFLOAT3	mBoundingBoxA;
 	XMFLOAT3	mBoundingBoxB;
 
 	float		mRadius;
-	uint32		unknownC;
+	u32		unknownC;
 };
 
 struct MDXAnimSequenceWLK
 {
-	int16		mAnimID; // AnimationDataDB.ID
-	int16		mSubAnimID;
-	uint32		mLength;
+	s16		mAnimID; // AnimationDataDB.ID
+	s16		mSubAnimID;
+	u32		mLength;
 	float		mMoveSpeed;
 
-	uint32		mFlags;
-	uint16		mProbability; // This is used to determine how often the animation is played. For all animations of the same type, this adds up to 0x7FFF (32767).
-	uint16		unused;
-	uint32		d1;
-	uint32		d2;
-	uint32		mPlaySpeed;  // note: this can't be play speed because it's 0 for some models
+	u32		mFlags;
+	u16		mProbability; // This is used to determine how often the animation is played. For all animations of the same type, this adds up to 0x7FFF (32767).
+	u16		unused;
+	u32		d1;
+	u32		d2;
+	u32		mPlaySpeed;  // note: this can't be play speed because it's 0 for some models
 
 	XMFLOAT3	boxA, boxB; // Minimum Extent, Maximum Extend
 	float		mRadius;  // Bounds Radius
 
-	int16		mNextAnimation;
-	int16		mIndex;
+	s16		mNextAnimation;
+	s16		mIndex;
 };
 
 //AnimationBlock
 struct MDXAnimationBlock
 {
-	int16			mInterpolation;
-	int16			mSequenceID;
+	s16			mInterpolation;
+	s16			mSequenceID;
 	HeaderPair32	mTimes;
 	HeaderPair32	mKeys;
 };
@@ -143,11 +143,11 @@ struct AnimationBlockHeader
 
 struct MDXBoneDef
 {
-	int32				mAnimID;
-	int32				mFlag;
-	int16				mParent;
-	int16				mGeoID;
-	int32				unknown; // new int added to the bone definitions.  Added in WoW 2.0
+	s32				mAnimID;
+	s32				mFlag;
+	s16				mParent;
+	s16				mGeoID;
+	s32				unknown; // new int added to the bone definitions.  Added in WoW 2.0
 	MDXAnimationBlock	mTranslation;
 	MDXAnimationBlock	mRotation;
 	MDXAnimationBlock	mScaling;
@@ -166,8 +166,8 @@ struct MDXTextureAnim
 
 struct ModelVertex {
 	XMFLOAT3	pos;
-	uint8		weights[4];
-	uint8		bones[4];
+	u8		weights[4];
+	u8		bones[4];
 	XMFLOAT3	normal;
 	XMFLOAT2	texcoords;
 	int			unk1, unk2; // always 0,0 so this is probably unused
@@ -179,26 +179,26 @@ struct MDXModelLOD
 	char id[4];				 // Signature
 	HeaderPair32 mIdxTable;	 //contains the table of index, later [ofsIndex]
 	HeaderPair32 mIdxLookup; //IndexTable[IndexLook[i]] is the index for i_th lookup [ofsTris]
-	uint32 nProps;
-	uint32 ofsProps; // int32, additional vtx properties
+	u32 nProps;
+	u32 ofsProps; // s32, additional vtx properties
 	HeaderPair32 mSub;//[ofsSub], geometry ModelGeoset, materials/renderops/submeshes
 	HeaderPair32 mTex;// ModelTexUnit, material properties/textures
-	int32 lod;				 // LOD bias?
+	s32 lod;				 // LOD bias?
 };
 
 struct MDXGeometry
 {
-	uint32				mID;	
+	u32				mID;	
 	
-	uint16				mVertexStart;
-	uint16				mVertexCount;
+	u16				mVertexStart;
+	u16				mVertexCount;
 
-	uint16				mIndexStart;
-	uint16				mIndexCount;
-	uint16				nBones;		// number of bone indices, Number of elements in the bone lookup table.
-	uint16				StartBones;		// ? always 1 to 4, Starting index in the bone lookup table.
-	uint16				d5;		// ?
-	uint16				rootBone;		// root bone?
+	u16				mIndexStart;
+	u16				mIndexCount;
+	u16				nBones;		// number of bone indices, Number of elements in the bone lookup table.
+	u16				StartBones;		// ? always 1 to 4, Starting index in the bone lookup table.
+	u16				d5;		// ?
+	u16				rootBone;		// root bone?
 	XMFLOAT3			BoundingBox[2];
 	float				radius;
 };
@@ -206,23 +206,23 @@ struct MDXGeometry
 
 struct MDXMaterial
 {
-	uint16 flags;		// Usually 16 for static textures, and 0 for animated textures.
-	uint16 shading;		// If set to 0x8000: shaders. Used in skyboxes to ditch the need for depth buffering. See below.
-	uint16 op;			// Material this texture is part of (index into mat), the geometry index used by this material
-	uint16 op2;			// Always same as above?
-	int16 colorIndex;	// A Color out of the Colors-Block or -1 if none.
-	uint16 flagsIndex;	// RenderFlags (index into render flags, TexFlags)
-	uint16 texunit;		// Index into the texture unit lookup table.
-	uint16 mode;		// See below.
-	uint16 textureid;	// Index into Texture lookup table
-	uint16 texunit2;	// copy of texture unit value?
-	uint16 transid;		// Index into transparency lookup table.
-	uint16 texanimid;	// Index into uvanimation lookup table. 
+	u16 flags;		// Usually 16 for static textures, and 0 for animated textures.
+	u16 shading;		// If set to 0x8000: shaders. Used in skyboxes to ditch the need for depth buffering. See below.
+	u16 op;			// Material this texture is part of (index into mat), the geometry index used by this material
+	u16 op2;			// Always same as above?
+	s16 colorIndex;	// A Color out of the Colors-Block or -1 if none.
+	u16 flagsIndex;	// RenderFlags (index into render flags, TexFlags)
+	u16 texunit;		// Index into the texture unit lookup table.
+	u16 mode;		// See below.
+	u16 textureid;	// Index into Texture lookup table
+	u16 texunit2;	// copy of texture unit value?
+	u16 transid;		// Index into transparency lookup table.
+	u16 texanimid;	// Index into uvanimation lookup table. 
 };
 
 //-------------------little definitions-----------------------------------------------------------------
 //the info from http://wowdev.org/wiki/index.php/M2
-//nRenderFlags (uint16, uint16) pairs starting at ofsRenderFlags 
+//nRenderFlags (u16, u16) pairs starting at ofsRenderFlags 
 //
 //The first value contains flags. 
 //
@@ -246,8 +246,8 @@ struct MDXMaterial
 
 struct MDXRenderFlag
 {
-	uint16				mFlag;
-	uint16				mBlend;
+	u16				mFlag;
+	u16				mBlend;
 };
 
 struct MDXModelColor
@@ -279,17 +279,17 @@ enum EMDXTexType
 
 struct MDXModelTextureDef
 {
-	uint32				mType;	//EMDXTexType
-	uint32				mFlag;
-	uint32				mNameLength;
-	uint32				mNameOffset;
+	u32				mType;	//EMDXTexType
+	u32				mFlag;
+	u32				mNameLength;
+	u32				mNameOffset;
 };
 
 //-------------------------------------------------------------------------------------------
 struct MDXModelLightDef
 {
-	uint16				mType;
-	uint16				mBone;
+	u16				mType;
+	u16				mBone;
 	XMFLOAT3			mPos;
 	MDXAnimationBlock	mAmbColor;
 	MDXAnimationBlock	mAmbIntensity;
@@ -302,7 +302,7 @@ struct MDXModelLightDef
 
 struct MDXModelCamera
 {
-	int32				mID;
+	s32				mID;
 	float				mFov;
 	float				mClipNear;
 	float				mClipFar;
@@ -320,15 +320,15 @@ struct MDXModelParticleInfo
 {
 	float				mID;
 
-	uint32				mColorStart;
-	uint32				mColorMid;
-	uint32				mColorEnd;
+	u32				mColorStart;
+	u32				mColorMid;
+	u32				mColorEnd;
 
 	float				mSizeStart;
 	float				mSizeMid;
 	float				mSizeEnd;
 
-	int16				mTileTexIndex[10];
+	s16				mTileTexIndex[10];
 	float				unkownA[3];
 	float				mScales[3];
 	float				mSlowdown;
@@ -356,20 +356,20 @@ union MDXParticleEmitterParam
 
 struct MDXModelParticleEmitter
 {
-	int32					mID;
-	int32					mFlag;
+	s32					mID;
+	s32					mFlag;
 	XMFLOAT3				mPos;
-	int16					mBoneID;
-	int16					mTextureID;
+	s16					mBoneID;
+	s16					mTextureID;
 	HeaderPair32			mZero1;//?
 	HeaderPair32			mZero2;
 
-	int16					mBlendType;
-	int16					mEmitterType;
-	int16					mParticleType;
-	int16					mTextureTileRotation;
-	int16					mTexCol;
-	int16					mTexRow;
+	s16					mBlendType;
+	s16					mEmitterType;
+	s16					mParticleType;
+	s16					mTextureTileRotation;
+	s16					mTexCol;
+	s16					mTexRow;
 	MDXParticleEmitterParam	mParam;
 	MDXModelParticleInfo	mParticleInfo;
 	MDXAnimationBlock		unknownA;
@@ -377,8 +377,8 @@ struct MDXModelParticleEmitter
 
 struct MDXModelRibbonEmitter
 {
-	int32					mID;
-	int32					mBone;
+	s32					mID;
+	s32					mBone;
 	XMFLOAT3				mPos;
 	HeaderPair32			mTextuer;
 	HeaderPair32			unknownA;
@@ -389,7 +389,7 @@ struct MDXModelRibbonEmitter
 	float					mRes;
 	float					mLength;
 	float					unknownB;
-	int16					unknownC[2];
+	s16					unknownC[2];
 	MDXAnimationBlock		unknownD[2];
 };
 
@@ -397,8 +397,8 @@ struct MDXModelRibbonEmitter
 
 struct MDXModelAttachment 
 {
-	int32					mID;
-	int32					mBone;
+	s32					mID;
+	s32					mBone;
 	XMFLOAT3				mPos;
 	MDXAnimationBlock		unknown;
 };
@@ -407,15 +407,15 @@ struct MDXModelAttachment
 struct MDXModelBlockQ//unknown
 {
 	char		id[4];
-	int32		dbid;
-	int32		bone;
+	s32		dbid;
+	s32		bone;
 	XMFLOAT3	pos;
-	int16		type;
-	int16		seq;
-	uint32		nRanges;
-	uint32		ofsRanges;
-	uint32		nTimes;
-	uint32		ofsTimes;
+	s16		type;
+	s16		seq;
+	u32		nRanges;
+	u32		ofsRanges;
+	u32		nTimes;
+	u32		ofsTimes;
 };
 
 #pragma pack(pop)
@@ -426,7 +426,7 @@ struct MDXModelBlockQ//unknown
 //	~MDXFile();
 //
 //	const MDXModelHeader*		GetHeader()const {return mHeader;}
-//	const uint8*				GetBuffer()const {return mMPQFile.getBuffer();}
+//	const u8*				GetBuffer()const {return mMPQFile.getBuffer();}
 //private:
 //	MPQFile						mMPQFile;
 //

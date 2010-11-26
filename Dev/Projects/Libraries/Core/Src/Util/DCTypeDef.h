@@ -3,29 +3,29 @@
 struct DCVertPosWNTC
 {
 	XMFLOAT3	pos;
-	uint8		weight[4];
-	uint8		bone[4];
+	u8		weight[4];
+	u8		bone[4];
 	XMFLOAT3	normal;
 	XMFLOAT2	texcoord;
-	uint32		color0;
-	uint32		color1;
+	u32		color0;
+	u32		color1;
 };
 
 struct DCVertPosWNTC2
 {
 	XMFLOAT3	pos;
 	float		weight[4];
-	uint8		bone[4];
+	u8		bone[4];
 	XMFLOAT3	normal;
 	XMFLOAT2	texcoord;
-	uint32		color0;
-	uint32		color1;
+	u32		color0;
+	u32		color1;
 };
 
 struct DCVertPosColor
 {
 	XMFLOAT3	pos;
-	uint32		color;
+	u32		color;
 };
 
 struct DCVertPosNorTex

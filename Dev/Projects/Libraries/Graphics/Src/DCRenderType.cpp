@@ -1,6 +1,6 @@
 #include "GraphicsPrivate.h"
 
-uint32 GetTypeSize(DCVertexType arg)
+u32 GetTypeSize(DCVertexType arg)
 {
 	switch(arg)
 	{

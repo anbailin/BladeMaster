@@ -7,7 +7,7 @@ LevelInstance::LevelInstance()
 
 LevelInstance::~LevelInstance()
 {
-    SafeRelease(mScene);
+    SAFE_RELEASE(mScene);
 }
 
 void LevelInstance::AddNode(SceneNodePtr& node)

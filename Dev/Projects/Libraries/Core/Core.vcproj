@@ -557,6 +557,14 @@
 				Name="Str"
 				>
 				<File
+					RelativePath=".\BMString.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BMString.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Src\Util\StrTokenizer.cpp"
 					>
 				</File>

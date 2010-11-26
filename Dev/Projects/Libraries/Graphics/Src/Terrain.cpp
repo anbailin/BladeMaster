@@ -34,7 +34,7 @@ namespace
 void BMTerrain::Init()
 {
     //vertex buffer
-    uint32 length = sizeof(TerrainVertex)*4;
+    u32 length = sizeof(TerrainVertex)*4;
     BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED, &mVB,0 ) );
 
     TerrainVertex* vbLockPtr;
@@ -58,8 +58,8 @@ void BMTerrain::Init()
 
     //index buffer
     IndexBufferPtr ibPtr;
-    BM_AssertHr(DEVICEPTR->CreateIndexBuffer(sizeof(uint16)*6, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &ibPtr, 0));
-    uint16* ibLockPtr;
+    BM_AssertHr(DEVICEPTR->CreateIndexBuffer(sizeof(u16)*6, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &ibPtr, 0));
+    u16* ibLockPtr;
     BM_AssertHr(ibPtr->Lock(0,0,(void**)&ibLockPtr,0));
     ibLockPtr[0] = 0;
     ibLockPtr[1] = 1;
@@ -75,9 +75,9 @@ void BMTerrain::Init()
 
 BMTerrain::~BMTerrain()
 {
-    SafeRelease(terrain_declaration);
-    SafeRelease(terrain_g_ps);
-    SafeRelease(terrain_g_vs);
+    SAFE_RELEASE(terrain_declaration);
+    SAFE_RELEASE(terrain_g_ps);
+    SAFE_RELEASE(terrain_g_vs);
 }
 
 void BMTerrain::Draw(D3DXMATRIXA16* worldMtx,D3DXMATRIXA16* viewMtx, D3DXMATRIXA16* projMtx)

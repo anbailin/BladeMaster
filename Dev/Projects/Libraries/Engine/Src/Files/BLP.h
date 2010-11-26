@@ -3,26 +3,26 @@
 struct BLPHeader
 {
 	char				mId[4];			//"blp2"
-	uint32				mType;			//always 1
-	uint8				mEncoding;		//1--a8r8g8b8, 2--dxt series
-	uint8				mAlphaDepth;	//0--no alpha channel, 1--1 bit alpha, 8--8bit alpha
-	uint8				mAlphaEncoding;	//0--dxt1 alpha(0,1 bit),1--DXT2/3 alpha(4bit alpha),7--DXT4/5(interpolated alpha)
-	uint8				mHasMips;		//0--no mips, 1--has mips, the size determine the mipmap level;
-	uint32				mWidth;			//power of 2
-	uint32				mHeight;		//power of 2
-	uint32				mMipmapOffset[16];
-	uint32				mMipmapSize[16];
+	u32				mType;			//always 1
+	u8				mEncoding;		//1--a8r8g8b8, 2--dxt series
+	u8				mAlphaDepth;	//0--no alpha channel, 1--1 bit alpha, 8--8bit alpha
+	u8				mAlphaEncoding;	//0--dxt1 alpha(0,1 bit),1--DXT2/3 alpha(4bit alpha),7--DXT4/5(interpolated alpha)
+	u8				mHasMips;		//0--no mips, 1--has mips, the size determine the mipmap level;
+	u32				mWidth;			//power of 2
+	u32				mHeight;		//power of 2
+	u32				mMipmapOffset[16];
+	u32				mMipmapSize[16];
 	DCRGBAColor8		pallete[256];
 
-    inline uint32 GetMipMapLevel()
+    inline u32 GetMipMapLevel()
     {
-        uint32 wMip = Log2(mWidth);
-        uint32 hMip = Log2(mHeight);
-        uint32 mip = max(wMip,hMip);
+        u32 wMip = Log2(mWidth);
+        u32 hMip = Log2(mHeight);
+        u32 mip = max(wMip,hMip);
 
 #ifdef _DEBUG
-        uint32 offset_mip = 0;
-        for(uint32 i=0;i<16;i++)
+        u32 offset_mip = 0;
+        for(u32 i=0;i<16;i++)
         {
             if(mMipmapOffset[i]!=0)
                 offset_mip++;
@@ -83,13 +83,13 @@ public:
 	const char*      GetBuffer(){return mBuffer;}
 	const char*		 GetTexDataAddr(){return mTexDataAddr;}
 	void*			 GetPalleteAddr()const {return mHeader->GetPalleteAddr();}
-	void*			 GetMipMapAddr(uint32 val)const{return mBuffer + mHeader->mMipmapOffset[val];}
+	void*			 GetMipMapAddr(u32 val)const{return mBuffer + mHeader->mMipmapOffset[val];}
 
-	uint32			 GetWidth()const {return mHeader?mHeader->mWidth:0;}
-	uint32			 GetHeight()const {return mHeader?mHeader->mHeight:0;}
-	uint32			 GetMipMapLevel()const {return mMipMapLevel;}
-	uint32			 GetTexDataSize()const {return mTexSize; }	
-	uint32			 GetMipMapSize(uint32 val)const {return mHeader->mMipmapSize[val];	}
+	u32			 GetWidth()const {return mHeader?mHeader->mWidth:0;}
+	u32			 GetHeight()const {return mHeader?mHeader->mHeight:0;}
+	u32			 GetMipMapLevel()const {return mMipMapLevel;}
+	u32			 GetTexDataSize()const {return mTexSize; }	
+	u32			 GetMipMapSize(u32 val)const {return mHeader->mMipmapSize[val];	}
 	D3DFORMAT		 GetFormat()const {return mTexFormat;}
 	bool			 Available()const {return mSize!=0;}
 
@@ -99,9 +99,9 @@ private:
 	char*			mBuffer;
 	char*			mTexDataAddr;
 
-	uint32			mMipMapLevel;
-	uint32			mSize;
-	uint32			mTexSize;
+	u32			mMipMapLevel;
+	u32			mSize;
+	u32			mTexSize;
 	std::string		mPath;	
 	D3DFORMAT		mTexFormat;
 

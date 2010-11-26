@@ -20,17 +20,17 @@ typedef ComPtr<WMOGeometry> WMOGeometryPtr;
 //
 //	const std::string&  GetName()const			{ return mName; }
 //	void				Draw();
-//	void				SetWMOGroupNum(uint32 num) { mGroups.resize(num); }
-//	void				SetWMOGroup(const WMOGroupPtr& ptr, uint32 ndx){ mGroups[ndx] = ptr; }
-//	const WMOGroupPtr&	GetWMOGroup(uint32 ndx) { return mGroups[ndx];	}
+//	void				SetWMOGroupNum(u32 num) { mGroups.resize(num); }
+//	void				SetWMOGroup(const WMOGroupPtr& ptr, u32 ndx){ mGroups[ndx] = ptr; }
+//	const WMOGroupPtr&	GetWMOGroup(u32 ndx) { return mGroups[ndx];	}
 //	
-//	void				SetMaterialNum(uint32 num) { mMaterials.resize(num);}
-//	void				SetMaterial(const DCMaterialPtr& ptr, uint32 ndx) { mMaterials[ndx] = ptr;	}
-//	const DCMaterialPtr& GetMaterial(uint32 ndx) { return mMaterials[ndx]; }
+//	void				SetMaterialNum(u32 num) { mMaterials.resize(num);}
+//	void				SetMaterial(const DCMaterialPtr& ptr, u32 ndx) { mMaterials[ndx] = ptr;	}
+//	const DCMaterialPtr& GetMaterial(u32 ndx) { return mMaterials[ndx]; }
 //
-//	void				SetModelInstanceNum(uint32 num) { mModelInstances.resize(num);	}
-//	void				SetModelInstance(const DCModelInstancePtr& ptr, uint32 ndx) { mModelInstances[ndx] = ptr;	}
-//    const DCModelInstancePtr& GetModelInstance(uint32 ndx) { return mModelInstances[ndx];	}
+//	void				SetModelInstanceNum(u32 num) { mModelInstances.resize(num);	}
+//	void				SetModelInstance(const DCModelInstancePtr& ptr, u32 ndx) { mModelInstances[ndx] = ptr;	}
+//    const DCModelInstancePtr& GetModelInstance(u32 ndx) { return mModelInstances[ndx];	}
 //private:
 //	std::string						mName;
 //	std::vector<WMOGroupPtr>		mGroups;
@@ -49,8 +49,8 @@ typedef ComPtr<WMOGeometry> WMOGeometryPtr;
 //private:
 //	WMOPtr			mWMO;
 //	DCTranslator	mTranslator;
-//	uint32			mDoodadSet;
-//	uint32			mGUID;
+//	u32			mDoodadSet;
+//	u32			mGUID;
 //};
 //typedef ComPtr<WMOInstance> WMOInstancePtr;
 //
@@ -66,8 +66,8 @@ typedef ComPtr<WMOGeometry> WMOGeometryPtr;
 //	WMOModelPtr					mModelPtr;
 //	std::string					mName;
 //	DCAABoundingBox				mBoundingBox;
-//	uint32						mFlag;
-//	uint32						mNum;
+//	u32						mFlag;
+//	u32						mNum;
 //};
 //
 //
@@ -81,17 +81,17 @@ typedef ComPtr<WMOGeometry> WMOGeometryPtr;
 //	void SetIndexBufferPtr(IndexBufferPtr& ptr)				{ mNdxBuffer = ptr; }
 //	const IndexBufferPtr&	GetIndexBufferPtr()const		{ return mNdxBuffer;}
 //
-//	void SetMaterialNum(uint32 num)							{ mMaterials.resize(num);}
-//	uint32 GetMaterialNum()const							{ return mMaterials.size();}
-//	void SetMaterialPtr(const DCMaterialPtr& ptr,uint32 ndx){ mMaterials[ndx] = ptr; }
-//	const DCMaterialPtr& GetMaterialPtr(uint32 ndx)const	{ return mMaterials[ndx];}
+//	void SetMaterialNum(u32 num)							{ mMaterials.resize(num);}
+//	u32 GetMaterialNum()const							{ return mMaterials.size();}
+//	void SetMaterialPtr(const DCMaterialPtr& ptr,u32 ndx){ mMaterials[ndx] = ptr; }
+//	const DCMaterialPtr& GetMaterialPtr(u32 ndx)const	{ return mMaterials[ndx];}
 //
-//	void SetGeometryNum(uint32 num)							{ mGeometries.resize(num);}
-//	uint32 GetGeometryNum()const								{ return mGeometries.size();}
-//	void SetGeometryPtr(const WMOGeometryPtr& ptr, uint32 ndx) { mGeometries[ndx] = ptr; }
-//	WMOGeometryPtr  GetGeometryPtr(uint32 ndx)const							{ return mGeometries[ndx];	}
+//	void SetGeometryNum(u32 num)							{ mGeometries.resize(num);}
+//	u32 GetGeometryNum()const								{ return mGeometries.size();}
+//	void SetGeometryPtr(const WMOGeometryPtr& ptr, u32 ndx) { mGeometries[ndx] = ptr; }
+//	WMOGeometryPtr  GetGeometryPtr(u32 ndx)const							{ return mGeometries[ndx];	}
 //
-//	void SetVertexInfo(const void* addr, uint32 count,uint32 stride);
+//	void SetVertexInfo(const void* addr, u32 count,u32 stride);
 //	void Draw();
 //private:
 //	VertexBufferPtr				mVtxBuffer;
@@ -99,7 +99,7 @@ typedef ComPtr<WMOGeometry> WMOGeometryPtr;
 //	std::vector<DCMaterialPtr>	mMaterials;
 //	std::vector<WMOGeometryPtr> mGeometries;
 //
-//	uint32						mVertexCount;
+//	u32						mVertexCount;
 //};
 //
 //class WMOGeometry:public RefObject
@@ -112,9 +112,9 @@ typedef ComPtr<WMOGeometry> WMOGeometryPtr;
 //	const DCMaterialPtr& GetMaterialPtr()const  { return mMaterial;}
 //private:
 //	DCMaterialPtr	mMaterial;
-//	uint32			mIndexStart;
-//	uint32			mIndexCount;
-//	uint32			mVertexStart;
-//	uint32			mVertexEnd;
+//	u32			mIndexStart;
+//	u32			mIndexCount;
+//	u32			mVertexStart;
+//	u32			mVertexEnd;
 //};
 

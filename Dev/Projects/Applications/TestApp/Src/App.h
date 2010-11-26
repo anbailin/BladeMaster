@@ -15,7 +15,7 @@ private:
     virtual bool InitApp();
     virtual bool InitEngine();
     virtual void Exit();
-    virtual void Tick(Float32 fDeltaTime);
+    virtual void Tick(f32 fDeltaTime);
 
     void ReleaseResource();
 

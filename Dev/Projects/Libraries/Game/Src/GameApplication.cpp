@@ -12,8 +12,8 @@ namespace BM
 
     GameApplication::~GameApplication()
     {
-        SafeDelete(m_pEngine);
-        SafeDelete(m_pRenderer);
+        SAFE_DELETE(m_pEngine);
+        SAFE_DELETE(m_pRenderer);
     }
 
     bool GameApplication::Init()
@@ -48,7 +48,7 @@ namespace BM
     {
         // Initialize renderer
 
-        String sRendererClassName = Application::Instance().GetSetting("Engine", "Engine/RendererClass", "D3D9Renderer").toString();
+        QString sRendererClassName = Application::Instance().GetSetting("Engine", "Engine/RendererClass", "D3D9Renderer").toString();
 
         m_pRenderer = (Renderer*)ClassFactory::CreateInstance(sRendererClassName.toAscii());
         BM_Assert(m_pRenderer != NULL);
@@ -57,7 +57,7 @@ namespace BM
 
         // Initialize game engine
 
-        String sGameEngineClassName = Application::Instance().GetSetting("Engine", "Engine/EngineClass", "GameEngine").toString();
+        QString sGameEngineClassName = Application::Instance().GetSetting("Engine", "Engine/EngineClass", "GameEngine").toString();
 
         m_pEngine = (GameEngine*)ClassFactory::CreateInstance(sGameEngineClassName.toAscii());
         BM_Assert(m_pEngine != NULL);
@@ -82,7 +82,7 @@ namespace BM
         Application::Exit();
     }
 
-    void GameApplication::Tick(Float32 fDeltaTime)
+    void GameApplication::Tick(f32 fDeltaTime)
     {
         if (m_pEngine != NULL)
         {
@@ -97,13 +97,13 @@ namespace BM
 
     void GameApplication::OnTick()
     {
-        static UInt64 LastTicks = m_Timer.Ticks();
+        static u64 LastTicks = m_Timer.Ticks();
 
-        UInt64 iTicks = m_Timer.Ticks();
-        UInt64 iDeltaTicks = Timer::DeltaTicks(LastTicks, iTicks);
-        Float64 fDeltaSeconds = Timer::TicksToSeconds(iDeltaTicks);
+        u64 iTicks = m_Timer.Ticks();
+        u64 iDeltaTicks = Timer::DeltaTicks(LastTicks, iTicks);
+        f64 fDeltaSeconds = Timer::TicksToSeconds(iDeltaTicks);
         LastTicks = iTicks;
 
-        Tick((Float32)fDeltaSeconds);
+        Tick((f32)fDeltaSeconds);
     }
 }

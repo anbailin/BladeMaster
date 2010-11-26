@@ -28,8 +28,8 @@ void BMEngine::Tick(float fDeltaTime)
 	const LevelInstance* instance = LevelManager::GetInstance()->GetLevelInstance();
 	BMScenePtr scene = instance->GetScene();
 	const std::vector<SceneNodePtr>& nodes =  scene->GetNodes();
-	const uint32 size = nodes.size();
-	for(uint32 i=0; i<size; i++)
+	const u32 size = nodes.size();
+	for(u32 i=0; i<size; i++)
 	{
 		const SceneNodePtr& node = nodes[i];
 		DCRenderer::GetInstance()->AddSceneNode(node->GetModel(), node->GetTranslation());

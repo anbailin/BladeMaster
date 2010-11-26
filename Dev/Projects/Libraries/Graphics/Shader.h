@@ -5,6 +5,8 @@ class ShaderHandle
 public:
     VertexShaderPtr  mVertexShader;
     PixelShaderPtr   mPixelShader;
+    TArray<u8>       mVSCompiledShader;
+    TArray<u8>       mPSCompiledShader;
 };
 
 class VSHandle

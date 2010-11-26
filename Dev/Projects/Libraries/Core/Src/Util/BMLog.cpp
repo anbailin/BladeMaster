@@ -1,4 +1,6 @@
 #include "CorePrivate.h"
+#include "Singleton.h"
+#include "BMLog.h"
 
 void LogToDebug(const wchar_t* str)
 {

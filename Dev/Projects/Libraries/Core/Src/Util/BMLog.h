@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Singleton.h"
 void CORE_DLL LogToDebug(const wchar_t* str);
 extern "C" void CORE_DLL LogToDebugW(const TCHAR* fmt, ... );
 extern "C" void CORE_DLL LogToDebugA(const char* fmt, ... );

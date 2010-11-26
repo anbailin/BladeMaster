@@ -25,11 +25,11 @@ DCSurface* DCSurface::Create(const std::string& filename)
 	assert(file.GetFormat()!=D3DFMT_A8R8G8B8);
 
 	D3DLOCKED_RECT rect;
-	uint32 w = file.GetWidth();
-	uint32 h = file.GetHeight();
+	u32 w = file.GetWidth();
+	u32 h = file.GetHeight();
 	void* buffer = NULL;
-	uint32 size = 0;
-	for(uint32 i=0;i<file.GetMipMapLevel();i++)
+	u32 size = 0;
+	for(u32 i=0;i<file.GetMipMapLevel();i++)
 	{
 		buffer = file.GetMipMapAddr(i);
 		size = file.GetMipMapSize(i);

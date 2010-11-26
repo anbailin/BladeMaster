@@ -39,8 +39,8 @@ public:
 public:
     virtual void Init(QWidget* pRenderWidget);
     virtual void Exit();
-    virtual void Update(Float32 fDeltaTime);
-    virtual void Draw(Float32 fDeltaTime);
+    virtual void Update(f32 fDeltaTime);
+    virtual void Draw(f32 fDeltaTime);
 	void	AddSceneNode(DCModel* modelPtr, const XMFLOAT3& translation);
 	void    AddSceneTerrain(BMTerrain* terrain);
 protected:
@@ -49,7 +49,7 @@ protected:
     virtual void OnDestroyDevice();
 
 public:
-    bool    ApplyTexture(uint32 stage, const DCTexture* tex);
+    bool    ApplyTexture(u32 stage, const DCTexture* tex);
 
 	void    BeginRender();
 	void    EndRender();
@@ -62,7 +62,7 @@ protected:
 
     //attribues access
 public:
-    void              GetBackBufferSize(uint32& sizeX, uint32& sizeY)const { sizeX = mBackBufferSizeX; sizeY = mBackBufferSizeY; }    
+    void              GetBackBufferSize(u32& sizeX, u32& sizeY)const { sizeX = mBackBufferSizeX; sizeY = mBackBufferSizeY; }    
 	TexturePtr	      GetLightingRT() { return mLightingRT; }    
 
 	void			  SetViewProjMatrix(XMMATRIX* view, XMMATRIX* proj, XMMATRIX* viewProj);
@@ -71,8 +71,8 @@ protected:
     //resource
     QuadGeometry*       mQuadGeometry;
     //config
-    uint32              mBackBufferSizeX;
-    uint32              mBackBufferSizeY;
+    u32              mBackBufferSizeX;
+    u32              mBackBufferSizeY;
 	TexturePtr      	mLightingRT;    
 	XMMATRIX*			mViewMatrix;
 	XMMATRIX*			mProjMatrix;

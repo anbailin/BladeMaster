@@ -18,42 +18,42 @@ public:
 	DCModel();
 	virtual ~DCModel();
 
-	virtual void			Draw(uint32 ndx);	
+	virtual void			Draw(u32 ndx);	
 	void					RenderBoneLevel();
 
 	/*
 	*	initialize vertex buffer, 
 	*/
-	virtual void			InitVertexBuffer(void* addr, DCVertexType type, uint32 count);
+	virtual void			InitVertexBuffer(void* addr, DCVertexType type, u32 count);
 
-	DCSubModel*				GetSubModel(uint32 ndx)				{ return &mSubModels[ndx];	}
-	uint32					GetSubModelCount()const				{ return mSubModelCount;	}
-	void					SetSubModel(DCSubModel* val,uint32 count);
+	DCSubModel*				GetSubModel(u32 ndx)				{ return &mSubModels[ndx];	}
+	u32					GetSubModelCount()const				{ return mSubModelCount;	}
+	void					SetSubModel(DCSubModel* val,u32 count);
 	
-	uint32					GetVertexCount()					{ return mVertexCount;}
+	u32					GetVertexCount()					{ return mVertexCount;}
 
-	void					SetTextureTableSize(uint32 size)	{ mTextureTable.resize(size);}
-	void					SetTexture(DCTexturePtr ptr,uint32 index);
-	DCTexturePtr			GetTexture(uint32 index);
+	void					SetTextureTableSize(u32 size)	{ mTextureTable.resize(size);}
+	void					SetTexture(DCTexturePtr ptr,u32 index);
+	DCTexturePtr			GetTexture(u32 index);
 	
 	//attr access
 public:
 	void					SetWorldMatrix(const D3DXMATRIXA16& matrix) { mWorld = matrix; }
-	void					SetSkinningData(const float* skin, uint32 size)			{ mSkinData = skin; mSkinConstNum = size; }
+	void					SetSkinningData(const float* skin, u32 size)			{ mSkinData = skin; mSkinConstNum = size; }
 	virtual void			SetSkinningData(const MatrixPool& skinData);
 
 protected:
 	DCSubModel*						mSubModels;
-	uint32							mSubModelCount;
+	u32							mSubModelCount;
 
 	D3DXMATRIXA16					mWorld;
 
 	VertexBufferPtr					mVertexBuffer;
-	uint32							mVertexCount;
+	u32							mVertexCount;
 
 	std::vector<DCTexturePtr>		mTextureTable;	
 	const float*					mSkinData;//data of the skinning animation
-	uint32							mSkinConstNum;//how many float4 of the skinning data
+	u32							mSkinConstNum;//how many float4 of the skinning data
 
     ShaderId                        mShaderId;
 };
@@ -68,8 +68,8 @@ public:
 	DCModelSys();
 	virtual ~DCModelSys();
 
-	virtual void			Draw(uint32 ndx);
-	virtual void			InitVertexBuffer(void* addr, DCVertexType type, uint32 count);	
+	virtual void			Draw(u32 ndx);
+	virtual void			InitVertexBuffer(void* addr, DCVertexType type, u32 count);	
 	virtual void			SetSkinningData(const MatrixPool& skinData);
 
 protected:

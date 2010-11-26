@@ -13,7 +13,7 @@ App::App(int argc, char* argv[])
 
 App::~App()
 {
-    SafeDelete(m_pMainWindow);
+    SAFE_DELETE(m_pMainWindow);
 }
 
 bool App::InitApp()
@@ -56,12 +56,12 @@ void App::Exit()
     //DCRenderer::GetInstance()->ReleaseResource();
     //BMEngine::GetInstance()->ReleaseResource();
 
-    //SafeDelete(m_pCamera);
+    //SAFE_DELETE(m_pCamera);
 
     GameApplication::Exit();
 }
 
-void App::Tick(Float32 fDeltaTime)
+void App::Tick(f32 fDeltaTime)
 {
     GameApplication::Tick(fDeltaTime);
 

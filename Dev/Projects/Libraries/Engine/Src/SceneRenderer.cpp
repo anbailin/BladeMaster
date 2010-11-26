@@ -28,8 +28,8 @@ void SceneRenderer::RenderScene(const LevelInstance& instance)
 
   //      //models
   //      const std::vector<SceneNodePtr>& nodes = instance.GetNodes();
-  //      const uint32 nodeNum = nodes.size();
-  //      for(uint32 nodeIdx = 0; nodeIdx<nodeNum; nodeIdx++)
+  //      const u32 nodeNum = nodes.size();
+  //      for(u32 nodeIdx = 0; nodeIdx<nodeNum; nodeIdx++)
   //      {
   //          BM_AssertHr(DEVICEPTR->BeginScene());
   //          const SceneNodePtr& nodePtrRef = nodes[nodeIdx];

@@ -25,7 +25,7 @@ public:
 
     void LoadShaders();
     ShaderId GetShaderTypeId(const char* name)const;
-    ShaderId GetShaderMacroId(const char* typeName, const char* macroName)const;
+    ShaderId GetShaderMacroMask(const char* typeName, const char* macroName)const;
     ShaderId GetShaderMacroMask(const ShaderId& typeId, const char* macroName)const;
     
     const ShaderHandle* GetShader(const ShaderId& id)const;

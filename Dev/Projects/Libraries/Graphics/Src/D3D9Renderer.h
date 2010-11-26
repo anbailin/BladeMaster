@@ -20,9 +20,9 @@ namespace BM
     public:
         virtual void Init(QWidget* pRenderWidget);
         virtual void Exit();
-        virtual void Tick(Float32 fDeltaTime);
-        virtual void Update(Float32 fDeltaTime);
-        virtual void Draw(Float32 fDeltaTime);
+        virtual void Tick(f32 fDeltaTime);
+        virtual void Update(f32 fDeltaTime);
+        virtual void Draw(f32 fDeltaTime);
 
         IDirect3DDevice9* GetDevice() { return DXUTGetD3D9Device(); }
 
@@ -36,7 +36,7 @@ namespace BM
         virtual void OnDestroyDevice();
 
     private:
-        Float32 m_fDeltaTime;
+        f32 m_fDeltaTime;
 
     public:
         static bool    CALLBACK DXUT_IsDeviceAcceptable(D3DCAPS9* pCaps, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, bool bWindowed, void* pUserContext);

@@ -10,7 +10,7 @@ namespace BM
         V[3].Set(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
-    inline Matrix44::Matrix44(Float32 m11, Float32 m12, Float32 m13, Float32 m14, Float32 m21, Float32 m22, Float32 m23, Float32 m24, Float32 m31, Float32 m32, Float32 m33, Float32 m34, Float32 m41, Float32 m42, Float32 m43, Float32 m44)
+    inline Matrix44::Matrix44(f32 m11, f32 m12, f32 m13, f32 m14, f32 m21, f32 m22, f32 m23, f32 m24, f32 m31, f32 m32, f32 m33, f32 m34, f32 m41, f32 m42, f32 m43, f32 m44)
     {
         V[0].Set(m11, m12, m13, m14);
         V[1].Set(m21, m22, m23, m24);
@@ -66,22 +66,22 @@ namespace BM
         return (const D3DXMATRIX*)V;
     }
 
-    inline Matrix44::operator Float32* ()
+    inline Matrix44::operator f32* ()
     {
-        return (Float32*)V;
+        return (f32*)V;
     }
 
-    inline Matrix44::operator const Float32* () const
+    inline Matrix44::operator const f32* () const
     {
-        return (const Float32*)V;
+        return (const f32*)V;
     }
 
-    inline Float32& Matrix44::operator () (int row, int col)
+    inline f32& Matrix44::operator () (int row, int col)
     {
         return Get(row, col);
     }
 
-    inline Float32 Matrix44::operator () (int row, int col) const
+    inline f32 Matrix44::operator () (int row, int col) const
     {
         return Get(row, col);
     }
@@ -144,7 +144,7 @@ namespace BM
         return *this;
     }
 
-    inline Matrix44& Matrix44::operator *= (Float32 f)
+    inline Matrix44& Matrix44::operator *= (f32 f)
     {
         V[0] *= f;
         V[1] *= f;
@@ -153,7 +153,7 @@ namespace BM
         return *this;
     }
 
-    inline Matrix44& Matrix44::operator /= (Float32 f)
+    inline Matrix44& Matrix44::operator /= (f32 f)
     {
         V[0] /= f;
         V[1] /= f;
@@ -187,12 +187,12 @@ namespace BM
         return Matrix44(*this).Multiply(m);
     }
 
-    inline Matrix44 Matrix44::operator * (Float32 f) const
+    inline Matrix44 Matrix44::operator * (f32 f) const
     {
         return Matrix44(V[0] * f, V[1] * f, V[2] * f, V[3] * f);
     }
 
-    inline Matrix44 Matrix44::operator / (Float32 f) const
+    inline Matrix44 Matrix44::operator / (f32 f) const
     {
         return Matrix44(V[0] / f, V[1] / f, V[2] / f, V[3] / f);
     }
@@ -201,13 +201,13 @@ namespace BM
 
 #pragma region Utilitis
 
-    inline Float32& Matrix44::Get(int row, int col)
+    inline f32& Matrix44::Get(int row, int col)
     {
         BM_Assert(row >= 0 && row < 4 && col >= 0 && col < 4);
         return V[row][col];
     }
 
-    inline Float32 Matrix44::Get(int row, int col) const
+    inline f32 Matrix44::Get(int row, int col) const
     {
         BM_Assert(row >= 0 && row < 4 && col >= 0 && col < 4);
         return V[row][col];
@@ -231,7 +231,7 @@ namespace BM
         return Vector4(V[0][col], V[1][col], V[2][col], V[3][col]);
     }
 
-    inline void Matrix44::Set(Float32 m11, Float32 m12, Float32 m13, Float32 m14, Float32 m21, Float32 m22, Float32 m23, Float32 m24, Float32 m31, Float32 m32, Float32 m33, Float32 m34, Float32 m41, Float32 m42, Float32 m43, Float32 m44)
+    inline void Matrix44::Set(f32 m11, f32 m12, f32 m13, f32 m14, f32 m21, f32 m22, f32 m23, f32 m24, f32 m31, f32 m32, f32 m33, f32 m34, f32 m41, f32 m42, f32 m43, f32 m44)
     {
         V[0].Set(m11, m12, m13, m14);
         V[1].Set(m21, m22, m23, m24);

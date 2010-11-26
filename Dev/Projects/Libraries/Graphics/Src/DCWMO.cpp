@@ -5,8 +5,8 @@
 //	struct NamePair
 //	{
 //		char* name[5];
-//		uint32 size;
-//		uint32 nextpos;
+//		u32 size;
+//		u32 nextpos;
 //		void ReadIn(MPQFile& file)
 //		{
 //			file.read(name,4);
@@ -20,7 +20,7 @@
 //	struct DataPair
 //	{
 //		char*	addr;
-//		uint32	num;
+//		u32	num;
 //		DataPair():addr(NULL),num(0){}
 //	};
 //
@@ -54,7 +54,7 @@
 //	//	}else if (!strcmp(name_ptr,"MOMT")) //materials
 //	//	{
 //	//		const WMOMaterial* tMaterialPtr = (const WMOMaterial*)file.getPointer();
-//	//		for(uint32 i=0;i<mHeader.mTextureNum;i++)
+//	//		for(u32 i=0;i<mHeader.mTextureNum;i++)
 //	//		{
 //	//			std::string tTexPath(tTexName.addr + tMaterialPtr[i].nameStart);
 //	//			DCTexturePtr tTexPtr (DCWOWLoader::GetInstance()->LoadTexture(tTexPath));
@@ -68,7 +68,7 @@
 //	//		tGroupName.addr = file.getPointer();
 //	//	}else if (!strcmp(name_ptr,"MOGI")) // group info
 //	//	{			
-//	//		for(uint32 i=0;i<mHeader.mGroupNum;i++)
+//	//		for(u32 i=0;i<mHeader.mGroupNum;i++)
 //	//		{
 //	//			mGroups[i]->Init(this,file,i,tGroupName.addr);
 //	//		}
@@ -97,11 +97,11 @@
 //
 //	//	}else if (!strcmp(name_ptr,"MODD"))//model instance setting
 //	//	{
-//	//		uint32 nModel = name.size/sizeof(WMOMODDChunk);
+//	//		u32 nModel = name.size/sizeof(WMOMODDChunk);
 //
 //	//		SetModelInstanceNum(nModel);
 //
-//	//		for(uint32 i=0;i<nModel;i++)
+//	//		for(u32 i=0;i<nModel;i++)
 //	//		{
 //	//			int ofs;
 //	//			file.read(&ofs,sizeof(ofs));
@@ -139,8 +139,8 @@
 //
 //void WMO::Draw()
 //{
-//	uint32 len = mGroups.size();
-//	for (uint32 i=0;i<len;i++)
+//	u32 len = mGroups.size();
+//	for (u32 i=0;i<len;i++)
 //	{
 //		mGroups[i]->Draw();
 //	}
@@ -247,12 +247,12 @@
 //
 //	//--create render resource-----------------------------
 //	assert( (vertex.num == normal.num)&&(vertex.num == texcoord.num));
-//	uint32 tElementNum = vertex.num;
+//	u32 tElementNum = vertex.num;
 //	std::vector<DCVertPosNorTex> vtxbuffer(tElementNum);
 //	const DCVector3* tPosPtr = (const DCVector3*) vertex.addr;
 //	const DCVector3* tNorPtr = (const DCVector3*) normal.addr;
 //	const DCVector2* tTexcoordPtr = (const DCVector2*) texcoord.addr;
-//	for(uint32 i=0;i<tElementNum;i++)
+//	for(u32 i=0;i<tElementNum;i++)
 //	{
 //		vtxbuffer[i].pos = tPosPtr[i];
 //		vtxbuffer[i].normal = tNorPtr[i];
@@ -263,7 +263,7 @@
 //
 //	const WMOBatch* tBatchPtr = (const WMOBatch*)batch.addr;
 //	mModelPtr->SetGeometryNum(batch.num);
-//	for(uint32 i=0;i<batch.num;i++)
+//	for(u32 i=0;i<batch.num;i++)
 //	{
 //		WMOGeometryPtr geo(new WMOGeometry);
 //		geo->SetBasicInfo(tBatchPtr[i]);
@@ -283,10 +283,10 @@
 //
 //
 ////----wmo model---------------------------------------------------------------------------------
-//void WMOModel::SetVertexInfo(const void* addr, uint32 count,uint32 stride)
+//void WMOModel::SetVertexInfo(const void* addr, u32 count,u32 stride)
 //{
 //	VertexBufferPtr tVtxBufferPtr;
-//	uint32 length = count*stride;
+//	u32 length = count*stride;
 //	BM_AssertHr(DEVICEPTR->CreateVertexBuffer(length,0,0,D3DPOOL_MANAGED,&tVtxBufferPtr,0));
 //
 //	void* lockPtr;

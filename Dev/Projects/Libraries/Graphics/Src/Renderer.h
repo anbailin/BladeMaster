@@ -15,7 +15,7 @@ namespace BM
     public:
         virtual void Init(QWidget* pRenderWidget);
         virtual void Exit();
-        virtual void Tick(Float32 fDeltaTime);
+        virtual void Tick(f32 fDeltaTime);
 
         QWidget* GetRenderWidget() const { return m_pRenderWidget; }
 

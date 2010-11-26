@@ -10,7 +10,7 @@ LevelManager::LevelManager()
 
 LevelManager::~LevelManager()
 {
-    SafeDelete(mLevelInstance);
+    SAFE_DELETE(mLevelInstance);
 }
 
 namespace
@@ -102,5 +102,5 @@ void LevelManager::LoadMap(const char* name)
 
 void LevelManager::ReleaseLevelInstance()
 {
-    SafeDelete(mLevelInstance);
+    SAFE_DELETE(mLevelInstance);
 }

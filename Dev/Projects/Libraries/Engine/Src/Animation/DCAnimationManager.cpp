@@ -13,23 +13,23 @@ DCAnimationManager::~DCAnimationManager()
 }
 
 //---------------------------------------------------------------------------------------
-void DCAnimationManager::SetAnimSeqInfo(const MDXAnimSequence *seq, uint32 num)
+void DCAnimationManager::SetAnimSeqInfo(const MDXAnimSequence *seq, u32 num)
 {
 	assert(seq && num);
 
 	mAnimSeqInfo.resize(num);
-	for(uint32 i=0;i<num;i++)
+	for(u32 i=0;i<num;i++)
 	{
 		mAnimSeqInfo[i] = seq[i];
 	}
 }
 
-void DCAnimationManager::SetAnimSeqInfo(const MDXAnimSequenceWLK *seq, uint32 num)
+void DCAnimationManager::SetAnimSeqInfo(const MDXAnimSequenceWLK *seq, u32 num)
 {
 	assert(seq && num);
 
 	mAnimSeqInfo.resize(num);
-	for(uint32 i=0;i<num;i++)
+	for(u32 i=0;i<num;i++)
 	{
 		mAnimSeqInfo[i].mAnimID = seq[i].mAnimID;
 		mAnimSeqInfo[i].mTimeStart = 0;
@@ -47,15 +47,15 @@ void DCAnimationManager::SetBoneInfo(const MDXModelHeader& header, MPQFile& file
 	assert(animFiles);
 
 	const MDXBoneDef* boneDefPtr = (MDXBoneDef*)(file.getBuffer() + header.mBone.offset);
-	const uint32 boneNum = header.mBone.number;
+	const u32 boneNum = header.mBone.number;
 
-	const int32* animDuration = (int32*)(file.getBuffer() + header.mAnimDuration.offset);
-	const uint32 animDurationNum = header.mAnimDuration.number;
-	mAnimDuration = new int32[animDurationNum];
-	memcpy(mAnimDuration, animDuration, animDurationNum*sizeof(int32));
+	const s32* animDuration = (s32*)(file.getBuffer() + header.mAnimDuration.offset);
+	const u32 animDurationNum = header.mAnimDuration.number;
+	mAnimDuration = new s32[animDurationNum];
+	memcpy(mAnimDuration, animDuration, animDurationNum*sizeof(s32));
 
 	mBones.resize(boneNum);
-	for(uint32 i=0;i<boneNum;i++)
+	for(u32 i=0;i<boneNum;i++)
 	{
 		mBones[i].Init(boneDefPtr[i],file,mAnimDuration, animFiles);
 		mBones[i].SetBoneID(i);
@@ -69,20 +69,20 @@ void DCAnimationManager::SetBoneInfo(const MDXModelHeader& header, MPQFile& file
 
 
 //---------------------------------------------------------------------------------------
-void DCAnimationManager::Animate(uint32 anim)
+void DCAnimationManager::Animate(u32 anim)
 {
 	const MDXAnimSequence& animSeq = mAnimSeqInfo[anim];
-	const uint32 globalTime = (uint32)(DXUTTimer::GetTime()*500);
-	const uint32 deltaTime = animSeq.mTimeEnd - animSeq.mTimeStart;
-	const uint32 time = globalTime%deltaTime + animSeq.mTimeStart;
+	const u32 globalTime = (u32)(DXUTTimer::GetTime()*500);
+	const u32 deltaTime = animSeq.mTimeEnd - animSeq.mTimeStart;
+	const u32 time = globalTime%deltaTime + animSeq.mTimeStart;
 
-	const uint32 boneNum = mBones.size();
-	for(uint32 i=0; i<boneNum; i++)
+	const u32 boneNum = mBones.size();
+	for(u32 i=0; i<boneNum; i++)
 	{
 		mBones[i].SetCalculate(false);
 	}
 
-	for(uint32 i=0; i<boneNum; i++)
+	for(u32 i=0; i<boneNum; i++)
 	{
 		mBones[i].CalcMatrix(anim,time,globalTime,mBoneMatrixPool[i]);
 
@@ -98,7 +98,7 @@ void DCAnimationManager::Animate(uint32 anim)
 		//str += L"index is ";		
 		//str += idx_str;
 		//str += L"matrix is:\n ";
-		//for(uint32 m_idx=0; m_idx<16; m_idx++)
+		//for(u32 m_idx=0; m_idx<16; m_idx++)
 		//{
 		//	wchar_t floatV[256];
 		//	_snwprintf_s(floatV, 256, L"%f ",mBones[i].GetTransformMatrixCache().m[m_idx]);
@@ -118,11 +118,11 @@ void DCAnimationManager::Animate(uint32 anim)
 //---------------------------------------------------------------------------------------
 void DCAnimationManager::GenerateBoneFamilyTree()
 {
-	const uint32 boneNum = mBones.size();
+	const u32 boneNum = mBones.size();
 
-	for(uint32 i=0;i<boneNum;i++)
+	for(u32 i=0;i<boneNum;i++)
 	{
-		int32 parentID = mBones[i].GetParentID();
+		s32 parentID = mBones[i].GetParentID();
 		if(parentID == -1)
 		{
 			mBones[i].SetParent(NULL);
@@ -138,12 +138,12 @@ void DCAnimationManager::GenerateBoneFamilyTree()
 //---------------------------------------------------------------------------------------
 void DCAnimationManager::GenerateBoneLevelInfo()
 {
-	for(uint32 i=0;i<mRootBoneIDs.size();i++)
+	for(u32 i=0;i<mRootBoneIDs.size();i++)
 	{
-		uint32 rootID = mRootBoneIDs[i];
+		u32 rootID = mRootBoneIDs[i];
 		DCBone& root = mBones[rootID];
 		assert(root.GetParentPtr() == NULL);
-		uint32 maxLevel = 0;
+		u32 maxLevel = 0;
 		root.GenerateBoneLevelInfo(1,maxLevel);
 		mBoneLevel = (maxLevel>mBoneLevel)?maxLevel:mBoneLevel;
 	}

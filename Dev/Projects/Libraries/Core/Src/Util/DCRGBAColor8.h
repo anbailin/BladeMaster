@@ -7,17 +7,17 @@ struct DCQuater4
 	{
 		struct
 		{
-			uint8 r,g,b,a;
+			u8 r,g,b,a;
 		};
 		struct 
 		{
-			uint8 x,y,z,w;
+			u8 x,y,z,w;
 		};
-		uint8  vData[4];
-		uint32 data;
+		u8  vData[4];
+		u32 data;
 	};
 
-	uint8 operator[] (uint8 _val){return vData[_val];}
+	u8 operator[] (u8 _val){return vData[_val];}
 };
 
 typedef DCQuater4 DCRGBAColor8;

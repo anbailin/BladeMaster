@@ -8,7 +8,7 @@ class ENGINE_DLL LevelManager
 
 public:
     LevelManager();
-    ~LevelManager();
+    virtual ~LevelManager();
     
     LevelInstance* CreateLevelInstance(const char* name);
     void LoadMap(const char* name);

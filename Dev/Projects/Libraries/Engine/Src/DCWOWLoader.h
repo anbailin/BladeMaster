@@ -13,7 +13,7 @@ class ENGINE_DLL DCWOWLoader
 
 public:
 	DCModel*							LoadModel(DCFilePath& _path, DCAnimationManager*& animMgr);
-	DCModel*							LoadModel(uint32 creatureID);
+	DCModel*							LoadModel(u32 creatureID);
 	DCTexture*							LoadTexture(const std::string& _filename);
 
 	void Init();

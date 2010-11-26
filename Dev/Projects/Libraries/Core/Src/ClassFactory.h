@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Utilities.h"
+
 namespace BM
 {
     class CORE_DLL ClassFactory
@@ -10,11 +12,11 @@ namespace BM
         typedef void* (*ClassCreateFunc) (void*);
 
     public:
-        static bool  Register(const String& name, ClassCreateFunc func);
-        static void* CreateInstance(const String& name, void* buffer = NULL);
+        static bool  Register(const QString& name, ClassCreateFunc func);
+        static void* CreateInstance(const QString& name, void* buffer = NULL);
 
     private:
-        static QHash<String, ClassCreateFunc> s_Creators;
+        static QHash<QString, ClassCreateFunc> s_Creators;
     };
 }
 

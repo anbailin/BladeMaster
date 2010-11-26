@@ -25,9 +25,9 @@ BMCamera::BMCamera()
 
 BMCamera::~BMCamera()
 {
-	SafeDelete(mViewMatrix);
-	SafeDelete(mProjMatrix);
-	SafeDelete(mViewProjMatrix);
+	SAFE_DELETE(mViewMatrix);
+	SAFE_DELETE(mProjMatrix);
+	SAFE_DELETE(mViewProjMatrix);
 }
 
 void BMCamera::Move(const Vector3& delta)

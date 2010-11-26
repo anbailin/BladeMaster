@@ -18,7 +18,7 @@ namespace BM
     protected:
         virtual bool InitApp();
         virtual bool InitEngine();
-        virtual void Tick(Float32 fDeltaTime);
+        virtual void Tick(f32 fDeltaTime);
 
         void SetRenderWidget(QWidget* pRenderWidget) { m_pRenderWidget = pRenderWidget; }
 

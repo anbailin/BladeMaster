@@ -50,7 +50,7 @@ void VertexDeclareManager::CreateResource()
 
 void VertexDeclareManager::ReleaseResource()
 {
-    for(uint32 i=0; i<VertexTypeCount; i++)
+    for(u32 i=0; i<VertexTypeCount; i++)
     {
         mDeclarations[i] = NULL;
     }

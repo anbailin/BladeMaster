@@ -5,8 +5,8 @@ SINGLETON_DEFINE(DCRenderer);
 
 namespace RendererConfig
 {
-    const uint32 BackBufferSizeX = 800;
-    const uint32 BackBufferSizeY = 600;
+    const u32 BackBufferSizeX = 800;
+    const u32 BackBufferSizeY = 600;
 }
 
 namespace
@@ -31,10 +31,10 @@ DCRenderer::DCRenderer()
 
 DCRenderer::~DCRenderer()
 {
-	//SafeRelease(DEVICEPTR);
+	//SAFE_RELEASE(DEVICEPTR);
 }
 
-bool DCRenderer::ApplyTexture(uint32 stage, const DCTexture* tex)
+bool DCRenderer::ApplyTexture(u32 stage, const DCTexture* tex)
 {
     DEVICEPTR->SetSamplerState(stage, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
     DEVICEPTR->SetSamplerState(stage, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
@@ -59,12 +59,12 @@ void DCRenderer::Exit()
 {
 }
 
-void DCRenderer::Update(Float32 fDeltaTime)
+void DCRenderer::Update(f32 fDeltaTime)
 {
 
 }
 
-void DCRenderer::Draw(Float32 fDeltaTime)
+void DCRenderer::Draw(f32 fDeltaTime)
 {	
     // For our world matrix, we will just rotate the object about the y-axis.
     D3DXMATRIXA16 mxView, mxProj;
@@ -92,8 +92,8 @@ void DCRenderer::Draw(Float32 fDeltaTime)
 
 		//models		
 		const std::vector<BatchNode>& nodes = BatchNodes;
-		const uint32 nodeNum = nodes.size();
-		for(uint32 nodeIdx = 0; nodeIdx<nodeNum; nodeIdx++)
+		const u32 nodeNum = nodes.size();
+		for(u32 nodeIdx = 0; nodeIdx<nodeNum; nodeIdx++)
 		{
 			BM_AssertHr(DEVICEPTR->BeginScene());
 			const BatchNode& nodePtrRef = nodes[nodeIdx];
@@ -142,7 +142,7 @@ void DCRenderer::OnDestroyDevice()
     ReleaseResource();
 }
 
-uint32 aa,bb;
+u32 aa,bb;
 void DCRenderer::BeginRender()
 {
     BMPostFXRenderer::GetInstance()->StoreBackBuffer();

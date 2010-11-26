@@ -175,7 +175,7 @@ ShaderId ShaderMgr::GetShaderTypeId(const char* name)const
     return InvalidShaderTypeId;
 }
 
-ShaderId ShaderMgr::GetShaderMacroId(const char* typeName, const char* macroName)const
+ShaderId ShaderMgr::GetShaderMacroMask(const char* typeName, const char* macroName)const
 {
     for(u32 i=0; i<mShaderDescs.size(); i++)
     {

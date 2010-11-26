@@ -10,5 +10,5 @@ enum ShaderRegisterNdx
 class RENDER_DLL DCShaderManager
 {
 public:
-	static bool DetermineShaderAnimation(uint32 _BoneNum);
+	static bool DetermineShaderAnimation(u32 _BoneNum);
 };

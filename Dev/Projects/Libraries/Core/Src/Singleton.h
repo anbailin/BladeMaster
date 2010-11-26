@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Utilities.h"
 namespace BM
 {
     template<typename T>
@@ -37,7 +37,7 @@ namespace BM
 
         static void DeleteInstance()
         {
-            SafeDelete(msInstance);
+            SAFE_DELETE(msInstance);
         }
 
     protected:
