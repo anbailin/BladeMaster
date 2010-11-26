@@ -31,8 +31,6 @@
 #include "Util/DCTypeDef.h"
 #include "Util/DCRGBAColor8.h"
 #include "BMString.h"
-#include "Util/StrUtil.h"
-#include "Util/StrTokenizer.h"
 
 
 #include "Vector2.h"

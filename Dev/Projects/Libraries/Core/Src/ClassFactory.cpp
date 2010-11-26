@@ -1,5 +1,4 @@
 #include "CorePrivate.h"
-#include "BMString.h"
 #include "ClassFactory.h"
 
 namespace BM

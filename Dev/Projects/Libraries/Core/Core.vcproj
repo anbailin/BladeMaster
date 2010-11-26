@@ -564,22 +564,6 @@
 					RelativePath=".\BMString.h"
 					>
 				</File>
-				<File
-					RelativePath=".\Src\Util\StrTokenizer.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Src\Util\StrTokenizer.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Src\Util\StrUtil.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Src\Util\StrUtil.h"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="Debug"
