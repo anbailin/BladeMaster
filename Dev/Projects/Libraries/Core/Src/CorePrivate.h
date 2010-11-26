@@ -7,6 +7,7 @@
 #pragma warning( disable : 4995 )
 #pragma warning( disable : 4131 )
 #pragma warning( disable : 4251 )
+#pragma warning( disable : 4275 )
 
 
 #include "Build.h"
