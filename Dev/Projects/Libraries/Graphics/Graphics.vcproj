@@ -556,26 +556,6 @@
 			Name="Shader"
 			>
 			<File
-				RelativePath="..\..\..\..\Engine\Shader\Bone.hlsl"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Engine\Shader\Copy.hlsl"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Engine\Shader\ModelSkinning.hlsl"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Engine\Shader\ModelStatic.hlsl"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Engine\Shader\PostFX.hlsl"
-				>
-			</File>
-			<File
 				RelativePath=".\Shader.cpp"
 				>
 			</File>
@@ -589,10 +569,6 @@
 			</File>
 			<File
 				RelativePath=".\Src\ShaderMgr.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Engine\Shader\Terrain.hlsl"
 				>
 			</File>
 		</Filter>
