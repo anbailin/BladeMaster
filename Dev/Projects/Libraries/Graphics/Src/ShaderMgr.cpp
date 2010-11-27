@@ -116,16 +116,12 @@ void ShaderMgr::LoadShaders()
          */
         if(desc.ids.size()==0)
         {
-            PixelShaderPtr ps;
-            VertexShaderPtr vs;
-            CompileShader(fxName.c_str(), &macroes[0], NULL, 0, ps, vs);
-
-            ShaderId shaderId = shaderIdx;
-            shaderId = shaderId<<32;            
             ShaderHandle* shaderHandle = new ShaderHandle;
+            PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);
+            CompileShader(*shaderHandle);
+    
+            ShaderId shaderId = (ShaderId)shaderIdx<<32;
             mShaderMap[shaderId] = shaderHandle;
-            shaderHandle->mPixelShader = ps;
-            shaderHandle->mVertexShader = vs;
         }
         else
         {
@@ -146,17 +142,15 @@ void ShaderMgr::LoadShaders()
                     }
                 }        
 
-                PixelShaderPtr ps;
-                VertexShaderPtr vs;
-                CompileShader(fxName.c_str(), &macroes[0], NULL, 0, ps, vs);
-
                 ShaderId shaderId = shaderIdx;
                 shaderId = shaderId<<32;
                 shaderId |= shaderMacroId;
+
                 ShaderHandle* shaderHandle = new ShaderHandle;
+                PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);
+                CompileShader(*shaderHandle);
+                
                 mShaderMap[shaderId] = shaderHandle;
-                shaderHandle->mPixelShader = ps;
-                shaderHandle->mVertexShader = vs;
             }
         }
 
@@ -365,7 +359,9 @@ bool ShaderMgr::CompileShader(
                     *	output
                     */
                    PixelShaderPtr& pixelShader,
-                   VertexShaderPtr& vertexShader
+                   VertexShaderPtr& vertexShader,                   
+                   TArray<u8>& vsCode,
+                   TArray<u8>& psCode
                    )
 {
     /*
@@ -392,6 +388,13 @@ bool ShaderMgr::CompileShader(
     }	    
 
     const bool psResult = SUCCEEDED( DEVICEPTR->CreatePixelShader(static_cast<DWORD*>(buffer->GetBufferPointer()), &pixelShader) );
+
+    //record compiled shader
+    const u32 psShaderSize = buffer->GetBufferSize();
+    psCode.resize(psShaderSize);
+    memcpy(&psCode[0], buffer->GetBufferPointer(), psShaderSize);
+
+    //release buffer
     buffer->Release();
     
     assert(psResult);
@@ -411,8 +414,104 @@ bool ShaderMgr::CompileShader(
     }	 
 
     const bool vsResult = SUCCEEDED( DEVICEPTR->CreateVertexShader(static_cast<DWORD*>(buffer->GetBufferPointer()), &vertexShader) );
+    
+    //record compiled shader
+    const u32 vsShaderSize = buffer->GetBufferSize();
+    vsCode.resize(vsShaderSize);
+    memcpy(&vsCode[0], buffer->GetBufferPointer(), vsShaderSize);
+
+    //release buffer
     buffer->Release();
 
+    assert(vsResult);
+
+    return true;
+}
+
+bool ShaderMgr::PreprocessShader(const wchar_t* path, const D3DXMACRO* defines, LPD3DXINCLUDE includes, ShaderHandle& shaderHandle)
+{
+    GetFullShaderPath(path);
+
+    //if fail, buffer is still NULL, so not necessary to release buffer
+    //if succeed, we need to release before return
+    ID3DXBuffer* buffer = NULL;
+    //if fail, we need to release before return
+    //if succeed, errorMsg is still NULL, so not necessary to release buffer
+    ID3DXBuffer* errorMsg = NULL;
+
+    HRESULT hr = D3DXPreprocessShaderFromFile(ShaderFullPath.c_str(), defines, includes, &buffer, &errorMsg);        
+
+    if(SUCCEEDED(hr)==false)
+    {
+        //logout errors
+        LogToDebug((const char*)errorMsg->GetBufferPointer());
+        errorMsg->Release(); 
+        assert(0);
+        return false;
+    }
+
+    const u32 shaderSize = buffer->GetBufferSize();
+    shaderHandle.mPreprocessShader.resize(shaderSize);
+    memcpy(&shaderHandle.mPreprocessShader[0], buffer->GetBufferPointer(), shaderSize);
+
+    return true;
+
+}
+
+bool ShaderMgr::CompileShader(ShaderHandle& shaderHandle, bool recordCompiledResult/*=false*/)
+{
+    //if fail, buffer is still NULL, so not necessary to release buffer
+    //if succeed, we need to release before return
+    ID3DXBuffer* buffer = NULL;
+    //if fail, we need to release before return
+    //if succeed, errorMsg is still NULL, so not necessary to release buffer
+    ID3DXBuffer* errorMsg = NULL;
+
+    /*
+     *	pixel shader
+     */
+    HRESULT hr = D3DXCompileShader((LPCSTR)&shaderHandle.mPreprocessShader[0], shaderHandle.mPreprocessShader.size(), NULL, NULL, kPSEntry, PSProfile3, 0, &buffer, &errorMsg, NULL);
+    if(SUCCEEDED(hr)==false)
+    {
+        //logout errors
+        LogToDebug((const char*)errorMsg->GetBufferPointer());
+        errorMsg->Release(); 
+        assert(0);
+        return false;
+    }
+
+    if(recordCompiledResult)
+    {
+        const u32 shaderSize = buffer->GetBufferSize();
+        shaderHandle.mPSCompiledShader.resize(shaderSize);
+        memcpy(&shaderHandle.mPSCompiledShader[0], buffer->GetBufferPointer(), shaderSize);
+    }
+
+    const bool psResult = SUCCEEDED( DEVICEPTR->CreatePixelShader(static_cast<DWORD*>(buffer->GetBufferPointer()), &shaderHandle.mPixelShader) );
+    assert(psResult);
+
+    /*
+     *	vertex shader
+     */
+
+    hr = D3DXCompileShader((LPCSTR)&shaderHandle.mPreprocessShader[0], shaderHandle.mPreprocessShader.size(), NULL, NULL, kVSEntry, VSProfile3, 0, &buffer, &errorMsg, NULL);
+    if(SUCCEEDED(hr)==false)
+    {
+        //logout errors
+        LogToDebug((const char*)errorMsg->GetBufferPointer());
+        errorMsg->Release(); 
+        assert(0);
+        return false;
+    }
+
+    if(recordCompiledResult)
+    {
+        const u32 shaderSize = buffer->GetBufferSize();
+        shaderHandle.mVSCompiledShader.resize(shaderSize);
+        memcpy(&shaderHandle.mVSCompiledShader[0], buffer->GetBufferPointer(), shaderSize);
+    }
+    
+    const bool vsResult = SUCCEEDED( DEVICEPTR->CreateVertexShader(static_cast<DWORD*>(buffer->GetBufferPointer()), &shaderHandle.mVertexShader) );
     assert(vsResult);
 
     return true;

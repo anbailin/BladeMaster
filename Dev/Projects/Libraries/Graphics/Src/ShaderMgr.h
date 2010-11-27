@@ -36,8 +36,14 @@ public:
         LPD3DXINCLUDE includes,         
         DWORD flags,
         PixelShaderPtr& pixeShader,
-        VertexShaderPtr& vertexShader
+        VertexShaderPtr& vertexShader,
+        TArray<u8>& vsCode,
+        TArray<u8>& psCode
         );
+
+    bool CompileShader(ShaderHandle& shaderHandle, bool recordCompiledResult = false);
+
+    bool PreprocessShader(const wchar_t* path, const D3DXMACRO* defines, LPD3DXINCLUDE includes, ShaderHandle& shaderHandle);
 
     //utils
 protected:
@@ -48,5 +54,5 @@ protected:
     //attr
 protected:
     TArray<ShaderDesc>         mShaderDescs;
-    stdext::hash_map<ShaderId, ShaderHandle*> mShaderMap;
+    stdext::hash_map<ShaderId, ShaderHandle*> mShaderMap;    
 };
