@@ -4,7 +4,6 @@
 #include "D3D9Renderer.h"
 #include "D3D11Renderer.h"
 
-#include "ShaderId.h"
 #include "DCRenderType.h"
 #include "DCRenderState.h"
 #include "DCRenderSetter.h"

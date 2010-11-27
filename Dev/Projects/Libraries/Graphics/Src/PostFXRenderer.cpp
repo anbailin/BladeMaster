@@ -1,5 +1,8 @@
 #include "GraphicsPrivate.h"
 #include "ShaderMgr.h"
+#include "PostFXRenderer.h"
+#include "QuadGeometry.h"
+#include "DCRenderer.h"
 
 
 SINGLETON_DEFINE(BMPostFXRenderer);

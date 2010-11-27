@@ -588,14 +588,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ShaderId.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ShaderId.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Src\ShaderMgr.cpp"
 				>
 			</File>

@@ -1,5 +1,11 @@
 #include "GraphicsPrivate.h"
 #include "ShaderMgr.h"
+#include "DCRenderer.h"
+#include "Terrain.h"
+#include "DCModel.h"
+#include "VertexDeclarationManager.h"
+#include "PostFXRenderer.h"
+#include "DCRenderSetter.h"
 
 SINGLETON_DEFINE(DCRenderer);
 

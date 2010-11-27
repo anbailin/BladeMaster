@@ -1,5 +1,5 @@
 #include "GraphicsPrivate.h"
-
+#include "DCShaderManager.h"
 
 namespace
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-class ENGINE_DLL BMEngine : public BM::GameEngine
+class ENGINE_DLL BMEngine : public GameEngine
 {
     Q_OBJECT
 

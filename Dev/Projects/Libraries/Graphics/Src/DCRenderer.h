@@ -3,8 +3,6 @@
 #include "D3D9Renderer.h"
 #include "Core.h"
 
-using namespace BM;
-
 #ifndef DEVICEPTR
 #define DEVICEPTR DCRenderer::GetInstance()->GetDevice()
 #endif

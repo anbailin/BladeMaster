@@ -1,8 +1,6 @@
 #include "GamePrivate.h"
 #include "GameApplication.h"
 
-namespace BM
-{
     GameApplication::GameApplication(QString name, int argc, char* argv[])
         : Application(name, argc, argv)
         , m_TickTimer()
@@ -106,4 +104,3 @@ namespace BM
 
         Tick((f32)fDeltaSeconds);
     }
-}

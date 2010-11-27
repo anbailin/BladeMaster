@@ -1,4 +1,6 @@
 #include "GraphicsPrivate.h"
+#include "VertexDeclarationManager.h"
+#include "DCRenderer.h"
 
 namespace
 {

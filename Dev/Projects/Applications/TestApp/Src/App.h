@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "MainWindow.h"
 
-class App : public BM::GameApplication
+class App : public GameApplication
 {
     Q_OBJECT
 

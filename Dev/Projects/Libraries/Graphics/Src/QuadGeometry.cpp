@@ -1,4 +1,6 @@
 #include "GraphicsPrivate.h"
+#include "QuadGeometry.h"
+#include "DCRenderer.h"
 
 QuadGeometry::QuadGeometry()
 {

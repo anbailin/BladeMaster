@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Shader.h"
+
 class QuadGeometry;
 
 class RENDER_DLL BMPostFXRenderer

@@ -2,8 +2,6 @@
 #include "MainWindow.h"
 #include "App.h"
 
-using namespace BM;
-
 bool App::Pause = false;
 
 App::App(int argc, char* argv[])

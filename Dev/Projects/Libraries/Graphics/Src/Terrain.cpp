@@ -1,5 +1,9 @@
 #include "GraphicsPrivate.h"
 #include "ShaderMgr.h"
+#include "Terrain.h"
+#include "DCRenderer.h"
+#include "VertexDeclarationManager.h"
+
 BMTerrain::BMTerrain()
 {
     Init();

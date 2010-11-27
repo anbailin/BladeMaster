@@ -1,6 +1,7 @@
 #include "GraphicsPrivate.h"
 #include "ShaderMgr.h"
 #include "Shlwapi.h"
+#include "DCRenderer.h"
 
 #define SHADER_ASSERT_ON_ERROR 1
 

@@ -9,11 +9,13 @@ typedef std::wstring BMStrW;
 /*
  *	crc utilB
  */
-class BMCrC
+class CORE_DLL BMCrC
 {
 public:
     static u32 CreateCrc32(const char* str);
+    static u32 CreateCrc32(const char* str, u32 size);
     static u32 CreateCrc32NoCase(const char* str);
+    static u32 CreateCrc32NoCase(const char* str, u32 size);
     static u64 CreateCrc64(const char* str);
     static u64 CreateCrc64NoCase(const char* str);
 };

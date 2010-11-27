@@ -334,10 +334,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Src\Rectangle.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Src\Size.h"
 				>
 			</File>

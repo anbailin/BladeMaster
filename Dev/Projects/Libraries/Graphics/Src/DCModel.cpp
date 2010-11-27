@@ -1,6 +1,9 @@
 #include "GraphicsPrivate.h"
 #include "ShaderMgr.h"
-
+#include "DCModel.h"
+#include "VertexDeclarationManager.h"
+#include "DCSubModel.h"
+#include "DCRenderer.h"
 //---------DCModel------------------------------------------------------------------------------
 
 DCModel::DCModel()

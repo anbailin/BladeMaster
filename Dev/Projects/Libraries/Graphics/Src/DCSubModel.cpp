@@ -1,5 +1,7 @@
 #include "GraphicsPrivate.h"
-
+#include "DCSubModel.h"
+#include "DCRenderSetter.h"
+#include "DCRenderer.h"
 //---------DCSubModel------------------------------------------------------------------------------
 
 DCSubModel::DCSubModel():

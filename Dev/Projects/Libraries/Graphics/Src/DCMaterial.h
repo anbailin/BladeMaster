@@ -1,4 +1,7 @@
 #pragma once
+#include "DCRenderState.h"
+#include "DCGeometry.h"
+#include "DCTexture.h"
 
 class DCMesh;
 

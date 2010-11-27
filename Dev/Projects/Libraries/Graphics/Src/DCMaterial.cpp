@@ -1,4 +1,5 @@
 #include "GraphicsPrivate.h"
+#include "DCMaterial.h"
 
 DCMaterial::DCMaterial()
 {

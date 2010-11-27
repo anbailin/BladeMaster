@@ -1,5 +1,7 @@
 #include "GraphicsPrivate.h"
+#include "DCSurface.h"
 #include "Files/BLP.h"
+#include "DCRenderer.h"
 
 //to do : to improve the loading process;
 DCSurface* DCSurface::Create(const std::string& filename)

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "DCRenderState.h"
 class DCRenderSetter
 {
 public:

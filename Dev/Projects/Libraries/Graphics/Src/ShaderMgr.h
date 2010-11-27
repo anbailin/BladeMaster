@@ -1,6 +1,4 @@
 #pragma once
-
-#include "ShaderId.h"
 #include "Shader.h"
 
 struct ShaderDesc

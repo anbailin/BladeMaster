@@ -1,4 +1,5 @@
 #pragma once
+#include "DCRenderType.h"
 
 class VertexDeclareManager
 {

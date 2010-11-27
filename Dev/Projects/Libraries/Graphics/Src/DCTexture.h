@@ -1,6 +1,7 @@
 #pragma once
 
-//#include "DCSurface.h"
+#include "DCSurface.h"
+#include "DCRenderType.h"
 
 class DCTexture:public RefObject
 {

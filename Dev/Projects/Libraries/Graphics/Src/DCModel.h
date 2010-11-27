@@ -2,8 +2,12 @@
 // Copyright 2007, ZJUGDA
 //===============================================================================
 #pragma once
-
+#include "DCRenderType.h"
+#include "DCTexture.h"
+#include "DCSubModel.h"
+#include "Shader.h"
 class DCMaterial;
+
 
 /**
 	DCModel----represent a model
@@ -26,11 +30,11 @@ public:
 	*/
 	virtual void			InitVertexBuffer(void* addr, DCVertexType type, u32 count);
 
-	DCSubModel*				GetSubModel(u32 ndx)				{ return &mSubModels[ndx];	}
-	u32					GetSubModelCount()const				{ return mSubModelCount;	}
+	DCSubModel*				GetSubModel(u32 ndx)				{ return mSubModels+ndx;	}
+	u32					    GetSubModelCount()const				{ return mSubModelCount;	}
 	void					SetSubModel(DCSubModel* val,u32 count);
 	
-	u32					GetVertexCount()					{ return mVertexCount;}
+	u32					    GetVertexCount()					{ return mVertexCount;}
 
 	void					SetTextureTableSize(u32 size)	{ mTextureTable.resize(size);}
 	void					SetTexture(DCTexturePtr ptr,u32 index);

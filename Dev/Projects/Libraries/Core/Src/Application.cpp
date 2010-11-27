@@ -2,8 +2,7 @@
 #include "Application.h"
 #include "Util/BMLog.h"
 
-namespace BM
-{
+
     Application::Application(QString name, int argc, char* argv[])
         : QApplication(argc, argv)
     {
@@ -104,4 +103,3 @@ namespace BM
         }
         return defaultValue;
     }
-}

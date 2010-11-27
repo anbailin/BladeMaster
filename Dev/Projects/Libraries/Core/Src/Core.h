@@ -44,7 +44,6 @@
 
 #include "Point.h"
 #include "Size.h"
-#include "Rectangle.h"
 
 #include "Timer.h"
 #include "Singleton.h"

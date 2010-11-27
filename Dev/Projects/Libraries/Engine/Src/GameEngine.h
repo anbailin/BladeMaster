@@ -1,20 +1,17 @@
 #pragma once
 
-namespace BM
+class ENGINE_DLL GameEngine : public QObject
 {
-    class ENGINE_DLL GameEngine : public QObject
-    {
-        Q_OBJECT
+    Q_OBJECT
 
-    public:
-		GameEngine(){}
-		~GameEngine(){}
+public:
+    GameEngine(){}
+    ~GameEngine(){}
 
-    public:
-		virtual void Init(){}
-		virtual void Exit(){}
-		virtual void Tick(f32 fDeltaTime){}
-    };
+public:
+    virtual void Init(){}
+    virtual void Exit(){}
+    virtual void Tick(f32 fDeltaTime){}
+};
 
-    BM_CLASS_FACTORY_REGISTER(GameEngine);
-}
+BM_CLASS_FACTORY_REGISTER(GameEngine);

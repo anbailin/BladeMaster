@@ -1,5 +1,7 @@
 #include "GraphicsPrivate.h"
 #include "Files/MDX.h"
+#include "DCGeometry.h"
+#include "DCRenderer.h"
 
 DCGeometry::DCGeometry():
 mID(0),mVertexCount(0),mVertexStart(0),mIndexCount(0)

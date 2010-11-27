@@ -3,22 +3,19 @@
 #include "Timer.h"
 
 
-namespace BM
+class TimerPrivate
 {
-    class TimerPrivate
+public:
+    TimerPrivate()
     {
-    public:
-        TimerPrivate()
-        {
-            QueryPerformanceFrequency(&Frequency);
-        }
+        QueryPerformanceFrequency(&Frequency);
+    }
 
-    public:
-        LARGE_INTEGER Frequency;
-    } ;
+public:
+    LARGE_INTEGER Frequency;
+} ;
 
-    TimerPrivate g_TimerPrivate;
+TimerPrivate g_TimerPrivate;
 
-    const u64  Timer::TicksPerSecond = g_TimerPrivate.Frequency.QuadPart;
-    const f64 Timer::SecondsPerTick = 1.0 / Timer::TicksPerSecond;
-}
+const u64  Timer::TicksPerSecond = g_TimerPrivate.Frequency.QuadPart;
+const f64 Timer::SecondsPerTick = 1.0 / Timer::TicksPerSecond;

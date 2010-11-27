@@ -1,5 +1,6 @@
 #pragma once
-
+#include "DCGeometry.h"
+#include "DCMaterial.h"
 class DCMaterial;
 class DCModel;
 
