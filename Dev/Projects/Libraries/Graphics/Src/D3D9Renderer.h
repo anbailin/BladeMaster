@@ -1,6 +1,5 @@
 #pragma once
 
-#include "GraphicsPublic.h"
 #include "Renderer.h"
 
 IDirect3DDevice9* WINAPI DXUTGetD3D9Device();
