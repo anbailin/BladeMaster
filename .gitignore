@@ -70,4 +70,5 @@ Thumbs.db
 obj/
 [Rr]elease*/
 _ReSharper*/
+ShaderCache/
 [Tt]est[Rr]esult*
