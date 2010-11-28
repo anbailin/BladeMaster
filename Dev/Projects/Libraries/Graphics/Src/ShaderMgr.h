@@ -42,7 +42,7 @@ public:
         );
 
     bool CompileShader(ShaderHandle& shaderHandle, bool recordCompiledResult = false);
-
+    bool CreateShader(ShaderHandle& shaderHandle);
     bool PreprocessShader(const wchar_t* path, const D3DXMACRO* defines, LPD3DXINCLUDE includes, ShaderHandle& shaderHandle);
 
     //utils
@@ -55,7 +55,10 @@ protected:
     void UpdateShaderCache();
     //attr
 protected:
-    TArray<ShaderDesc>         mShaderDescs;
-    stdext::hash_map<ShaderId, ShaderHandle*> mShaderMap;    
-    stdext::hash_map<ShaderId, TArray<u8>> mShaderCache;
+    typedef stdext::hash_map<ShaderId, ShaderHandle*> ShaderMap;
+    typedef ShaderMap::const_iterator ShaderMapIt;
+    typedef stdext::hash_map<ShaderId, TArray<u8>> ShaderCacheContent;
+    TArray<ShaderDesc>  mShaderDescs;
+    ShaderMap           mShaderMap;    
+    ShaderCacheContent  mShaderCache;
 };

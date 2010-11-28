@@ -88,6 +88,11 @@ void ShaderMgr::LoadShaders()
     }
 
     /*
+     *	load shader cache
+     */
+    LoadShaderCache();
+
+    /*
      *	compile shaders
      */
     for (u32 shaderIdx=0; shaderIdx<mShaderDescs.size(); shaderIdx++)
@@ -116,14 +121,35 @@ void ShaderMgr::LoadShaders()
          */
         if(desc.ids.size()==0)
         {
-            ShaderHandle* shaderHandle = new ShaderHandle;
-            PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);
-            shaderHandle->mPreprocessShaderCrc = BMCrC::CreateCrc32((const char*)&shaderHandle->mPreprocessShader[0], (u32)shaderHandle->mPreprocessShader.size());
-
-            CompileShader(*shaderHandle, true);
-                
             ShaderId shaderId = (ShaderId)shaderIdx<<32;
-            mShaderMap[shaderId] = shaderHandle;
+            ShaderMap::iterator shaderHandleIt = mShaderMap.find(shaderId);
+
+            ShaderHandle* shaderHandle = NULL;
+            if(shaderHandleIt==mShaderMap.end())
+            {
+                shaderHandle = new ShaderHandle;
+                mShaderMap[shaderId] = shaderHandle;
+            }
+            else
+            {
+                shaderHandle = shaderHandleIt->second;
+            }            
+
+            //compare the compiled shader's src with the current preprocessed shader src
+            PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);            
+            const u32 preprocessShaderCrc= BMCrC::CreateCrc32((const char*)&shaderHandle->mPreprocessShader[0], (u32)shaderHandle->mPreprocessShader.size());
+
+            //different, recompile
+            if(preprocessShaderCrc!=shaderHandle->mPreprocessShaderCrc)
+            {
+                CompileShader(*shaderHandle, true);
+                shaderHandle->mPreprocessShaderCrc = preprocessShaderCrc;
+            }
+            //same, just create shader
+            else
+            {
+                CreateShader(*shaderHandle);
+            }                                                    
         }
         else
         {
@@ -148,13 +174,37 @@ void ShaderMgr::LoadShaders()
                 shaderId = shaderId<<32;
                 shaderId |= shaderMacroId;
 
-                ShaderHandle* shaderHandle = new ShaderHandle;
-                PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);
-                shaderHandle->mPreprocessShaderCrc = BMCrC::CreateCrc32((const char*)&shaderHandle->mPreprocessShader[0], (u32)shaderHandle->mPreprocessShader.size());
+                /*
+                 *	
+                 */
+                ShaderMap::iterator shaderHandleIt = mShaderMap.find(shaderId);
 
-                CompileShader(*shaderHandle, true);
-                
-                mShaderMap[shaderId] = shaderHandle;
+                ShaderHandle* shaderHandle = NULL;
+                if(shaderHandleIt==mShaderMap.end())
+                {
+                    shaderHandle = new ShaderHandle;
+                    mShaderMap[shaderId] = shaderHandle;
+                }
+                else
+                {
+                    shaderHandle = shaderHandleIt->second;
+                }            
+
+                //compare the compiled shader's src with the current preprocessed shader src
+                PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);            
+                const u32 preprocessShaderCrc= BMCrC::CreateCrc32((const char*)&shaderHandle->mPreprocessShader[0], (u32)shaderHandle->mPreprocessShader.size());
+
+                //different, recompile
+                if(preprocessShaderCrc!=shaderHandle->mPreprocessShaderCrc)
+                {
+                    CompileShader(*shaderHandle, true);
+                    shaderHandle->mPreprocessShaderCrc = preprocessShaderCrc;
+                }
+                //same, just create shader
+                else
+                {
+                    CreateShader(*shaderHandle);
+                }     
             }
         }
 
@@ -490,10 +540,12 @@ bool ShaderMgr::CompileShader(ShaderHandle& shaderHandle, bool recordCompiledRes
     {
         const u32 shaderSize = buffer->GetBufferSize();
         shaderHandle.mPSCompiledShader.resize(shaderSize);
-        memcpy(&shaderHandle.mPSCompiledShader[0], buffer->GetBufferPointer(), shaderSize);
+        const void* bufferAddr = buffer->GetBufferPointer();
+        memcpy(&shaderHandle.mPSCompiledShader[0], bufferAddr, shaderSize);
     }
 
-    const bool psResult = SUCCEEDED( DEVICEPTR->CreatePixelShader(static_cast<DWORD*>(buffer->GetBufferPointer()), &shaderHandle.mPixelShader) );
+    //const bool psResult = SUCCEEDED( DEVICEPTR->CreatePixelShader(static_cast<DWORD*>(buffer->GetBufferPointer()), &shaderHandle.mPixelShader) );
+    const bool psResult = SUCCEEDED( DEVICEPTR->CreatePixelShader((DWORD*)(&shaderHandle.mPSCompiledShader[0]), &shaderHandle.mPixelShader) );
     assert(psResult);
 
     /*
@@ -523,9 +575,33 @@ bool ShaderMgr::CompileShader(ShaderHandle& shaderHandle, bool recordCompiledRes
     return true;
 }
 
+u64 StrRadix16ToU64(const wchar_t* value)
+{
+    BMStrW wValue = value;
+    BMStr sValue;
+    WStrToStr(wValue, sValue);
+    u32 size = sValue.size();
+    u64 result = 0;
+    for (s32 i=0;i<size; i++)
+    {
+        result*=16;
+        const char& v = sValue[i];
+        if(v<='9')
+        {
+            result+=v-'0';
+        }
+        else 
+        {
+            assert(v<='f'&&v>='a');
+            result+=v-'a'+9;
+        }        
+    }
+    return result;
+}
 void ShaderMgr::LoadShaderCache()
 {
     const wchar_t* shaderCacheFiles = L"..\\Engine\\ShaderCache\\*.*";
+    const wchar_t* shaderCachePath = L"..\\Engine\\ShaderCache\\";
     std::vector<std::wstring> fileNames;
 
     WIN32_FIND_DATA stData; 
@@ -541,15 +617,26 @@ void ShaderMgr::LoadShaderCache()
         {
             continue;
         }
-        
+
+        fileNames.push_back(stData.cFileName);        
+
+    } while (FindNextFile(hFind, &stData));
+
+    const u32 fileCount = fileNames.size();
+    for(u32 i=0;i<fileCount; i++)
+    {
+        BMStrW path = shaderCachePath;
+        path+=fileNames[i];
+        HANDLE fileHandle = CreateFileW(path.c_str(), FILE_READ_DATA, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
         //id
-        const wchar_t* fileName = stData.cFileName;
-        u64 intId = _wtoi(fileName);
+        const wchar_t* fileName = fileNames[i].c_str();
+        u64 intId = StrRadix16ToU64(fileName);
 
         //content
         LARGE_INTEGER sizeOfFile;
         sizeOfFile.QuadPart = 0ll;
-        GetFileSizeEx(hFind, &sizeOfFile);
+        GetFileSizeEx(fileHandle, &sizeOfFile);
         const u64 fileSize = sizeOfFile.QuadPart;
 
         TArray<u8>& content = mShaderCache[intId];
@@ -557,10 +644,46 @@ void ShaderMgr::LoadShaderCache()
 
         u32 bytesRead = 0;
 
-        BOOL result = ReadFile(hFind, &content[0], (u32)fileSize, &bytesRead, 0);
+        BOOL result = ReadFile(fileHandle, &content[0], (u32)fileSize, &bytesRead, 0);
         assert(result!=0);
+    }
 
-    } while (FindNextFile(hFind, &stData));
+    //fill shader map
+    typedef ShaderCacheContent::const_iterator ShaderCacheIt;
+    ShaderCacheIt it = mShaderCache.begin();
+    ShaderCacheIt end = mShaderCache.end();
+    for (;it!=end;it++)
+    {
+        const ShaderId& shaderId = it->first;        
+        const TArray<u8>& content = it->second;
+        
+        u32 desc[3];
+        u32* u32Addr = (u32*)&content[0];
+        memcpy(desc, u32Addr, sizeof(desc));
+
+        u32* preprocessShaderCrc = desc;
+        u32* vsSize = desc+1;
+        u32* psSize = desc+2;
+
+        ShaderHandle* shaderHandle=NULL;
+        ShaderMapIt result = mShaderMap.find(shaderId);
+        if(result==mShaderMap.end())
+        {
+            shaderHandle = new ShaderHandle;
+            mShaderMap[shaderId] = shaderHandle;            
+        }
+        else
+        {
+            shaderHandle = result->second;
+        }
+
+        shaderHandle->mPreprocessShaderCrc = *preprocessShaderCrc;
+        shaderHandle->mVSCompiledShader.resize(*vsSize);
+        memcpy(&shaderHandle->mVSCompiledShader[0], &content[sizeof(desc)], *vsSize);
+
+        shaderHandle->mPSCompiledShader.resize(*psSize);
+        memcpy(&shaderHandle->mPSCompiledShader[0], &content[sizeof(desc)+*vsSize], *psSize);
+    }
 }
 
 /*
@@ -569,8 +692,7 @@ void ShaderMgr::LoadShaderCache()
 void ShaderMgr::UpdateShaderCache()
 {
     const wchar_t* shaderCachePath = L"..\\Engine\\ShaderCache\\";
-    typedef stdext::hash_map<ShaderId, ShaderHandle*> ShaderMap;
-    typedef ShaderMap::const_iterator ShaderMapIt;
+
     ShaderMapIt it = mShaderMap.begin();
     ShaderMapIt end = mShaderMap.end();
 
@@ -615,5 +737,18 @@ void ShaderMgr::UpdateShaderCache()
 
         BOOL closeResult = CloseHandle(fileHandle);
         assert(closeResult!=0);               
-    }
+    } 
+}
+
+bool ShaderMgr::CreateShader(ShaderHandle& shaderHandle)
+{
+    HRESULT hr = DEVICEPTR->CreatePixelShader((DWORD*)(&shaderHandle.mPSCompiledShader[0]), &shaderHandle.mPixelShader);
+    const bool psResult = SUCCEEDED(hr );
+    assert(psResult);
+
+    hr = DEVICEPTR->CreateVertexShader((DWORD*)(&shaderHandle.mVSCompiledShader[0]), &shaderHandle.mVertexShader);
+    const bool vsResult = SUCCEEDED( hr );
+    assert(vsResult);
+
+    return true;    
 }

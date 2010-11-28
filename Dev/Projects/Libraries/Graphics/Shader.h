@@ -12,6 +12,7 @@ typedef u64 ShaderId;
 //class 
 struct ShaderHandle
 {
+    ShaderHandle():mPreprocessShaderCrc(0),mVSCompiledSrcCrc(0),mPSCompiledSrcCrc(0){} 
     VertexShaderPtr  mVertexShader;
     PixelShaderPtr   mPixelShader;
     TArray<u8>       mPreprocessShader;    
