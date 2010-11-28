@@ -5,7 +5,7 @@
 #include "DCRenderType.h"
 #include "DCTexture.h"
 #include "DCSubModel.h"
-#include "Shader.h"
+#include "ShaderMgr.h"
 class DCMaterial;
 
 

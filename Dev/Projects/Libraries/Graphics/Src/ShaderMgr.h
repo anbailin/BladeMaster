@@ -1,5 +1,27 @@
 #pragma once
-#include "Shader.h"
+
+/*
+ *	upper 32 bit for shader type information, can't do bit operation
+ *	lower 32 bit for shader macro, can do bit operation for macro combination
+ */
+typedef u64 ShaderId;
+#define InvalidShaderTypeId 0xffffffff00000000
+#define InvalidShaderMacroId 0x00000000ffffffff
+#define InvalidShaderId 0xffffffffffffffff
+
+//class 
+struct ShaderHandle
+{
+    ShaderHandle():mPreprocessShaderCrc(0),mVSCompiledSrcCrc(0),mPSCompiledSrcCrc(0){} 
+    VertexShaderPtr  mVertexShader;
+    PixelShaderPtr   mPixelShader;
+    TArray<u8>       mPreprocessShader;    
+    TArray<u8>       mVSCompiledShader;
+    TArray<u8>       mPSCompiledShader;
+    u32              mPreprocessShaderCrc;    
+    u32              mVSCompiledSrcCrc;
+    u32              mPSCompiledSrcCrc;
+};
 
 struct ShaderDesc
 {
@@ -14,7 +36,7 @@ struct ShaderDesc
  *	1, manage shaders with id
  *	2, manage shader cache
  */
-class ShaderMgr
+class RENDER_DLL ShaderMgr
 {
     SINGLETON_DECLARE(ShaderMgr);
 public:
@@ -45,6 +67,7 @@ public:
     bool CreateShader(ShaderHandle& shaderHandle);
     bool PreprocessShader(const wchar_t* path, const D3DXMACRO* defines, LPD3DXINCLUDE includes, ShaderHandle& shaderHandle);
 
+    static bool DetermineShaderAnimation(u32 _BoneNum);
     //utils
 protected:
     void ParseShaderDesc(const BMStr& descPath, ShaderDesc& shaderDesc);

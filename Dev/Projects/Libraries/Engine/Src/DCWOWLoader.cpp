@@ -59,7 +59,7 @@ DCModel* DCWOWLoader::LoadModel(DCFilePath& _path, DCAnimationManager*& animMgr)
 	mpq.read(&header,0,sizeof(MDXModelHeader));
 
 	//decide if gpu skinning-----------------------------------------------
-	bool bShaderAnim = DCShaderManager::DetermineShaderAnimation(header.mBone.number);	
+	bool bShaderAnim = ShaderMgr::DetermineShaderAnimation(header.mBone.number);	
 	result = bShaderAnim? new DCModel : new DCModelSys;
 
 	//init the vertex buffer-----------------------------------------------

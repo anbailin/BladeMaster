@@ -14,7 +14,6 @@
 #include "DCSubModel.h"
 #include "DCModel.h"
 #include "Terrain.h"
-#include "DCShaderManager.h"
 #include "DCTranslator.h"
 #include "DCModelInstance.h"
 

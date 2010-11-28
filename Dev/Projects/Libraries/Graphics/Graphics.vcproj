@@ -543,26 +543,10 @@
 				RelativePath=".\Src\DCRenderType.h"
 				>
 			</File>
-			<File
-				RelativePath=".\Src\DCShaderManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Src\DCShaderManager.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Shader"
 			>
-			<File
-				RelativePath=".\Shader.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Shader.h"
-				>
-			</File>
 			<File
 				RelativePath=".\Src\ShaderMgr.cpp"
 				>

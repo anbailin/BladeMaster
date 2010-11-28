@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shader.h"
+#include "ShaderMgr.h"
 
 class QuadGeometry;
 
