@@ -50,9 +50,12 @@ protected:
     void ParseShaderDesc(const BMStr& descPath, ShaderDesc& shaderDesc);
     void ParseShaderNation(TiXmlElement* shaderNation, ShaderDesc& shaderDesc);
     void ParseShaderProvince(TiXmlElement* shaderProvince, ShaderDesc& shaderDesc, std::vector<ShaderId>& ids);    
-
+    
+    void LoadShaderCache();
+    void UpdateShaderCache();
     //attr
 protected:
     TArray<ShaderDesc>         mShaderDescs;
     stdext::hash_map<ShaderId, ShaderHandle*> mShaderMap;    
+    stdext::hash_map<ShaderId, TArray<u8>> mShaderCache;
 };

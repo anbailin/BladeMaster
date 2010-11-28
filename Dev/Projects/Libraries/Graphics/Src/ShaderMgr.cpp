@@ -24,7 +24,7 @@ ShaderMgr::~ShaderMgr()
  */
 void ShaderMgr::LoadShaders()
 {
-    const wchar_t* shaderPath = L"..\\Engine\\Shader\\";
+    const wchar_t* shaderPath = L"..\\Engine\\Shader\\";    
     const wchar_t* allFilePath = L"..\\Engine\\Shader\\*.*";
     const wchar_t* xmlEx = L".xml";
     const wchar_t* fxEx = L".fx";
@@ -118,8 +118,10 @@ void ShaderMgr::LoadShaders()
         {
             ShaderHandle* shaderHandle = new ShaderHandle;
             PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);
-            CompileShader(*shaderHandle);
-    
+            shaderHandle->mPreprocessShaderCrc = BMCrC::CreateCrc32((const char*)&shaderHandle->mPreprocessShader[0], (u32)shaderHandle->mPreprocessShader.size());
+
+            CompileShader(*shaderHandle, true);
+                
             ShaderId shaderId = (ShaderId)shaderIdx<<32;
             mShaderMap[shaderId] = shaderHandle;
         }
@@ -148,14 +150,18 @@ void ShaderMgr::LoadShaders()
 
                 ShaderHandle* shaderHandle = new ShaderHandle;
                 PreprocessShader(fxName.c_str(), &macroes[0], NULL, *shaderHandle);
-                CompileShader(*shaderHandle);
+                shaderHandle->mPreprocessShaderCrc = BMCrC::CreateCrc32((const char*)&shaderHandle->mPreprocessShader[0], (u32)shaderHandle->mPreprocessShader.size());
+
+                CompileShader(*shaderHandle, true);
                 
                 mShaderMap[shaderId] = shaderHandle;
             }
         }
 
         RENDER_LOG("finish compile shader %s\n", desc.name.c_str());
-    }    
+    } 
+
+    UpdateShaderCache();
 }
 
 ShaderId ShaderMgr::GetShaderTypeId(const char* name)const
@@ -515,4 +521,99 @@ bool ShaderMgr::CompileShader(ShaderHandle& shaderHandle, bool recordCompiledRes
     assert(vsResult);
 
     return true;
+}
+
+void ShaderMgr::LoadShaderCache()
+{
+    const wchar_t* shaderCacheFiles = L"..\\Engine\\ShaderCache\\*.*";
+    std::vector<std::wstring> fileNames;
+
+    WIN32_FIND_DATA stData; 
+    HANDLE hFind = FindFirstFile(shaderCacheFiles, &stData); 
+    if (hFind  == INVALID_HANDLE_VALUE)  
+    {
+        return;
+    }
+
+    do 
+    {        
+        if(StrCmpW(stData.cFileName, L".")==0 || StrCmpW(stData.cFileName, L"..")==0)
+        {
+            continue;
+        }
+        
+        //id
+        const wchar_t* fileName = stData.cFileName;
+        u64 intId = _wtoi(fileName);
+
+        //content
+        LARGE_INTEGER sizeOfFile;
+        sizeOfFile.QuadPart = 0ll;
+        GetFileSizeEx(hFind, &sizeOfFile);
+        const u64 fileSize = sizeOfFile.QuadPart;
+
+        TArray<u8>& content = mShaderCache[intId];
+        content.resize((u32)fileSize);
+
+        u32 bytesRead = 0;
+
+        BOOL result = ReadFile(hFind, &content[0], (u32)fileSize, &bytesRead, 0);
+        assert(result!=0);
+
+    } while (FindNextFile(hFind, &stData));
+}
+
+/*
+ *	store shader compile result
+ */
+void ShaderMgr::UpdateShaderCache()
+{
+    const wchar_t* shaderCachePath = L"..\\Engine\\ShaderCache\\";
+    typedef stdext::hash_map<ShaderId, ShaderHandle*> ShaderMap;
+    typedef ShaderMap::const_iterator ShaderMapIt;
+    ShaderMapIt it = mShaderMap.begin();
+    ShaderMapIt end = mShaderMap.end();
+
+    wchar_t shaderIdName[96];
+    for(;it!=end;it++)
+    {
+        //generate file name
+        const ShaderId& shaderIt = it->first;
+        _ui64tow(shaderIt,shaderIdName,16);
+        BMStrW cachePath = shaderCachePath;
+        cachePath+=shaderIdName;
+
+        //open create file
+        HANDLE fileHandle = CreateFile(cachePath.c_str(), FILE_WRITE_DATA, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+        assert(fileHandle!=INVALID_HANDLE_VALUE);
+
+        /*
+         *write file	
+         */
+        //calc file size
+        //src_crc:4byte
+        // vs size:4byte
+        // ps size:4byte
+        const ShaderHandle& shaderHandle = *(it->second);
+        const u32 vsSize = shaderHandle.mVSCompiledShader.size();
+        const u32 psSize = shaderHandle.mPSCompiledShader.size();
+        u32 desc[3] = {shaderHandle.mPreprocessShaderCrc, vsSize, psSize};
+        u32 fileSize = sizeof(desc)+vsSize+psSize;
+
+        //desc
+        u32 sizeWritten=0;
+        WriteFile(fileHandle, desc, sizeof(desc), &sizeWritten, 0);
+        assert(sizeof(desc)==sizeWritten);
+
+        //vs
+        WriteFile(fileHandle, &shaderHandle.mVSCompiledShader[0], vsSize, &sizeWritten, 0);
+        assert(sizeWritten==vsSize);
+
+        //ps
+        WriteFile(fileHandle, &shaderHandle.mPSCompiledShader[0], psSize, &sizeWritten, 0);
+        assert(sizeWritten==psSize);
+
+        BOOL closeResult = CloseHandle(fileHandle);
+        assert(closeResult!=0);               
+    }
 }
